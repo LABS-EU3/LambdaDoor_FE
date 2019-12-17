@@ -1,7 +1,13 @@
 import React from 'react';
 import { Typography } from 'antd';
 import styled from 'styled-components';
-import { tablet, FlexFunc } from '../styles/theme.styles';
+import {
+	tabletPortrait,
+	tabletLandscape,
+	mobileLandscape,
+	mobilePortrait,
+	FlexFunc
+} from '../styles/theme.styles';
 import background from '../img/lambda-door-lp-vector.svg';
 import logo from '../img/lambda-logo.png';
 
@@ -16,9 +22,16 @@ const HomeContainer = styled.div`
 	width: 100vw;
 	height: 100vh;
 
-	@media ${tablet} {
-		background-position: bottom;
+	@media ${tabletPortrait} {
+		background-position: -180px 50px;
 	}
+	@media ${tabletLandscape} {
+		background-position: bottom left;
+	}
+	@media ${mobileLandscape} {
+		background-image: none;
+	}
+
 `;
 
 const HomeContentContainer = styled.div`
@@ -27,26 +40,51 @@ const HomeContentContainer = styled.div`
 	width: 50%;
 	padding: 1% 10%;
 
-	@media ${tablet} {
+	@media ${tabletPortrait} {
 		align-items: center;
 		width: 100%;
 		padding: 5% 5%;
+	}
+	@media ${tabletLandscape} {
+		align-items: center;
+		width: 100%;
+		padding: 5% 5%;
+	}
+	@media ${mobilePortrait} {
+		text-align: center;
+	}
+	@media ${mobileLandscape} {
+		text-align: center;
+		color: black;
+		padding: 2% 5%;
 	}
 `;
 
 const LambdaLogo = styled.div`
 	align-self: flex-start;
+	@media ${mobileLandscape} {
+		img {
+			width: 3em;
+		}
+	}
 `;
 
 const OnboardingContainer = styled.div`
 	padding-bottom: 10%;
 	${FlexFunc('column', 'space-between', 'flex-start')};
-	@media ${tablet} {
+	@media ${tabletPortrait} {
 		align-items: center;
 		width: 100%;
 		text-align: center;
 		padding: 0 5%;
 	}
+	@media ${tabletLandscape} {
+		align-items: center;
+		width: 100%;
+		text-align: center;
+		padding: 0 20%;
+	}
+	
 `;
 
 const Home = () => {

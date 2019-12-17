@@ -1,6 +1,8 @@
 //Media Queries
-export const mobile = '(max-device-width : 480px)';
-export const tablet = '(max-device-width : 1024px)';
+export const mobilePortrait = '(max-device-width : 480px) and (orientation: portrait)';
+export const mobileLandscape = '(max-device-height : 480px) and (orientation: landscape)';
+export const tabletPortrait = '(max-device-width : 1024px) and (orientation: portrait)';
+export const tabletLandscape = '(max-device-height : 1024px) and (orientation: landscape)';
 
 // FUNCTIONS
 // Flexbox
