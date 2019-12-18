@@ -51,6 +51,7 @@ const HomeContentContainer = styled.div`
   }
   @media ${mobilePortrait} {
     text-align: center;
+    font-size: 12px;
   }
   @media ${mobileLandscape} {
     text-align: center;
@@ -61,9 +62,17 @@ const HomeContentContainer = styled.div`
 
 const LambdaLogo = styled.div`
   align-self: flex-start;
+  img {
+    width: 4rem;
+  }
+  @media ${mobilePortrait} {
+    img {
+      width: 2rem;
+    }
+  }
   @media ${mobileLandscape} {
     img {
-      width: 3em;
+      width: 3rem;
     }
   }
 `;
@@ -71,6 +80,18 @@ const LambdaLogo = styled.div`
 const OnboardingContainer = styled.div`
   padding-bottom: 10%;
   ${FlexFunc('column', 'space-between', 'flex-start')};
+  h1 {
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 64px;
+    font-family: 'Roboto', san-serif;
+    margin: 10px;
+  }
+  div {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
   @media ${tabletPortrait} {
     align-items: center;
     width: 100%;
@@ -83,6 +104,27 @@ const OnboardingContainer = styled.div`
     text-align: center;
     padding: 0 20%;
   }
+  @media ${mobilePortrait} {
+    padding-bottom: 50px;
+    h1 {
+      font-size: 32px;
+      line-height: 48px;
+    }
+    div {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  @media ${mobileLandscape} {
+    h1 {
+      font-size: 32px;
+      line-height: 48px;
+    }
+    div {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
 `;
 
 const Home = () => {
@@ -90,22 +132,13 @@ const Home = () => {
     <HomeContainer>
       <HomeContentContainer>
         <LambdaLogo>
-          <img src={logo} alt="Lambda School" width="50em" />
+          <img src={logo} alt="Lambda School" />
         </LambdaLogo>
 
         <OnboardingContainer>
-          <Title
-            style={{
-              fontWeight: 500,
-              fontSize: '64px',
-              lineHeight: '48px',
-              fontFamily: "'Roboto', san-serif",
-            }}
-          >
-            Lambda Door
-          </Title>
+          <Title>Lambda Door</Title>
 
-          <Paragraph style={{ fontSize: '20px', lineHeight: '32px' }}>
+          <Paragraph>
             The one-stop portal for Lambda graduates looking for company
             information in the quest for a job.
           </Paragraph>
