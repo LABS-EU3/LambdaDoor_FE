@@ -128,9 +128,8 @@ const OnboardingContainer = styled.div`
     }
   }
 `;
-
 const Home = ({ history }) => {
-  const [error, setError] = useState(1);
+  const [error, setError] = useState(null);
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
@@ -138,7 +137,7 @@ const Home = ({ history }) => {
 
     const getUserDetails = async () => {
       const res = await axios.get(
-        `https://slack.com/api/oauth.access?client_id=154966377728.878377460261&client_secret=ed4cfc69cc2729d41315f95395ec8edb&code=${code}`
+        `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}`
       );
       // Save data to redux store (and database)
       console.log(res.data);
@@ -170,7 +169,9 @@ const Home = ({ history }) => {
             information in the quest for a job.
           </Paragraph>
 
-          <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=154966377728.878377460261">
+          <a
+            href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}`}
+          >
             <img
               alt="Sign in with Slack"
               height="40"
