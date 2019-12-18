@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import DashboardLayout from '../Layout/DashboardLayout';
-import Home from '../../pages/Home';
+import UserDashboard from '../../pages/UserDashboard';
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
-            <DashboardLayout exact path="/" component={Home} />
+            <DashboardLayout exact path="/" component={UserDashboard} />
         </BrowserRouter>
     )
 }
