@@ -1,23 +1,18 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import DashboardLayout from '../Layout/DashboardLayout';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from '../../pages/Home';
 import UserDashboard from '../../pages/UserDashboard';
+import DashboardLayout from '../Layout/DashboardLayout';
+
 
 const AppRouter = () => {
-<<<<<<< HEAD:src/components/Router/index.js
     return (
         <BrowserRouter>
-            <DashboardLayout exact path="/" component={UserDashboard} />
+            <Route exact path="/" component={Home} />
+            <DashboardLayout path="/dashboard" component={UserDashboard} />
         </BrowserRouter>
     )
 }
-=======
-  return (
-    <BrowserRouter>
-      <DashboardLayout exact path="/" component={Home} />
-    </BrowserRouter>
-  );
-};
->>>>>>> develop:src/components/Router/index.jsx
+
 
 export default AppRouter;
