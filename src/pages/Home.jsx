@@ -11,11 +11,9 @@ import {
   FlexFunc,
 } from '../styles/theme.styles';
 import Logo from '../components/Logo';
-import background from '../img/lambda-door-lp-vector.svg';
-
+import background from '../assets/img/lambda-door-lp-vector.svg';
 
 const { Title, Paragraph } = Typography;
-
 
 const HomeContainer = styled.div`
   background-image: url(${background});
@@ -63,7 +61,6 @@ const HomeContentContainer = styled.div`
     padding: 2% 5%;
   }
 `;
-
 
 const OnboardingContainer = styled.div`
   padding-bottom: 10%;
@@ -116,7 +113,6 @@ const OnboardingContainer = styled.div`
 `;
 
 const Home = ({ history }) => {
-
   const [error, setError] = useState(null);
 
   useEffect(() => {
