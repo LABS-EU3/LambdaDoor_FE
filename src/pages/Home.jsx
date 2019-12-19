@@ -1,6 +1,8 @@
-import React from 'react';
-import { Typography } from 'antd';
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState } from 'react';
+import { Typography, Alert } from 'antd';
 import styled from 'styled-components';
+import axios from 'axios';
 import {
   tabletPortrait,
   tabletLandscape,
@@ -126,8 +128,32 @@ const OnboardingContainer = styled.div`
     }
   }
 `;
+const Home = ({ history }) => {
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    const errorData = urlParams.get('error');
 
-const Home = () => {
+    const getUserDetails = async () => {
+      const res = await axios.get(
+        `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}`
+      );
+      // Save data to redux store (and database)
+      console.log(res.data);
+
+      history.push('/dashboard');
+    };
+
+    const handleError = () => {
+      setError(errorData);
+      history.push('/');
+    };
+
+    if (code) getUserDetails();
+    if (errorData) handleError();
+  }, []);
+
   return (
     <HomeContainer>
       <HomeContentContainer>
@@ -143,11 +169,32 @@ const Home = () => {
             information in the quest for a job.
           </Paragraph>
 
-          <img
-            src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
-            srcSet="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
-            alt="Sign in with Slack"
-          />
+          <a
+            href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}`}
+          >
+            <img
+              alt="Sign in with Slack"
+              height="40"
+              width="172"
+              src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+              srcSet="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
+            />
+          </a>
+          {error && (
+            <Alert
+              message="An error occured while signing in!!"
+              type="error"
+              showIcon
+              closable
+              style={{
+                fontSize: '16px',
+                marginTop: '10px',
+                width: '100%',
+                maxWidth: '300px',
+              }}
+              onClose={() => setError(null)}
+            />
+          )}
         </OnboardingContainer>
 
         <Paragraph style={{ color: 'white' }}>
