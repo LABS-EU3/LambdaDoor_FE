@@ -8,10 +8,44 @@ import {
   mobilePortrait,
   FlexFunc,
 } from '../styles/theme.styles';
+import Logo from '../components/Logo';
 import background from '../img/lambda-door-lp-vector.svg';
-import logo from '../img/lambda-logo.png';
+
 
 const { Title, Paragraph } = Typography;
+
+
+const Home = () => {
+  return (
+    <HomeContainer>
+      <HomeContentContainer>
+        <Logo />
+
+        <OnboardingContainer>
+          <Title>Lambda Door</Title>
+
+          <Paragraph>
+            The one-stop portal for Lambda graduates looking for company
+            information in the quest for a job.
+          </Paragraph>
+
+          <img
+            src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+            srcSet="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
+            alt="Sign in with Slack"
+          />
+        </OnboardingContainer>
+
+        <Paragraph style={{ color: 'white' }}>
+          Built by Lambda students, for Lambda students.
+        </Paragraph>
+      </HomeContentContainer>
+    </HomeContainer>
+  );
+};
+
+export default Home;
+
 
 const HomeContainer = styled.div`
   background-image: url(${background});
@@ -60,22 +94,6 @@ const HomeContentContainer = styled.div`
   }
 `;
 
-const LambdaLogo = styled.div`
-  align-self: flex-start;
-  img {
-    width: 4rem;
-  }
-  @media ${mobilePortrait} {
-    img {
-      width: 2rem;
-    }
-  }
-  @media ${mobileLandscape} {
-    img {
-      width: 3rem;
-    }
-  }
-`;
 
 const OnboardingContainer = styled.div`
   padding-bottom: 10%;
@@ -85,7 +103,7 @@ const OnboardingContainer = styled.div`
     font-size: 64px;
     line-height: 64px;
     font-family: 'Roboto', san-serif;
-    margin: 10px;
+    margin-bottom: 10px;
   }
   div {
     font-size: 20px;
@@ -126,36 +144,3 @@ const OnboardingContainer = styled.div`
     }
   }
 `;
-
-const Home = () => {
-  return (
-    <HomeContainer>
-      <HomeContentContainer>
-        <LambdaLogo>
-          <img src={logo} alt="Lambda School" />
-        </LambdaLogo>
-
-        <OnboardingContainer>
-          <Title>Lambda Door</Title>
-
-          <Paragraph>
-            The one-stop portal for Lambda graduates looking for company
-            information in the quest for a job.
-          </Paragraph>
-
-          <img
-            src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
-            srcSet="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
-            alt="Sign in with Slack"
-          />
-        </OnboardingContainer>
-
-        <Paragraph style={{ color: 'white' }}>
-          Built by Lambda students, for Lambda students.
-        </Paragraph>
-      </HomeContentContainer>
-    </HomeContainer>
-  );
-};
-
-export default Home;

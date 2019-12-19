@@ -4,17 +4,9 @@ import { actions } from '../state/actions';
 
 
 const UserDashboard = (props) => {
-  const {
-    companyReviews,
-    getCompanyReviews
-  } = props;
-
-  useEffect(() => {
-      getCompanyReviews();
-  }, []);
 
     return (
-        <h1>{companyReviews.message}</h1>
+        <h1>Hello</h1>
     )
 }
 

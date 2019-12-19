@@ -1,5 +1,9 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { Input } from 'antd';
+import styled from 'styled-components';
+
+const { Search } = Input;
 
 const SearchForm = () => {
   return (
@@ -14,29 +18,23 @@ const SearchForm = () => {
               alert(JSON.stringify(values, null, 2));
           }, 1000);
       }}
-  >
-      {({handleSubmit, handleChange, handleBlur, values, isSubmitting}) => (
-          <Form onSubmit={handleSubmit}>
-              <Form.Item label="Search">
-                  <Input
-                      type="text"
-                      onChange={handleChange}
-                      value={values.search}
-                      name="search"
-                      placeholder="Search information by companies, job roles..."
-                  />
-              </Form.Item>
-              <Button
-                  type="primary"
-                  htmlType="submit"
-                  loading={isSubmitting}
-              >
-                  Search
-              </Button>
-          </Form>
+    >
+      {({handleSubmit, handleChange, handleBlur, values}) => (
+          <StyledForm onSubmit={handleSubmit}>
+              <Search
+                placeholder="Search for Job, Company and Reviews"
+                onSearch={value => console.log(value)}
+                size="large"
+              />
+          </StyledForm>
       )}
-  </Formik>
+    </Formik>
   )
 };
 
 export default SearchForm;
+
+const StyledForm = styled.form`
+  max-width: 700px;
+  width: 100%;
+`
