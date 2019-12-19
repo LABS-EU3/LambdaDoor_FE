@@ -9,29 +9,30 @@ import { Button, Icon } from 'antd';
 // import PrivateRoute from '../Router/PrivateRoute';
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
 
-
 const DashboardLayout = ({ component: Component, ...rest }) => {
   return (
-        <Route {...rest} render={props => (
-            <StyledContainer>
-              <SideNav />
-              <div className="main-container">
-                  <div className="top-bar">
-                    <SearchForm />
-                    <Button type="link">
-                      Sign Out
-                      <Icon type="right" />
-                    </Button>
-                  </div>
-                  <div className="main-content">
-                    <Component {...props} />
-                  </div>
-              </div>
-            </StyledContainer>
-        )}/>
-    )
+    <Route
+      {...rest}
+      render={props => (
+        <StyledContainer>
+          <SideNav />
+          <div className="main-container">
+            <div className="top-bar">
+              <SearchForm />
+              <Button type="link">
+                Sign Out
+                <Icon type="right" />
+              </Button>
+            </div>
+            <div className="main-content">
+              <Component {...props} />
+            </div>
+          </div>
+        </StyledContainer>
+      )}
+    />
+  );
 };
-
 
 export default DashboardLayout;
 
@@ -70,4 +71,4 @@ const StyledContainer = styled.div`
   .main-content {
     padding: 1.5rem;
   }
-`
+`;
