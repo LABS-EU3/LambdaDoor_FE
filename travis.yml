@@ -18,5 +18,6 @@ script:
   - sudo /etc/init.d/postgresql stop 
 after_script:
   - make-coverage-badge --output-path ./badges
+  - jest --forceExit --coverage  --coverageReporters=text-lcov | coveralls
 notifications:
   email: false
