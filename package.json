@@ -24,7 +24,7 @@
 	"scripts": {
 		"start": "react-app-rewired start",
 		"build": "react-app-rewired build",
-		"test": "react-app-rewired test --coverage --transformIgnorePatterns '/node_modules/(?!(react-redux|redux-thunk)/)'  && make-coverage-badge --output-path \"./badges\" ",
+		"test": "react-app-rewired test --coverage --transformIgnorePatterns '/node_modules/(?!(react-redux|redux-thunk)/)'  && make-coverage-badge --output-path \"./badges/badges.svg\" ",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
