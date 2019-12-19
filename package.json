@@ -24,18 +24,11 @@
 	"scripts": {
 		"start": "react-app-rewired start",
 		"build": "react-app-rewired build",
-		"test": "react-app-rewired test --coverage --transformIgnorePatterns '/node_modules/(?!(react-redux|redux-thunk)/)'  && make-coverage-badge --output-path \"badges.svg\" ",
+		"test": "react-app-rewired test --coverage --watchAll=false && make-coverage-badge --output-path \"badges.svg\" ",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
-	},
-	"jest": {
-		"coverageReporters": [
-			"json-summary",
-			"lcov",
-			"text"
-		]
 	},
 	"browserslist": {
 		"production": [
