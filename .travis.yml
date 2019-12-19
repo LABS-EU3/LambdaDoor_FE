@@ -10,6 +10,7 @@ env:
    
 before_script:
   - npm install make-coverage-badge
+  - npm install coveralls
 script:
   - npm test
   - sudo /etc/init.d/postgresql stop 
