@@ -1,6 +1,8 @@
-import React from 'react';
-import { Typography } from 'antd';
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState } from 'react';
+import { Typography, Alert } from 'antd';
 import styled from 'styled-components';
+import axios from 'axios';
 import {
   tabletPortrait,
   tabletLandscape,
@@ -13,38 +15,6 @@ import background from '../img/lambda-door-lp-vector.svg';
 
 
 const { Title, Paragraph } = Typography;
-
-
-const Home = () => {
-  return (
-    <HomeContainer>
-      <HomeContentContainer>
-        <Logo />
-
-        <OnboardingContainer>
-          <Title>Lambda Door</Title>
-
-          <Paragraph>
-            The one-stop portal for Lambda graduates looking for company
-            information in the quest for a job.
-          </Paragraph>
-
-          <img
-            src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
-            srcSet="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
-            alt="Sign in with Slack"
-          />
-        </OnboardingContainer>
-
-        <Paragraph style={{ color: 'white' }}>
-          Built by Lambda students, for Lambda students.
-        </Paragraph>
-      </HomeContentContainer>
-    </HomeContainer>
-  );
-};
-
-export default Home;
 
 
 const HomeContainer = styled.div`
@@ -144,3 +114,83 @@ const OnboardingContainer = styled.div`
     }
   }
 `;
+
+const Home = ({ history }) => {
+
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    const errorData = urlParams.get('error');
+
+    const getUserDetails = async () => {
+      const res = await axios.get(
+        `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}`
+      );
+
+      // Save data to redux store (and database)
+      console.log(res.data);
+
+      history.push('/dashboard');
+    };
+
+    const handleError = () => {
+      setError(errorData);
+      history.push('/');
+    };
+
+    if (code) getUserDetails();
+    if (errorData) handleError();
+  }, []);
+
+  return (
+    <HomeContainer>
+      <HomeContentContainer>
+        <Logo />
+
+        <OnboardingContainer>
+          <Title>Lambda Door</Title>
+
+          <Paragraph>
+            The one-stop portal for Lambda graduates looking for company
+            information in the quest for a job.
+          </Paragraph>
+
+          <a
+            href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}`}
+          >
+            <img
+              alt="Sign in with Slack"
+              height="40"
+              width="172"
+              src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+              srcSet="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
+            />
+          </a>
+          {error && (
+            <Alert
+              message="An error occured while signing in!!"
+              type="error"
+              showIcon
+              closable
+              style={{
+                fontSize: '16px',
+                marginTop: '10px',
+                width: '100%',
+                maxWidth: '300px',
+              }}
+              onClose={() => setError(null)}
+            />
+          )}
+        </OnboardingContainer>
+
+        <Paragraph style={{ color: 'white' }}>
+          Built by Lambda students, for Lambda students.
+        </Paragraph>
+      </HomeContentContainer>
+    </HomeContainer>
+  );
+};
+
+export default Home;
