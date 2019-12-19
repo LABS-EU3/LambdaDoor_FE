@@ -1,3 +1,7 @@
+//Colors
+export const primaryGrey = '#FAFAFA'
+export const textGrey = '#262626';
+
 // Media Queries
 export const mobilePortrait =
   '(max-device-width : 480px) and (orientation: portrait)';
