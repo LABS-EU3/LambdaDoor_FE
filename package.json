@@ -6,6 +6,7 @@
 		"antd": "^3.26.2",
 		"axios": "^0.19.0",
 		"babel-plugin-import": "^1.13.0",
+		"coveralls": "^3.0.9",
 		"customize-cra": "^0.9.1",
 		"formik": "^1.5.8",
 		"less": "^3.10.3",
@@ -25,12 +26,19 @@
 	"scripts": {
 		"start": "react-app-rewired start",
 		"build": "react-app-rewired build",
-		"test": "react-app-rewired test --coverage --coverageReporters=text-lcov | coveralls",
+		"test": "react-app-rewired test --coverage --watchAll=false && make-coverage-badge --output-path \"badges.svg\" ",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
 	},
+  "jest": {
+    "coverageReporters": [
+      "json-summary",
+      "lcov",
+      "text"
+    ]
+  },
 	"browserslist": {
 		"production": [
 			">0.2%",

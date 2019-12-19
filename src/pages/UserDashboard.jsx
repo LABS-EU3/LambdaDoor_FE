@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { actions } from '../state/actions';
+import ReviewList from '../components/ReviewList';
 
+const StyledH1 = styled.h1`
+  font-family: Roboto;
+  padding-left: 9px;
+`;
 
-const UserDashboard = (props) => {
+const UserDashboard = props => {
+  return (
+    <div>
+      <StyledH1>Latest Reviews</StyledH1>
+      <ReviewList />
+    </div>
+  );
+};
 
-    return (
-        <h1>Hello</h1>
-    )
-}
-
-
-export default connect( state => state, actions)(UserDashboard)
+export default connect(state => state, actions)(UserDashboard);
