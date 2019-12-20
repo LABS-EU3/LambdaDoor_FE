@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { actions } from '../state/actions';
@@ -9,7 +9,7 @@ const StyledH1 = styled.h1`
   padding-left: 9px;
 `;
 
-const UserDashboard = props => {
+const UserDashboard = () => {
   return (
     <div>
       <StyledH1>Latest Reviews</StyledH1>
