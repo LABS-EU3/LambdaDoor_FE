@@ -139,8 +139,8 @@ const Home = ({ history, loginUser, setAuthenticated }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      const { subject, fullname, email, profilePicture } = decode(token);
-      setAuthenticated(subject, fullname, email, profilePicture);
+      const { userId, name, email, profilePicture } = decode(token);
+      setAuthenticated(userId, name, email, profilePicture);
       history.push('/dashboard');
     }
 
@@ -157,7 +157,6 @@ const Home = ({ history, loginUser, setAuthenticated }) => {
       } = await axios.get(
         `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}`
       );
-
       await loginUser(userId, name, email, profilePicture);
 
       history.push('/dashboard');
