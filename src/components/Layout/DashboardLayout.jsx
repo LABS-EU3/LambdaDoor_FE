@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
 import { Button, Icon } from 'antd';
+import { logoutUser } from '../../state/actions/auth';
 // import PrivateRoute from '../Router/PrivateRoute';
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
 
@@ -19,7 +20,7 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
           <div className="main-container">
             <div className="top-bar">
               <SearchForm />
-              <Button type="link">
+              <Button type="link" onClick={logoutUser}>
                 Sign Out
                 <Icon type="right" />
               </Button>

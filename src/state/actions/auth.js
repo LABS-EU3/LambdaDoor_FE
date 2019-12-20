@@ -46,3 +46,15 @@ export const loginUser = (
     });
   }
 };
+
+export const logoutUser = () => async dispatch => {
+  try {
+    localStorage.removeItem('token');
+    window.location.reload();
+  } catch (error) {
+    dispatch({
+      type: types.LOG_OUT_USER_FAILURE,
+      payload: error.message,
+    });
+  }
+};
