@@ -15,8 +15,8 @@ import {
   mobilePortrait,
   FlexFunc,
 } from '../styles/theme.styles';
-import background from '../img/lambda-door-lp-vector.svg';
-import logo from '../img/lambda-logo.png';
+import Logo from '../components/Logo';
+import background from '../assets/img/lambda-door-lp-vector.svg';
 
 const { Title, Paragraph } = Typography;
 
@@ -67,23 +67,6 @@ const HomeContentContainer = styled.div`
   }
 `;
 
-const LambdaLogo = styled.div`
-  align-self: flex-start;
-  img {
-    width: 4rem;
-  }
-  @media ${mobilePortrait} {
-    img {
-      width: 2rem;
-    }
-  }
-  @media ${mobileLandscape} {
-    img {
-      width: 3rem;
-    }
-  }
-`;
-
 const OnboardingContainer = styled.div`
   padding-bottom: 10%;
   ${FlexFunc('column', 'space-between', 'flex-start')};
@@ -92,7 +75,7 @@ const OnboardingContainer = styled.div`
     font-size: 64px;
     line-height: 64px;
     font-family: 'Roboto', san-serif;
-    margin: 10px;
+    margin-bottom: 10px;
   }
   div {
     font-size: 20px;
@@ -136,6 +119,7 @@ const OnboardingContainer = styled.div`
 // eslint-disable-next-line no-shadow
 const Home = ({ history, loginUser, setAuthenticated }) => {
   const [error, setError] = useState(null);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -174,9 +158,7 @@ const Home = ({ history, loginUser, setAuthenticated }) => {
   return (
     <HomeContainer>
       <HomeContentContainer>
-        <LambdaLogo>
-          <img src={logo} alt="Lambda School" />
-        </LambdaLogo>
+        <Logo />
 
         <OnboardingContainer>
           <Title>Lambda Door</Title>
