@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Card, Rate } from 'antd';
 import styled from 'styled-components';

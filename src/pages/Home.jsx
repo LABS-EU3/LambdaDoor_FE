@@ -127,32 +127,6 @@ const Home = ({ history, loginUser, setAuthenticated }) => {
       setAuthenticated(userId, name, email, profilePicture);
       history.push('/dashboard');
     }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    const errorData = urlParams.get('error');
-
-    const getUserDetails = async () => {
-      const {
-        data: {
-          user_id: userId,
-          user: { name, email, image_1024: profilePicture },
-        },
-      } = await axios.get(
-        `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
-      );
-      await loginUser(userId, name, email, profilePicture);
-
-      history.push('/dashboard');
-    };
-
-    const handleError = () => {
-      setError(errorData);
-      history.push('/');
-    };
-
-    if (code) getUserDetails();
-    if (errorData) handleError();
   }, []);
 
   return (
