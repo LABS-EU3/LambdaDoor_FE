@@ -1,14 +1,22 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { actions } from '../state/actions';
+import ReviewList from '../components/ReviewList';
 
-const UserDashboard = ({ companyReviews, getCompanyReviews }) => {
-  useEffect(() => {
-    getCompanyReviews();
-  }, []);
+const StyledH1 = styled.h1`
+  font-family: Roboto;
+  padding-left: 9px;
+`;
 
-  return <h1>{companyReviews.message}</h1>;
+const UserDashboard = props => {
+  return (
+    <div>
+      <StyledH1>Latest Reviews</StyledH1>
+      <ReviewList />
+    </div>
+  );
 };
 
 export default connect(state => state, actions)(UserDashboard);
