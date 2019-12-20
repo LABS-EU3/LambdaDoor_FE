@@ -37,7 +37,6 @@ export const loginUser = (
       process.env.REACT_APP_JWT_SECRET
     );
     console.log(token);
-    localStorage.setItem('jhh', 'bnj');
     localStorage.setItem('token', token);
     dispatch(setAuthenticated(userId, name, email, profilePicture));
   } catch (error) {
