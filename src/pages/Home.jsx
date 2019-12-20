@@ -3,6 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Typography, Alert } from 'antd';
 import styled from 'styled-components';
 import axios from 'axios';
+import decode from 'jwt-decode';
+
+import { connect } from 'react-redux';
+import { loginUser, setAuthenticated } from '../state/actions/auth';
+
 import {
   tabletPortrait,
   tabletLandscape,
@@ -111,22 +116,32 @@ const OnboardingContainer = styled.div`
     }
   }
 `;
-
-const Home = ({ history }) => {
+// eslint-disable-next-line no-shadow
+const Home = ({ history, loginUser, setAuthenticated }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const { userId, name, email, profilePicture } = decode(token);
+      setAuthenticated(userId, name, email, profilePicture);
+      history.push('/dashboard');
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     const errorData = urlParams.get('error');
 
     const getUserDetails = async () => {
-      const res = await axios.get(
-        `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}`
+      const {
+        data: {
+          user_id: userId,
+          user: { name, email, image_1024: profilePicture },
+        },
+      } = await axios.get(
+        `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
       );
-
-      // Save data to redux store (and database)
-      console.log(res.data);
+      await loginUser(userId, name, email, profilePicture);
 
       history.push('/dashboard');
     };
@@ -189,4 +204,4 @@ const Home = ({ history }) => {
   );
 };
 
-export default Home;
+export default connect(null, { loginUser, setAuthenticated })(Home);
