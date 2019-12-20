@@ -4,7 +4,6 @@ import Home from '../../pages/Home';
 import UserDashboard from '../../pages/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 
-
 const AppRouter = () => {
     return (
         <BrowserRouter>
@@ -15,6 +14,5 @@ const AppRouter = () => {
         </BrowserRouter>
     )
 }
-
 
 export default AppRouter;

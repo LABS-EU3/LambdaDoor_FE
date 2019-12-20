@@ -1,7 +1,7 @@
 import React from 'react';
-import ReviewCard from './ReviewCard';
-import { interviewReviews } from '../utils/data.js';
 import styled from 'styled-components';
+import ReviewCard from './ReviewCard';
+import { interviewReviews } from '../utils/data';
 
 const StyledDiv = styled.div`
   display: flex;
