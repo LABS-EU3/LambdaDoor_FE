@@ -32,13 +32,13 @@
 	"eslintConfig": {
 		"extends": "react-app"
 	},
-  "jest": {
-    "coverageReporters": [
-      "json-summary",
-      "lcov",
-      "text"
-    ]
-  },
+	"jest": {
+		"coverageReporters": [
+			"json-summary",
+			"lcov",
+			"text"
+		]
+	},
 	"browserslist": {
 		"production": [
 			">0.2%",
