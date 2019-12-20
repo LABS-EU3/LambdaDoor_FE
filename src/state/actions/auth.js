@@ -24,6 +24,7 @@ export const loginUser = (
   dispatch({
     type: types.LOG_IN_USER,
   });
+
   try {
     await axios.post('/users', {
       slack_id: userId,
@@ -36,8 +37,9 @@ export const loginUser = (
       { userId, name, email, profilePicture },
       process.env.REACT_APP_JWT_SECRET
     );
-    console.log(token);
+
     localStorage.setItem('token', token);
+
     dispatch(setAuthenticated(userId, name, email, profilePicture));
   } catch (error) {
     dispatch({

@@ -1,19 +1,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import { Button, Icon } from 'antd';
 import styled from 'styled-components';
-import { Route } from 'react-router-dom';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
-import { Button, Icon } from 'antd';
-// import PrivateRoute from '../Router/PrivateRoute';
+import PrivateRoute from '../Router/PrivateRoute';
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
 
 const DashboardLayout = ({ component: Component, ...rest }) => {
   return (
-    <Route
+    <PrivateRoute
       {...rest}
-      render={props => (
+      component={matchProps => (
         <StyledContainer>
           <SideNav />
           <div className="main-container">
@@ -25,7 +24,7 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
               </Button>
             </div>
             <div className="main-content">
-              <Component {...props} />
+              <Component {...matchProps} />
             </div>
           </div>
         </StyledContainer>
