@@ -25,7 +25,7 @@ export const loginUser = (
     type: types.LOG_IN_USER,
   });
   try {
-    await axios.post('/users', {
+    await axios.post('https://lambdadoor-staging.herokuapp.com/users', {
       slack_id: userId,
       name,
       email_address: email,
@@ -36,7 +36,6 @@ export const loginUser = (
       { userId, name, email, profilePicture },
       process.env.REACT_APP_JWT_SECRET
     );
-    console.log(token);
     localStorage.setItem('token', token);
     dispatch(setAuthenticated(userId, name, email, profilePicture));
   } catch (error) {
