@@ -9,6 +9,6 @@ const App = () => {
       <AppRouter />
     </Provider>
   );
-}
+};
 
 export default App;
