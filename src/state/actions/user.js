@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as types from '../types';
 
 export const editProfile = (value, id) => async dispatch => {
-  console.log('This is edit profile action')
+  console.log('This is edit profile action');
   dispatch({
     type: types.EDIT_PROFILE_PICTURE,
   });
@@ -15,7 +15,7 @@ export const editProfile = (value, id) => async dispatch => {
     );
     dispatch({
       type: types.EDIT_PROFILE_PICTURE_SUCCESS,
-      payload: data,
+      payload: data[0],
     });
   } catch (error) {
     dispatch({

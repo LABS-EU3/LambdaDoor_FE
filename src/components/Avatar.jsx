@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Upload, Icon, Tooltip, Button, message } from 'antd';
+import { Upload, Icon, Tooltip, Button, message, notification } from 'antd';
 import imageUpload from '../utils/ImageUpload';
 import { editProfile } from '../state/actions/user';
+import openNotification from '../utils/openNotification';
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
@@ -45,15 +46,15 @@ const Avatar = ({ userImage, id, editProfile }) => {
     }
 
     if (info.file.status === 'done') {
-      getBase64(info.file.originFileObj, imageUrl => {
+      getBase64(info.file.originFileObj, async imageUrl => {
         setLoading(false);
-        setImage(imageUrl);
-        editProfile(
+        await editProfile(
           {
             profile_picture: imageUrl,
           },
           id
         );
+        openNotification('Profile piicture updated');
       });
     }
   };

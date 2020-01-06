@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -5,14 +6,20 @@ import { NavLink } from 'react-router-dom';
 import { Typography } from 'antd';
 import styled from 'styled-components';
 
+import { editProfile } from '../state/actions/user';
+
 import Logo from './Logo';
 import Avatar from './Avatar';
 import { primaryGrey } from '../styles/theme.styles';
+import openNotification from '../utils/openNotification';
 
 const { Paragraph } = Typography;
 
-const SideNav = ({ user }) => {
-  const onChange = () => {};
+const SideNav = ({ user, editProfile }) => {
+  const handleChange = async fullname => {
+    await editProfile({ full_name: fullname }, user.id);
+    openNotification('Full name updated');
+  };
 
   return (
     <StyledContainer>
@@ -20,7 +27,7 @@ const SideNav = ({ user }) => {
       {user && (
         <div className="user-profile-wrap">
           <Avatar userImage={user.profile_picture} />
-          <Paragraph className="heading" editable={{ onChange: onChange }}>
+          <Paragraph className="heading" editable={{ onChange: handleChange }}>
             {user.full_name}
           </Paragraph>
           <Paragraph>{user.username}</Paragraph>
@@ -51,7 +58,7 @@ const mapStateToProps = state => ({
   user: state.authState.credentials,
 });
 
-export default connect(mapStateToProps)(SideNav);
+export default connect(mapStateToProps, { editProfile })(SideNav);
 
 const StyledContainer = styled.div`
   max-width: 250px;

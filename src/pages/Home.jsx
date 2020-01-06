@@ -26,8 +26,8 @@ const Home = ({ history, setAuthenticated }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      const data = decode(token);
-      setAuthenticated(data);
+      const { id } = decode(token);
+      setAuthenticated(id);
       history.push('/dashboard');
     }
   }, [history, setAuthenticated]);

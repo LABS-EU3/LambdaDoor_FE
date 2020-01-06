@@ -29,8 +29,8 @@ const UserDashboard = ({
         history.push('/');
       }
       if (token) {
-        const data = decode(token);
-        setAuthenticated(data);
+        const { id } = decode(token);
+        setAuthenticated(id);
       }
       const getUserDetails = async () => {
         const {
@@ -60,4 +60,6 @@ const UserDashboard = ({
     </div>
   );
 };
-export default connect(state => state, { loginUser, setAuthenticated })(UserDashboard);
+export default connect(state => state, { loginUser, setAuthenticated })(
+  UserDashboard
+);
