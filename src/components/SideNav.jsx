@@ -17,14 +17,15 @@ const SideNav = ({ user }) => {
   return (
     <StyledContainer>
       <Logo smaller />
-
-      <div className="user-profile-wrap">
-        <Avatar userImage={user.profilePicture} />
-        <Paragraph className="heading" editable={{ onChange: onChange }}>
-          {user.name}
-        </Paragraph>
-        <Paragraph>{user.name}</Paragraph>
-      </div>
+      {user && (
+        <div className="user-profile-wrap">
+          <Avatar userImage={user.profile_picture} />
+          <Paragraph className="heading" editable={{ onChange: onChange }}>
+            {user.full_name}
+          </Paragraph>
+          <Paragraph>{user.username}</Paragraph>
+        </div>
+      )}
 
       <nav className="navlinks">
         <NavLink

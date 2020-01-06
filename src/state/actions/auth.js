@@ -1,17 +1,13 @@
+/* eslint-disable camelcase */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import * as types from '../types';
 
-export const setAuthenticated = (userId, name, email, profilePicture) => {
+export const setAuthenticated = data => {
   return {
     type: types.LOG_IN_USER_SUCCESS,
-    payload: {
-      userId,
-      name,
-      email,
-      profilePicture,
-    },
+    payload: data,
   };
 };
 
@@ -24,9 +20,8 @@ export const loginUser = (
   dispatch({
     type: types.LOG_IN_USER,
   });
-
   try {
-    const response = await axios.post(
+    const { data } = await axios.post(
       'https://lambdadoor-staging.herokuapp.com/users',
       {
         slack_id: userId,
@@ -35,14 +30,9 @@ export const loginUser = (
         img_72: profilePicture,
       }
     );
-
-    const token = jwt.sign(
-      { userId, name, email, profilePicture },
-      process.env.REACT_APP_JWT_SECRET
-    );
+    const token = jwt.sign(data, process.env.REACT_APP_JWT_SECRET);
     localStorage.setItem('token', token);
-
-    dispatch(setAuthenticated(userId, name, email, profilePicture));
+    dispatch(setAuthenticated(data));
   } catch (error) {
     dispatch({
       type: types.LOG_IN_USER_FAILURE,

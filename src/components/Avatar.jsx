@@ -1,12 +1,18 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Upload, Icon, Tooltip, Button, message } from 'antd';
-import { useEffect } from 'react';
+import imageUpload from '../utils/ImageUpload';
+import { editProfile } from '../state/actions/user';
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
+  reader.addEventListener('load', async () => {
+    const result = await imageUpload(reader.result);
+    callback(result);
+  });
   reader.readAsDataURL(img);
 };
 
@@ -24,8 +30,7 @@ const beforeUpload = file => {
   return isJpgOrPng && isLt2M;
 };
 
-const Avatar = ({ userImage }) => {
-  console.log(userImage);
+const Avatar = ({ userImage, id, editProfile }) => {
   const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -41,14 +46,17 @@ const Avatar = ({ userImage }) => {
 
     if (info.file.status === 'done') {
       getBase64(info.file.originFileObj, imageUrl => {
+        setLoading(false);
         setImage(imageUrl);
-        setLoading(true);
+        editProfile(
+          {
+            profile_picture: imageUrl,
+          },
+          id
+        );
       });
     }
   };
-
-  console.log(image);
-  console.log(userImage);
 
   return (
     <StyledContainer>
@@ -76,7 +84,11 @@ const Avatar = ({ userImage }) => {
   );
 };
 
-export default Avatar;
+const mapStateToProps = state => ({
+  id: state.authState.credentials.id,
+});
+
+export default connect(mapStateToProps, { editProfile })(Avatar);
 
 const StyledContainer = styled.div`
   position: relative;

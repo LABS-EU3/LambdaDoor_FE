@@ -2,10 +2,11 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Spin } from 'antd';
-import { loginUser } from '../state/actions/auth';
+import { loginUser, setAuthenticated } from '../state/actions/auth';
 import ReviewList from '../components/ReviewList';
 
 const StyledH1 = styled.h1`
@@ -13,7 +14,12 @@ const StyledH1 = styled.h1`
   padding-left: 9px;
 `;
 
-const UserDashboard = ({ authState: { isLoggedIn }, loginUser, history }) => {
+const UserDashboard = ({
+  authState: { isLoggedIn },
+  loginUser,
+  setAuthenticated,
+  history,
+}) => {
   useEffect(() => {
     async function start() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -21,6 +27,10 @@ const UserDashboard = ({ authState: { isLoggedIn }, loginUser, history }) => {
       const token = localStorage.getItem('token');
       if (!code && !token) {
         history.push('/');
+      }
+      if (token) {
+        const data = decode(token);
+        setAuthenticated(data);
       }
       const getUserDetails = async () => {
         const {
@@ -50,4 +60,4 @@ const UserDashboard = ({ authState: { isLoggedIn }, loginUser, history }) => {
     </div>
   );
 };
-export default connect(state => state, { loginUser })(UserDashboard);
+export default connect(state => state, { loginUser, setAuthenticated })(UserDashboard);
