@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Typography } from 'antd';
@@ -10,13 +11,7 @@ import { primaryGrey } from '../styles/theme.styles';
 
 const { Paragraph } = Typography;
 
-const SideNav = () => {
-  const [user, setUser] = useState({
-    image: '',
-    fullName: 'Chioma Nkem-Eze',
-    username: '@fegaeze',
-  });
-
+const SideNav = ({ user }) => {
   const onChange = () => {};
 
   return (
@@ -24,11 +19,11 @@ const SideNav = () => {
       <Logo smaller />
 
       <div className="user-profile-wrap">
-        <Avatar />
+        <Avatar userImage={user.profilePicture} />
         <Paragraph className="heading" editable={{ onChange: onChange }}>
-          {user.fullName}
+          {user.name}
         </Paragraph>
-        <Paragraph>{user.username}</Paragraph>
+        <Paragraph>{user.name}</Paragraph>
       </div>
 
       <nav className="navlinks">
@@ -51,7 +46,11 @@ const SideNav = () => {
   );
 };
 
-export default connect(state => state)(SideNav);
+const mapStateToProps = state => ({
+  user: state.authState.credentials,
+});
+
+export default connect(mapStateToProps)(SideNav);
 
 const StyledContainer = styled.div`
   max-width: 250px;

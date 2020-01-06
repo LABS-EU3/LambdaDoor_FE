@@ -6,7 +6,6 @@ import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
-// import PrivateRoute from '../Router/PrivateRoute';
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
 
 const DashboardLayout = ({ component: Component, ...rest }) => {

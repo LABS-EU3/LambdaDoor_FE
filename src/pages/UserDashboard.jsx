@@ -38,7 +38,6 @@ const UserDashboard = ({ authState: { isLoggedIn }, loginUser, history }) => {
         await getUserDetails();
       }
     }
-    
     start();
   }, [history, loginUser]);
 

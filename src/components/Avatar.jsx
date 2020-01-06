@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Upload, Icon, Tooltip, Button, message } from 'antd';
+import { useEffect } from 'react';
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
@@ -22,31 +24,36 @@ const beforeUpload = file => {
   return isJpgOrPng && isLt2M;
 };
 
-const Avatar = () => {
-  const [state, setState] = useState({ loading: false });
+const Avatar = ({ userImage }) => {
+  console.log(userImage);
+  const [image, setImage] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setImage(userImage);
+  }, [userImage]);
 
   const handleChange = info => {
     if (info.file.status === 'uploading') {
-      setState({ loading: true });
+      setLoading(true);
       return;
     }
 
     if (info.file.status === 'done') {
-      getBase64(info.file.originFileObj, imageUrl =>
-        setState({
-          image: imageUrl,
-          loading: false,
-        })
-      );
+      getBase64(info.file.originFileObj, imageUrl => {
+        setImage(imageUrl);
+        setLoading(true);
+      });
     }
   };
 
-  const { image, loading } = state;
+  console.log(image);
+  console.log(userImage);
 
   return (
     <StyledContainer>
       <div className="user-avatar">
-        {image ? (
+        {image !== '' ? (
           <img src={image} alt="avatar" style={{ width: '100%' }} />
         ) : (
           <Icon type="user" />

@@ -26,12 +26,15 @@ export const loginUser = (
   });
 
   try {
-    await axios.post('https://lambdadoor-staging.herokuapp.com/users', {
-      slack_id: userId,
-      name,
-      email_address: email,
-      img_72: profilePicture,
-    });
+    const response = await axios.post(
+      'https://lambdadoor-staging.herokuapp.com/users',
+      {
+        slack_id: userId,
+        name,
+        email_address: email,
+        img_72: profilePicture,
+      }
+    );
 
     const token = jwt.sign(
       { userId, name, email, profilePicture },
