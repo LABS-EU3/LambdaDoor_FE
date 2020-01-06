@@ -5,10 +5,10 @@ import store from './state/store';
 import AppRouter from './components/Router';
 import { setAuthenticated } from './state/actions/auth';
 
-
 const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
+
     if (token) {
       const { userId, name, email, profilePicture } = decode(token);
       store.dispatch(setAuthenticated(userId, name, email, profilePicture));
@@ -21,6 +21,5 @@ const App = () => {
     </Provider>
   );
 };
-
 
 export default App;

@@ -14,7 +14,7 @@ const StyledH3 = styled.h3`
 
 export default function ReviewCard(props) {
   const { text, name } = props;
-  console.log(props);
+  
   return (
     <StyledDiv>
       <Card style={{ width: 400, height: 280 }}>

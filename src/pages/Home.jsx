@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Alert } from 'antd';
 import styled from 'styled-components';
-import axios from 'axios';
 import decode from 'jwt-decode';
 
 import { connect } from 'react-redux';
@@ -127,7 +126,7 @@ const Home = ({ history, loginUser, setAuthenticated }) => {
       setAuthenticated(userId, name, email, profilePicture);
       history.push('/dashboard');
     }
-  }, []);
+  }, [history, setAuthenticated]);
 
   return (
     <HomeContainer>
