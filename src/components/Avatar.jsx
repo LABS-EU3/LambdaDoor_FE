@@ -1,9 +1,18 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Upload, Icon, Tooltip, Button, message, notification } from 'antd';
+import {
+  Upload,
+  Icon,
+  Tooltip,
+  Button,
+  message,
+  notification,
+  Spin,
+} from 'antd';
 import imageUpload from '../utils/ImageUpload';
 import { editProfile } from '../state/actions/user';
 import openNotification from '../utils/openNotification';
@@ -54,7 +63,7 @@ const Avatar = ({ userImage, id, editProfile }) => {
           },
           id
         );
-        openNotification('Profile piicture updated');
+        openNotification('Profile picture updated');
       });
     }
   };
@@ -63,7 +72,11 @@ const Avatar = ({ userImage, id, editProfile }) => {
     <StyledContainer>
       <div className="user-avatar">
         {image !== '' ? (
-          <img src={image} alt="avatar" style={{ width: '100%' }} />
+          loading ? (
+            <Spin />
+          ) : (
+            <img src={image} alt="avatar" style={{ width: '100%' }} />
+          )
         ) : (
           <Icon type="user" />
         )}
@@ -78,7 +91,7 @@ const Avatar = ({ userImage, id, editProfile }) => {
         onChange={handleChange}
       >
         <Tooltip title="Upload new photo">
-          <Button type="primary" icon="download" />
+          <Button type="primary" icon="upload" />
         </Tooltip>
       </Upload>
     </StyledContainer>

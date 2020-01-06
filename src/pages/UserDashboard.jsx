@@ -51,9 +51,7 @@ const UserDashboard = ({
     start();
   }, [history, loginUser]);
 
-  return !isLoggedIn ? (
-    <Spin />
-  ) : (
+  return (
     <div>
       <StyledH1>Latest Reviews</StyledH1>
       <ReviewList />

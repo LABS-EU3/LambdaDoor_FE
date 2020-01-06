@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Typography } from 'antd';
+import { Typography, Spin } from 'antd';
 import styled from 'styled-components';
 
 import { editProfile } from '../state/actions/user';
@@ -15,7 +15,14 @@ import openNotification from '../utils/openNotification';
 
 const { Paragraph } = Typography;
 
-const SideNav = ({ user, editProfile }) => {
+const StyledSpin = styled.div`
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SideNav = ({ user, editProfile, isLoading }) => {
   const handleChange = async fullname => {
     await editProfile({ full_name: fullname }, user.id);
     openNotification('Full name updated');
@@ -23,39 +30,48 @@ const SideNav = ({ user, editProfile }) => {
 
   return (
     <StyledContainer>
-      <Logo smaller />
-      {user && (
-        <div className="user-profile-wrap">
-          <Avatar userImage={user.profile_picture} />
-          <Paragraph className="heading" editable={{ onChange: handleChange }}>
-            {user.full_name}
-          </Paragraph>
-          <Paragraph>{user.username}</Paragraph>
-        </div>
+      {isLoading ? (
+        <StyledSpin>
+          <Spin />
+        </StyledSpin>
+      ) : (
+        <>
+          <Logo smaller />
+          <div className="user-profile-wrap">
+            <Avatar userImage={user.profile_picture} />
+            <Paragraph
+              className="heading"
+              editable={{ onChange: handleChange }}
+            >
+              {user.full_name}
+            </Paragraph>
+            <Paragraph>{user.username}</Paragraph>
+          </div>
+          <nav className="navlinks">
+            <NavLink
+              exact
+              to="/dashboard"
+              className="link"
+              activeClassName="active"
+            >
+              Home
+            </NavLink>
+            <NavLink to="/manage-reviews" className="link">
+              Manage Reviews
+            </NavLink>
+            <NavLink to="/leave-review" className="link">
+              Leave a Review
+            </NavLink>
+          </nav>
+        </>
       )}
-
-      <nav className="navlinks">
-        <NavLink
-          exact
-          to="/dashboard"
-          className="link"
-          activeClassName="active"
-        >
-          Home
-        </NavLink>
-        <NavLink to="/manage-reviews" className="link">
-          Manage Reviews
-        </NavLink>
-        <NavLink to="/leave-review" className="link">
-          Leave a Review
-        </NavLink>
-      </nav>
     </StyledContainer>
   );
 };
 
 const mapStateToProps = state => ({
   user: state.authState.credentials,
+  isLoading: state.authState.isLoading,
 });
 
 export default connect(mapStateToProps, { editProfile })(SideNav);

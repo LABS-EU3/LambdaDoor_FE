@@ -5,6 +5,9 @@ import jwt from 'jsonwebtoken';
 import * as types from '../types';
 
 export const setAuthenticated = id => async dispatch => {
+  dispatch({
+    type: types.LOG_IN_USER,
+  });
   const { data } = await axios.get(
     `https://lambdadoor-staging.herokuapp.com/users/${id}`,
     {

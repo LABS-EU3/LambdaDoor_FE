@@ -4,6 +4,7 @@ import Home from '../../pages/Home';
 import UserDashboard from '../../pages/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 
+// eslint-disable-next-line react/prop-types
 const AppRouter = () => {
   return (
     <BrowserRouter>

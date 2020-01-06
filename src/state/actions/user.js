@@ -4,7 +4,6 @@ import axios from 'axios';
 import * as types from '../types';
 
 export const editProfile = (value, id) => async dispatch => {
-  console.log('This is edit profile action');
   dispatch({
     type: types.EDIT_PROFILE_PICTURE,
   });
