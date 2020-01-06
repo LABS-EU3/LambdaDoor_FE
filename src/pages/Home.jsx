@@ -29,6 +29,8 @@ const HomeContainer = styled.div`
   width: 100vw;
   height: 100vh;
 
+
+
   @media ${tabletPortrait} {
     background-position: -180px 50px;
   }
