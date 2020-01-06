@@ -62,12 +62,12 @@ HTML, CSS, Ant design, Formik, Styled-Component, Javascript, React, Redux, cover
 
 ## Project Overview
 
-[Trello Board](https://trello.com/...) Contains Product breakdown and user story for each feature.
+[Trello Board](https://trello.com/b/YdfO1w9X/lambda-door) Contains Product breakdown and user story for each feature.
 
-[Product Canvas](https://www.notion.so/.....)
+[Product Canvas](https://www.notion.so/EU3-Lambda-Door-e78fd9396061487b8b458a28912d66c4)
 Contains information on the survey, technical researches, style guide and design consideration.
 
-[UX Design files](https://www.figma.com/....)
+[UX Design files](<https://www.figma.com/file/S43H7Y36xwlBNkzuik4v1w/Ant-Design-System-UI-Kit-(1.0)-(%2Bexamples)?node-id=212%3A153>)
 Contains files of the created designs for the App.
 
 ===============================================================================
