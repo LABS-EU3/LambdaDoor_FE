@@ -65,7 +65,7 @@ const StyledForm = styled.form`
 
   .search-field {
     @media ${mobilePortrait} {
-      width: 300px;
+      width: 90%;
       padding-top: 9px;
       margin-right: 6px;
     }

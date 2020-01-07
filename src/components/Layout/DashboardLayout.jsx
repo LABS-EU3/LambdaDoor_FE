@@ -66,6 +66,7 @@ const StyledContainer = styled.div`
   .mobile-logo-btn {
     display: none;
     border: none;
+    outline: none;
     background: transparent;
     @media ${mobilePortrait} {
       display: inherit;

@@ -108,6 +108,7 @@ const StyledContainer = styled.div`
   position: relative;
   width: fit-content;
   height: fit-content;
+  padding-top: 4rem;
 
   .user-avatar {
     width: 70px;

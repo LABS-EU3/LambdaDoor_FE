@@ -49,7 +49,7 @@ const SideNav = ({ visible, user, editProfile, isLoading }) => {
             >
               {user.full_name}
             </Paragraph>
-            <Paragraph>{user.username}</Paragraph>
+            <Paragraph>@{user.username}</Paragraph>
           </div>
           <nav className="navlinks">
             <NavLink
@@ -113,16 +113,12 @@ const StyledContainer = styled.div`
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: #bb1333;
     
 
     img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      @media ${mobilePortrait} {
-        display: none;
-    }
   }
 
 
@@ -154,6 +150,7 @@ const StyledContainer = styled.div`
       color: #000;
     }
   }
+
   
 
   
