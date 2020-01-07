@@ -10,8 +10,11 @@ import SearchForm from '../Search';
 // import PrivateRoute from '../Router/PrivateRoute';
 
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
+
+import { logoutUser } from '../../state/actions/auth';
 import { mobileLandscape, mobilePortrait } from '../../styles/theme.styles';
 import logo from '../../assets/img/lambda-logo.png';
+
 
 const DashboardLayout = ({ component: Component, ...rest }) => {
   const [visible, setVisible] = useState(false);
@@ -36,12 +39,14 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
                 <img src={logo} alt="Lambda logo" />
               </button>
               <SearchForm />
+              
               <div className="sign-out-btn">
-                <Button type="link">
+                <Button type="link" onClick={logoutUser}>
                   Sign Out
                   <Icon type="right" />
                 </Button>
               </div>
+
             </div>
             <div className="main-content">
               <Component {...props} />

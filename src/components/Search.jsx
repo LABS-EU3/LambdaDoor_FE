@@ -23,6 +23,7 @@ const SearchForm = () => {
     >
       {({ handleSubmit, handleChange, handleBlur, values }) => (
         <StyledForm onSubmit={handleSubmit}>
+
           <div className="search-field">
             <Search
               placeholder="Search for Job, Company and Reviews"
@@ -30,6 +31,7 @@ const SearchForm = () => {
               size="large"
             />
           </div>
+
         </StyledForm>
       )}
     </Formik>
@@ -41,6 +43,7 @@ export default SearchForm;
 const StyledForm = styled.form`
   max-width: 700px;
   width: 100%;
+
   @media ${mobilePortrait} {
     display: flex;
     justify-content: space-between;
@@ -70,4 +73,5 @@ const StyledForm = styled.form`
       margin-right: 6px;
     }
   }
+
 `;
