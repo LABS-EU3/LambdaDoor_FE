@@ -6,7 +6,7 @@ import { interviewReviews } from '../utils/data';
 const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1400px;
 `;
 
 const ReviewList = () => {
