@@ -2,14 +2,27 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Card, Rate } from 'antd';
+import { mobileLandscape, mobilePortrait } from '../styles/theme.styles';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   margin: 10px;
+  @media ${mobilePortrait} {
+    width: 100%;
+  }
 `;
 
 const StyledH3 = styled.h3`
   font-family: Roboto;
+`;
+
+const StyledCardDiv = styled.div`
+  width: 350px;
+  height: 280px;
+  @media ${mobilePortrait} {
+    width: 98%;
+    height: 300px;
+  }
 `;
 
 export default function ReviewCard(props) {
@@ -17,13 +30,15 @@ export default function ReviewCard(props) {
   
   return (
     <StyledDiv>
-      <Card style={{ width: 400, height: 280 }}>
-        <div>
+      {/* <StyledCardDiv> */}
+      <Card>
+        <StyledCardDiv>
           <StyledH3>Company Name: {name}</StyledH3>
           <p>{text}</p>
           <Rate disabled defaultValue={4} />
-        </div>
+        </StyledCardDiv>
       </Card>
+      {/* </StyledCardDiv> */}
     </StyledDiv>
   );
 }
