@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
+import { logoutUser } from '../../state/actions/auth';
 
 const DashboardLayout = ({ component: Component, ...rest }) => {
   return (
@@ -18,7 +19,7 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
           <div className="main-container">
             <div className="top-bar">
               <SearchForm />
-              <Button type="link">
+              <Button type="button" onClick={logoutUser}>
                 Sign Out
                 <Icon type="right" />
               </Button>

@@ -53,3 +53,19 @@ export const loginUser = (
     });
   }
 };
+
+export const logoutUser = () => async dispatch => {
+  try {
+    await axios.get('https://lambdadoor-staging.herokuapp.com/users/logout');
+    localStorage.removeItem('token');
+    dispatch({
+      type: types.LOG_OUT_USER_SUCCESS,
+    });
+    window.location.reload();
+  } catch (error) {
+    dispatch({
+      type: types.LOG_OUT_USER_FAILURE,
+      payload: error.message,
+    });
+  }
+};
