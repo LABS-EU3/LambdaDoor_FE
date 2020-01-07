@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import styled from 'styled-components';
+import { Button, Icon } from 'antd';
 import { Route } from 'react-router-dom';
+import styled from 'styled-components';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
-import { Button, Icon } from 'antd';
-// import PrivateRoute from '../Router/PrivateRoute';
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
 
 const DashboardLayout = ({ component: Component, ...rest }) => {
