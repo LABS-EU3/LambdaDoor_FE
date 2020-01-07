@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Card, Rate } from 'antd';
-import { mobileLandscape, mobilePortrait } from '../styles/theme.styles';
+import { mobilePortrait } from '../styles/theme.styles';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`

@@ -14,7 +14,7 @@ const ReviewList = () => {
     <StyledDiv>
       {interviewReviews.map(review => (
         <ReviewCard
-          key={review.user_id}
+          key={review.company_id}
           text={review.text}
           name={review.company_name}
         />

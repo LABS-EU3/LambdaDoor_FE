@@ -9,7 +9,7 @@ export const editProfile = (value, id) => async dispatch => {
   });
   try {
     const { data } = await axios.patch(
-      `https://lambdadoor-staging.herokuapp.com/users/${id}`,
+      `${process.env.REACT_APP_BACKEND_URL}/users/${id}`,
       value
     );
     dispatch({

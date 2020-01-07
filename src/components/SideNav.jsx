@@ -5,10 +5,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Typography, Spin } from 'antd';
 import styled from 'styled-components';
-
-import { Upload, Icon, Button, message } from 'antd';
 import {
-  mobileLandscape,
   mobilePortrait,
   primaryGrey,
 } from '../styles/theme.styles';
