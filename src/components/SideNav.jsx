@@ -86,6 +86,9 @@ const StyledContainer = styled.div`
   height: 100%;
   padding: 1.5rem;
   background: ${primaryGrey};
+  @media ${mobilePortrait}{
+    width: 60%;
+  }
 
   .navlinks {
      display: flex;
@@ -98,7 +101,7 @@ const StyledContainer = styled.div`
     position: fixed;
     top: 0;
     left: -300px;
-    width: 100%;
+    width: 70%;
     z-index: 3;
     max-width: 300px;
     transition: all 0.25s linear;
