@@ -49,9 +49,12 @@ const UserDashboard = ({
       }
     }
 
-    function showPosition(position) {
-      const result = `${position.coords.latitude}  ${position.coords.longitude}`;
+    async function showPosition(position) {
+      const { longitude } = position.coords;
+      const { latitude } = position.coords;
+      const result = `${latitude}  ${longitude}`;
       console.log(result);
+      return result;
     }
 
     function showError(error) {
