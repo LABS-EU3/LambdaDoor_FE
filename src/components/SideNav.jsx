@@ -12,7 +12,6 @@ import {
   mobilePortrait,
   primaryGrey,
 } from '../styles/theme.styles';
-import Logo from './Logo';
 import { editProfile } from '../state/actions/user';
 import Logo from './Logo';
 import Avatar from './Avatar';
