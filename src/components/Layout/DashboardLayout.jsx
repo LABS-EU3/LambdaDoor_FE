@@ -8,7 +8,6 @@ import { Button, Icon } from 'antd';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
 // import PrivateRoute from '../Router/PrivateRoute';
-  
 
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
 import { mobileLandscape, mobilePortrait } from '../../styles/theme.styles';
@@ -26,7 +25,7 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
       {...rest}
       render={props => (
         <StyledContainer>
-          <SideNav visible={visible}/>
+          <SideNav visible={visible} />
           <div className="main-container">
             <div className="top-bar">
               <button
@@ -66,6 +65,8 @@ const StyledContainer = styled.div`
 
   .mobile-logo-btn {
     display: none;
+    border: none;
+    background: transparent;
     @media ${mobilePortrait} {
       display: inherit;
       width: 50px;

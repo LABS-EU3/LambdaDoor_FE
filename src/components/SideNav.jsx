@@ -15,9 +15,7 @@ import {
 import { editProfile } from '../state/actions/user';
 import Logo from './Logo';
 import Avatar from './Avatar';
-import openNotification from '../utils/openNotification';        
-
-
+import openNotification from '../utils/openNotification';
 
 const { Paragraph } = Typography;
 
@@ -71,7 +69,6 @@ const SideNav = ({ visible, user, editProfile, isLoading }) => {
           </nav>
         </>
       )}
-
     </StyledContainer>
   );
 };
@@ -89,6 +86,11 @@ const StyledContainer = styled.div`
   height: 100%;
   padding: 1.5rem;
   background: ${primaryGrey};
+
+  .navlinks {
+     display: flex;
+     flex-direction: column;
+   }
 
   @media ${mobilePortrait} {
     height: 100vh;
@@ -112,10 +114,7 @@ const StyledContainer = styled.div`
     height: 70px;
     border-radius: 50%;
     background: #bb1333;
-    @media ${mobilePortrait} {
-      width: 30px;
-      height: 30px;
-    }
+    
 
     img {
       width: 100%;
@@ -142,6 +141,7 @@ const StyledContainer = styled.div`
 
   .user-profile-wrap {
     padding: 5rem 0 2rem;
+   
 
     .ant-typography,
     .ant-typography p {
@@ -154,4 +154,7 @@ const StyledContainer = styled.div`
       color: #000;
     }
   }
+  
+
+  
 `;
