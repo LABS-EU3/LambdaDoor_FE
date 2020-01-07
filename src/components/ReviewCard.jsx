@@ -27,7 +27,7 @@ const StyledCardDiv = styled.div`
 
 export default function ReviewCard(props) {
   const { text, name } = props;
-  console.log(props);
+  
   return (
     <StyledDiv>
       {/* <StyledCardDiv> */}

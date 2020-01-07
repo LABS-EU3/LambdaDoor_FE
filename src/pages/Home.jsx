@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Alert } from 'antd';
 import styled from 'styled-components';
-import axios from 'axios';
 import decode from 'jwt-decode';
 
 import { connect } from 'react-redux';
@@ -19,6 +18,70 @@ import Logo from '../components/Logo';
 import background from '../assets/img/lambda-door-lp-vector.svg';
 
 const { Title, Paragraph } = Typography;
+
+// eslint-disable-next-line no-shadow
+const Home = ({ history, setAuthenticated }) => {
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const { id } = decode(token);
+      setAuthenticated(id);
+      history.push('/dashboard');
+    }
+  }, [history, setAuthenticated]);
+
+  return (
+    <HomeContainer>
+      <HomeContentContainer>
+        <Logo />
+
+        <OnboardingContainer>
+          <Title>Lambda Door</Title>
+
+          <Paragraph>
+            The one-stop portal for Lambda graduates looking for company
+            information in the quest for a job.
+          </Paragraph>
+
+          <a
+            href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}`}
+          >
+            <img
+              alt="Sign in with Slack"
+              height="40"
+              width="172"
+              src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+              srcSet="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
+            />
+          </a>
+          {error && (
+            <Alert
+              message="An error occured while signing in!!"
+              type="error"
+              showIcon
+              closable
+              style={{
+                fontSize: '16px',
+                marginTop: '10px',
+                width: '100%',
+                maxWidth: '300px',
+              }}
+              onClose={() => setError(null)}
+            />
+          )}
+        </OnboardingContainer>
+
+        <Paragraph style={{ color: 'white' }}>
+          Built by Lambda students, for Lambda students.
+        </Paragraph>
+      </HomeContentContainer>
+    </HomeContainer>
+  );
+};
+
+export default connect(null, { loginUser, setAuthenticated })(Home);
 
 const HomeContainer = styled.div`
   background-image: url(${background});
@@ -118,66 +181,3 @@ const OnboardingContainer = styled.div`
     }
   }
 `;
-// eslint-disable-next-line no-shadow
-const Home = ({ history, loginUser, setAuthenticated }) => {
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const { userId, name, email, profilePicture } = decode(token);
-      setAuthenticated(userId, name, email, profilePicture);
-      history.push('/dashboard');
-    }
-  }, []);
-
-  return (
-    <HomeContainer>
-      <HomeContentContainer>
-        <Logo />
-
-        <OnboardingContainer>
-          <Title>Lambda Door</Title>
-
-          <Paragraph>
-            The one-stop portal for Lambda graduates looking for company
-            information in the quest for a job.
-          </Paragraph>
-
-          <a
-            href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}`}
-          >
-            <img
-              alt="Sign in with Slack"
-              height="40"
-              width="172"
-              src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
-              srcSet="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
-            />
-          </a>
-          {error && (
-            <Alert
-              message="An error occured while signing in!!"
-              type="error"
-              showIcon
-              closable
-              style={{
-                fontSize: '16px',
-                marginTop: '10px',
-                width: '100%',
-                maxWidth: '300px',
-              }}
-              onClose={() => setError(null)}
-            />
-          )}
-        </OnboardingContainer>
-
-        <Paragraph style={{ color: 'white' }}>
-          Built by Lambda students, for Lambda students.
-        </Paragraph>
-      </HomeContentContainer>
-    </HomeContainer>
-  );
-};
-
-export default connect(null, { loginUser, setAuthenticated })(Home);
