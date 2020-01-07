@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const imageUpload = async image => {
   const formData = new FormData();
-  formData.append('file', image[0]);
+  formData.append('file', image);
   formData.append('tags', ['image']);
   formData.append('upload_preset', process.env.REACT_APP_UPLOAD_PRESET);
   formData.append('api_key', process.env.REACT_APP_API_KEY);
@@ -16,7 +16,8 @@ const imageUpload = async image => {
         headers: { 'X-Requested-With': 'XMLHttpRequest' },
       }
     );
-    return console.log(response.data);
+
+    return response.data.url;
   } catch (err) {
     return console.error(err);
   }

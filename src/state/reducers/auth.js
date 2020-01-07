@@ -1,7 +1,7 @@
 import * as types from '../types';
 
 const initialState = {
-  isLoggingIn: false,
+  isLoading: false,
   isLoggedIn: false,
   credentials: {},
   error: null,
@@ -11,27 +11,26 @@ const initialState = {
 export const authState = (state = initialState, action) => {
   switch (action.type) {
     case types.LOG_IN_USER:
+    case types.EDIT_PROFILE_PICTURE:
       return {
         ...state,
-        isLoggingIn: true,
+        isLoading: true,
       };
-
     case types.LOG_IN_USER_SUCCESS:
+    case types.EDIT_PROFILE_PICTURE_SUCCESS:
       return {
         ...state,
-        credentials: action.payload,
-        isLoggingIn: false,
+        isLoading: false,
         isLoggedIn: true,
+        credentials: action.payload,
       };
-
     case types.LOG_IN_USER_FAILURE:
+    case types.EDIT_PROFILE_PICTURE_FAILURE:
       return {
         ...state,
-        isLoggingIn: false,
-        isLoggedIn: false,
+        isLoading: false,
         error: action.payload,
       };
-
     default:
       return state;
   }
