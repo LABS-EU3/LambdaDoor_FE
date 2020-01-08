@@ -152,7 +152,7 @@ export const interviewReviews = [
     company_id: 1,
     company_name: 'Microsoft',
     text:
-      'Six rounds of phone/tech interviews over a long time period. It seemed a bit scattered and could have been way more efficient. I felt like some of the interviews got repetitive.',
+      'Six rounds of phone/tech interviews over a long time period. It seemed a bit scattered and could have been way more efficient. I felt like some of the interviews got repetitive. The entire process took three months and I was able to interview at another company and find a job whilst waiting to hear back.',
   },
   {
     user_id: 2,
@@ -174,5 +174,19 @@ export const interviewReviews = [
     company_name: 'Twitter',
     text:
       'There is one phone interview for an hour. If you clear this interview, you will be invited for an onsite interview. There are five interviews onsite, all in one day. Interviews are in a casual environment. After the first two interviews, you take a break and are escorted for lunch.',
+  },
+  {
+    user_id: 5,
+    company_id: 12,
+    company_name: 'Slack',
+    text:
+      "They initially called me in for a technical interview and I didn't hear anything back for three weeks. After this I was surprised to get another call saying that I had been invited for a behavioural interview. In total the process took over two months. The interviews were both with a panel and were very thorough but the atmosphere was relaxed and friendly.",
+  },
+
+  {
+    company_id: 11,
+    company_name: 'Novosco',
+    text:
+      'I was invited to a very informal chat in the first place and shown around the office. Two weeks later I got a technical interview and I met some more people from the office. The interview lasted for an hour and had both easy and difficult questions. Two days later I got a phone call saying that I had got the job.',
   },
 ];

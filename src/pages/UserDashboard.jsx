@@ -2,10 +2,10 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Spin } from 'antd';
-import { loginUser } from '../state/actions/auth';
+import { loginUser, setAuthenticated } from '../state/actions/auth';
 import ReviewList from '../components/ReviewList';
 
 const StyledH1 = styled.h1`
@@ -13,36 +13,50 @@ const StyledH1 = styled.h1`
   padding-left: 9px;
 `;
 
-const UserDashboard = ({ authState: { isLoggingIn }, loginUser }) => {
-  useEffect(async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-
-    const getUserDetails = async () => {
-      const {
-        data: {
-          user_id: userId,
-          user: { name, email, image_1024: profilePicture },
-        },
-      } = await axios.get(
-        `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
-      );
-      window.history.replaceState(null, null, window.location.pathname);
-      await loginUser(userId, name, email, profilePicture);
-    };
-
-    if (code) {
-      await getUserDetails();
+const UserDashboard = ({
+  authState: { isLoggedIn },
+  loginUser,
+  setAuthenticated,
+  history,
+}) => {
+  useEffect(() => {
+    async function start() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
+      const token = localStorage.getItem('token');
+      if (!code && !token) {
+        history.push('/');
+      }
+      if (token) {
+        const { id } = decode(token);
+        setAuthenticated(id);
+      }
+      const getUserDetails = async () => {
+        const {
+          data: {
+            user_id: userId,
+            user: { name, email, image_1024: profilePicture },
+          },
+        } = await axios.get(
+          `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
+        );
+        window.history.replaceState(null, null, window.location.pathname);
+        await loginUser(userId, name, email, profilePicture);
+      };
+      if (code) {
+        await getUserDetails();
+      }
     }
-  }, []);
-  return isLoggingIn ? (
-    <Spin />
-  ) : (
+    start();
+  }, [history, loginUser, setAuthenticated]);
+
+  return (
     <div>
       <StyledH1>Latest Reviews</StyledH1>
       <ReviewList />
     </div>
   );
 };
-
-export default connect(state => state, { loginUser })(UserDashboard);
+export default connect(state => state, { loginUser, setAuthenticated })(
+  UserDashboard
+);

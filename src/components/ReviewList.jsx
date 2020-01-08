@@ -6,7 +6,7 @@ import { interviewReviews } from '../utils/data';
 const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1400px;
 `;
 
 const ReviewList = () => {
@@ -14,7 +14,7 @@ const ReviewList = () => {
     <StyledDiv>
       {interviewReviews.map(review => (
         <ReviewCard
-          key={review.user_id}
+          key={review.company_id}
           text={review.text}
           name={review.company_name}
         />
