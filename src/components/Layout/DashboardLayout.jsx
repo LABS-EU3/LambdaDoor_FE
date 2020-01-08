@@ -10,7 +10,11 @@ import SearchForm from '../Search';
 // import PrivateRoute from '../Router/PrivateRoute';
 
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
-import { mobileLandscape, mobilePortrait } from '../../styles/theme.styles';
+import {
+  mobileLandscape,
+  mobilePortrait,
+  tabletPortrait,
+} from '../../styles/theme.styles';
 import logo from '../../assets/img/lambda-logo.png';
 
 const DashboardLayout = ({ component: Component, ...rest }) => {
@@ -65,6 +69,9 @@ const StyledContainer = styled.div`
   height: 100vh;
   overflow: hidden;
   display: flex;
+  @media ${tabletPortrait} {
+    height: 100%;
+  }
   @media ${mobilePortrait} {
     height: 100%;
   }
@@ -129,7 +136,6 @@ const StyledContainer = styled.div`
     padding: 1.5rem;
     @media ${mobilePortrait} {
       padding-top: 100px;
-    }
   }
 
   .sign-out-btn {

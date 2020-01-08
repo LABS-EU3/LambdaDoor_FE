@@ -11,6 +11,7 @@ import {
   mobileLandscape,
   mobilePortrait,
   primaryGrey,
+  tabletPortrait,
 } from '../styles/theme.styles';
 import { editProfile } from '../state/actions/user';
 import Logo from './Logo';
@@ -94,6 +95,11 @@ const StyledContainer = styled.div`
      display: flex;
      flex-direction: column;
    }
+
+   @media ${tabletPortrait}{
+     height: 250vh;
+   }
+   /* I initially had 100vh on line 100 but that causes the bottom of the side bar to stop abruptly during the scroll down the page so I have changed it for now to 250vh. I am looking for a better solution. We could fix the menu on the left but this will involve more adjustments to the styling of the main content. (Lisa) */
 
   @media ${mobilePortrait} {
     height: 100vh;
