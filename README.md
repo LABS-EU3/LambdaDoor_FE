@@ -1,56 +1,70 @@
-# Lamda_Door
+# LamdaDoor
 
-Many atimes Job seekers find it difficult getting information specific to their search with respect to companies' interview processes, cultures and salary information that are less generalized, thus they spend alot of time searching and filtering what's needed from the sea of available information. Lambda_door ishere tomakethat search simplerby providing streamlinedinformation tha are specific to companies and regions, even providing connections to previous job seekers that have intervied or work(ed) with these firms.
+Many atimes Job seekers find it difficult getting information specific to their search with respect to companies' interview processes, cultures and salary information that are less generalized, thus they spend alot of time searching and filtering what's needed from the sea of available information.
+
+LambdaDoor is here to make that search simpler by providing stream lined information that are specific to companies and regions, even providing connections to previous job seekers that have intervied or work(ed) with these firms.
 
 ===============================================================================
 
 ## Tech stack
 
-HTML, CSS, Ant design, Formik, Styled-Component, Javascript, React, Redux, coveralls, Axios
+HTML, CSS, Ant design, Formik, Styled-Component, Javascript, React, Redux, coveralls, Axios, Travis CI etc.
 
 ===============================================================================
 
 ## Contributors
 
-| [ Jessica Eze ](https://github.com/Ofega) | [ Emily Abrahart ](https://github.com/EmilyAbrahart) | [ Martins O.U ](https://github.com/Martins-O-U) | [Ifiok Udoidiok ](https://github.com/ifiokudoidiok) | [ Victor Arowo ](https://github.com/VictorArowo) | [ Lisa Wilton ](https://github.com/ziggyss) |
+| [ Jessica Eze ](https://github.com/Ofega) | [ Emily Abrahart ](https://github.com/EmilyAbrahart) | [ Martins O.U ](https://github.com/Martins-O-U) | [Ifiok Udoidiok ](https://github.com/ifiokudoidiok) | [ Victor Arowo ](https://github.com/VictorArowo) | [ Lisa Wilton ](https://github.com/ziggyss) | [Ogbonna Basil](https://github.com/basilcea)
 
 || :-----------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------:-----------------------------------------------------------------------------------------------------------: ||
 
-|                                        [Jessica Eze](https://github.com/Ofega)                                         |
-| :--------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://ca.slack-edge.com/T4JUEB3ME-ULVMR4SPP-c30afa04a17f-512" width = "200" />](https://github.com/Ofega) |
-|                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Ofega)                   |
-|  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/.../)  |
+|                                           [Jessica Eze](https://github.com/Ofega)                                            |
+| :--------------------------------------------------------------------------------------------------------------------------: |
+|    [<img src="https://ca.slack-edge.com/T4JUEB3ME-ULVMR4SPP-c30afa04a17f-512" width = "200" />](https://github.com/Ofega)    |
+|                      [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Ofega)                      |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jessica-eze/) |
+
+<br>
 
 |                                       [Emily Abrahart](https://github.com/EmilyAbrahart)                                       |
 | :----------------------------------------------------------------------------------------------------------------------------: |
 | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UHF8R5GQ4-fd2ea3305cae-512" width = "200" />](https://github.com/EmilyAbrahart) |
 |                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/EmilyAbrahart)                   |
-|      [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/.../)      |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/emilyabrahart/) |
 
-|                                        [Martins O.U](https://github.com/Martins-O-U)                                         |
-| :--------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://ca.slack-edge.com/T4JUEB3ME-ULVNLC70D-01f9ac56c2a9-512" width = "200" />](https://github.com/Martins-O-U) |
-|                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Martins-O-U)                   |
-|     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/.../)     |
+<br>
+
+|                                                 [Martins O.U](https://github.com/Martins-O-U)                                                  |
+| :--------------------------------------------------------------------------------------------------------------------------------------------: |
+|          [<img src="https://ca.slack-edge.com/T4JUEB3ME-ULVNLC70D-01f9ac56c2a9-512" width = "200" />](https://github.com/Martins-O-U)          |
+|                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Martins-O-U)                            |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/onyedikachi-martins-28b890101/) |
+
+<br>
 
 |                                       [ifiok Udoidiok](https://github.com/ifiokudoidiok)                                       |
 | :----------------------------------------------------------------------------------------------------------------------------: |
 | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UM1351D55-8a2734e116e4-512" width = "200" />](https://github.com/ifiokudoidiok) |
 |                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ifiokudoidiok)                   |
-|      [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/.../)      |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ifiokudoidiok/) |
 
-|                                        [Victor Arowo](https://github.com/VictorArowo)                                        |
-| :--------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://ca.slack-edge.com/T4JUEB3ME-ULXJFUDRV-ba9a1ceaec35-512" width = "200" />](https://github.com/VictorArowo) |
-|                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/VictorArowo)                   |
-|     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/.../)     |
+<br>
 
-|                                        [Lisa Wilton](https://github.com/ziggyss)                                         |
-| :----------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://ca.slack-edge.com/T4JUEB3ME-ULJMDT5V1-8ce48d15c5ed-512" width = "200" />](https://github.com/ziggyss) |
-|                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ziggyss)                   |
-|   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/.../)   |
+|                                        [Victor Arowo](https://github.com/VictorArowo)                                         |
+| :---------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://ca.slack-edge.com/T4JUEB3ME-ULXJFUDRV-ba9a1ceaec35-512" width = "200" />](https://github.com/VictorArowo)  |
+|                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/VictorArowo)                    |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/victor-arowo/) |
+
+<br>
+
+|                                          [Lisa Wilton](https://github.com/ziggyss)                                          |
+| :-------------------------------------------------------------------------------------------------------------------------: |
+|  [<img src="https://ca.slack-edge.com/T4JUEB3ME-ULJMDT5V1-8ce48d15c5ed-512" width = "200" />](https://github.com/ziggyss)   |
+|                    [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ziggyss)                     |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/lisawilton/) |
+
+<br>
 
 |                                      [Ogbonna Basil](https://github.com/basilcea) - Team Lead                                      |
 | :--------------------------------------------------------------------------------------------------------------------------------: |
@@ -100,7 +114,7 @@ Other scripts available on the app are:
 
 ### Environment Variables
 
-An environment virriable was used forthe developement and deployment file, thus user must set up their own environment variables in a .env file.
+An environment virriable was used forthe developement and deployment file, thus user must set up their own environment variables in an .env file.
 
 ===============================================================================
 
@@ -144,7 +158,7 @@ We would love to hear from you about new features which would improve this app a
 
 These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
 
-### Front end deployed to `https://lambdadoor.netlify.com/`
+### Frontend is deployed on `https://Lambdadoor.com`
 
 ===============================================================================
 
@@ -154,7 +168,7 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 See [Lambda_Door](https://github.com/LABS-EU3/lambdaDoor_backend/blob/develop/README.md) for details on the backend of our project.
 
-### Backend is hosted on Heroku `https://.....`
+### Backend is hosted on Heroku `https://lambdadoor.herokuapp.com/`
 
 ===============================================================================
 
