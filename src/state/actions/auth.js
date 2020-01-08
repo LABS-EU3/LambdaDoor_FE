@@ -9,7 +9,7 @@ export const setAuthenticated = id => async dispatch => {
     type: types.LOG_IN_USER,
   });
   const { data } = await axios.get(
-    `https://lambdadoor-staging.herokuapp.com/users/${id}`,
+    `${process.env.REACT_APP_BACKEND_URL}/users/${id}`,
     {
       withCredentials: true,
     }
@@ -34,7 +34,7 @@ export const loginUser = (
     const {
       data: { id },
     } = await axios.post(
-      'https://lambdadoor-staging.herokuapp.com/users',
+      `${process.env.REACT_APP_BACKEND_URL}/users/`,
       {
         slack_id: userId,
         name,
@@ -56,7 +56,7 @@ export const loginUser = (
 
 export const logoutUser = () => async dispatch => {
   try {
-    await axios.get('https://lambdadoor-staging.herokuapp.com/users/logout');
+    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/logout`);
     localStorage.removeItem('token');
     dispatch({
       type: types.LOG_OUT_USER_SUCCESS,

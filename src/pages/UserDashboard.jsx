@@ -5,7 +5,6 @@ import axios from 'axios';
 import decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Spin } from 'antd';
 import { loginUser, setAuthenticated } from '../state/actions/auth';
 import ReviewList from '../components/ReviewList';
 
@@ -49,7 +48,7 @@ const UserDashboard = ({
       }
     }
     start();
-  }, [history, loginUser]);
+  }, [history, loginUser, setAuthenticated]);
 
   return (
     <div>

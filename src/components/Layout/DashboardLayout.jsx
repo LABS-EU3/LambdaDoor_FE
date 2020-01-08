@@ -7,12 +7,9 @@ import { Route } from 'react-router-dom';
 import { Button, Icon } from 'antd';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
-// import PrivateRoute from '../Router/PrivateRoute';
-
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
-
 import { logoutUser } from '../../state/actions/auth';
-import { mobileLandscape, mobilePortrait } from '../../styles/theme.styles';
+import { mobilePortrait } from '../../styles/theme.styles';
 import logo from '../../assets/img/lambda-logo.png';
 
 
