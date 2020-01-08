@@ -7,12 +7,11 @@ import { Route } from 'react-router-dom';
 import { Button, Icon } from 'antd';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
-// import PrivateRoute from '../Router/PrivateRoute';
-  
-
 import { primaryGrey, textGrey } from '../../styles/theme.styles';
-import { mobileLandscape, mobilePortrait } from '../../styles/theme.styles';
+import { logoutUser } from '../../state/actions/auth';
+import { mobilePortrait } from '../../styles/theme.styles';
 import logo from '../../assets/img/lambda-logo.png';
+
 
 const DashboardLayout = ({ component: Component, ...rest }) => {
   const [visible, setVisible] = useState(false);
@@ -26,7 +25,7 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
       {...rest}
       render={props => (
         <StyledContainer>
-          <SideNav visible={visible}/>
+          <SideNav visible={visible} />
           <div className="main-container">
             <div className="top-bar">
               <button
@@ -37,12 +36,14 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
                 <img src={logo} alt="Lambda logo" />
               </button>
               <SearchForm />
+              
               <div className="sign-out-btn">
-                <Button type="link">
+                <Button type="link" onClick={logoutUser}>
                   Sign Out
                   <Icon type="right" />
                 </Button>
               </div>
+
             </div>
             <div className="main-content">
               <Component {...props} />
@@ -66,6 +67,9 @@ const StyledContainer = styled.div`
 
   .mobile-logo-btn {
     display: none;
+    border: none;
+    outline: none;
+    background: transparent;
     @media ${mobilePortrait} {
       display: inherit;
       width: 50px;

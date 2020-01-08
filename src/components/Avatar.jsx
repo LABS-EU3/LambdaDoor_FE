@@ -10,7 +10,6 @@ import {
   Tooltip,
   Button,
   message,
-  notification,
   Spin,
 } from 'antd';
 import imageUpload from '../utils/ImageUpload';
@@ -108,6 +107,7 @@ const StyledContainer = styled.div`
   position: relative;
   width: fit-content;
   height: fit-content;
+  padding-top: 4rem;
 
   .user-avatar {
     width: 70px;
