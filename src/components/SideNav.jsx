@@ -4,13 +4,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Typography, Spin } from 'antd';
+import { Typography, Spin, Button } from 'antd';
 import styled from 'styled-components';
 import { mobilePortrait, primaryGrey } from '../styles/theme.styles';
 import { editProfile } from '../state/actions/user';
 import Logo from './Logo';
 import Avatar from './Avatar';
 import openNotification from '../utils/openNotification';
+import { getLocation } from '../utils/getLocation';
 
 const { Paragraph } = Typography;
 
@@ -25,6 +26,10 @@ const SideNav = ({ visible, user, editProfile, isLoading }) => {
   const handleChange = async fullname => {
     await editProfile({ full_name: fullname }, user.id);
     openNotification('Full name updated');
+  };
+
+  const updateLocation = async () => {
+    await getLocation(user.id);
   };
 
   return (
@@ -49,6 +54,14 @@ const SideNav = ({ visible, user, editProfile, isLoading }) => {
               <div className="location">
                 <i className="fas fa-map-marker-alt" />
                 <Paragraph>{user.location}</Paragraph>
+                <Button
+                  icon="edit"
+                  size="small"
+                  ghost
+                  className="edit"
+                  type="primary"
+                  onClick={updateLocation}
+                />
               </div>
             )}
           </div>
@@ -97,6 +110,9 @@ const StyledContainer = styled.div`
 
     .fas {
       margin-right: 10px;
+    }
+    .edit {
+      margin-left: 20px;
     }
 
     div {
