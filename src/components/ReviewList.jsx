@@ -12,12 +12,9 @@ const StyledDiv = styled.div`
 const ReviewList = () => {
   return (
     <StyledDiv>
-      {interviewReviews.map(review => (
-        <ReviewCard
-          key={review.company_id}
-          text={review.text}
-          name={review.company_name}
-        />
+      {interviewReviews.map((review, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <ReviewCard key={index} text={review.text} name={review.company_name} />
       ))}
     </StyledDiv>
   );

@@ -54,9 +54,13 @@ export const loginUser = (
   }
 };
 
-export const logoutUser = () => async dispatch => {
+export const logoutUser = id => async (dispatch, getState) => {
   try {
-    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/logout`);
+    await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/users/${
+        getState().authState.credentials.id
+      }/logout`
+    );
     localStorage.removeItem('token');
     dispatch({
       type: types.LOG_OUT_USER_SUCCESS,
