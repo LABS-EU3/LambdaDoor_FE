@@ -17,7 +17,7 @@ const StyledH1 = styled.h1`
 const UserDashboard = ({
   authState: {
     isLoading,
-    credentials: { id },
+    credentials: { id, location },
   },
   loginUser,
   setAuthenticated,
@@ -25,9 +25,44 @@ const UserDashboard = ({
   editProfile,
 }) => {
   useEffect(() => {
+    async function start() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
+      const token = localStorage.getItem('token');
+      if (!code && !token) {
+        history.push('/');
+      }
+      if (token) {
+        const { id } = decode(token);
+        await setAuthenticated(id);
+      }
+      const getUserDetails = async () => {
+        const {
+          data: {
+            user_id: userId,
+            user: { name, email, image_1024: profilePicture },
+          },
+        } = await axios.get(
+          `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
+        );
+        window.history.replaceState(null, null, window.location.pathname);
+        await loginUser(userId, name, email, profilePicture);
+      };
+      if (code) {
+        await getUserDetails();
+      }
+    }
+
+    start();
+  }, [history, loginUser, setAuthenticated]);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = localStorage.getItem('token');
     async function showPosition(position, id) {
       const { longitude } = position.coords;
       const { latitude } = position.coords;
+
       const {
         data: { results },
       } = await axios.get(
@@ -59,6 +94,7 @@ const UserDashboard = ({
       return null;
     }
     function getLocation(id) {
+      console.log(id);
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           position => showPosition(position, id),
@@ -68,38 +104,10 @@ const UserDashboard = ({
         console.log('Geolocation is not supported by this browser.');
       }
     }
-    async function start() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const code = urlParams.get('code');
-      const token = localStorage.getItem('token');
-      if (!code && !token) {
-        history.push('/');
-      }
-      if (token) {
-        const { id } = decode(token);
-        await setAuthenticated(id);
-        getLocation(id);
-      }
-      const getUserDetails = async () => {
-        const {
-          data: {
-            user_id: userId,
-            user: { name, email, image_1024: profilePicture },
-          },
-        } = await axios.get(
-          `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
-        );
-        window.history.replaceState(null, null, window.location.pathname);
-        await loginUser(userId, name, email, profilePicture);
-      };
-      if (code) {
-        await getUserDetails();
-        getLocation(id);
-      }
+    if (token) {
+      if (location === null) getLocation(id);
     }
-
-    start();
-  }, [history, loginUser, setAuthenticated]);
+  }, [location]);
 
   return (
     <div>
