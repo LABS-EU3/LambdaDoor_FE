@@ -26,7 +26,13 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
       render={props => (
         <StyledContainer>
           <SideNav visible={visible} />
-          <div className="main-container">
+          <div
+            className="main-container"
+            onKeyDown={toggleVisible}
+            onClick={toggleVisible}
+            role="button"
+            tabIndex="0"
+          >
             <div className="top-bar">
               <button
                 type="button"
