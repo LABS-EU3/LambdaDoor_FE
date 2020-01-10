@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Input } from 'antd';
 import styled from 'styled-components';
-import { mobilePortrait } from '../styles/theme.styles';
+import { mobilePortrait } from '../../styles/theme.styles';
 
 const { Search } = Input;
 
@@ -22,7 +22,6 @@ const SearchForm = () => {
     >
       {({ handleSubmit, handleChange, handleBlur, values }) => (
         <StyledForm onSubmit={handleSubmit}>
-
           <div className="search-field">
             <Search
               placeholder="Search for Job, Company and Reviews"
@@ -30,7 +29,6 @@ const SearchForm = () => {
               size="large"
             />
           </div>
-
         </StyledForm>
       )}
     </Formik>
@@ -72,5 +70,4 @@ const StyledForm = styled.form`
       margin-right: 6px;
     }
   }
-
 `;

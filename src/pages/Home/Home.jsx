@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import decode from 'jwt-decode';
 
 import { connect } from 'react-redux';
-import { loginUser, setAuthenticated } from '../state/actions/auth';
+import { loginUser, setAuthenticated } from '../../state/actions/auth';
 
 import {
   tabletPortrait,
@@ -13,14 +13,14 @@ import {
   mobileLandscape,
   mobilePortrait,
   FlexFunc,
-} from '../styles/theme.styles';
-import Logo from '../components/Logo';
-import background from '../assets/img/lambda-door-lp-vector.svg';
+} from '../../styles/theme.styles';
+import Logo from '../../components/Logo';
+import background from '../../assets/img/lambda-door-lp-vector.svg';
 
 const { Title, Paragraph } = Typography;
 
 // eslint-disable-next-line no-shadow
-const Home = ({ history, setAuthenticated }) => {
+export const Home = ({ history, setAuthenticated }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -91,8 +91,6 @@ const HomeContainer = styled.div`
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
-
-
 
   @media ${tabletPortrait} {
     background-position: -180px 50px;

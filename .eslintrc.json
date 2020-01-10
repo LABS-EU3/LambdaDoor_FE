@@ -21,6 +21,7 @@
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
     "no-console": "off",
-    "object-shorthand": "off"
+    "object-shorthand": "off",
+    "prop-types": "off"
   }
 }

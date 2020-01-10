@@ -184,7 +184,7 @@ export const interviewReviews = [
   },
 
   {
-    company_id: 11,
+    company_id: 21,
     company_name: 'Novosco',
     text:
       'I was invited to a very informal chat in the first place and shown around the office. Two weeks later I got a technical interview and I met some more people from the office. The interview lasted for an hour and had both easy and difficult questions. Two days later I got a phone call saying that I had got the job.',
