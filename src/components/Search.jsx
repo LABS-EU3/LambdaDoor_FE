@@ -2,8 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Input } from 'antd';
 import styled from 'styled-components';
-import { mobileLandscape, mobilePortrait } from '../styles/theme.styles';
-import Logo from './Logo';
+import { mobilePortrait } from '../styles/theme.styles';
 
 const { Search } = Input;
 
@@ -41,4 +40,34 @@ export default SearchForm;
 const StyledForm = styled.form`
   max-width: 700px;
   width: 100%;
+
+  @media ${mobilePortrait} {
+    display: flex;
+    justify-content: space-between;
+    background-color: grey;
+  }
+
+  .mobile-logo-btn {
+    display: none;
+    @media ${mobilePortrait} {
+      display: inherit;
+      width: 50px;
+      padding: 12px;
+      img {
+        width: 1.88rem;
+      }
+    }
+  }
+
+  @media ${mobilePortrait} {
+    background-color: #fafafa;
+  }
+
+  .search-field {
+    @media ${mobilePortrait} {
+      width: 90%;
+      padding-top: 9px;
+      margin-right: 6px;
+    }
+  }
 `;

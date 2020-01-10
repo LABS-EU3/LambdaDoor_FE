@@ -7,14 +7,14 @@ import { Route } from 'react-router-dom';
 import { Button, Icon } from 'antd';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
-// import PrivateRoute from '../Router/PrivateRoute';
-
 import {
   primaryGrey,
   textGrey,
   mobilePortrait,
   tabletPortrait,
 } from '../../styles/theme.styles';
+
+import { logoutUser } from '../../state/actions/auth';
 
 import logo from '../../assets/img/lambda-logo.png';
 
@@ -47,8 +47,9 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
                 <img src={logo} alt="Lambda logo" />
               </button>
               <SearchForm />
+
               <div className="sign-out-btn">
-                <Button type="link">
+                <Button type="link" onClick={logoutUser}>
                   Sign Out
                   <Icon type="right" />
                 </Button>

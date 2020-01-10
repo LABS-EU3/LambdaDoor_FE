@@ -10,7 +10,6 @@ import {
   Tooltip,
   Button,
   message,
-  notification,
   Spin,
 } from 'antd';
 import imageUpload from '../utils/ImageUpload';

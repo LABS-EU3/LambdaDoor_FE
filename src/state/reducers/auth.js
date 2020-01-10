@@ -31,6 +31,22 @@ export const authState = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
+
+    case types.LOG_OUT_USER_SUCCESS:
+      return {
+        ...state,
+        isLoggingIn: false,
+        isLoggedIn: false,
+      };
+
+    case types.LOG_OUT_USER_FAILURE:
+      return {
+        ...state,
+        isLoggingIn: false,
+        isLoggedIn: true,
+        error: action.payload,
+      };
+
     default:
       return state;
   }
