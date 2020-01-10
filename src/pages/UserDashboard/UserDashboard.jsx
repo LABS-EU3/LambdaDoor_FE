@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { loginUser, setAuthenticated } from '../../state/actions/auth';
 import ReviewList from '../../components/ReviewList/ReviewList';
 import { editProfile } from '../../state/actions/user';
+import { getLocation } from '../../utils/getLocation';
 
 const StyledH1 = styled.h1`
   font-family: Roboto;
@@ -16,57 +17,13 @@ const StyledH1 = styled.h1`
 
 export const UserDashboard = ({
   authState: {
-    credentials: { id },
+    credentials: { id, location },
   },
   loginUser,
   setAuthenticated,
   history,
-  editProfile,
 }) => {
   useEffect(() => {
-    async function showPosition(position, id) {
-      const { longitude } = position.coords;
-      const { latitude } = position.coords;
-      const {
-        data: { results },
-      } = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&result_type=country&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
-      );
-
-      await editProfile({ longitude }, id);
-      await editProfile({ latitude }, id);
-      await editProfile({ location: results[0].formatted_address }, id);
-    }
-
-    function showError(error) {
-      switch (error.code) {
-        case error.PERMISSION_DENIED:
-          console.log('User denied the request for Geolocation.');
-          break;
-        case error.POSITION_UNAVAILABLE:
-          console.log('Location information is unavailable.');
-          break;
-        case error.TIMEOUT:
-          console.log('The request to get user location timed out.');
-          break;
-        case error.UNKNOWN_ERROR:
-          console.log('An unknown error occurred.');
-          break;
-        default:
-          return null;
-      }
-      return null;
-    }
-    function getLocation(id) {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          position => showPosition(position, id),
-          showError
-        );
-      } else {
-        console.log('Geolocation is not supported by this browser.');
-      }
-    }
     async function start() {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
@@ -77,7 +34,6 @@ export const UserDashboard = ({
       if (token) {
         const { id } = decode(token);
         await setAuthenticated(id);
-        getLocation(id);
       }
       const getUserDetails = async () => {
         const {
@@ -93,12 +49,25 @@ export const UserDashboard = ({
       };
       if (code) {
         await getUserDetails();
-        getLocation(id);
       }
     }
 
     start();
-  }, [history, loginUser]);
+  }, [history, loginUser, setAuthenticated]);
+
+  useEffect(() => {
+    async function start() {
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        if (location === null) {
+          await getLocation(id);
+        }
+      }
+    }
+    start();
+  }, [location]);
+
   return (
     <div>
       <StyledH1>Latest Reviews</StyledH1>

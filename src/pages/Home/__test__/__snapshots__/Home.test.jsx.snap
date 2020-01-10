@@ -31,7 +31,7 @@ exports[`ConnectedHome renders correctly 1`] = `
             The one-stop portal for Lambda graduates looking for company information in the quest for a job.
           </div>
           <a
-            href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=154966377728.878377460261"
+            href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=154966377728.878377460261&redirect_uri=http://localhost:3000/dashboard"
           >
             <img
               alt="Sign in with Slack"
@@ -85,7 +85,7 @@ exports[`Home render correctly 1`] = `
             The one-stop portal for Lambda graduates looking for company information in the quest for a job.
           </div>
           <a
-            href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=154966377728.878377460261"
+            href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=154966377728.878377460261&redirect_uri=http://localhost:3000/dashboard"
           >
             <img
               alt="Sign in with Slack"
