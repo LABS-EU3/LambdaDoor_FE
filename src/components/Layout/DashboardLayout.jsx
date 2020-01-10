@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 
@@ -5,12 +6,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 import { Button, Icon } from 'antd';
+import { connect } from 'react-redux';
 import SideNav from '../SideNav';
 import SearchForm from '../Search';
 import {
   primaryGrey,
   textGrey,
   mobilePortrait,
+
   tabletPortrait,
 } from '../../styles/theme.styles';
 
@@ -18,7 +21,8 @@ import { logoutUser } from '../../state/actions/auth';
 
 import logo from '../../assets/img/lambda-logo.png';
 
-const DashboardLayout = ({ component: Component, ...rest }) => {
+const DashboardLayout = ({ component: Component, logoutUser, ...rest }) => {
+
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
@@ -65,7 +69,7 @@ const DashboardLayout = ({ component: Component, ...rest }) => {
   );
 };
 
-export default DashboardLayout;
+export default connect(null, { logoutUser })(DashboardLayout);
 
 const StyledContainer = styled.div`
   height: 100vh;

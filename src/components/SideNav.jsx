@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -5,11 +6,13 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Typography, Spin } from 'antd';
 import styled from 'styled-components';
+
 import {
   mobilePortrait,
   primaryGrey,
   tabletPortrait,
 } from '../styles/theme.styles';
+
 import { editProfile } from '../state/actions/user';
 import Logo from './Logo';
 import Avatar from './Avatar';
@@ -48,6 +51,12 @@ const SideNav = ({ visible, user, editProfile, isLoading }) => {
               {user.full_name}
             </Paragraph>
             <Paragraph>@{user.username}</Paragraph>
+            {user.location && (
+              <div className="location">
+                <i className="fas fa-map-marker-alt" />
+                <Paragraph>{user.location}</Paragraph>
+              </div>
+            )}
           </div>
           <nav className="navlinks">
             <NavLink
@@ -145,3 +154,6 @@ const StyledContainer = styled.div`
     }
   }
 `;
+
+
+
