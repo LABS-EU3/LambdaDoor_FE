@@ -22,6 +22,7 @@
     "no-unused-vars": "warn",
     "no-console": "off",
     "object-shorthand": "off",
-    "prop-types": "off"
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

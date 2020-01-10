@@ -10,7 +10,7 @@ const token =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNTc4NTY4NTgxfQ.6cR-MJGGZRHgszj1o1IgvyXfhEla3NYNegRT7aafXps';
 
 describe('Home', () => {
-  it('render correctly', () => {
+  it('renders correctly', () => {
     expect(rtl.render(<Home />).baseElement).toMatchSnapshot();
   });
 

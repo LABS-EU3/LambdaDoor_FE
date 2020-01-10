@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route } from 'react-router-dom';
@@ -12,7 +12,7 @@ export const TestingRouter = ({
   RedirectUrl,
   MainRoute,
 }) => (
-  <Fragment>
+  <>
     <Route
       path={MainRoute}
       exact={true}
@@ -21,7 +21,7 @@ export const TestingRouter = ({
       }}
     />
     <Route path={RedirectUrl} render={() => <div>{RedirectUrl}</div>} />
-  </Fragment>
+  </>
 );
 
 export const renderWithRedux = (

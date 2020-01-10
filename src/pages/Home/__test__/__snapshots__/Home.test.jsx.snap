@@ -54,7 +54,7 @@ exports[`ConnectedHome renders correctly 1`] = `
 </body>
 `;
 
-exports[`Home render correctly 1`] = `
+exports[`Home renders correctly 1`] = `
 <body>
   <div>
     <div
