@@ -9,12 +9,13 @@ import SideNav from '../SideNav';
 import SearchForm from '../Search';
 // import PrivateRoute from '../Router/PrivateRoute';
 
-import { primaryGrey, textGrey } from '../../styles/theme.styles';
 import {
-  mobileLandscape,
+  primaryGrey,
+  textGrey,
   mobilePortrait,
   tabletPortrait,
 } from '../../styles/theme.styles';
+
 import logo from '../../assets/img/lambda-logo.png';
 
 const DashboardLayout = ({ component: Component, ...rest }) => {
@@ -72,9 +73,6 @@ const StyledContainer = styled.div`
   @media ${tabletPortrait} {
     height: 100%;
   }
-  @media ${mobilePortrait} {
-    height: 100%;
-  }
 
   .mobile-logo-btn {
     display: none;
@@ -84,16 +82,19 @@ const StyledContainer = styled.div`
     @media ${mobilePortrait} {
       display: inherit;
       width: 50px;
-      padding: 12px;
+      margin-right: 0.75rem;
       img {
-        width: 1.88rem;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
   }
 
   .main-container {
     width: calc(100% - 250px);
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
     @media ${mobilePortrait} {
       width: 100%;
       display: flex;
@@ -110,8 +111,8 @@ const StyledContainer = styled.div`
     justify-content: space-between;
     @media ${mobilePortrait} {
       height: 80px;
+      padding: 1rem;
       background-color: #fafafa;
-      padding: 5px;
       position: fixed;
       top: 0;
       width: 100%;
@@ -134,8 +135,11 @@ const StyledContainer = styled.div`
 
   .main-content {
     padding: 1.5rem;
+    height: calc(100vh - 104px);
+    overflow-y: auto;
     @media ${mobilePortrait} {
       padding-top: 100px;
+    }
   }
 
   .sign-out-btn {

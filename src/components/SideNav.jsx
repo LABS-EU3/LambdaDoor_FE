@@ -86,24 +86,11 @@ const StyledContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 1.5rem;
+  height: 100vh;
+  overflow-y: auto;
   background: ${primaryGrey};
-  @media ${mobilePortrait}{
-    width: 60%;
-  }
-
-  .navlinks {
-     display: flex;
-     flex-direction: column;
-   }
-
-   @media ${tabletPortrait}{
-     height: 250vh;
-   }
-   /* I initially had 100vh on line 100 but that causes the bottom of the side bar to stop abruptly during the scroll down the page so I have changed it for now to 250vh. I am looking for a better solution. We could fix the menu on the left but this will involve more adjustments to the styling of the main content. (Lisa) */
 
   @media ${mobilePortrait} {
-    height: 100vh;
-    overflow-y: auto;
     position: fixed;
     top: 0;
     left: -300px;
@@ -112,55 +99,52 @@ const StyledContainer = styled.div`
     max-width: 300px;
     transition: all 0.25s linear;
     &.show-drawer {
-    left: 0;
+      left: 0;
+    }
   }
-  
+
+  .navlinks {
+    display: flex;
+    flex-direction: column;
+    a.link {
+      color: #262626;
+      display: block;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+
+      &.active {
+        color: #bb1333;
+      }
+    }
   }
- 
 
   .user-avatar {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    
 
     img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-  }
-
-
-
-  .link {
-    color: #262626;
-    display: block;
-    font-weight: 500;
-    font-size: 1rem;
-    padding: 0.25rem 0;
-
-    &.active {
-      color: #bb1333;
     }
   }
-
   .user-profile-wrap {
     padding: 5rem 0 2rem;
-   
-
-    .ant-typography,
-    .ant-typography p {
-      margin-bottom: 0;
+    @media ${mobilePortrait} {
+      padding-top: 0;
     }
 
-    .ant-typography.heading {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #000;
+    div.ant-typography,
+    div.ant-typography p {
+      margin-bottom: 0;
+
+      &.heading {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #000;
+      }
     }
   }
-
-  
-
-  
 `;
