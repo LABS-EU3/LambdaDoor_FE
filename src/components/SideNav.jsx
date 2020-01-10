@@ -6,7 +6,13 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Typography, Spin } from 'antd';
 import styled from 'styled-components';
-import { mobilePortrait, primaryGrey } from '../styles/theme.styles';
+
+import {
+  mobilePortrait,
+  primaryGrey,
+  tabletPortrait,
+} from '../styles/theme.styles';
+
 import { editProfile } from '../state/actions/user';
 import Logo from './Logo';
 import Avatar from './Avatar';
@@ -86,32 +92,11 @@ const StyledContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 1.5rem;
+  height: 100vh;
+  overflow-y: auto;
   background: ${primaryGrey};
-  @media ${mobilePortrait} {
-    width: 60%;
-  }
-
-  .location {
-    display: flex;
-    align-items: center;
-
-    .fas {
-      margin-right: 10px;
-    }
-
-    div {
-      margin-bottom: 0;
-    }
-  }
-
-  .navlinks {
-    display: flex;
-    flex-direction: column;
-  }
 
   @media ${mobilePortrait} {
-    height: 100vh;
-    overflow-y: auto;
     position: fixed;
     top: 0;
     left: -300px;
@@ -121,6 +106,22 @@ const StyledContainer = styled.div`
     transition: all 0.25s linear;
     &.show-drawer {
       left: 0;
+    }
+  }
+
+  .navlinks {
+    display: flex;
+    flex-direction: column;
+    a.link {
+      color: #262626;
+      display: block;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+
+      &.active {
+        color: #bb1333;
+      }
     }
   }
 
@@ -134,28 +135,18 @@ const StyledContainer = styled.div`
       height: 100%;
       border-radius: 50%;
     }
-
-    .link {
-      color: #262626;
-      display: block;
-      font-weight: 500;
-      font-size: 1rem;
-      padding: 0.25rem 0;
-
-      &.active {
-        color: #bb1333;
-      }
+  }
+  .user-profile-wrap {
+    padding: 5rem 0 2rem;
+    @media ${mobilePortrait} {
+      padding-top: 0;
     }
 
-    .user-profile-wrap {
-      padding: 5rem 0 2rem;
+    div.ant-typography,
+    div.ant-typography p {
+      margin-bottom: 0;
 
-      .ant-typography,
-      .ant-typography p {
-        margin-bottom: 0;
-      }
-
-      .ant-typography.heading {
+      &.heading {
         font-size: 1.1rem;
         font-weight: 600;
         color: #000;
@@ -163,3 +154,6 @@ const StyledContainer = styled.div`
     }
   }
 `;
+
+
+
