@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Displays a snapshot for the home page 1`] = `
+<div>
+  <div
+    class="sc-bwzfXH fANWRT"
+  >
+    <div
+      class="sc-htpNat eNPuYj"
+    >
+      <div
+        class="sc-bdVaJa hECGmh"
+      >
+        <img
+          alt="Lambda School"
+          src="lambda-logo.png"
+        />
+      </div>
+      <div
+        class="sc-bxivhb dMFhYj"
+      >
+        <h1
+          class="ant-typography"
+        >
+          Lambda Door
+        </h1>
+        <div
+          class="ant-typography"
+        >
+          The one-stop portal for Lambda graduates looking for company information in the quest for a job.
+        </div>
+        <a
+          href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=154966377728.878377460261"
+        >
+          <img
+            alt="Sign in with Slack"
+            height="40"
+            src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+            srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
+            width="172"
+          />
+        </a>
+      </div>
+      <div
+        class="ant-typography"
+        style="color: white;"
+      >
+        Built by Lambda students, for Lambda students.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Displays a snapshot for the home page 2`] = `
+<DocumentFragment>
+  <div
+    class="sc-bwzfXH fANWRT"
+  >
+    <div
+      class="sc-htpNat eNPuYj"
+    >
+      <div
+        class="sc-bdVaJa hECGmh"
+      >
+        <img
+          alt="Lambda School"
+          src="lambda-logo.png"
+        />
+      </div>
+      <div
+        class="sc-bxivhb dMFhYj"
+      >
+        <h1
+          class="ant-typography"
+        >
+          Lambda Door
+        </h1>
+        <div
+          class="ant-typography"
+        >
+          The one-stop portal for Lambda graduates looking for company information in the quest for a job.
+        </div>
+        <a
+          href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=154966377728.878377460261"
+        >
+          <img
+            alt="Sign in with Slack"
+            height="40"
+            src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+            srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"
+            width="172"
+          />
+        </a>
+      </div>
+      <div
+        class="ant-typography"
+        style="color: white;"
+      >
+        Built by Lambda students, for Lambda students.
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

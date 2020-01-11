@@ -20,7 +20,7 @@ import background from '../assets/img/lambda-door-lp-vector.svg';
 const { Title, Paragraph } = Typography;
 
 // eslint-disable-next-line no-shadow
-const Home = ({ history, setAuthenticated }) => {
+export const Home = ({ history, setAuthenticated }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
