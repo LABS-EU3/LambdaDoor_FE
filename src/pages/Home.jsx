@@ -46,7 +46,7 @@ export const Home = ({ history, setAuthenticated }) => {
           </Paragraph>
 
           <a
-            href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}`}
+            href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`}
           >
             <img
               alt="Sign in with Slack"
