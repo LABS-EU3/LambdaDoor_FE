@@ -21,7 +21,7 @@ exports[`ConnectedHome renders correctly 1`] = `
           class="sc-bxivhb dMFhYj"
         >
           <h1
-            class="ant-typography"
+            class="ant-typography siteTitle"
           >
             Lambda Door
           </h1>
@@ -75,7 +75,7 @@ exports[`Home renders correctly 1`] = `
           class="sc-bxivhb dMFhYj"
         >
           <h1
-            class="ant-typography"
+            class="ant-typography siteTitle"
           >
             Lambda Door
           </h1>

@@ -38,7 +38,7 @@ export const Home = ({ history, setAuthenticated }) => {
         <Logo />
 
         <OnboardingContainer>
-          <Title>Lambda Door</Title>
+          <Title className="siteTitle">Lambda Door</Title>
 
           <Paragraph>
             The one-stop portal for Lambda graduates looking for company
