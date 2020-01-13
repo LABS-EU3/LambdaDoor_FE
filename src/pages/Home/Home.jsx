@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import decode from 'jwt-decode';
 
 import { connect } from 'react-redux';
-import { loginUser, setAuthenticated } from '../state/actions/auth';
+import { loginUser, setAuthenticated } from '../../state/actions/auth';
 
 import {
   tabletPortrait,
@@ -13,9 +13,9 @@ import {
   mobileLandscape,
   mobilePortrait,
   FlexFunc,
-} from '../styles/theme.styles';
-import Logo from '../components/Logo';
-import background from '../assets/img/lambda-door-lp-vector.svg';
+} from '../../styles/theme.styles';
+import Logo from '../../components/Logo';
+import background from '../../assets/img/lambda-door-lp-vector.svg';
 
 const { Title, Paragraph } = Typography;
 
@@ -38,7 +38,7 @@ export const Home = ({ history, setAuthenticated }) => {
         <Logo />
 
         <OnboardingContainer>
-          <Title>Lambda Door</Title>
+          <Title className="siteTitle">Lambda Door</Title>
 
           <Paragraph>
             The one-stop portal for Lambda graduates looking for company
