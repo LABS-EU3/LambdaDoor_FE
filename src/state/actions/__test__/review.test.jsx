@@ -4,14 +4,12 @@ import configureStore from 'redux-mock-store';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import thunk from 'redux-thunk';
-import * as types from '../types/index';
-// import auth from './auth';
+import * as types from '../../types/index';
 import {
   getCompanyReviews,
   getSalaryReviews,
   getInterviewReviews,
-} from './reviews';
-// import users from './user';
+} from '../reviews';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -78,14 +76,14 @@ describe('Action/types company review testing', () => {
 });
 
 describe('Action/types salary review testing', () => {
-  it('should execute get review data data', async () => {
+  it('should execute get salary review data', async () => {
     const store = mockStore({});
     const actions = store.getActions();
     await store.dispatch(getSalaryReviews());
     expect(actions[0]).toEqual({ type: types.GET_SALARY_REVIEWS });
   });
 
-  it('should execute fetch review data with success', async () => {
+  it('should execute fetch salary review data with success', async () => {
     mock.onGet('/').reply(200, salaryReview);
     const expectedActions = {
       type: types.GET_SALARY_REVIEWS_SUCCESS,
@@ -118,14 +116,14 @@ describe('Action/types salary review testing', () => {
 });
 
 describe('Action/types interview review testing', () => {
-  it('should execute get review data data', async () => {
+  it('should execute get interview review data data', async () => {
     const store = mockStore({});
     const actions = store.getActions();
     await store.dispatch(getInterviewReviews());
     expect(actions[0]).toEqual({ type: types.GET_INTERVIEW_REVIEWS });
   });
 
-  it('should execute fetch review data with success', async () => {
+  it('should execute fetch interview review data with success', async () => {
     mock.onGet('/').reply(200, interviewReview);
     const expectedActions = {
       type: types.GET_INTERVIEW_REVIEWS_SUCCESS,
@@ -138,8 +136,8 @@ describe('Action/types interview review testing', () => {
   });
 
   it('should execute fetch Error data', async () => {
-    const code3 = 403;
-    mock.onGet('/').reply(code3);
+    const code3 = 401;
+    mock.onGet('/').reply(401);
     const expectedAction = {
       type: types.GET_INTERVIEW_REVIEWS_FAILURE,
       payload: `Request failed with status code ${code3}`,
