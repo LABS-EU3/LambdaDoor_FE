@@ -3,9 +3,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../../pages/Home';
 import UserDashboard from '../../pages/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
-import ReviewDetails from '../ReviewDetails'
+import ReviewDetails from '../ReviewDetails';
 import AddReview from '../AddReview';
-
+import ReviewList from '../ReviewList';
 // eslint-disable-next-line react/prop-types
 const AppRouter = () => {
   return (
@@ -14,9 +14,9 @@ const AppRouter = () => {
         <Route exact path="/" component={Home} />
         <DashboardLayout path="/dashboard" component={UserDashboard} />
         <DashboardLayout path="/companies" component={UserDashboard} />
-        <DashboardLayout path="/reviews" exact component={UserDashboard} />
-        <DashboardLayout path="/salaries" exact component={UserDashboard} />
-        <DashboardLayout path="/interviews" exact component={UserDashboard} />
+        <DashboardLayout path="/reviews" exact component={ReviewList} />
+        <DashboardLayout path="/salaries" exact component={ReviewList} />
+        <DashboardLayout path="/interviews" exact component={ReviewList} />
         <DashboardLayout path="/interviews/:id" component={ReviewDetails} />
         <DashboardLayout path="/salaries/:id" component={ReviewDetails} />
         <DashboardLayout path="/reviews/:id" component={ReviewDetails} />

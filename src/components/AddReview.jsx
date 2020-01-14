@@ -1,9 +1,10 @@
 import React from 'react';
+import CompanyReviewForm from './CompanyReviewForm';
 
 const AddReview = () => {
   return (
     <div>
-      <h1>Add A Review</h1>
+      <CompanyReviewForm />
     </div>
   );
 };
