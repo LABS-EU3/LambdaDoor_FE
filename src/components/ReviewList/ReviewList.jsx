@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import ReviewCard from './ReviewCard';
-import { interviewReviews } from '../utils/data';
+import ReviewCard from '../ReviewCard/ReviewCard';
+import { interviewReviews } from '../../utils/data';
 
 const StyledDiv = styled.div`
   display: flex;

@@ -1,12 +1,9 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Card, Rate } from 'antd';
 import styled from 'styled-components';
-import { mobilePortrait } from '../styles/theme.styles';
-import ReviewDetails from './ReviewDetails';
-import DashboardLayout from '../components/Layout/DashboardLayout';
+import { mobilePortrait } from '../../styles/theme.styles';
 
 const StyledDiv = styled.div`
   margin: 10px;
@@ -29,7 +26,7 @@ const StyledCardDiv = styled.div`
 `;
 
 export default function ReviewCard(props) {
-  const { text, name, id } = props;
+  const { text, name } = props;
 
   return (
     <StyledDiv>

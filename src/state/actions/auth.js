@@ -19,6 +19,22 @@ export const setAuthenticated = id => async dispatch => {
     type: types.LOG_IN_USER_SUCCESS,
     payload: data,
   });
+
+  dispatch({
+    type: types.GET_INTERESTS,
+  });
+
+  const { data: interests } = await axios.get(
+    `${process.env.REACT_APP_BACKEND_URL}/interests/user/${id}`,
+    {
+      withCredentials: true,
+    }
+  );
+  console.log(interests);
+  dispatch({
+    type: types.GET_INTERESTS_SUCCESS,
+    payload: interests,
+  });
 };
 
 export const loginUser = (
@@ -54,7 +70,7 @@ export const loginUser = (
   }
 };
 
-export const logoutUser = id => async (dispatch, getState) => {
+export const logoutUser = () => async (dispatch, getState) => {
   try {
     await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/users/${

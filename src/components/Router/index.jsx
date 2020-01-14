@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from '../../pages/Home';
-import UserDashboard from '../../pages/UserDashboard';
+import Home from '../../pages/Home/Home';
+import UserDashboard from '../../pages/UserDashboard/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 import ReviewDetails from '../ReviewDetails'
 import AddReview from '../AddReview';

@@ -7,17 +7,14 @@ import { NavLink } from 'react-router-dom';
 import { Typography, Spin, Button } from 'antd';
 import styled from 'styled-components';
 
-import {
-  mobilePortrait,
-  primaryGrey,
-  tabletPortrait,
-} from '../styles/theme.styles';
+import { mobilePortrait, primaryGrey } from '../styles/theme.styles';
 
 import { editProfile } from '../state/actions/user';
 import Logo from './Logo';
 import Avatar from './Avatar';
 import openNotification from '../utils/openNotification';
 import { getLocation } from '../utils/getLocation';
+import Interests from './Interests';
 
 const { Paragraph } = Typography;
 
@@ -70,6 +67,9 @@ const SideNav = ({ visible, user, editProfile, isLoading }) => {
                 />
               </div>
             )}
+            <div className="interests">
+              <Interests />
+            </div>
           </div>
           <nav className="navlinks">
             <NavLink
@@ -115,6 +115,7 @@ const StyledContainer = styled.div`
   .location {
     display: flex;
     align-items: center;
+    margin-top: 10px;
 
     .fas {
       margin-right: 10px;
@@ -189,7 +190,9 @@ const StyledContainer = styled.div`
       }
     }
   }
+
+  .interests {
+    margin-top: 20px;
+    width: 80%;
+  }
 `;
-
-
-
