@@ -3,6 +3,7 @@ import { Rate, Switch, Icon } from 'antd';
 import styled from 'styled-components';
 
 const StyledReview = styled.div`
+  width: 60%;
   .title-div {
     display: flex;
     justify-content: space-between;
