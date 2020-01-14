@@ -2,8 +2,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Card, Rate } from 'antd';
-import { mobilePortrait } from '../styles/theme.styles';
 import styled from 'styled-components';
+import { mobilePortrait } from '../../styles/theme.styles';
 
 const StyledDiv = styled.div`
   margin: 10px;
@@ -27,7 +27,7 @@ const StyledCardDiv = styled.div`
 
 export default function ReviewCard(props) {
   const { text, name } = props;
-  
+
   return (
     <StyledDiv>
       {/* <StyledCardDiv> */}
