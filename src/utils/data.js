@@ -190,3 +190,15 @@ export const interviewReviews = [
       'I was invited to a very informal chat in the first place and shown around the office. Two weeks later I got a technical interview and I met some more people from the office. The interview lasted for an hour and had both easy and difficult questions. Two days later I got a phone call saying that I had got the job.',
   },
 ];
+
+export const allInterests = [
+  'Software Engineer',
+  'Front End',
+  'Back End',
+  'Full Stack',
+  'Data Science',
+  'Machine Learning',
+  'User Experience',
+  'Mobile Development',
+  'Product Manager',
+];
