@@ -40,11 +40,11 @@ describe('Action/types update testing', () => {
     expect(actions[0]).toEqual({ type: types.EDIT_PROFILE_PICTURE });
   });
 
-  it('Displays a snapshot for user testing', () => {
-    const { asFragment } = wrapper(<editProfile />);
-    expect(wrapper(<editProfile />).container).toMatchSnapshot();
-    expect(asFragment()).toMatchSnapshot();
-  });
+  // it('Displays a snapshot for user testing', () => {
+  //   const { asFragment } = wrapper(<editProfile />);
+  //   expect(wrapper(<editProfile />).container).toMatchSnapshot();
+  //   expect(asFragment()).toMatchSnapshot();
+  // });
 
   // it('should execute fetch user data with success', async () => {
   //   const URL = `${backend}/${backend.id}`;
@@ -70,7 +70,6 @@ describe('Action/types update testing', () => {
     const store = mockStore({});
     const actions = store.getActions();
     await store.dispatch(editProfile());
-    console.log(URL);
     expect(actions[1]).toEqual(expectedAction);
   });
 });

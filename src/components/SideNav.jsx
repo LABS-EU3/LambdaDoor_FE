@@ -83,7 +83,7 @@ const SideNav = ({ visible, user, editProfile, isLoading }) => {
             <NavLink to="/manage-reviews" className="link">
               Manage Reviews
             </NavLink>
-            <NavLink to="/leave-review" className="link">
+            <NavLink to="/add-review" className="link">
               Leave a Review
             </NavLink>
           </nav>

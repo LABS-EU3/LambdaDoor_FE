@@ -67,12 +67,11 @@ describe('Action/types company review testing', () => {
     await store.dispatch(getCompanyReviews());
     expect(actions[1]).toEqual(expectedAction);
   });
-
-  it('Displays a snapshot for company review', () => {
-    const { asFragment } = wrapper(<getCompanyReviews />);
-    expect(wrapper(<getCompanyReviews />).container).toMatchSnapshot();
-    expect(asFragment()).toMatchSnapshot();
-  });
+//   it('Displays a snapshot for company review', () => {
+//     const { asFragment } = wrapper(<getCompanyReviews />);
+//     expect(wrapper(<getCompanyReviews />).container).toMatchSnapshot();
+//     expect(asFragment()).toMatchSnapshot();
+//   });
 });
 
 describe('Action/types salary review testing', () => {
@@ -108,12 +107,12 @@ describe('Action/types salary review testing', () => {
     expect(actions[1]).toEqual(expectedAction);
   });
 
-  it('Displays a snapshot fo the home page', () => {
-    const { asFragment } = wrapper(<getSalaryReviews />);
-    expect(wrapper(<getSalaryReviews />).container).toMatchSnapshot();
-    expect(asFragment()).toMatchSnapshot();
-  });
-});
+  // it('Displays a snapshot fo the home page', () => {
+  //   const { asFragment } = wrapper(<getSalaryReviews />);
+  //   expect(wrapper(<getSalaryReviews />).container).toMatchSnapshot();
+  //   expect(asFragment()).toMatchSnapshot();
+  // });
+ });
 
 describe('Action/types interview review testing', () => {
   it('should execute get interview review data data', async () => {
@@ -148,9 +147,9 @@ describe('Action/types interview review testing', () => {
     expect(actions[1]).toEqual(expectedAction);
   });
 
-  it('Displays a snapshot fo the home page', () => {
-    const { asFragment } = wrapper(<getInterviewReviews />);
-    expect(wrapper(<getInterviewReviews />).container).toMatchSnapshot();
-    expect(asFragment()).toMatchSnapshot();
-  });
+  // it('Displays a snapshot fo the home page', () => {
+  //   const { asFragment } = wrapper(<getInterviewReviews />);
+  //   expect(wrapper(<getInterviewReviews />).container).toMatchSnapshot();
+  //   expect(asFragment()).toMatchSnapshot();
+  // });
 });
