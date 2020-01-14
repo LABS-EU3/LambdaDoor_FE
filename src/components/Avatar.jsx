@@ -4,16 +4,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import {
-  Upload,
-  Icon,
-  Tooltip,
-  Button,
-  message,
-  Spin,
-} from 'antd';
+import { Upload, Icon, Tooltip, Button, message, Spin } from 'antd';
 import imageUpload from '../utils/ImageUpload';
-import { EditProfile } from '../state/actions/user';
+import { editProfile } from '../state/actions/user';
 import openNotification from '../utils/openNotification';
 
 const getBase64 = (img, callback) => {
@@ -101,7 +94,7 @@ const mapStateToProps = state => ({
   id: state.authState.credentials.id,
 });
 
-export default connect(mapStateToProps, { EditProfile })(Avatar);
+export default connect(mapStateToProps, { editProfile })(Avatar);
 
 const StyledContainer = styled.div`
   position: relative;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as types from '../types';
 
-export const GetCompanyReviews = () => async dispatch => {
+export const getCompanyReviews = () => async dispatch => {
   dispatch({
     type: types.GET_COMPANY_REVIEWS,
   });
@@ -20,7 +20,7 @@ export const GetCompanyReviews = () => async dispatch => {
   }
 };
 
-export const GetSalaryReviews = () => async dispatch => {
+export const getSalaryReviews = () => async dispatch => {
   dispatch({
     type: types.GET_SALARY_REVIEWS,
   });
@@ -39,7 +39,7 @@ export const GetSalaryReviews = () => async dispatch => {
   }
 };
 
-export const GetInterviewReviews = () => async dispatch => {
+export const getInterviewReviews = () => async dispatch => {
   dispatch({
     type: types.GET_INTERVIEW_REVIEWS,
   });

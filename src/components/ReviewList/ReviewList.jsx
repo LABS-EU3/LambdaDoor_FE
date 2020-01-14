@@ -15,7 +15,7 @@ const ReviewList = () => {
       {interviewReviews.map(review => (
         // eslint-disable-next-line react/no-array-index-key
         <ReviewCard
-          key={review.id}
+          key={`${review.id}${review.user_id}`}
           text={review.text}
           name={review.company_name}
           id={review.id}

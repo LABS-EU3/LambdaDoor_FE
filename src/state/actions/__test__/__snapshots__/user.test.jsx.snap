@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Action/types update testing Displays a snapshot for user testing 1`] = `<div />`;
-
-exports[`Action/types update testing Displays a snapshot for user testing 2`] = `<DocumentFragment />`;
