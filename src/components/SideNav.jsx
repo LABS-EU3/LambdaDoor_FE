@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Typography, Spin, Button } from 'antd';
+import { Typography, Spin, Button, Icon } from 'antd';
 import styled from 'styled-components';
 
 import { mobilePortrait, primaryGrey } from '../styles/theme.styles';
@@ -15,6 +15,7 @@ import Avatar from './Avatar';
 import openNotification from '../utils/openNotification';
 import { getLocation } from '../utils/getLocation';
 import Interests from './Interests';
+import { LogoutUser } from '../state/actions/auth';
 
 const { Paragraph } = Typography;
 
@@ -25,7 +26,7 @@ const StyledSpin = styled.div`
   align-items: center;
 `;
 
-const SideNav = ({ visible, user, EditProfile, isLoading }) => {
+const SideNav = ({ visible, user, EditProfile, isLoading, LogoutUser }) => {
   const handleChange = async fullname => {
     await EditProfile({ full_name: fullname }, user.id);
     openNotification('Full name updated');
@@ -86,6 +87,10 @@ const SideNav = ({ visible, user, EditProfile, isLoading }) => {
             <NavLink to="/add-review" className="link">
               Leave a Review
             </NavLink>
+            <Button type="link" onClick={LogoutUser}>
+              Sign Out
+              <Icon type="right" />
+            </Button>
           </nav>
         </>
       )}
@@ -98,7 +103,7 @@ const mapStateToProps = state => ({
   isLoading: state.authState.isLoading,
 });
 
-export default connect(mapStateToProps, { EditProfile })(SideNav);
+export default connect(mapStateToProps, { EditProfile, LogoutUser })(SideNav);
 
 const StyledContainer = styled.div`
   max-width: 250px;
@@ -108,6 +113,7 @@ const StyledContainer = styled.div`
   height: 100vh;
   overflow-y: auto;
   background: ${primaryGrey};
+
   @media ${mobilePortrait} {
     width: 60%;
   }
@@ -158,6 +164,18 @@ const StyledContainer = styled.div`
 
       &.active {
         color: #bb1333;
+      }
+    }
+    .ant-btn-link {
+      color: #262626;
+      padding: 0.25rem 0;
+      display: block;
+      text-align: left;
+      visibility: hidden;
+      font-weight: 500;
+      font-size: 1rem;
+      @media ${mobilePortrait} {
+        visibility: visible;
       }
     }
   }
