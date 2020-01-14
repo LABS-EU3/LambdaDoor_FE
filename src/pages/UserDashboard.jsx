@@ -9,6 +9,9 @@ import { loginUser, setAuthenticated } from '../state/actions/auth';
 import ReviewList from '../components/ReviewList';
 import { editProfile } from '../state/actions/user';
 import { getLocation } from '../utils/getLocation';
+import MyReviewList from '../components/MyReviewList';
+import DetailedReviewCard from '../components/DetailedReviewCard';
+
 
 const StyledH1 = styled.h1`
   font-family: Roboto;
@@ -71,7 +74,8 @@ const UserDashboard = ({
   return (
     <div>
       <StyledH1>Latest Reviews</StyledH1>
-      <ReviewList />
+      <DetailedReviewCard />
+      {/* <MyReviewList /> */}
     </div>
   );
 };
