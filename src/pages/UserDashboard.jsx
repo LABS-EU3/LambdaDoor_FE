@@ -6,7 +6,8 @@ import decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { loginUser, setAuthenticated } from '../state/actions/auth';
-import ReviewList from '../components/ReviewList';
+// import ReviewList from '../components/ReviewList';
+import JobTitleVisualization from '../components/JobTitleVisualization';
 import { editProfile } from '../state/actions/user';
 import { getLocation } from '../utils/getLocation';
 
@@ -71,7 +72,7 @@ const UserDashboard = ({
   return (
     <div>
       <StyledH1>Latest Reviews</StyledH1>
-      <ReviewList />
+      <JobTitleVisualization />
     </div>
   );
 };

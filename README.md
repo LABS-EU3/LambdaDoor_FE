@@ -74,6 +74,42 @@ An environment virriable was used forthe developement and deployment file, thus 
 
 ===============================================================================
 
+## Repo structure
+
+Sometimes it's helpful to know what all these different files are for…
+
+/
+├─ src/
+│  ├─ assets/        # Assets
+│  │  ├─ img/     # Raster images (used in component examples)
+│  │
+│  ├─ components/    # Components
+│  │  ├─ Layouts/    # …that govern macro layout
+│  │  ├─ Router/     # …that style undecorated markup
+│  │  ├─ templates/  # …that combine components to render page types
+│  │  └─ utilities/  # …that have a single purpose/role
+│  │
+│  ├─ docs/          # Documentation
+│  │  ├─ _partials/  # Partials for rendering documentation
+│  │  └─ …           # Documentation files
+│  │
+│  └─ tokens/        # Design tokens
+│
+├─ tmp/              # Files required for dynamic builds (ignored by Git)
+├─ www/              # Public build (ignored by Git)
+│
+├─ .editorconfig     # Code style definitions
+├─ .gitignore        # List of files and folders not tracked by Git
+├─ .eslintrc         # Linting preferences for JavasScript
+├─ fractal.js        # Configuration for Fractal
+├─ gulpfile.js       # Configuration for Gulp tasks
+├─ LICENSE           # License information for this project
+├─ package.json      # Project manifest
+└─ README.md         # This file
+```
+
+===============================================================================
+
 ## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
