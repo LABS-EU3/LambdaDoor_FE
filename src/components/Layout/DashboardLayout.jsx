@@ -8,12 +8,11 @@ import { Route } from 'react-router-dom';
 import { Button, Icon } from 'antd';
 import { connect } from 'react-redux';
 import SideNav from '../SideNav';
-import SearchForm from '../Search';
+import SearchForm from '../Search/Search';
 import {
   primaryGrey,
   textGrey,
   mobilePortrait,
-
   tabletPortrait,
 } from '../../styles/theme.styles';
 
@@ -22,7 +21,6 @@ import { logoutUser } from '../../state/actions/auth';
 import logo from '../../assets/img/lambda-logo.png';
 
 const DashboardLayout = ({ component: Component, logoutUser, ...rest }) => {
-
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
