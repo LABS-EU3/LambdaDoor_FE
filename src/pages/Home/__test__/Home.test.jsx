@@ -75,7 +75,7 @@ describe('ConnectedHome', () => {
   });
   // it('decodes the token of a previously authenticated user and passes them to the dashboard', async () => {
   //   if (token) {
-  //     await store.dispatch(auth.setAuthenticated(mockLoginData));
+  //     await store.dispatch(auth.SetAuthenticated(mockLoginData));
   //     expect(state.authState.isLoggedIn).toEqual(true);
   //   }
   // });

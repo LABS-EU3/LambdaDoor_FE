@@ -6,9 +6,9 @@ import MockAdapter from 'axios-mock-adapter';
 import thunk from 'redux-thunk';
 import * as types from '../../types/index';
 import {
-  getCompanyReviews,
-  getSalaryReviews,
-  getInterviewReviews,
+  GetCompanyReviews,
+  GetSalaryReviews,
+  GetInterviewReviews,
 } from '../reviews';
 
 const middlewares = [thunk];
@@ -39,7 +39,7 @@ describe('Action/types company review testing', () => {
     const store = mockStore({});
     const actions = store.getActions();
 
-    await store.dispatch(getCompanyReviews());
+    await store.dispatch(GetCompanyReviews());
     expect(actions[0]).toEqual({ type: types.GET_COMPANY_REVIEWS });
   });
 
@@ -51,7 +51,7 @@ describe('Action/types company review testing', () => {
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getCompanyReviews());
+    await store.dispatch(GetCompanyReviews());
     expect(actions[1]).toEqual(expectedActions);
   });
 
@@ -64,13 +64,13 @@ describe('Action/types company review testing', () => {
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getCompanyReviews());
+    await store.dispatch(GetCompanyReviews());
     expect(actions[1]).toEqual(expectedAction);
   });
 
   it('Displays a snapshot for company review', () => {
-    const { asFragment } = wrapper(<getCompanyReviews />);
-    expect(wrapper(<getCompanyReviews />).container).toMatchSnapshot();
+    const { asFragment } = wrapper(<GetCompanyReviews />);
+    expect(wrapper(<GetCompanyReviews />).container).toMatchSnapshot();
     expect(asFragment()).toMatchSnapshot();
   });
 });
@@ -79,7 +79,7 @@ describe('Action/types salary review testing', () => {
   it('should execute get salary review data', async () => {
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getSalaryReviews());
+    await store.dispatch(GetSalaryReviews());
     expect(actions[0]).toEqual({ type: types.GET_SALARY_REVIEWS });
   });
 
@@ -91,7 +91,7 @@ describe('Action/types salary review testing', () => {
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getSalaryReviews());
+    await store.dispatch(GetSalaryReviews());
     expect(actions[1]).toEqual(expectedActions);
   });
 
@@ -104,13 +104,13 @@ describe('Action/types salary review testing', () => {
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getSalaryReviews());
+    await store.dispatch(GetSalaryReviews());
     expect(actions[1]).toEqual(expectedAction);
   });
 
   it('Displays a snapshot fo the home page', () => {
-    const { asFragment } = wrapper(<getSalaryReviews />);
-    expect(wrapper(<getSalaryReviews />).container).toMatchSnapshot();
+    const { asFragment } = wrapper(<GetSalaryReviews />);
+    expect(wrapper(<GetSalaryReviews />).container).toMatchSnapshot();
     expect(asFragment()).toMatchSnapshot();
   });
 });
@@ -119,7 +119,7 @@ describe('Action/types interview review testing', () => {
   it('should execute get interview review data data', async () => {
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getInterviewReviews());
+    await store.dispatch(GetInterviewReviews());
     expect(actions[0]).toEqual({ type: types.GET_INTERVIEW_REVIEWS });
   });
 
@@ -131,7 +131,7 @@ describe('Action/types interview review testing', () => {
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getInterviewReviews());
+    await store.dispatch(GetInterviewReviews());
     expect(actions[1]).toEqual(expectedActions);
   });
 
@@ -144,13 +144,13 @@ describe('Action/types interview review testing', () => {
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getInterviewReviews());
+    await store.dispatch(GetInterviewReviews());
     expect(actions[1]).toEqual(expectedAction);
   });
 
   it('Displays a snapshot fo the home page', () => {
-    const { asFragment } = wrapper(<getInterviewReviews />);
-    expect(wrapper(<getInterviewReviews />).container).toMatchSnapshot();
+    const { asFragment } = wrapper(<GetInterviewReviews />);
+    expect(wrapper(<GetInterviewReviews />).container).toMatchSnapshot();
     expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -1,12 +1,12 @@
 import {
-  getCompanyReviews,
-  getSalaryReviews,
-  getInterviewReviews,
+  GetCompanyReviews,
+  GetSalaryReviews,
+  GetInterviewReviews,
 } from './reviews';
 
 // eslint-disable-next-line import/prefer-default-export
 export const actions = {
-  getCompanyReviews,
-  getSalaryReviews,
-  getInterviewReviews,
+  GetCompanyReviews,
+  GetSalaryReviews,
+  GetInterviewReviews,
 };

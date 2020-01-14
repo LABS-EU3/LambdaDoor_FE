@@ -5,7 +5,7 @@ import * as rtl from '@testing-library/react';
 // import MockAdapter from 'axios-mock-adapter';
 // import thunk from 'redux-thunk';
 // import * as types from '../../types/index';
-import { setAuthenticated, loginUser, logoutUser } from '../auth';
+import { SetAuthenticated, LoginUser, LogoutUser } from '../auth';
 
 // const middlewares = [thunk];
 // const mockStore = configureStore(middlewares);
@@ -35,25 +35,25 @@ describe('Action/types Auth testing', () => {
   //     const store = mockStore({});
   //     const actions = store.getActions();
 
-  //     await store.dispatch(setAuthenticated());
+  //     await store.dispatch(SetAuthenticated());
   //     expect(actions[0]).toEqual({ type: types.LOG_IN_USER });
   //   });
 
   it('Displays a snapshot for Auth testing', () => {
-    const { asFragment } = wrapper(<setAuthenticated />);
-    expect(wrapper(<setAuthenticated />).container).toMatchSnapshot();
+    const { asFragment } = wrapper(<SetAuthenticated />);
+    expect(wrapper(<SetAuthenticated />).container).toMatchSnapshot();
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('Displays a snapshot for Logout testing', () => {
-    const { asFragment } = wrapper(<logoutUser />);
-    expect(wrapper(<logoutUser />).container).toMatchSnapshot();
+    const { asFragment } = wrapper(<LogoutUser />);
+    expect(wrapper(<LogoutUser />).container).toMatchSnapshot();
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('Displays a snapshot for Login testing', () => {
-    const { asFragment } = wrapper(<loginUser />);
-    expect(wrapper(<loginUser />).container).toMatchSnapshot();
+    const { asFragment } = wrapper(<LoginUser />);
+    expect(wrapper(<LoginUser />).container).toMatchSnapshot();
     expect(asFragment()).toMatchSnapshot();
   });
 });

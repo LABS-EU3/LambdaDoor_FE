@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import decode from 'jwt-decode';
 
 import { connect } from 'react-redux';
-import { loginUser, setAuthenticated } from '../../state/actions/auth';
+import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 
 import {
   tabletPortrait,
@@ -20,17 +20,17 @@ import background from '../../assets/img/lambda-door-lp-vector.svg';
 const { Title, Paragraph } = Typography;
 
 // eslint-disable-next-line no-shadow
-export const Home = ({ history, setAuthenticated }) => {
+export const Home = ({ history, SetAuthenticated }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       const { id } = decode(token);
-      setAuthenticated(id);
+      SetAuthenticated(id);
       history.push('/dashboard');
     }
-  }, [history, setAuthenticated]);
+  }, [history, SetAuthenticated]);
 
   return (
     <HomeContainer>
@@ -81,7 +81,7 @@ export const Home = ({ history, setAuthenticated }) => {
   );
 };
 
-export default connect(null, { loginUser, setAuthenticated })(Home);
+export default connect(null, { LoginUser, SetAuthenticated })(Home);
 
 const HomeContainer = styled.div`
   background-image: url(${background});
