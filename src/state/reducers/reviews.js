@@ -39,7 +39,7 @@ export const reviewsReducer = (state = initialState, action) => {
         ...state,
         reviews: {
           ...state.reviews,
-          salary: [...state.reviews.salary, action.payload],
+          interview: [...state.reviews.interview, action.payload],
         },
       };
 
