@@ -30,7 +30,6 @@ export const SetAuthenticated = id => async dispatch => {
       withCredentials: true,
     }
   );
-  console.log(interests);
   dispatch({
     type: types.GET_INTERESTS_SUCCESS,
     payload: interests,
