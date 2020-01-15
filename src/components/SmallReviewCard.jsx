@@ -1,9 +1,15 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { Button, Card, Rate } from 'antd';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 
 const StyledCard = styled(Card)`
   margin: 1.5rem !important;
+  margin-left: 0 !important;
+  width: 270px;
+  height: 200px;
+
   .card-top {
     display: flex;
     justify-content: space-between;
@@ -16,11 +22,14 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const SmallReviewCard = () => {
+const SmallReviewCard = ({
+  history,
+  review: { id, review_headline: review, ratings, name },
+}) => {
   return (
     <StyledCard>
       <div className="card-top">
-        <h3>Company Name</h3>
+        <h3>{name}</h3>
         <Button
           type="button"
           style={{
@@ -28,16 +37,21 @@ const SmallReviewCard = () => {
             color: '#3e90ff',
             border: '1px solid #3e90ff',
           }}
+          onClick={() => history.push(`/reviews/${id}`)}
         >
           View
         </Button>
       </div>
-      <p>Lorem ipsum blah de blah de blah ...</p>
+      {review.length > 30 ? (
+        <span>{review.slice(0, 30)}...</span>
+      ) : (
+        <span>{review}</span>
+      )}
       <div>
-        <Rate disabled defaultValue={4} />
+        <Rate disabled defaultValue={ratings} />
       </div>
     </StyledCard>
   );
 };
 
-export default SmallReviewCard;
+export default withRouter(SmallReviewCard);

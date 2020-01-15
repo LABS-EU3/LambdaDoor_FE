@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReviewCard from './ReviewCard';
-import { interviewReviews } from '../utils/data';
+import ReviewCard from '../ReviewCard/ReviewCard';
+import { interviewReviews } from '../../utils/data';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -12,9 +12,14 @@ const StyledDiv = styled.div`
 const ReviewList = () => {
   return (
     <StyledDiv>
-      {interviewReviews.map((review, index) => (
+      {interviewReviews.map(review => (
         // eslint-disable-next-line react/no-array-index-key
-        <ReviewCard key={index} text={review.text} name={review.company_name} />
+        <ReviewCard
+          key={`${review.id}${review.user_id}`}
+          text={review.text}
+          name={review.company_name}
+          id={review.id}
+        />
       ))}
     </StyledDiv>
   );

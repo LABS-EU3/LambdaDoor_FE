@@ -2,28 +2,26 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { loginUser, setAuthenticated } from '../state/actions/auth';
-import ReviewList from '../components/ReviewList';
-import { editProfile } from '../state/actions/user';
-import { getLocation } from '../utils/getLocation';
-import MyReviewList from '../components/MyReviewList';
-import DetailedReviewCard from '../components/DetailedReviewCard';
+import ReviewList from '../../components/ReviewList/ReviewList';
+import { editProfile } from '../../state/actions/user';
+import { getLocation } from '../../utils/getLocation';
+import MyReviewList from '../../components/MyReviewList';
 
+import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 
 const StyledH1 = styled.h1`
   font-family: Roboto;
   padding-left: 9px;
 `;
 
-const UserDashboard = ({
+export const UserDashboard = ({
   authState: {
     credentials: { id, location },
   },
-  loginUser,
-  setAuthenticated,
+  LoginUser,
+  SetAuthenticated,
   history,
 }) => {
   useEffect(() => {
@@ -34,10 +32,7 @@ const UserDashboard = ({
       if (!code && !token) {
         history.push('/');
       }
-      if (token) {
-        const { id } = decode(token);
-        await setAuthenticated(id);
-      }
+
       const getUserDetails = async () => {
         const {
           data: {
@@ -48,7 +43,7 @@ const UserDashboard = ({
           `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
         );
         window.history.replaceState(null, null, window.location.pathname);
-        await loginUser(userId, name, email, profilePicture);
+        await LoginUser(userId, name, email, profilePicture);
       };
       if (code) {
         await getUserDetails();
@@ -56,7 +51,7 @@ const UserDashboard = ({
     }
 
     start();
-  }, [history, loginUser, setAuthenticated]);
+  }, [history, LoginUser, SetAuthenticated]);
 
   useEffect(() => {
     async function start() {
@@ -74,13 +69,12 @@ const UserDashboard = ({
   return (
     <div>
       <StyledH1>Latest Reviews</StyledH1>
-      <DetailedReviewCard />
-      {/* <MyReviewList /> */}
+      <ReviewList />
     </div>
   );
 };
 export default connect(state => state, {
-  loginUser,
-  setAuthenticated,
+  LoginUser,
+  SetAuthenticated,
   editProfile,
 })(UserDashboard);

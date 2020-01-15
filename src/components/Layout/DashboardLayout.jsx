@@ -8,7 +8,7 @@ import { Route } from 'react-router-dom';
 import { Button, Icon } from 'antd';
 import { connect } from 'react-redux';
 import SideNav from '../SideNav';
-import SearchForm from '../Search';
+import SearchForm from '../Search/Search';
 import {
   primaryGrey,
   textGrey,
@@ -16,11 +16,11 @@ import {
   tabletPortrait,
 } from '../../styles/theme.styles';
 
-import { logoutUser } from '../../state/actions/auth';
+import { LogoutUser } from '../../state/actions/auth';
 
 import logo from '../../assets/img/lambda-logo.png';
 
-const DashboardLayout = ({ component: Component, logoutUser, ...rest }) => {
+const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
@@ -51,7 +51,7 @@ const DashboardLayout = ({ component: Component, logoutUser, ...rest }) => {
               <SearchForm />
 
               <div className="sign-out-btn">
-                <Button type="link" onClick={logoutUser}>
+                <Button type="link" onClick={LogoutUser}>
                   Sign Out
                   <Icon type="right" />
                 </Button>
@@ -67,7 +67,7 @@ const DashboardLayout = ({ component: Component, logoutUser, ...rest }) => {
   );
 };
 
-export default connect(null, { logoutUser })(DashboardLayout);
+export default connect(null, { LogoutUser })(DashboardLayout);
 
 const StyledContainer = styled.div`
   height: 100vh;
