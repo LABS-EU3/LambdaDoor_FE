@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 import { mobilePortrait, primaryGrey } from '../styles/theme.styles';
 
-import { EditProfile } from '../state/actions/user';
+import { editProfile } from '../state/actions/user';
 import Logo from './Logo';
 import Avatar from './Avatar';
 import openNotification from '../utils/openNotification';
@@ -26,9 +26,9 @@ const StyledSpin = styled.div`
   align-items: center;
 `;
 
-const SideNav = ({ visible, user, EditProfile, isLoading, LogoutUser }) => {
+const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
   const handleChange = async fullname => {
-    await EditProfile({ full_name: fullname }, user.id);
+    await editProfile({ full_name: fullname }, user.id);
     openNotification('Full name updated');
   };
 
@@ -103,7 +103,7 @@ const mapStateToProps = state => ({
   isLoading: state.authState.isLoading,
 });
 
-export default connect(mapStateToProps, { EditProfile, LogoutUser })(SideNav);
+export default connect(mapStateToProps, { editProfile, LogoutUser })(SideNav);
 
 const StyledContainer = styled.div`
   max-width: 250px;

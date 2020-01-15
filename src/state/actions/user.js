@@ -3,7 +3,7 @@
 import axios from 'axios';
 import * as types from '../types';
 
-export const EditProfile = (value, id) => async dispatch => {
+export const editProfile = (value, id) => async dispatch => {
   dispatch({
     type: types.EDIT_PROFILE_PICTURE,
   });
