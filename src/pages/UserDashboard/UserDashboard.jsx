@@ -31,10 +31,7 @@ export const UserDashboard = ({
       if (!code && !token) {
         history.push('/');
       }
-      if (token) {
-        const { id } = decode(token);
-        await SetAuthenticated(id);
-      }
+
       const getUserDetails = async () => {
         const {
           data: {
