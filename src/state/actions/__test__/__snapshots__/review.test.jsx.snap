@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Action/types company review testing Displays a snapshot for company review 1`] = `
+<div>
+  <getcompanyreviews />
+</div>
+`;
+
+exports[`Action/types company review testing Displays a snapshot for company review 2`] = `
+<DocumentFragment>
+  <getcompanyreviews />
+</DocumentFragment>
+`;
+
+exports[`Action/types interview review testing Displays a snapshot fo the home page 1`] = `
+<div>
+  <getinterviewreviews />
+</div>
+`;
+
+exports[`Action/types interview review testing Displays a snapshot fo the home page 2`] = `
+<DocumentFragment>
+  <getinterviewreviews />
+</DocumentFragment>
+`;
+
+exports[`Action/types salary review testing Displays a snapshot fo the home page 1`] = `
+<div>
+  <getsalaryreviews />
+</div>
+`;
+
+exports[`Action/types salary review testing Displays a snapshot fo the home page 2`] = `
+<DocumentFragment>
+  <getsalaryreviews />
+</DocumentFragment>
+`;

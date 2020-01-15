@@ -70,7 +70,7 @@ Other scripts available on the app are:
 
 ### Environment Variables
 
-An environment virriable was used forthe developement and deployment file, thus user must set up their own environment variables in an .env file.
+An environment virriable was used for the developement and deployment file, thus user must set up their own environment variables in an .env file.
 
 ===============================================================================
 
@@ -150,7 +150,7 @@ We would love to hear from you about new features which would improve this app a
 
 These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
 
-### Frontend is deployed on `https://Lambdadoor.com`
+### Frontend is deployed on https://Lambdadoor.com
 
 ===============================================================================
 
@@ -160,6 +160,6 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 See [Lambda_Door](https://github.com/LABS-EU3/lambdaDoor_backend/blob/develop/README.md) for details on the backend of our project.
 
-### Backend is hosted on Heroku `https://lambdadoor.herokuapp.com/`
+### Backend is hosted on Heroku https://lambdadoor.herokuapp.com/
 
 ===============================================================================
