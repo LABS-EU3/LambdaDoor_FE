@@ -1,8 +1,8 @@
 import React from 'react';
-import { Rate, Switch, Icon } from 'antd';
+import { Rate, Switch, Icon, Card } from 'antd';
 import styled from 'styled-components';
 
-const StyledReview = styled.div`
+const StyledReview = styled(Card)`
   width: 60%;
   .title-div {
     display: flex;
