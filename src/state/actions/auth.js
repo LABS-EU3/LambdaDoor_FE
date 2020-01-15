@@ -4,7 +4,7 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import * as types from '../types';
 
-export const setAuthenticated = id => async dispatch => {
+export const SetAuthenticated = id => async dispatch => {
   dispatch({
     type: types.LOG_IN_USER,
   });
@@ -19,9 +19,24 @@ export const setAuthenticated = id => async dispatch => {
     type: types.LOG_IN_USER_SUCCESS,
     payload: data,
   });
+
+  dispatch({
+    type: types.GET_INTERESTS,
+  });
+
+  const { data: interests } = await axios.get(
+    `${process.env.REACT_APP_BACKEND_URL}/interests/user/${id}`,
+    {
+      withCredentials: true,
+    }
+  );
+  dispatch({
+    type: types.GET_INTERESTS_SUCCESS,
+    payload: interests,
+  });
 };
 
-export const loginUser = (
+export const LoginUser = (
   userId,
   name,
   email,
@@ -45,7 +60,7 @@ export const loginUser = (
     );
     const token = jwt.sign({ id }, process.env.REACT_APP_JWT_SECRET);
     localStorage.setItem('token', token);
-    dispatch(setAuthenticated(id));
+    dispatch(SetAuthenticated(id));
   } catch (error) {
     dispatch({
       type: types.LOG_IN_USER_FAILURE,
@@ -54,7 +69,7 @@ export const loginUser = (
   }
 };
 
-export const logoutUser = id => async (dispatch, getState) => {
+export const LogoutUser = () => async (dispatch, getState) => {
   try {
     await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/users/${
