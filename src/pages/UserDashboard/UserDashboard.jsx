@@ -15,7 +15,7 @@ const StyledH1 = styled.h1`
   padding-left: 9px;
 `;
 
-const UserDashboard = ({
+export const UserDashboard = ({
   authState: {
     credentials: { id, location },
   },
@@ -31,10 +31,7 @@ const UserDashboard = ({
       if (!code && !token) {
         history.push('/');
       }
-      // if (token) {
-      //   const { id } = decode(token);
-      //   await SetAuthenticated(id);
-      // }
+
       const getUserDetails = async () => {
         const {
           data: {
