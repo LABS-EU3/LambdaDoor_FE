@@ -53,13 +53,17 @@ const Interests = ({
       ) : (
         <>
           {!inputVisible &&
-            interests.map(elem => {
-              return <Tag>{elem.interest}</Tag>;
+            interests.map((elem, id) => {
+              return <Tag key={id}>{elem.interest}</Tag>;
             })}
           {inputVisible &&
             interests.map(elem => {
               return (
-                <Tag closable onClose={e => handleRemoveInterest(e, elem.id)}>
+                <Tag
+                  key={elem.id}
+                  closable
+                  onClose={e => handleRemoveInterest(e, elem.id)}
+                >
                   {elem.interest}
                 </Tag>
               );

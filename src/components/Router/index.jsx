@@ -1,12 +1,23 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { decode } from 'jsonwebtoken';
 import Home from '../../pages/Home/Home';
 import UserDashboard from '../../pages/UserDashboard/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 import ReviewDetails from '../ReviewDetails';
 import AddReview from '../AddReview';
 import ReviewList from '../ReviewList/ReviewList';
+import store from '../../state/store';
+import { SetAuthenticated } from '../../state/actions/auth';
 
+const start = async () => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const { id } = decode(token);
+    await store.dispatch(SetAuthenticated(id));
+  }
+};
+start();
 // eslint-disable-next-line react/prop-types
 const AppRouter = () => {
   return (

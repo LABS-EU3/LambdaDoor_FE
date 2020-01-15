@@ -5,7 +5,7 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import thunk from 'redux-thunk';
 import * as types from '../../types/index';
-import { editProfile } from '../user';
+import { EditProfile } from '../user';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -36,13 +36,13 @@ describe('Action/types update testing', () => {
     const store = mockStore({});
     const actions = store.getActions();
 
-    await store.dispatch(editProfile());
+    await store.dispatch(EditProfile());
     expect(actions[0]).toEqual({ type: types.EDIT_PROFILE_PICTURE });
   });
 
   // it('Displays a snapshot for user testing', () => {
-  //   const { asFragment } = wrapper(<editProfile />);
-  //   expect(wrapper(<editProfile />).container).toMatchSnapshot();
+  //   const { asFragment } = wrapper(<EditProfile />);
+  //   expect(wrapper(<EditProfile />).container).toMatchSnapshot();
   //   expect(asFragment()).toMatchSnapshot();
   // });
 
@@ -55,7 +55,7 @@ describe('Action/types update testing', () => {
   //   };
   //   const store = mockStore({});
   //   const actions = store.getActions();
-  //   await store.dispatch(editProfile(agent));
+  //   await store.dispatch(EditProfile(agent));
   //   expect(actions[1]).toEqual(expectedActions);
   // });
 
@@ -69,7 +69,7 @@ describe('Action/types update testing', () => {
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(editProfile());
+    await store.dispatch(EditProfile());
     expect(actions[1]).toEqual(expectedAction);
   });
 });
