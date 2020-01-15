@@ -1,30 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { Input, AutoComplete, Rate, Switch } from 'antd';
 import { companies } from '../utils/data';
 
 const { TextArea } = Input;
-const { Option, OptGroup } = AutoComplete;
+const { Option } = AutoComplete;
+
+function renderOption(item) {
+  return (
+    <Option key={item.name} text={item.name}>
+      <p>{item.name}</p>
+    </Option>
+  );
+}
 
 const CompanyReview = () => {
-  const datasource = companies;
-
-  const options = datasource
-    .map(group => (
-      <OptGroup key={group.id} label={group.name}>
-        {console.log(group)}
-        {group.children.map(opt => (
-          <Option key={opt.name} value={opt.name}>
-            {opt.name}
-          </Option>
-        ))}
-      </OptGroup>
-    ))
-    .concat([
-      <Option disabled key="all" className="show-all">
-        View all results
-      </Option>,
-    ]);
   return (
     <div>
       <div>
@@ -36,8 +26,7 @@ const CompanyReview = () => {
           dropdownStyle={{ width: 300 }}
           size="large"
           style={{ width: '100%' }}
-          // dataSource={options}
-          placeholder="input here"
+          dataSource={companies.map(renderOption)}
           optionLabelProp="value"
         >
           <Input />
