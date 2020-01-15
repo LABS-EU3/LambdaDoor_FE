@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 import ReviewList from '../../components/ReviewList/ReviewList';
-import { EditProfile } from '../../state/actions/user';
+import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
 
 const StyledH1 = styled.h1`
@@ -78,5 +78,5 @@ export const UserDashboard = ({
 export default connect(state => state, {
   LoginUser,
   SetAuthenticated,
-  EditProfile,
+  editProfile,
 })(UserDashboard);
