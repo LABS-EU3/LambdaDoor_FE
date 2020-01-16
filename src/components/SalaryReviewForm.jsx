@@ -9,7 +9,7 @@ import AutoComplete from '../utils/autocomplete';
 
 const { TextArea } = Input;
 const SalaryReview = () => {
-  const selected = '';
+  const selected = 'others';
   return (
     <StyledContainer>
       <Form layout="vertical">
@@ -20,9 +20,9 @@ const SalaryReview = () => {
         )}
         {selected === 'others' && (
           <div>
-            <AutoComplete label="Company Name" dataSource={companies} />
+            <AutoComplete label="Company Name" placeholder='New company name' dataSource={companies} />
             <Form.Item label="Location">
-              <Input />
+              <Input placeholder='New Company Location'/>
             </Form.Item>
             <Form.Item label="Overall Rating">
               <Rate defaultValue={0} />
