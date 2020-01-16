@@ -10,6 +10,9 @@ module.exports = override(
     javascriptEnabled: true,
     modifyVars: {
       '@primary-color': '#BB1333',
+      '@btn-default-bg': '#40A9FF',
+      '@btn-default-color': '#fff',
+      '@switch-color': '#40A9FF',
       '@font-family': "'Nunito', sans-serif",
     },
   })
