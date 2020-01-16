@@ -20,6 +20,7 @@ import {
   updateCompanyReview,
 } from '../state/actions/reviews';
 import openNotification from '../utils/openNotification';
+import { mobilePortrait } from '../styles/theme.styles';
 
 const { Paragraph } = Typography;
 let updatedReview;
@@ -168,7 +169,7 @@ const DetailedReviewCard = ({
               okText="Yes"
               cancelText="No"
             >
-              <Button type="danger" size="medium">
+              <Button type="danger" size="default">
                 <Icon type="delete" /> Delete
               </Button>
             </Popconfirm>
@@ -177,7 +178,7 @@ const DetailedReviewCard = ({
           {isEditing ? (
             <Button
               style={{ backgroundColor: '#40A9FF', color: 'white' }}
-              size="medium"
+              size="default"
               onClick={handleEdit}
             >
               <span>
@@ -190,7 +191,7 @@ const DetailedReviewCard = ({
                 border: '1px solid #40A9FF',
                 color: '#40A9FF',
               }}
-              size="medium"
+              size="default"
               onClick={() => setEditing(!isEditing)}
             >
               <span>
@@ -201,7 +202,7 @@ const DetailedReviewCard = ({
 
           {isEditing && (
             <Button
-              size="medium"
+              size="default"
               type="danger"
               onClick={() => setEditing(false)}
             >
@@ -217,6 +218,10 @@ const DetailedReviewCard = ({
 const StyledReview = styled(Card)`
   max-width: 800px;
   padding: 50px !important;
+
+  @media ${mobilePortrait} {
+    font-size: 16px;
+  }
 
   Paragraph {
     font-size: 20px;

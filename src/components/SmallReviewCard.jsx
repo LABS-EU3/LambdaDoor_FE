@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable camelcase */
 import React from 'react';
 import { Button, Card, Rate } from 'antd';
