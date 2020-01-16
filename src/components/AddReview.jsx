@@ -2,6 +2,7 @@ import React from 'react';
 import { Tabs } from 'antd';
 import styled from 'styled-components';
 import CompanyReviewForm from './CompanyReviewForm';
+import SalaryReviewForm from './SalaryReviewForm';
 
 const { TabPane } = Tabs;
 const AddReview = () => {
@@ -13,7 +14,7 @@ const AddReview = () => {
             <CompanyReviewForm />
           </TabPane>
           <TabPane tab="Salary Review" key="2">
-            Content of Tab 2
+            <SalaryReviewForm />
           </TabPane>
           <TabPane tab="Interview Process" key="3">
             Content of Tab 3

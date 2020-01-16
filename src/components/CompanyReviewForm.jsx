@@ -1,45 +1,20 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import {
-  mobileLandscape,
-  mobilePortrait,
-  tabletLandscape,
-  tabletPortrait,
-} from '../styles/theme.styles';
-import { Input, AutoComplete, Rate, Switch, Form, Button, Icon } from 'antd';
+import { Input, Rate, Switch, Form, Button, Icon } from 'antd';
 import styled from 'styled-components';
+import { mobilePortrait } from '../styles/theme.styles';
 import { companies } from '../utils/data';
+import Select from '../utils/select';
 
 const { TextArea } = Input;
-const { Option } = AutoComplete;
-
-function renderOption(Item) {
-  return (
-    <Option key={Item.name} text={Item.name}>
-      <p>{Item.name}</p>
-    </Option>
-  );
-}
 
 const CompanyReview = () => {
   return (
     <StyledContainer>
       <Form layout="vertical">
         <Form.Item label="Company Name">
-          <AutoComplete
-            className="certain-category-search"
-            dropdownClassName="certain-category-search-dropdown"
-            dropdownMatchSelectWidth={false}
-            dropdownStyle={{ width: 300 }}
-            size="large"
-            style={{ width: '100%' }}
-            dataSource={companies.map(renderOption)}
-            optionLabelProp="value"
-          >
-            <Input />
-          </AutoComplete>
+          <Select placeholder="Name" info={companies} />
         </Form.Item>
-
         <Form.Item label="Location">
           <Input />
         </Form.Item>
@@ -47,7 +22,7 @@ const CompanyReview = () => {
           <Rate defaultValue={0} />
         </Form.Item>
         <Form.Item>
-          <Employee>
+          <EmployeeInfo>
             <div>
               <p>I am a current employee</p>
               <Switch
@@ -64,7 +39,7 @@ const CompanyReview = () => {
                 defaultChecked
               />
             </div>
-          </Employee>
+          </EmployeeInfo>
         </Form.Item>
         <Form.Item label="Review Headline">
           <Input />
@@ -87,7 +62,7 @@ const CompanyReview = () => {
 export default CompanyReview;
 const StyledContainer = styled.div`
   width: 100%;
-  margin:5% 0%;
+  margin: 5% 0%;
   .ant-btn:hover,
   .ant-btn:focus,
   .ant-btn:active,
@@ -100,13 +75,21 @@ const StyledContainer = styled.div`
   }
 `;
 
-const Employee = styled.div`
+const EmployeeInfo = styled.div`
   display: flex;
+  justify-content: space-between;
   div {
     width: 50%;
     p {
       display: inline;
       margin-right: 10%;
+    }
+  }
+  @media ${mobilePortrait} {
+    flex-direction: column;
+    div {
+      margin-bottom: 5%;
+      width: 100%;
     }
   }
 `;

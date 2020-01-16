@@ -116,6 +116,15 @@ export const companies = [
     logo: '',
     description: '',
   },
+  {
+    id: 14,
+    name: 'Others',
+    website: '',
+    location: '',
+    type: '',
+    logo: '',
+    description: '',
+  },
 ];
 export const salaryReviews = [
   {
@@ -224,4 +233,60 @@ export const allInterests = [
   'User Experience',
   'Mobile Development',
   'Product Manager',
+];
+export const jobCategories = [
+  {
+    id: 1,
+    name: 'Software Engineer',
+  },
+  {
+    id: 2,
+    name: 'Front End',
+  },
+  {
+    id: 3,
+    name: 'Back End',
+  },
+  {
+    id: 4,
+    name: 'Full Stack',
+  },
+  {
+    id: 5,
+    name: 'Data Science',
+  },
+  {
+    id: 6,
+    name: 'Machine Learning',
+  },
+  {
+    id: 7,
+    name: 'User Experience',
+  },
+];
+export const currencies = [
+  {
+    id: 1,
+    name: 'USD',
+    symbol: '$',
+    full_name: 'USD Dollars',
+  },
+  {
+    id: 2,
+    name: 'EUR',
+    symbol: '',
+    full_name: 'EUROS',
+  },
+  {
+    id: 3,
+    name: 'GBP',
+    symbol: '',
+    full_name: 'British Pounds',
+  },
+  {
+    id: 4,
+    name: 'NAIRA',
+    symbol: '',
+    full_name: 'Nigerian Naira',
+  },
 ];
