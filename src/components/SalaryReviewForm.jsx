@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import { Input, Switch, Form, Button, Icon, Rate } from 'antd';
+import { Input, Switch, Form, Button, Icon, Rate} from 'antd';
 import styled from 'styled-components';
 import { mobilePortrait } from '../styles/theme.styles';
 import { companies, currencies, jobCategories } from '../utils/data';
 import Select from '../utils/select';
+import AutoComplete from '../utils/autocomplete';
 
 const { TextArea } = Input;
 const SalaryReview = () => {
   return (
     <StyledContainer>
       <Form layout="vertical">
-        <Form.Item label="Company Name">
-          <Select placeholder="Name" info={companies} />
-        </Form.Item>
+        <AutoComplete
+          label="Company Name"
+          dataSource={companies}
+        />
+
         {
           <div>
             <Form.Item label="Location">

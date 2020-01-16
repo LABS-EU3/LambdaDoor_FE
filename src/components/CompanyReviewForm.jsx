@@ -4,7 +4,7 @@ import { Input, Rate, Switch, Form, Button, Icon } from 'antd';
 import styled from 'styled-components';
 import { mobilePortrait } from '../styles/theme.styles';
 import { companies } from '../utils/data';
-import Select from '../utils/select';
+import AutoComplete from '../utils/autocomplete';
 
 const { TextArea } = Input;
 
@@ -12,9 +12,7 @@ const CompanyReview = () => {
   return (
     <StyledContainer>
       <Form layout="vertical">
-        <Form.Item label="Company Name">
-          <Select placeholder="Name" info={companies} />
-        </Form.Item>
+        <AutoComplete label="Company Name" dataSource={companies} />
         <Form.Item label="Location">
           <Input />
         </Form.Item>
