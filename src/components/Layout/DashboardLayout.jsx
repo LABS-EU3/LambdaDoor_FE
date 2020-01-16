@@ -61,6 +61,9 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
               <Component {...props} />
             </div>
           </div>
+          <div className="footer">
+            <h2>Lambda Door</h2>
+          </div>
         </StyledContainer>
       )}
     />
@@ -138,7 +141,7 @@ const StyledContainer = styled.div`
 
   .main-content {
     padding: 1.5rem;
-    height: calc(100vh - 104px);
+    height: calc(100vh - 70px);
     overflow-y: auto;
     @media ${mobilePortrait} {
       padding-top: 100px;
@@ -148,6 +151,29 @@ const StyledContainer = styled.div`
   .sign-out-btn {
     @media ${mobilePortrait} {
       display: none;
+    }
+  }
+
+  .footer {
+    display: none;
+    background-color: ${primaryGrey};
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 70px;
+
+    h2 {
+      color: #bb1333;
+      /* color: rgba(0, 0, 0, 0.25); */
+      /* This is the grey colour we had previously. I left it here to refer to in discussion with the team because I think that the red colour is too strong and I think it draws the eye down to the footer. */
+      font-family: 'Lato';
+      font-weight: 700;
+      padding-top: 20px;
+    }
+    @media ${mobilePortrait} {
+      display: block;
     }
   }
 `;

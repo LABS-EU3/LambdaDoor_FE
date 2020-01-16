@@ -10,7 +10,7 @@ module.exports = override(
     javascriptEnabled: true,
     modifyVars: {
       '@primary-color': '#BB1333',
-      '@font-family': "'Nunito', sans-serif",
+      '@font-family': 'Nunito, sans-serif',
     },
   })
 );
