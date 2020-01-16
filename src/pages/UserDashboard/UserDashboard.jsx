@@ -67,7 +67,10 @@ export const UserDashboard = ({
 
   return (
     <div>
-      <StyledH1>Latest Reviews</StyledH1>
+      <StyledH1>Top Rated Companies</StyledH1>
+      <ReviewList />
+      <br /> <br /> <br />
+      <StyledH1>Recommended Based on Location</StyledH1>
       <ReviewList />
     </div>
   );
