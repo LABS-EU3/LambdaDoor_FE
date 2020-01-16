@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import { Input, Switch, Form, Button, Icon, Rate} from 'antd';
+import { Input, Switch, Form, Button, Icon, Rate } from 'antd';
 import styled from 'styled-components';
 import { mobilePortrait } from '../styles/theme.styles';
 import { companies, currencies, jobCategories } from '../utils/data';
@@ -9,16 +9,18 @@ import AutoComplete from '../utils/autocomplete';
 
 const { TextArea } = Input;
 const SalaryReview = () => {
+  const selected = '';
   return (
     <StyledContainer>
       <Form layout="vertical">
-        <AutoComplete
-          label="Company Name"
-          dataSource={companies}
-        />
-
-        {
+        {selected !== 'others' && (
+          <Form.Item label="Company Name">
+            <Select placeholder="Name" info={companies} />
+          </Form.Item>
+        )}
+        {selected === 'others' && (
           <div>
+            <AutoComplete label="Company Name" dataSource={companies} />
             <Form.Item label="Location">
               <Input />
             </Form.Item>
@@ -46,7 +48,7 @@ const SalaryReview = () => {
               </EmployeeInfo>
             </Form.Item>
           </div>
-        }
+        )}
         <Form.Item label="Job Title">
           <Input />
         </Form.Item>
