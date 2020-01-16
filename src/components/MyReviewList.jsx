@@ -22,11 +22,12 @@ const StyledEmpty = styled.div`
 `;
 
 const MyReviewList = ({
+  authState: { isLoggedIn },
   reviews: {
     reviews: { company },
   },
 }) => {
-  return company && company.length === 0 ? (
+  return isLoggedIn && company.length === 0 ? (
     <StyledEmpty>
       <Empty
         image="https://gw.alipayobjects.com/mdn/miniapp_social/afts/img/A*pevERLJC9v0AAAAAAAAAAABjAQAAAQ/original"

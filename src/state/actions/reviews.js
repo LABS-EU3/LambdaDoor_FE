@@ -51,6 +51,32 @@ export const deleteCompanyReview = id => async dispatch => {
   }
 };
 
+export const updateCompanyReview = update => async dispatch => {
+  dispatch({
+    type: types.UPDATE_COMPANY_REVIEWS,
+  });
+
+  try {
+    const { data } = await axios.patch(
+      `${process.env.REACT_APP_BACKEND_URL}/companyreviews/${update.id}`,
+      update,
+      {
+        withCredentials: true,
+      }
+    );
+
+    dispatch({
+      type: types.UPDATE_COMPANY_REVIEWS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.UPDATE_COMPANY_REVIEWS_FAILURE,
+      payload: error.message || 'Something went wrong.',
+    });
+  }
+};
+
 export const getSalaryReviews = () => async dispatch => {
   dispatch({
     type: types.GET_SALARY_REVIEWS,

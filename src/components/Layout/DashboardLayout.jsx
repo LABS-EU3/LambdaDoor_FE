@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -37,8 +38,6 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
             className="main-container"
             onKeyDown={toggleVisible}
             onClick={toggleVisible}
-            role="button"
-            tabIndex="0"
           >
             <div className="top-bar">
               <button

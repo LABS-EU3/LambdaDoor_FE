@@ -9,16 +9,24 @@ const StyledCard = styled(Card)`
   margin-left: 0 !important;
   width: 270px;
   height: 200px;
+  cursor: pointer;
 
   .card-top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.8rem;
     height: 60px;
-    h3 {
+    h2 {
       margin-bottom: 0;
       padding-top: 35px !important;
+      font-size: 20px;
+      font-weight: 900;
     }
+  }
+
+  .stars {
+    margin-top: 20px;
+    font-size: 10px;
   }
 `;
 
@@ -27,28 +35,17 @@ const SmallReviewCard = ({
   review: { id, review_headline: review, ratings, name },
 }) => {
   return (
-    <StyledCard>
+    <StyledCard onClick={() => history.push(`/reviews/${id}`)}>
       <div className="card-top">
-        <h3>{name}</h3>
-        <Button
-          type="button"
-          style={{
-            backgroundColor: 'white',
-            color: '#3e90ff',
-            border: '1px solid #3e90ff',
-          }}
-          onClick={() => history.push(`/reviews/${id}`)}
-        >
-          View
-        </Button>
+        <h2>{name}</h2>
       </div>
       {review.length > 30 ? (
         <span>{review.slice(0, 30)}...</span>
       ) : (
         <span>{review}</span>
       )}
-      <div>
-        <Rate disabled defaultValue={ratings} />
+      <div className="stars">
+        <Rate disabled defaultValue={ratings} size="small" />
       </div>
     </StyledCard>
   );
