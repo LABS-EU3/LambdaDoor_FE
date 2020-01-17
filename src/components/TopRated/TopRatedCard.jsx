@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -19,28 +20,27 @@ const StyledH3 = styled.h3`
 
 const StyledCardDiv = styled.div`
   width: 350px;
-  height: 280px;
+  height: 200px;
   @media ${mobilePortrait} {
     width: 98%;
-    height: 300px;
+    /* min-width: 200px; */
+    /* max-width: 200px; */
+    height: 200px;
   }
 `;
 
 export default function TopRatedCard(props) {
-  const { text, name, id } = props;
-
+  const { text, name, id, rating } = props;
   return (
-    <Link to={`interviews/${id}`}>
+    <Link to={`topratings/${id}`}>
       <StyledDiv>
-        {/* <StyledCardDiv> */}
         <Card>
           <StyledCardDiv>
             <StyledH3>Company Name: {name}</StyledH3>
             <p>{text}</p>
-            <Rate disabled defaultValue={4} />
+            <Rate disabled defaultValue={Math.floor(Number(rating))} />
           </StyledCardDiv>
         </Card>
-        {/* </StyledCardDiv> */}
       </StyledDiv>
     </Link>
   );
