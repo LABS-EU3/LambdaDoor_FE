@@ -65,6 +65,8 @@ Other scripts available on the app are:
 
 - Clone this repo
 - change directory to root folder
+- Run npm install
+- Run npm start
 
 ===============================================================================
 
