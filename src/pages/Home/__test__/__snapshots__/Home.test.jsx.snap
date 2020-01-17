@@ -4,10 +4,10 @@ exports[`ConnectedHome renders correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-bwzfXH fANWRT"
+      class="sc-bwzfXH bsUblJ"
     >
       <div
-        class="sc-htpNat eNPuYj"
+        class="sc-htpNat fqSyR"
       >
         <div
           class="sc-bdVaJa hECGmh"
@@ -18,7 +18,7 @@ exports[`ConnectedHome renders correctly 1`] = `
           />
         </div>
         <div
-          class="sc-bxivhb dMFhYj"
+          class="sc-bxivhb SUDHx"
         >
           <h1
             class="ant-typography siteTitle"
@@ -57,10 +57,10 @@ exports[`ConnectedHome renders correctly 1`] = `
 exports[`Home Displays a snapshot for the home page with it's image information 1`] = `
 <div>
   <div
-    class="sc-bwzfXH fANWRT"
+    class="sc-bwzfXH bsUblJ"
   >
     <div
-      class="sc-htpNat eNPuYj"
+      class="sc-htpNat fqSyR"
     >
       <div
         class="sc-bdVaJa hECGmh"
@@ -71,7 +71,7 @@ exports[`Home Displays a snapshot for the home page with it's image information 
         />
       </div>
       <div
-        class="sc-bxivhb dMFhYj"
+        class="sc-bxivhb SUDHx"
       >
         <h1
           class="ant-typography siteTitle"
@@ -109,10 +109,10 @@ exports[`Home Displays a snapshot for the home page with it's image information 
 exports[`Home Displays a snapshot for the home page with it's image information 2`] = `
 <DocumentFragment>
   <div
-    class="sc-bwzfXH fANWRT"
+    class="sc-bwzfXH bsUblJ"
   >
     <div
-      class="sc-htpNat eNPuYj"
+      class="sc-htpNat fqSyR"
     >
       <div
         class="sc-bdVaJa hECGmh"
@@ -123,7 +123,7 @@ exports[`Home Displays a snapshot for the home page with it's image information 
         />
       </div>
       <div
-        class="sc-bxivhb dMFhYj"
+        class="sc-bxivhb SUDHx"
       >
         <h1
           class="ant-typography siteTitle"
@@ -162,10 +162,10 @@ exports[`Home renders correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-bwzfXH fANWRT"
+      class="sc-bwzfXH bsUblJ"
     >
       <div
-        class="sc-htpNat eNPuYj"
+        class="sc-htpNat fqSyR"
       >
         <div
           class="sc-bdVaJa hECGmh"
@@ -176,7 +176,7 @@ exports[`Home renders correctly 1`] = `
           />
         </div>
         <div
-          class="sc-bxivhb dMFhYj"
+          class="sc-bxivhb SUDHx"
         >
           <h1
             class="ant-typography siteTitle"

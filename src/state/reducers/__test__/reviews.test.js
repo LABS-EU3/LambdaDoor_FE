@@ -83,7 +83,7 @@ describe('reviewsReducer', () => {
       ...initialState,
       reviews: {
         ...initialState.reviews,
-        company: [...initialState.reviews.company, companyReview],
+        company: companyReview,
       },
     });
   });

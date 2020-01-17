@@ -20,7 +20,7 @@ import {
   updateCompanyReview,
 } from '../state/actions/reviews';
 import openNotification from '../utils/openNotification';
-import { mobilePortrait } from '../styles/theme.styles';
+import { mobilePortrait, tabletPortrait } from '../styles/theme.styles';
 
 const { Paragraph } = Typography;
 let updatedReview;
@@ -74,63 +74,67 @@ const DetailedReviewCard = ({
       </Button>
       <StyledReview>
         <div className="title-div">
-          <h2>
-            Company Name
-            <span className="company">{review.name}</span>
-          </h2>
+          <h2>Company Name</h2>
+          <span className="company">{review.name}</span>
         </div>
         <div className="ratings">
           <h2>Overall Rating</h2>
-          <Rate
-            disabled={!isEditing}
-            defaultValue={review.ratings}
-            onChange={e => updateReview('ratings', e)}
-          />
+          <div className="stars">
+            <Rate
+              disabled={!isEditing}
+              defaultValue={review.ratings}
+              onChange={e => updateReview('ratings', e)}
+            />
+          </div>
         </div>
         <div className="switch-statements">
-          <h2>I am a current employee</h2>
-          {review.is_currently_employed ? (
-            <Switch
-              checkedChildren={<Icon type="check" />}
-              unCheckedChildren={<Icon type="close" />}
-              defaultChecked
-              disabled={!isEditing}
-              onChange={e => {
-                updateReview('is_currently_employed', e === true ? 1 : 0);
-              }}
-            />
-          ) : (
-            <Switch
-              checkedChildren={<Icon type="check" />}
-              unCheckedChildren={<Icon type="close" />}
-              disabled={!isEditing}
-              onChange={e => {
-                updateReview('is_currently_employed', e === true ? 1 : 0);
-              }}
-            />
-          )}
+          <div className="current-employee">
+            <h2>I am a current employee</h2>
+            {review.is_currently_employed ? (
+              <Switch
+                checkedChildren={<Icon type="check" />}
+                unCheckedChildren={<Icon type="close" />}
+                defaultChecked
+                disabled={!isEditing}
+                onChange={e => {
+                  updateReview('is_currently_employed', e === true ? 1 : 0);
+                }}
+              />
+            ) : (
+              <Switch
+                checkedChildren={<Icon type="check" />}
+                unCheckedChildren={<Icon type="close" />}
+                disabled={!isEditing}
+                onChange={e => {
+                  updateReview('is_currently_employed', e === true ? 1 : 0);
+                }}
+              />
+            )}
+          </div>
 
-          <h2>Accepting questions</h2>
-          {review.is_accepting_questions ? (
-            <Switch
-              checkedChildren={<Icon type="check" />}
-              unCheckedChildren={<Icon type="close" />}
-              defaultChecked
-              disabled={!isEditing}
-              onChange={e => {
-                updateReview('is_accepting_questions', e === true ? 1 : 0);
-              }}
-            />
-          ) : (
-            <Switch
-              checkedChildren={<Icon type="check" />}
-              unCheckedChildren={<Icon type="close" />}
-              disabled={!isEditing}
-              onChange={e => {
-                updateReview('is_accepting_questions', e === true ? 1 : 0);
-              }}
-            />
-          )}
+          <div className="accepting-questions">
+            <h2>Accepting questions</h2>
+            {review.is_accepting_questions ? (
+              <Switch
+                checkedChildren={<Icon type="check" />}
+                unCheckedChildren={<Icon type="close" />}
+                defaultChecked
+                disabled={!isEditing}
+                onChange={e => {
+                  updateReview('is_accepting_questions', e === true ? 1 : 0);
+                }}
+              />
+            ) : (
+              <Switch
+                checkedChildren={<Icon type="check" />}
+                unCheckedChildren={<Icon type="close" />}
+                disabled={!isEditing}
+                onChange={e => {
+                  updateReview('is_accepting_questions', e === true ? 1 : 0);
+                }}
+              />
+            )}
+          </div>
         </div>
         <div>
           <div className="headline-div">
@@ -147,18 +151,20 @@ const DetailedReviewCard = ({
               {review.review_headline}
             </Paragraph>
           </div>
-          <h2>Review</h2>
-          <Paragraph
-            className="editable-text"
-            editable={{
-              onChange: e => {
-                updateReview('review', e);
-              },
-              editing: isEditing,
-            }}
-          >
-            {review.review}
-          </Paragraph>
+          <div className="review-body">
+            <h2>Review</h2>
+            <Paragraph
+              className="editable-text"
+              editable={{
+                onChange: e => {
+                  updateReview('review', e);
+                },
+                editing: isEditing,
+              }}
+            >
+              {review.review}
+            </Paragraph>
+          </div>
         </div>
         <div className="buttons">
           {!isEditing && (
@@ -220,7 +226,11 @@ const StyledReview = styled(Card)`
   padding: 50px !important;
 
   @media ${mobilePortrait} {
-    font-size: 16px;
+    padding: 0 !important;
+  }
+
+  @media ${tabletPortrait} {
+    padding: 0 !important;
   }
 
   Paragraph {
@@ -228,9 +238,47 @@ const StyledReview = styled(Card)`
   }
   .title-div {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
     width: 70%;
+    margin: 0;
     margin-bottom: 20px;
+    span{
+      margin-bottom: 0
+    }
+    @media ${mobilePortrait} {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin: 0;
+      width: 100%;
+      span {
+        margin: 0;
+        font-size: 16px;
+      }
+      h2 {
+        margin: 0;
+        font-size: 18px;
+        width: 100%;
+      }
+    }
+    @media ${tabletPortrait} {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      margin: 0;
+      width: 100%;
+      span {
+        margin: 0;
+        font-size: 18px;
+      }
+      h2 {
+        /* margin: 20px; */
+        font-size: 20px;
+        width: 50%;
+      }
+    }
   }
   .company {
     font-size: 1.2rem;
@@ -242,16 +290,150 @@ const StyledReview = styled(Card)`
     width: 50%;
     justify-content: space-between;
     margin-bottom: 20px;
+    @media ${mobilePortrait} {
+      justify-content: flex-start;
+      margin: 0;
+      margin-top: 20px;
+      width: 100%;
+
+      .stars {
+        transform: scale(0.8);
+        width: 60%;
+      }
+      h2 {
+        margin: 0;
+        font-size: 18px;
+        width: 50%;
+      }
+    }
+    @media ${tabletPortrait} {
+      justify-content: flex-start;
+      margin: 0;
+      margin-top: 20px;
+      width: 100%;
+
+      h2 {
+        margin: 0;
+        font-size: 20px;
+        width: 50%;
+      }
+    }
   }
   .switch-statements {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 20px;
+    @media ${mobilePortrait} {
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    @media ${tabletPortrait} {
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    .current-employee {
+      display: flex;
+      width: 50%;
+      justify-content: space-between;
+      align-items: center;
+
+      @media ${mobilePortrait} {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        h2 {
+          margin: 0;
+          font-size: 18px;
+        }
+      }
+
+      @media ${tabletPortrait} {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+
+        h2 {
+          margin: 0;
+          font-size: 20px;
+        }
+      }
+    }
   }
+  .accepting-questions {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:20px;
+    @media ${mobilePortrait} {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 0;
+      margin-top: 20px;
+      width: 100%;
+
+
+      h2 {
+        margin: 0;
+        font-size: 18px;
+      }
+    }
+    @media ${tabletPortrait} {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      margin-left: 0;
+      width: 90%;
+
+      h2 {
+        margin: 0;
+        font-size: 20px;
+      }
+    }
+  }
+
   .headline-div {
     margin-bottom: 20px;
     display: flex;
     align-items: center;
+
+    @media ${mobilePortrait} {
+      flex-direction: column;
+      align-items: flex-start;
+      h2 {
+        margin: 0;
+        font-size: 18px;
+        width: 100%;
+      }
+      .headline {
+        margin-left: 0;
+        font-size: 16px;
+      }
+    }
+    @media ${tabletPortrait} {
+      flex-direction: column;
+      align-items: flex-start;
+
+      h2 {
+        margin: 0;
+        font-size: 20px;
+        width: 100%;
+      }
+      .headline {
+        margin-left: 0;
+        font-size: 18px;
+      }
+    }
+    h2 {
+      margin: 0;
+    }
+  }
 
     h2 {
       margin: 0;
@@ -263,11 +445,30 @@ const StyledReview = styled(Card)`
     margin-left: 42px;
     width: 50%;
   }
+  .review-body {
+    @media ${mobilePortrait} {
+      h2 {
+        font-size: 18px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
   .buttons {
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
     width: 30%;
+    @media ${mobilePortrait} {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    @media ${tabletPortrait} {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    }
   }
 
   .editable-text {
