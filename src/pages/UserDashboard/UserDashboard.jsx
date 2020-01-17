@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 import ReviewList from '../../components/ReviewList/ReviewList';
+import TopRatedList from '../../components/TopRated/TopRatedList';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
 
@@ -68,7 +69,7 @@ export const UserDashboard = ({
   return (
     <div>
       <StyledH1>Top Rated Companies</StyledH1>
-      <ReviewList />
+      <TopRatedList />
       <br /> <br /> <br />
       <StyledH1>Recommended Based on Location</StyledH1>
       <ReviewList />
