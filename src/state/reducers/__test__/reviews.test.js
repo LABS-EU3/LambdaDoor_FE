@@ -96,7 +96,7 @@ describe('reviewsReducer', () => {
       ...initialState,
       reviews: {
         ...initialState.reviews,
-        salary: [...initialState.reviews.salary, salaryReview],
+        salary: salaryReview,
       },
     });
   });
@@ -109,7 +109,7 @@ describe('reviewsReducer', () => {
       ...initialState,
       reviews: {
         ...initialState.reviews,
-        interview: [...initialState.reviews.interview, interviewReview],
+        interview: interviewReview,
       },
     });
   });
