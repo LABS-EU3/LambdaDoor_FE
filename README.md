@@ -77,7 +77,7 @@ An environment virriable was used for the developement and deployment file, thus
 ## Repo structure
 
 Sometimes it's helpful to know what all these different files are for…
-
+```
 /
 ├─ src/
 │  ├─ assets/        # Assets
