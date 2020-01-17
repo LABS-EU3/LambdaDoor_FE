@@ -1,78 +1,114 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import uuid from 'uuid';
 import { PieChart, Pie, Cell, Legend } from 'recharts';
+import { connect } from 'react-redux';
+import { Spin } from 'antd';
+import { getJobRoles } from '../state/actions/jobroles';
 
 const data = [
-  { name: 'Full Stack Developer', value: 600, id: 1 },
-  { name: 'Front End Developer', value: 300, id: 2 },
-  { name: 'Back End Developer', value: 300, id: 3 },
-  { name: 'Data Scientist', value: 200, id: 4 },
+  { interest: 'Front End', id: uuid(), count: 0 },
+  { interest: 'Back End', id: uuid(), count: 0 },
+  { interest: 'Full Stack', id: uuid(), count: 0 },
+  { interest: 'Data Science', id: uuid(), count: 0 },
+  { interest: 'Machine Learning', id: uuid(), count: 0 },
+  { interest: 'User Experience', id: uuid(), count: 0 },
+  { interest: 'Mobile Development', id: uuid(), count: 0 },
+  { interest: 'Product Manager', id: uuid(), count: 0 },
 ];
 
-const COLORS = ['#40A9FF', '#0C3C78', '#096DD9', '#ACD8FD'];
+const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
+  const [state, setState] = useState([]);
+  const [colors] = useState([]);
 
-const renderLegend = props => {
-  const { payload } = props;
+  useEffect(() => {
+    getJobRoles();
+  }, []);
 
-  return (
-    <LegendList>
-      {data.map((entry, index) => (
-        <li key={entry.id}>
-          <span
-            style={{
-              background: `${COLORS[index % COLORS.length]}`,
-            }}
-          />
-          {entry.name}
-        </li>
-      ))}
-    </LegendList>
-  );
-};
+  useEffect(() => {
+    const roles = [...jobroles];
+    data.forEach(item => {
+      const index = roles.findIndex(e => e.interest === item.interest);
 
-const JobTitleVisualization = () => {
+      if (index === -1) {
+        roles.push(item);
+      }
+    });
+    roles.forEach(() => {
+      colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
+    });
+    setState(
+      roles.map(item => {
+        return {
+          ...item,
+          count: parseInt(item.count, 10),
+        };
+      })
+    );
+  }, [jobroles]);
+
   return (
     <StyledContainer>
-      <PieChart width={300} height={300}>
-        <Pie
-          data={data}
-          cx={150}
-          cy={150}
-          innerRadius={50}
-          outerRadius={100}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell key={entry.id} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-      </PieChart>
-      <Legend verticalAlign="right" content={renderLegend} />
+      {!isFetching ? (
+        <>
+          {jobroles.length !== 0 ? (
+            <>
+              <PieChart width={300} height={300}>
+                <Pie
+                  data={state}
+                  cx={150}
+                  cy={150}
+                  innerRadius={50}
+                  outerRadius={100}
+                  fill="#8884d8"
+                  dataKey="count"
+                >
+                  {state.map((entry, index) => (
+                    <Cell key={entry.id} fill={colors[index % colors.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
+              <Legend
+                verticalAlign="right"
+                content={() => (
+                  <ul className="legends">
+                    {state.map((entry, index) => (
+                      <li key={entry.id}>
+                        <span
+                          style={{
+                            background: `${colors[index % colors.length]}`,
+                          }}
+                        />
+                        {entry.interest}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              />
+            </>
+          ) : (
+            <div className="empty-state">
+              <p>No data to display</p>
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="empty-state">
+          <Spin />
+        </div>
+      )}
     </StyledContainer>
   );
 };
 
-export default JobTitleVisualization;
+const mapStateToProps = state => ({
+  isFetching: state.jobroles.isFetching,
+  jobroles: state.jobroles.jobroles,
+});
 
-const LegendList = styled.ul`
-  li {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    color: #000;
-    margin-bottom: 0.75rem;
-    font-size: 0.85rem;
-  }
-
-  span {
-    height: 20px;
-    width: 20px;
-    margin-right: 0.5rem;
-    display: inline-block;
-  }
-`;
+export default connect(mapStateToProps, { getJobRoles })(JobTitleVisualization);
 
 const StyledContainer = styled.div`
   display: flex;
@@ -82,5 +118,32 @@ const StyledContainer = styled.div`
     position: static !important;
     top: unset !important;
     left: unset !important;
+  }
+
+  .legends {
+    li {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      color: #000;
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    span {
+      height: 20px;
+      width: 20px;
+      margin-right: 0.5rem;
+      display: inline-block;
+    }
+  }
+
+  .empty-state {
+    max-width: 400px;
+    min-height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
