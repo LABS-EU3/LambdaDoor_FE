@@ -2,13 +2,15 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
+import ReviewList from '../../components/ReviewList/ReviewList';
 import JobTitleVisualization from '../../components/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
+import MyReviewList from '../../components/MyReviews/MyReviewList';
+
+import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 
 const StyledH1 = styled.h1`
   font-family: Roboto;

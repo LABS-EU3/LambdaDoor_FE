@@ -20,12 +20,12 @@ const review = {
 
 const salaryReview = {
   message:
-    'The avaerage pay of a new junior fullStack developer is $70,000/year',
+    'The average pay of a new junior fullStack developer is $70,000/year',
 };
 
 const interviewReview = {
   message:
-    'For me, i had an online test, then a phone interview followed by a person interview at their office',
+    'For me, I had an online test, then a phone interview followed by a person interview at their office',
 };
 
 afterEach(rtl.cleanup);
@@ -44,34 +44,38 @@ describe('Action/types company review testing', () => {
   });
 
   it('should execute fetch review data with success', async () => {
-    mock.onGet('/').reply(200, review);
+    await mock
+      .onGet(`${process.env.REACT_APP_BACKEND_URL}/companyreviews/user/1`)
+      .reply(200, review);
     const expectedActions = {
       type: types.GET_COMPANY_REVIEWS_SUCCESS,
       payload: review,
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getCompanyReviews());
+    await store.dispatch(getCompanyReviews(1));
     expect(actions[1]).toEqual(expectedActions);
   });
 
   it('should execute fetch Error data', async () => {
     const code = 401;
-    mock.onGet('/').reply(code);
+    mock
+      .onGet(`${process.env.REACT_APP_BACKEND_URL}/companyreviews/user/1`)
+      .reply(code);
     const expectedAction = {
       type: types.GET_COMPANY_REVIEWS_FAILURE,
       payload: `Request failed with status code ${code}`,
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getCompanyReviews());
+    await store.dispatch(getCompanyReviews(1));
     expect(actions[1]).toEqual(expectedAction);
   });
-//   it('Displays a snapshot for company review', () => {
-//     const { asFragment } = wrapper(<getCompanyReviews />);
-//     expect(wrapper(<getCompanyReviews />).container).toMatchSnapshot();
-//     expect(asFragment()).toMatchSnapshot();
-//   });
+  //   it('Displays a snapshot for company review', () => {
+  //     const { asFragment } = wrapper(<getCompanyReviews />);
+  //     expect(wrapper(<getCompanyReviews />).container).toMatchSnapshot();
+  //     expect(asFragment()).toMatchSnapshot();
+  //   });
 });
 
 describe('Action/types salary review testing', () => {
@@ -112,7 +116,7 @@ describe('Action/types salary review testing', () => {
   //   expect(wrapper(<getSalaryReviews />).container).toMatchSnapshot();
   //   expect(asFragment()).toMatchSnapshot();
   // });
- });
+});
 
 describe('Action/types interview review testing', () => {
   it('should execute get interview review data data', async () => {
