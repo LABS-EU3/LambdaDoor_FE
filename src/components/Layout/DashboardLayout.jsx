@@ -165,8 +165,8 @@ const StyledContainer = styled.div`
     height: 70px;
 
     h2 {
-      color: #bb1333;
-      /* color: rgba(0, 0, 0, 0.25); */
+      /* color: #bb1333; */
+      color: rgba(0, 0, 0, 0.25);
       /* This is the grey colour we had previously. I left it here to refer to in discussion with the team because I think that the red colour is too strong and I think it draws the eye down to the footer. */
       font-family: 'Lato';
       font-weight: 700;
