@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Typography, Spin, Button, Icon } from 'antd';
+import { Typography, Spin, Button, Icon, Tooltip } from 'antd';
 import styled from 'styled-components';
 
 import { mobilePortrait, primaryGrey } from '../styles/theme.styles';
@@ -26,9 +26,9 @@ const StyledSpin = styled.div`
   align-items: center;
 `;
 
-const SideNav = ({ visible, user, EditProfile, isLoading, LogoutUser }) => {
+const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
   const handleChange = async fullname => {
-    await EditProfile({ full_name: fullname }, user.id);
+    await editProfile({ full_name: fullname }, user.id);
     openNotification('Full name updated');
   };
 
@@ -56,16 +56,18 @@ const SideNav = ({ visible, user, EditProfile, isLoading, LogoutUser }) => {
             <Paragraph>@{user.username}</Paragraph>
             {user.location && (
               <div className="location">
-                <i className="fas fa-map-marker-alt" />
+                <i aria-label="location" className="fas fa-map-marker-alt" />
                 <Paragraph>{user.location}</Paragraph>
-                <Button
-                  icon="edit"
-                  size="small"
-                  ghost
-                  className="edit"
-                  type="primary"
-                  onClick={updateLocation}
-                />
+                <Tooltip title="Edit">
+                  <Button
+                    icon="edit"
+                    size="small"
+                    ghost
+                    className="edit"
+                    type="primary"
+                    onClick={updateLocation}
+                  />
+                </Tooltip>
               </div>
             )}
             <div className="interests">
@@ -81,7 +83,7 @@ const SideNav = ({ visible, user, EditProfile, isLoading, LogoutUser }) => {
             >
               Home
             </NavLink>
-            <NavLink to="/manage-reviews" className="link">
+            <NavLink to="/reviews" className="link">
               Manage Reviews
             </NavLink>
             <NavLink to="/add-review" className="link">

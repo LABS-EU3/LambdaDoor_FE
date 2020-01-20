@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable no-shadow */
 import React, { useState, useEffect } from 'react';
-import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import { Input, Rate, Switch, Form, Button, Icon } from 'antd';
 import styled from 'styled-components';
