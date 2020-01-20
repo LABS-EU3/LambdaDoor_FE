@@ -1,23 +1,85 @@
-import React, { useState } from 'react';
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable no-shadow */
+import React, { useState, useEffect } from 'react';
 import { Formik } from 'formik';
+import { connect } from 'react-redux';
 import { Input, Rate, Switch, Form, Button, Icon } from 'antd';
 import styled from 'styled-components';
+import { getCompanies } from '../state/actions/companies';
+import { addCompanyReview } from '../state/actions/reviews';
 import { mobilePortrait } from '../styles/theme.styles';
-import { companies } from '../utils/data';
+
 import AutoComplete from '../utils/autocomplete';
 
 const { TextArea } = Input;
 
-const CompanyReview = () => {
+const CompanyReview = ({
+  getCompanies,
+  addCompanyReview,
+  companies: { companies },
+  authState: {
+    credentials: { id },
+  },
+}) => {
+  const [formValues, setFormValues] = useState({
+    company_id: '',
+    ratings: 0,
+    is_currently_employed: false,
+    review_headline: '',
+    review: '',
+    is_accepting_questions: false,
+  });
+
+  useEffect(() => {
+    getCompanies();
+  }, []);
+
+  const handleChange = event => {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  };
+
+  const handleCompanyName = name => {
+    const company = companies.find(element => {
+      return element.name === name;
+    });
+    console.log(company);
+    if (company) {
+      setFormValues({
+        ...formValues,
+        company_id: company.id,
+        location: company.location,
+      });
+    }
+  };
+
+  const handleComponentChange = (name, value) => {
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const { location, ...rest } = formValues;
+    addCompanyReview({ ...rest, user_id: id }, id);
+  };
+
   return (
     <StyledContainer>
       <Form layout="vertical">
-        <AutoComplete label="Company Name" dataSource={companies} />
-        <Form.Item label="Location">
-          <Input />
-        </Form.Item>
+        <AutoComplete
+          label="Company Name"
+          onChange={e => handleCompanyName(e)}
+          dataSource={companies}
+        />
+
         <Form.Item label="Overall Rating">
-          <Rate defaultValue={0} />
+          <Rate
+            defaultValue={0}
+            name="ratings"
+            onChange={value => handleComponentChange('ratings', value)}
+          />
         </Form.Item>
         <Form.Item>
           <EmployeeInfo>
@@ -27,6 +89,10 @@ const CompanyReview = () => {
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
                 defaultChecked
+                name="is_currently_employed"
+                onChange={value =>
+                  handleComponentChange('is_currently_employed', value)
+                }
               />
             </div>
             <div>
@@ -35,21 +101,27 @@ const CompanyReview = () => {
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
                 defaultChecked
+                name="is_accepting_questions"
+                onChange={value =>
+                  handleComponentChange('is_accepting_questions', value)
+                }
               />
             </div>
           </EmployeeInfo>
         </Form.Item>
         <Form.Item label="Review Headline">
-          <Input />
+          <Input name="review_headline" onChange={handleChange} />
         </Form.Item>
         <Form.Item label="Review">
           <TextArea
             rows={10}
             placeholder="Please share some of the pros and cons of working at this company"
+            name="review"
+            onChange={handleChange}
           />
         </Form.Item>
 
-        <Button type="default" htmlType="submit">
+        <Button type="default" htmlType="submit" onClick={handleSubmit}>
           Submit
         </Button>
       </Form>
@@ -57,7 +129,10 @@ const CompanyReview = () => {
   );
 };
 
-export default CompanyReview;
+export default connect(state => state, { getCompanies, addCompanyReview })(
+  CompanyReview
+);
+
 const StyledContainer = styled.div`
   width: 100%;
   margin: 5% 0%;

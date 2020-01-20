@@ -20,6 +20,28 @@ export const getCompanyReviews = () => async dispatch => {
   }
 };
 
+export const addCompanyReview = (review, id) => async dispatch => {
+  dispatch({
+    type: types.ADD_COMPANY_REVIEW,
+  });
+
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/companyreviews/${id}`,
+      review
+    );
+    dispatch({
+      type: types.ADD_COMPANY_REVIEW_SUCCESS,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.ADD_COMPANY_REVIEW_FAILURE,
+      payload: error.message || 'Something went wrong.',
+    });
+  }
+};
+
 export const getSalaryReviews = () => async dispatch => {
   dispatch({
     type: types.GET_SALARY_REVIEWS,
@@ -34,6 +56,28 @@ export const getSalaryReviews = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: types.GET_SALARY_REVIEWS_FAILURE,
+      payload: error.message || 'Something went wrong.',
+    });
+  }
+};
+
+export const addSalaryReview = (review, id) => async dispatch => {
+  dispatch({
+    type: types.ADD_SALARY_REVIEW,
+  });
+
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/${id}`,
+      review
+    );
+    dispatch({
+      type: types.ADD_SALARY_REVIEW_SUCCESS,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.ADD_SALARY_REVIEW_FAILURE,
       payload: error.message || 'Something went wrong.',
     });
   }
@@ -57,3 +101,25 @@ export const getInterviewReviews = () => async dispatch => {
     });
   }
 };
+
+// export const addInterviewReview = (review, id) => async dispatch => {
+//   dispatch({
+//     type: types.ADD_INTEVIEW_REVIEW,
+//   });
+
+//   try {
+//     const response = await axios.post(
+//       `${process.env.REACT_APP_BACKEND_URL}/${id}`,
+//       review
+//     );
+//     dispatch({
+//       type: types.ADD_INTERVIEW_REVIEW_SUCCESS,
+//       payload: response.data,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: types.ADD_INTERVIEW_REVIEW_FAILURE,
+//       payload: error.message || 'Something went wrong.',
+//     });
+//   }
+// };

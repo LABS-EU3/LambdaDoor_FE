@@ -20,9 +20,13 @@ const SalaryReview = () => {
         )}
         {selected === 'others' && (
           <div>
-            <AutoComplete label="Company Name" placeholder='New company name' dataSource={companies} />
+            <AutoComplete
+              label="Company Name"
+              placeholder="New company name"
+              dataSource={companies}
+            />
             <Form.Item label="Location">
-              <Input placeholder='New Company Location'/>
+              <Input placeholder="New Company Location" />
             </Form.Item>
             <Form.Item label="Overall Rating">
               <Rate defaultValue={0} />

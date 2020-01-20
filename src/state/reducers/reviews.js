@@ -48,6 +48,15 @@ export const reviewsReducer = (state = initialState, action) => {
     case types.GET_INTERVIEW_REVIEWS_FAILURE:
       return { ...state, isFetching: false };
 
+    case types.ADD_COMPANY_REVIEW_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          companies: [...state.reviews.companies, action.payload],
+        },
+      };
+
     default:
       return state;
   }
