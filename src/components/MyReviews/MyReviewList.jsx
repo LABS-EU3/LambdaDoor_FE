@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Card, Rate, Empty, Button } from 'antd';
 import { connect } from 'react-redux';
 import SmallReviewCard from './SmallReviewCard';
-import { interviewReviews } from '../utils/data';
+import { interviewReviews } from '../../utils/data';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -47,7 +47,6 @@ const MyReviewList = ({
   ) : (
     <StyledDiv>
       {company.map(review => (
-        // eslint-disable-next-line react/no-array-index-key
         <SmallReviewCard review={review} key={review.id} />
       ))}
     </StyledDiv>

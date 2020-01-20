@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Tabs } from 'antd';
-import MyReviewList from '../components/MyReviewList';
+import MyReviewList from '../components/MyReviews/MyReviewList';
 import { getCompanyReviews } from '../state/actions/reviews';
 
 const { TabPane } = Tabs;

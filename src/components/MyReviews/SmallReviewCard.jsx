@@ -31,7 +31,7 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const SmallReviewCard = ({
+export const SmallReviewCard = ({
   history,
   review: { id, review_headline: review, ratings, name },
 }) => {

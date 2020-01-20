@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import ReviewList from '../../components/ReviewList/ReviewList';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
-import MyReviewList from '../../components/MyReviewList';
+import MyReviewList from '../../components/MyReviews/MyReviewList';
 
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 
