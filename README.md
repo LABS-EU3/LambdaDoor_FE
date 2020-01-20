@@ -65,6 +65,8 @@ Other scripts available on the app are:
 
 - Clone this repo
 - change directory to root folder
+- Run npm install
+- Run npm start
 
 ===============================================================================
 
@@ -77,7 +79,7 @@ An environment virriable was used for the developement and deployment file, thus
 ## Repo structure
 
 Sometimes it's helpful to know what all these different files are for…
-
+```
 /
 ├─ src/
 │  ├─ assets/        # Assets
