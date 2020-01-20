@@ -7,7 +7,6 @@ import {
   Icon,
   Card,
   Button,
-  Spin,
   Skeleton,
   Popconfirm,
   Typography,
@@ -41,7 +40,7 @@ export const DetailedReviewCard = ({
 
   useEffect(() => {
     updatedReview = { ...review };
-    delete updatedReview['name'];
+    delete updatedReview.name;
   }, [review]);
 
   const handleDelete = async id => {
@@ -233,8 +232,8 @@ const StyledReview = styled(Card)`
     width: 70%;
     margin: 0;
     margin-bottom: 20px;
-    span{
-      margin-bottom: 0
+    span {
+      margin-bottom: 0;
     }
     @media ${mobilePortrait} {
       flex-direction: column;
@@ -358,7 +357,7 @@ const StyledReview = styled(Card)`
     width: 50%;
     justify-content: space-between;
     align-items: center;
-    margin-top:20px;
+    margin-top: 20px;
     @media ${mobilePortrait} {
       display: flex;
       justify-content: space-between;
@@ -366,7 +365,6 @@ const StyledReview = styled(Card)`
       margin-left: 0;
       margin-top: 20px;
       width: 100%;
-
 
       h2 {
         margin: 0;
@@ -425,10 +423,10 @@ const StyledReview = styled(Card)`
     }
   }
 
-    h2 {
-      margin: 0;
-    }
+  h2 {
+    margin: 0;
   }
+
   .headline {
     font-size: 1.1rem;
     margin: 0;
