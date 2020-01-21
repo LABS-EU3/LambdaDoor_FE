@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Input } from 'antd';
+import Script from 'react-load-script';
+
 /* global google */
 
 const LocationSearch = props => {
@@ -27,24 +28,30 @@ const LocationSearch = props => {
     console.log(place);
   };
 
-  useEffect(() => {
+  const handleLoad = () => {
     autocomplete = new google.maps.places.Autocomplete(
       autocompleteInput.current,
       { types: ['geocode'] }
     );
 
     autocomplete.addListener('place_changed', handlePlaceChanged);
-  }, []);
+  };
 
   return (
-    <input
-      ref={autocompleteInput}
-      id="autocomplete"
-      placeholder="Enter your address"
-      type="text"
-      {...props}
-      className="ant-input"
-    />
+    <>
+      <Script
+        url={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`}
+        onLoad={handleLoad}
+      />
+      <input
+        ref={autocompleteInput}
+        id="autocomplete"
+        placeholder="Enter your address"
+        type="text"
+        {...props}
+        className="ant-input"
+      />
+    </>
   );
 };
 
