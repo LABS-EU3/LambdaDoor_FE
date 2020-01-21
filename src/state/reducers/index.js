@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { reviewsReducer, reviewsError } from './reviews';
 import { authState } from './auth';
 import { interestReducer } from './interests';
+import { companiesReducer } from './companies';
 import { jobrolesReducer } from './jobroles';
 
 const rootReducer = combineReducers({
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
   reviewsError: reviewsError,
   authState: authState,
   interests: interestReducer,
+  companies: companiesReducer,
   jobroles: jobrolesReducer,
 });
 

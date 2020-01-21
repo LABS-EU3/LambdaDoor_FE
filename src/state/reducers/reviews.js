@@ -25,6 +25,15 @@ export const reviewsReducer = (state = initialState, action) => {
         },
       };
 
+    case types.ADD_COMPANY_REVIEW_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          company: [...state.reviews.company, action.payload],
+        },
+      };
+
     case types.DELETE_COMPANY_REVIEWS_SUCCESS:
       return {
         ...state,
