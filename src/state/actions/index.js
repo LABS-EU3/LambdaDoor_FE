@@ -4,6 +4,7 @@ import {
   getInterviewReviews,
 } from './reviews';
 import { getTopRatedReviews } from './topRatedReviews';
+import { getClosestCompanies } from './closestCompanies';
 
 // eslint-disable-next-line import/prefer-default-export
 export const actions = {
@@ -11,4 +12,5 @@ export const actions = {
   getSalaryReviews,
   getInterviewReviews,
   getTopRatedReviews,
+  getClosestCompanies,
 };
