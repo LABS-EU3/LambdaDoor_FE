@@ -57,8 +57,16 @@ describe('ConnectedHome', () => {
   });
   it('has the correct state on load', () => {
     expect(state).toEqual({
+      companies: {
+        companies: [],
+        isLoading: false,
+      },
       interests: {
         interests: [],
+      },
+      jobroles: {
+        isfetching: false,
+        jobroles: [],
       },
       reviews: {
         isFetching: false,

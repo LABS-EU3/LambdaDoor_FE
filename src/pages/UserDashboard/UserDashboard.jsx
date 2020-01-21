@@ -2,15 +2,19 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 import ReviewList from '../../components/ReviewList/ReviewList';
 import TopRatedList from '../../components/TopRated/TopRatedList';
 import ClosestLocationList from '../../components/UserLocationComp/ClosestLocationList';
+import JobTitleVisualization from '../../components/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
+import MyReviewList from '../../components/MyReviews/MyReviewList';
+
+import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
+import { getCompanyReviews } from '../../state/actions/reviews';
+import { getCompanies } from '../../state/actions/companies';
 
 const StyledH1 = styled.h1`
   font-family: Roboto;
@@ -23,6 +27,8 @@ export const UserDashboard = ({
   },
   LoginUser,
   SetAuthenticated,
+  getCompanyReviews,
+  getCompanies,
   history,
 }) => {
   useEffect(() => {
@@ -45,6 +51,8 @@ export const UserDashboard = ({
         );
         window.history.replaceState(null, null, window.location.pathname);
         await LoginUser(userId, name, email, profilePicture);
+        await getCompanyReviews(id);
+        await getCompanies(id);
       };
       if (code) {
         await getUserDetails();
@@ -71,6 +79,8 @@ export const UserDashboard = ({
     <div>
       <StyledH1>Top Rated Companies</StyledH1>
       <TopRatedList />
+      <StyledH1>Latest Reviews</StyledH1>
+      <JobTitleVisualization />
       <br /> <br /> <br />
       <StyledH1>Recommended Based on Location</StyledH1>
       <ClosestLocationList />
@@ -81,4 +91,6 @@ export default connect(state => state, {
   LoginUser,
   SetAuthenticated,
   editProfile,
+  getCompanyReviews,
+  getCompanies,
 })(UserDashboard);

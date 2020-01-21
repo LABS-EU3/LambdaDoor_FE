@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -23,7 +24,12 @@ import logo from '../../assets/img/lambda-logo.png';
 const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
   const [visible, setVisible] = useState(false);
 
-  const toggleVisible = () => {
+  const hideDrawer = () => {
+    setVisible(false);
+  };
+
+  const toggleDrawer = e => {
+    e.stopPropagation();
     setVisible(!visible);
   };
 
@@ -35,16 +41,14 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
           <SideNav visible={visible} />
           <div
             className="main-container"
-            onKeyDown={toggleVisible}
-            onClick={toggleVisible}
-            role="button"
-            tabIndex="0"
+            onKeyDown={toggleDrawer}
+            onClick={hideDrawer}
           >
             <div className="top-bar">
               <button
                 type="button"
                 className="mobile-logo-btn"
-                onClick={toggleVisible}
+                onClick={e => toggleDrawer(e)}
               >
                 <img src={logo} alt="Lambda logo" />
               </button>

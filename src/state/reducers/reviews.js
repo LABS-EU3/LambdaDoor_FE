@@ -21,7 +21,38 @@ export const reviewsReducer = (state = initialState, action) => {
         ...state,
         reviews: {
           ...state.reviews,
+          company: action.payload,
+        },
+      };
+
+    case types.ADD_COMPANY_REVIEW_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
           company: [...state.reviews.company, action.payload],
+        },
+      };
+
+    case types.DELETE_COMPANY_REVIEWS_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          company: state.reviews.company.filter(
+            elem => elem.id !== action.payload
+          ),
+        },
+      };
+
+    case types.UPDATE_COMPANY_REVIEWS_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          company: state.reviews.company.map(elem => {
+            return elem.id === action.payload.id ? action.payload : elem;
+          }),
         },
       };
 
@@ -30,7 +61,7 @@ export const reviewsReducer = (state = initialState, action) => {
         ...state,
         reviews: {
           ...state.reviews,
-          salary: [...state.reviews.salary, action.payload],
+          salary: action.payload,
         },
       };
 
@@ -39,7 +70,7 @@ export const reviewsReducer = (state = initialState, action) => {
         ...state,
         reviews: {
           ...state.reviews,
-          interview: [...state.reviews.interview, action.payload],
+          interview: action.payload,
         },
       };
 
