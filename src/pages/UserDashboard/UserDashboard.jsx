@@ -48,9 +48,9 @@ export const UserDashboard = ({
           `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
         );
         window.history.replaceState(null, null, window.location.pathname);
-        await LoginUser(userId, name, email, profilePicture);
-        await getCompanyReviews(id);
-        await getCompanies(id);
+        const user = await LoginUser(userId, name, email, profilePicture);
+        await getCompanyReviews(user);
+        await getCompanies();
       };
       if (code) {
         await getUserDetails();

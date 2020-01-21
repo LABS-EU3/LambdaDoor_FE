@@ -3,7 +3,8 @@ import { Formik } from 'formik';
 import { Input, Switch, Form, Button, Icon, Rate } from 'antd';
 import styled from 'styled-components';
 import { mobilePortrait } from '../styles/theme.styles';
-import { companies, currencies, jobCategories } from '../utils/data';
+import { companies, jobCategories } from '../utils/data';
+import currencies from '../utils/currencies';
 import Select from '../utils/select';
 import AutoComplete from '../utils/autocomplete';
 
@@ -25,9 +26,6 @@ const SalaryReview = () => {
               placeholder="New company name"
               dataSource={companies}
             />
-            <Form.Item label="Location">
-              <Input placeholder="New Company Location" />
-            </Form.Item>
             <Form.Item label="Overall Rating">
               <Rate defaultValue={0} />
             </Form.Item>
@@ -69,10 +67,14 @@ const SalaryReview = () => {
         <Form.Item label="Salary">
           <EmployeeInfo>
             <div>
-              <Input placeholder="Amount" />
+              <Input type="number" step="0.01" placeholder="Amount" />
             </div>
-            <div>
-              <Select placeholder="Currency" info={currencies} />
+            <div className="currency">
+              <AutoComplete
+                label="Currency"
+                placeholder="Currency"
+                dataSource={currencies}
+              />
             </div>
           </EmployeeInfo>
         </Form.Item>
@@ -124,10 +126,10 @@ const StyledContainer = styled.div`
 
 const EmployeeInfo = styled.div`
   display: flex;
-  width: 100%;
+  width: 90%;
   justify-content: space-between;
   div {
-    width: 50%;
+    /* width: 50%; */
     .ant-select-selection--single {
       width: 95%;
       margin-left: 5%;
@@ -138,6 +140,12 @@ const EmployeeInfo = styled.div`
     p {
       display: inline;
       margin-right: 10%;
+    }
+
+    .currency {
+      .ant-row ant-form-item {
+        margin-top: -20px !important;
+      }
     }
   }
   @media ${mobilePortrait} {

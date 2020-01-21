@@ -1,8 +1,8 @@
 import React from 'react';
 import { Tabs } from 'antd';
 import styled from 'styled-components';
-import CompanyReviewForm from './CompanyReviewForm';
-import SalaryReviewForm from './SalaryReviewForm';
+import CompanyReviewForm from '../components/CompanyReviewForm';
+import SalaryReviewForm from '../components/SalaryReviewForm';
 
 const { TabPane } = Tabs;
 const AddReview = () => {

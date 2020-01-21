@@ -1,17 +1,19 @@
 import React from 'react';
 import { Select, AutoComplete } from 'antd';
+import currencies from './currencies';
 
-const { Option } = AutoComplete;
+const { Option } = Select;
 
-const SelectOptions = ({ placeholder, info }) => {
+const SelectOptions = ({ placeholder }) => {
+  const options = currencies.map(opt => (
+    <Option key={opt.code} value={opt.code}>
+      {opt.name}
+    </Option>
+  ));
+
   return (
-    <Select placeholder={placeholder}>
-      {info.map(singleInfo => (
-        // eslint-disable-next-line react/jsx-one-expression-per-line
-        <Option key={singleInfo.id} value={singleInfo.id}>
-          {singleInfo.name}{' '}
-        </Option>
-      ))}
+    <Select mode="combobox" placeholder={placeholder}>
+      {options}
     </Select>
   );
 };
