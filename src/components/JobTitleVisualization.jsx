@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
@@ -9,19 +10,60 @@ import { Spin } from 'antd';
 import { getJobRoles } from '../state/actions/jobroles';
 
 const data = [
-  { interest: 'Front End', id: uuid(), count: 0 },
-  { interest: 'Back End', id: uuid(), count: 0 },
-  { interest: 'Full Stack', id: uuid(), count: 0 },
+  { interest: 'Front End', id: uuid(), count: 10 },
+  { interest: 'Back End', id: uuid(), count: 20 },
+  { interest: 'Full Stack', id: uuid(), count: 20 },
   { interest: 'Data Science', id: uuid(), count: 0 },
-  { interest: 'Machine Learning', id: uuid(), count: 0 },
+  { interest: 'Machine Learning', id: uuid(), count: 15 },
   { interest: 'User Experience', id: uuid(), count: 0 },
-  { interest: 'Mobile Development', id: uuid(), count: 0 },
+  { interest: 'Mobile Development', id: uuid(), count: 5 },
   { interest: 'Product Manager', id: uuid(), count: 0 },
 ];
 
+const RADIAN = Math.PI / 180;
+const COLOURS = [
+  '#1E5896',
+  '#ABE7DD',
+  '#368DA7',
+  '#EBEBCE',
+  '#6ABAC5',
+  '#BAD38F',
+  '#83D0BC',
+  '#0C3C78',
+  '#D2E3D0',
+];
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+}) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  if (percent === 0) {
+    return null;
+  }
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor="middle"
+      dominantBaseline="central"
+    >
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
+
 const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
   const [state, setState] = useState([]);
-  const [colors] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     getJobRoles();
@@ -36,9 +78,6 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
         roles.push(item);
       }
     });
-    roles.forEach(() => {
-      colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
-    });
     setState(
       roles.map(item => {
         return {
@@ -49,11 +88,20 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
     );
   }, [jobroles]);
 
+  useEffect(() => {
+    setTotal(
+      state.reduce((acc, obj) => {
+        acc += obj.count;
+        return acc;
+      }, 0)
+    );
+  }, [state]);
+
   return (
     <StyledContainer>
       {!isFetching ? (
         <>
-          {jobroles.length !== 0 ? (
+          {jobroles.length !== 0 && total !== 0 ? (
             <>
               <PieChart width={300} height={300}>
                 <Pie
@@ -62,11 +110,16 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
                   cy={150}
                   innerRadius={50}
                   outerRadius={100}
+                  labelLine={false}
+                  label={renderCustomizedLabel}
                   fill="#8884d8"
                   dataKey="count"
                 >
                   {state.map((entry, index) => (
-                    <Cell key={entry.id} fill={colors[index % colors.length]} />
+                    <Cell
+                      key={entry.id}
+                      fill={COLOURS[index % COLOURS.length]}
+                    />
                   ))}
                 </Pie>
               </PieChart>
@@ -78,10 +131,13 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
                       <li key={entry.id}>
                         <span
                           style={{
-                            background: `${colors[index % colors.length]}`,
+                            background: `${COLOURS[index % COLOURS.length]}`,
                           }}
                         />
-                        {entry.interest}
+                        {`${entry.interest} - ${(
+                          (entry.count / total) *
+                          100
+                        ).toFixed(0)}%`}
                       </li>
                     ))}
                   </ul>
