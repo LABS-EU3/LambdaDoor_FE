@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import reducers from '../../../state/reducers/index';
@@ -79,4 +80,28 @@ describe('SmallReviewCard', () => {
   //     expect(state.authState.isLoggedIn).toEqual(true);
   //   }
   // });
+=======
+import { render, cleanup } from '@testing-library/react';
+import { SmallReviewCard } from '../SmallReviewCard';
+
+const testReview = {
+  id: 1,
+  review_headline: 'Headline',
+  ratings: 4,
+  name: 'Company Name',
+};
+const historyMock = { push: jest.fn() };
+
+afterEach(cleanup);
+
+describe('Tests for SmallReviewCard ', () => {
+  test('renders component', () => {
+    const { getByText } = render(
+      <SmallReviewCard review={testReview} history={historyMock} />
+    );
+
+    expect(getByText('Headline')).toBeTruthy();
+    expect(getByText('Company Name')).toBeTruthy();
+  });
+>>>>>>> 04d95cfcf58043664a06a2f8e3a6cc924d926bc8
 });

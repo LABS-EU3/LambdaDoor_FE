@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { interviewReviews } from '../utils/data';
-import DetailedReviewCard from './DetailedReviewCard';
+import DetailedReviewCard from './MyReviews/DetailedReviewCard';
 
 const ReviewDetails = () => {
   const reviewId = useParams().id;

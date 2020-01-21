@@ -7,7 +7,6 @@ import {
   Icon,
   Card,
   Button,
-  Spin,
   Skeleton,
   Popconfirm,
   Typography,
@@ -25,7 +24,7 @@ import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
 const { Paragraph } = Typography;
 let updatedReview;
 
-const DetailedReviewCard = ({
+export const DetailedReviewCard = ({
   history,
   reviews: {
     reviews: { company },
@@ -34,12 +33,14 @@ const DetailedReviewCard = ({
   updateCompanyReview,
 }) => {
   const [isEditing, setEditing] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const reviewId = useParams().id;
   const review = company.find(elem => elem.id === Number(reviewId));
 
   useEffect(() => {
     updatedReview = { ...review };
-    delete updatedReview['name'];
+    delete updatedReview.name;
   }, [review]);
 
   const handleDelete = async id => {
@@ -53,7 +54,9 @@ const DetailedReviewCard = ({
   };
 
   const handleEdit = async () => {
+    setLoading(true);
     await updateCompanyReview(updatedReview);
+    setLoading(false);
     setEditing(false);
   };
 
@@ -79,7 +82,7 @@ const DetailedReviewCard = ({
         </div>
         <div className="ratings">
           <h2>Overall Rating</h2>
-          <div className="stars">
+          <div className="stars" data-testid={review.ratings}>
             <Rate
               disabled={!isEditing}
               defaultValue={review.ratings}
@@ -88,52 +91,36 @@ const DetailedReviewCard = ({
           </div>
         </div>
         <div className="switch-statements">
-          <div className="current-employee">
+          <div
+            className="current-employee"
+            data-testid={`employee - ${review.is_currently_employed}`}
+          >
             <h2>I am a current employee</h2>
-            {review.is_currently_employed ? (
-              <Switch
-                checkedChildren={<Icon type="check" />}
-                unCheckedChildren={<Icon type="close" />}
-                defaultChecked
-                disabled={!isEditing}
-                onChange={e => {
-                  updateReview('is_currently_employed', e === true ? 1 : 0);
-                }}
-              />
-            ) : (
-              <Switch
-                checkedChildren={<Icon type="check" />}
-                unCheckedChildren={<Icon type="close" />}
-                disabled={!isEditing}
-                onChange={e => {
-                  updateReview('is_currently_employed', e === true ? 1 : 0);
-                }}
-              />
-            )}
+            <Switch
+              checkedChildren={<Icon type="check" />}
+              unCheckedChildren={<Icon type="close" />}
+              defaultChecked={review.is_currently_employed}
+              disabled={!isEditing}
+              onChange={e => {
+                updateReview('is_currently_employed', e === true ? 1 : 0);
+              }}
+            />
           </div>
 
-          <div className="accepting-questions">
+          <div
+            className="accepting-questions"
+            data-testid={`questions - ${review.is_accepting_questions}`}
+          >
             <h2>Accepting questions</h2>
-            {review.is_accepting_questions ? (
-              <Switch
-                checkedChildren={<Icon type="check" />}
-                unCheckedChildren={<Icon type="close" />}
-                defaultChecked
-                disabled={!isEditing}
-                onChange={e => {
-                  updateReview('is_accepting_questions', e === true ? 1 : 0);
-                }}
-              />
-            ) : (
-              <Switch
-                checkedChildren={<Icon type="check" />}
-                unCheckedChildren={<Icon type="close" />}
-                disabled={!isEditing}
-                onChange={e => {
-                  updateReview('is_accepting_questions', e === true ? 1 : 0);
-                }}
-              />
-            )}
+            <Switch
+              checkedChildren={<Icon type="check" />}
+              unCheckedChildren={<Icon type="close" />}
+              defaultChecked={review.is_accepting_questions}
+              disabled={!isEditing}
+              onChange={e => {
+                updateReview('is_accepting_questions', e === true ? 1 : 0);
+              }}
+            />
           </div>
         </div>
         <div>
@@ -186,6 +173,8 @@ const DetailedReviewCard = ({
               style={{ backgroundColor: '#40A9FF', color: 'white' }}
               size="default"
               onClick={handleEdit}
+              loading={loading}
+              disabled={loading}
             >
               <span>
                 <Icon type="save" /> Save
@@ -243,8 +232,8 @@ const StyledReview = styled(Card)`
     width: 70%;
     margin: 0;
     margin-bottom: 20px;
-    span{
-      margin-bottom: 0
+    span {
+      margin-bottom: 0;
     }
     @media ${mobilePortrait} {
       flex-direction: column;
@@ -368,7 +357,7 @@ const StyledReview = styled(Card)`
     width: 50%;
     justify-content: space-between;
     align-items: center;
-    margin-top:20px;
+    margin-top: 20px;
     @media ${mobilePortrait} {
       display: flex;
       justify-content: space-between;
@@ -376,7 +365,6 @@ const StyledReview = styled(Card)`
       margin-left: 0;
       margin-top: 20px;
       width: 100%;
-
 
       h2 {
         margin: 0;
@@ -435,10 +423,10 @@ const StyledReview = styled(Card)`
     }
   }
 
-    h2 {
-      margin: 0;
-    }
+  h2 {
+    margin: 0;
   }
+
   .headline {
     font-size: 1.1rem;
     margin: 0;

@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Typography, Spin, Button, Icon } from 'antd';
+import { Typography, Spin, Button, Icon, Tooltip } from 'antd';
 import styled from 'styled-components';
 
 import { mobilePortrait, primaryGrey } from '../styles/theme.styles';
@@ -59,16 +59,18 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
             <Paragraph>@{user.username}</Paragraph>
             {user.location && (
               <div className="location">
-                <i className="fas fa-map-marker-alt" />
+                <i aria-label="location" className="fas fa-map-marker-alt" />
                 <Paragraph>{user.location}</Paragraph>
-                <Button
-                  icon="edit"
-                  size="small"
-                  ghost
-                  className="edit"
-                  type="primary"
-                  onClick={updateLocation}
-                />
+                <Tooltip title="Edit">
+                  <Button
+                    icon="edit"
+                    size="small"
+                    ghost
+                    className="edit"
+                    type="primary"
+                    onClick={updateLocation}
+                  />
+                </Tooltip>
               </div>
             )}
             <div className="interests">

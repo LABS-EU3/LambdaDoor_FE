@@ -65,12 +65,58 @@ Other scripts available on the app are:
 
 - Clone this repo
 - change directory to root folder
+- Run npm install
+- Run npm start
 
 ===============================================================================
 
 ### Environment Variables
 
 An environment virriable was used for the developement and deployment file, thus user must set up their own environment variables in an .env file.
+
+===============================================================================
+
+## Repo structure
+
+Sometimes it's helpful to know what all these different files are for…
+```
+/
+├─ src/
+│  ├─ assets/        # Assets
+│  │  ├─ img/     # Raster images (used in component examples)
+│  │
+│  ├─ components/    # Components
+│  │  ├─ Layouts/    # …that govern macro layout
+│  │  ├─ Router/     # …that handles all files that pertain to app routing
+│  │  ├─ templates/  # …that combine components to render page
+|  |
+|  ├─ pages/         # Pages
+│  │  ├─ Home/       # …that renders Home-specific content
+│  │  ├─ UserDashboard/ # …that renders User-Dashboard content
+│  |
+|  |─ state/         # State
+│  │  ├─ actions/    # …that handles redux actions
+│  │  ├─ reducers/   # …that handles app reducer functions
+│  │  ├─ types/      # …that handles all action types 
+|  |
+|  |─ styles/        # Styles
+|  |
+|  |─ utils/         # Components
+│  │  ├─ hooks/      # …that handles reusable custom logic
+|
+├─ .env/              # Contains environment variables(ignored by Git)
+├─ www/              # Public build (ignored by Git)
+│
+├─ .editorconfig     # Code style definitions
+├─ .gitignore        # List of files and folders not tracked by Git
+├─ .prettierrc       # Code Formatting preferences for JavasScript
+├─ .eslintrc         # Linting preferences for JavasScript
+├─ fractal.js        # Configuration for Fractal
+├─ gulpfile.js       # Configuration for Gulp tasks
+├─ LICENSE           # License information for this project
+├─ package.json      # Project manifest
+└─ README.md         # This file
+```
 
 ===============================================================================
 
