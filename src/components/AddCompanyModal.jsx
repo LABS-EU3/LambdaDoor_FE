@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import * as yup from 'yup';
 import { Modal, Form, Input, Icon, Button } from 'antd';
 import { addCompany } from '../state/actions/companies';
 import LocationSearch from './LocationSearch';
+import openNotification from '../utils/openNotification';
 
 const AddCompanyModal = props => {
   const {
@@ -18,6 +19,8 @@ const AddCompanyModal = props => {
     errors,
   } = props;
 
+  const [loading, setLoading] = useState(false);
+
   const handleOk = () => {
     setAddingCompany(false);
   };
@@ -26,7 +29,16 @@ const AddCompanyModal = props => {
   };
 
   return (
-    <Modal title="Add A Company" visible={visible} onCancel={handleClose}>
+    <Modal
+      title="Add A Company"
+      visible={visible}
+      onCancel={handleClose}
+      footer={[
+        <Button key="back" onClick={handleClose}>
+          Cancel
+        </Button>,
+      ]}
+    >
       <form onSubmit={handleSubmit}>
         <Form.Item
           help={touched.name && errors.name ? errors.name : ''}
@@ -71,7 +83,7 @@ const AddCompanyModal = props => {
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Website"
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={<Icon type="global" style={{ color: 'rgba(0,0,0,.25)' }} />}
           />
         </Form.Item>
         <Form.Item
@@ -85,7 +97,9 @@ const AddCompanyModal = props => {
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Company Type"
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={
+              <Icon type="control" style={{ color: 'rgba(0,0,0,.25)' }} />
+            }
           />
         </Form.Item>
 
@@ -97,17 +111,24 @@ const AddCompanyModal = props => {
             touched.description && errors.description ? 'error' : undefined
           }
         >
-          <Input
+          <Input.TextArea
             size="large"
             name="description"
             value={values.description}
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Description"
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={<Icon type="book" style={{ color: 'rgba(0,0,0,.25)' }} />}
           />
         </Form.Item>
-        <Button htmlType="submit">Submit</Button>
+        <Button
+          htmlType="submit"
+          type="primary"
+          loading={!!loading}
+          disabled={!!loading}
+        >
+          Add Company
+        </Button>
       </form>
     </Modal>
   );
@@ -116,7 +137,15 @@ const AddCompanyModal = props => {
 const validationSchema = yup.object().shape({
   name: yup.string().required('Please provide a name'),
   location: yup.string().required('Please provide a location'),
-  website: yup.string().required('Please provide a website'),
+  website: yup
+    .string()
+    .matches(
+      /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/,
+      {
+        message: 'Enter a valid website',
+      }
+    )
+    .required('Please provide a website'),
   type: yup.string().required('Please provide a company type'),
   description: yup.string().required('Please provide a description'),
 });
@@ -133,7 +162,8 @@ const CompanyModal = withFormik({
   }),
   handleSubmit: (values, { props, setSubmitting }) => {
     props.addCompany(values);
-    console.log(values);
+    props.setAddingCompany(false);
+    openNotification('Company Added Successfully!');
     setSubmitting(false);
   },
   validationSchema: validationSchema,

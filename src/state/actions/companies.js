@@ -23,14 +23,15 @@ export const getCompanies = () => async dispatch => {
   }
 };
 
-export const addCompany = () => async dispatch => {
+export const addCompany = company => async dispatch => {
   dispatch({
     type: types.ADD_COMPANY,
   });
 
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/companies/`
+      `${process.env.REACT_APP_BACKEND_URL}/companies/`,
+      company
     );
     dispatch({
       type: types.ADD_COMPANY_SUCCESS,

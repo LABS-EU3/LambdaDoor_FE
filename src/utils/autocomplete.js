@@ -18,7 +18,7 @@ const AutoCompleted = ({ label, dataSource, placeholder, onChange }) => {
   const [addingCompany, setAddingCompany] = useState(false);
 
   const options = dataSource.map(renderOption).concat([
-    <Option key="all" className="show-all">
+    <Option key="all" value="" className="show-all">
       <Button type="button" onClick={() => setAddingCompany(true)}>
         Add Company
       </Button>
@@ -37,21 +37,21 @@ const AutoCompleted = ({ label, dataSource, placeholder, onChange }) => {
           dropdownClassName="certain-category-search-dropdown"
           dropdownMatchSelectWidth={false}
           dropdownStyle={{ width: 300 }}
-          size="large"
+          size="default"
           style={{ width: '100%' }}
           dataSource={options}
           optionLabelProp="value"
           filterOption={(inputValue, option) => {
             if (
-              option.key.toLowerCase() === inputValue.toLowerCase() ||
+              option.key.toLowerCase().includes(inputValue.toLowerCase()) ||
               option.key.toLowerCase() === 'all'
             ) {
               return true;
             }
           }}
-          // onChange={onChange}
+          onChange={onChange}
         >
-          <Input placeholder={placeholder} />
+          <Input size="default" placeholder={placeholder} />
         </AutoComplete>
       </Form.Item>
     </>

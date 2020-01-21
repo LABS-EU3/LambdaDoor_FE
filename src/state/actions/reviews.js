@@ -43,6 +43,7 @@ export const addCompanyReview = (review, id) => async dispatch => {
   } catch (error) {
     dispatch({
       type: types.ADD_COMPANY_REVIEW_FAILURE,
+      payload: error.message,
     });
   }
 };

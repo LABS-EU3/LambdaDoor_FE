@@ -4,21 +4,23 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Input, Rate, Switch, Form, Button, Icon } from 'antd';
 import styled from 'styled-components';
-import { getCompanies } from '../state/actions/companies';
+import { withRouter } from 'react-router-dom';
+
 import { addCompanyReview } from '../state/actions/reviews';
 import { mobilePortrait } from '../styles/theme.styles';
 
 import AutoComplete from '../utils/autocomplete';
+import openNotification from '../utils/openNotification';
 
 const { TextArea } = Input;
 
 const CompanyReview = ({
-  getCompanies,
   addCompanyReview,
   companies: { companies },
   authState: {
     credentials: { id },
   },
+  history,
 }) => {
   const [formValues, setFormValues] = useState({
     company_id: '',
@@ -29,10 +31,6 @@ const CompanyReview = ({
     is_accepting_questions: false,
   });
 
-  useEffect(() => {
-    getCompanies();
-  }, []);
-
   const handleChange = event => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
@@ -41,7 +39,6 @@ const CompanyReview = ({
     const company = companies.find(element => {
       return element.name === name;
     });
-    console.log(company);
     if (company) {
       setFormValues({
         ...formValues,
@@ -61,7 +58,10 @@ const CompanyReview = ({
   const handleSubmit = e => {
     e.preventDefault();
     const { location, ...rest } = formValues;
+
     addCompanyReview({ ...rest, user_id: id }, id);
+    history.push('/reviews');
+    openNotification('Review Added Successfully! ');
   };
 
   return (
@@ -87,7 +87,6 @@ const CompanyReview = ({
               <Switch
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
-                defaultChecked
                 name="is_currently_employed"
                 onChange={value =>
                   handleComponentChange('is_currently_employed', value)
@@ -99,7 +98,6 @@ const CompanyReview = ({
               <Switch
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
-                defaultChecked
                 name="is_accepting_questions"
                 onChange={value =>
                   handleComponentChange('is_accepting_questions', value)
@@ -120,7 +118,7 @@ const CompanyReview = ({
           />
         </Form.Item>
 
-        <Button type="default" htmlType="submit" onClick={handleSubmit}>
+        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
           Submit
         </Button>
       </Form>
@@ -128,8 +126,8 @@ const CompanyReview = ({
   );
 };
 
-export default connect(state => state, { getCompanies, addCompanyReview })(
-  CompanyReview
+export default withRouter(
+  connect(state => state, { addCompanyReview })(CompanyReview)
 );
 
 const StyledContainer = styled.div`

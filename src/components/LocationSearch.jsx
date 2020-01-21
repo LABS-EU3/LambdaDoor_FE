@@ -43,6 +43,7 @@ const LocationSearch = props => {
       placeholder="Enter your address"
       type="text"
       {...props}
+      className="ant-input"
     />
   );
 };

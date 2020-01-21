@@ -25,6 +25,15 @@ export const reviewsReducer = (state = initialState, action) => {
         },
       };
 
+    case types.ADD_COMPANY_REVIEW_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          company: [...state.reviews.company, action.payload],
+        },
+      };
+
     case types.DELETE_COMPANY_REVIEWS_SUCCESS:
       return {
         ...state,
@@ -69,15 +78,6 @@ export const reviewsReducer = (state = initialState, action) => {
     case types.GET_SALARY_REVIEWS_FAILURE:
     case types.GET_INTERVIEW_REVIEWS_FAILURE:
       return { ...state, isFetching: false };
-
-    case types.ADD_COMPANY_REVIEW_SUCCESS:
-      return {
-        ...state,
-        reviews: {
-          ...state.reviews,
-          companies: [...state.reviews.companies, action.payload],
-        },
-      };
 
     default:
       return state;
