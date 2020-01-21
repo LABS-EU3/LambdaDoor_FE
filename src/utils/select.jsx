@@ -4,15 +4,20 @@ import currencies from './currencies';
 
 const { Option } = Select;
 
-const SelectOptions = ({ placeholder }) => {
-  const options = currencies.map(opt => (
-    <Option key={opt.code} value={opt.code}>
+const SelectOptions = ({ placeholder, arr, onChange }) => {
+  const options = arr.map(opt => (
+    <Option key={opt.id} value={opt.id}>
       {opt.name}
     </Option>
   ));
 
   return (
-    <Select mode="combobox" placeholder={placeholder}>
+    <Select
+      onChange={e => {
+        onChange('interest_id', e);
+      }}
+      placeholder={placeholder}
+    >
       {options}
     </Select>
   );

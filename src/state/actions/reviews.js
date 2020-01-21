@@ -125,7 +125,7 @@ export const addSalaryReview = (review, id) => async dispatch => {
 
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/${id}`,
+      `${process.env.REACT_APP_BACKEND_URL}/salaryreviews/${id}`,
       review
     );
     dispatch({
