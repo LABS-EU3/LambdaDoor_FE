@@ -51,6 +51,7 @@ const CompanyCard = props => {
   const companyId = useParams().id;
   if (companies.length === 0) return <Spin />;
   const company = companies.find(elem => elem.id === Number(companyId));
+  console.log(company);
   return (
     <StyledCard>
       <h2>{company.name}</h2>
@@ -58,16 +59,22 @@ const CompanyCard = props => {
         <p>{company.location}</p>
         <span>
           Average Rating:
-          <Rate defaultValue={company.average_rating} />
+          <Rate defaultValue={Number(company.average_rating)} />
         </span>
       </div>
-      <a href={company.website}>{company.website}</a>
-      <p>Company Type: {company.type}</p>
+      <a target="_blank" rel="noopener noreferrer" href={company.website}>
+        {company.website}
+      </a>
+      <p>
+        Company Type:
+        {company.type}
+      </p>
       <p className="description">
         Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Reiciendis, iusto labore? Quae distinctio quam reprehenderit! Id est
         perspiciatis, cum recusandae nesciunt sapiente eius ex, pariatur
-        obcaecati veniam dignissimos nihil ipsum. {company.description}
+        obcaecati veniam dignissimos nihil ipsum.
+        {company.description}
       </p>
     </StyledCard>
   );

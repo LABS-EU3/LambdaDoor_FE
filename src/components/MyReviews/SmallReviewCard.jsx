@@ -22,6 +22,13 @@ const StyledCard = styled(Card)`
       padding-top: 35px !important;
       font-size: 20px;
       font-weight: 900;
+      transition: 1s hover;
+      &:hover {
+        opacity: 0.6;
+      }
+      &:active {
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -33,12 +40,16 @@ const StyledCard = styled(Card)`
 
 export const SmallReviewCard = ({
   history,
-  review: { id, review_headline: review, ratings, name },
+  review: { id, review_headline: review, ratings, name, company_id },
 }) => {
+  const handleCompanyClick = e => {
+    e.stopPropagation();
+    history.push(`/company-page/${company_id}`);
+  };
   return (
     <StyledCard onClick={() => history.push(`/reviews/${id}`)}>
       <div className="card-top">
-        <h2>{name}</h2>
+        <h2 onClick={handleCompanyClick}>{name}</h2>
       </div>
       {review.length > 30 ? (
         <span>{review.slice(0, 30)}...</span>
