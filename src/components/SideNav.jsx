@@ -44,7 +44,10 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
         </StyledSpin>
       ) : (
         <>
-          <Logo smaller />
+          <div className="branding">
+            <Logo smaller />
+            <h2>Lambda Door</h2>
+          </div>
           <div className="user-profile-wrap">
             <Avatar userImage={user.profile_picture} />
             <Paragraph
@@ -94,6 +97,7 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
               <Icon type="right" />
             </Button>
           </nav>
+          <h2 className="mobile-branding">Lambda Door</h2>
         </>
       )}
     </StyledContainer>
@@ -118,6 +122,30 @@ const StyledContainer = styled.div`
 
   @media ${mobilePortrait} {
     width: 60%;
+  }
+
+  .branding {
+    display: flex;
+    h2 {
+      margin-left: 1rem;
+      font-family: 'Lato';
+      color: #bb1333;
+      font-weight: 700;
+      @media ${mobilePortrait} {
+        display: none;
+      }
+    }
+  }
+
+  .mobile-branding {
+    display: none;
+    @media ${mobilePortrait} {
+      display: block;
+      font-family: 'Lato';
+      color: #bb1333;
+      font-weight: 700;
+      margin-top: 14rem;
+    }
   }
 
   .location {
@@ -160,7 +188,7 @@ const StyledContainer = styled.div`
     a.link {
       color: #262626;
       display: block;
-      font-weight: 500;
+      font-weight: 800;
       font-size: 1rem;
       padding: 0.25rem 0;
 

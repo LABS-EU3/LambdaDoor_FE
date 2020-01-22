@@ -67,7 +67,7 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
 
   useEffect(() => {
     getJobRoles();
-  }, []);
+  }, [getJobRoles]);
 
   useEffect(() => {
     const roles = [...jobroles];
@@ -86,16 +86,13 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
         };
       })
     );
-  }, [jobroles]);
-
-  useEffect(() => {
     setTotal(
       state.reduce((acc, obj) => {
         acc += obj.count;
         return acc;
       }, 0)
     );
-  }, [state]);
+  }, [jobroles]);
 
   return (
     <StyledContainer>
