@@ -53,6 +53,10 @@ const StyledDiv = styled.div`
   position: relative;
   min-height: 300px;
 
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .cards {
     position: relative;
     min-height: 150px;
