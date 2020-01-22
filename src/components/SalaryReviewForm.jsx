@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable no-shadow */
 import React, { useState } from 'react';
-import { Formik } from 'formik';
 import { Input, Switch, Form, Button, Icon, AutoComplete } from 'antd';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { mobilePortrait } from '../styles/theme.styles';
-import { companies, jobCategories } from '../utils/data';
+import { withRouter } from 'react-router-dom';
+import { mobilePortrait, tabletPortrait } from '../styles/theme.styles';
+import { jobCategories } from '../utils/data';
 import currencies from '../utils/currencies';
 import Select from '../utils/select';
 import AutoCompleteComponent from '../utils/autocomplete';
@@ -32,7 +32,7 @@ const SalaryReview = ({
     salary: '',
     currency: '',
     unit: '',
-    is_currently_employed: false,
+    is_current_employee: false,
     is_anonymous: false,
   });
 
@@ -147,14 +147,14 @@ const SalaryReview = ({
         </Form.Item>
 
         <Form.Item>
-          <EmployeeInfo>
+          <SwitchContainer>
             <div>
               <p>I am a current employee</p>
               <Switch
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
                 onChange={value =>
-                  handleComponentChange('is_currently_employed', value)
+                  handleComponentChange('is_current_employee', value)
                 }
               />
             </div>
@@ -167,7 +167,7 @@ const SalaryReview = ({
                 onChange={value => handleComponentChange('is_anonymous', value)}
               />
             </div>
-          </EmployeeInfo>
+          </SwitchContainer>
         </Form.Item>
 
         <Button type="primary" htmlType="submit" onClick={handleSubmit}>
@@ -178,7 +178,9 @@ const SalaryReview = ({
   );
 };
 
-export default connect(state => state, { addSalaryReview })(SalaryReview);
+export default withRouter(
+  connect(state => state, { addSalaryReview })(SalaryReview)
+);
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -195,9 +197,77 @@ const StyledContainer = styled.div`
   }
 `;
 
+const SwitchContainer = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    p {
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  div.ant-row.ant-form-item {
+    margin-top: -30px !important;
+  }
+  div {
+    /* width: 50%; */
+    .ant-select-selection--single {
+      width: 95%;
+    }
+    .ant-select-selection__rendered {
+      width: 100%;
+    }
+    p {
+      display: inline;
+    }
+  }
+  @media ${mobilePortrait} {
+    flex-direction: column;
+    width: 100%;
+
+    div {
+      width: 100%;
+      margin-bottom: 5%;
+      /* justify-content: center; */
+      p {
+        justify-content: flex-start;
+        margin-bottom: 0;
+      }
+      .ant-select-selection--single {
+        width: 100%;
+        margin-left: 0%;
+      }
+    }
+  }
+  @media ${tabletPortrait} {
+    flex-direction: column;
+    width: 100%;
+
+    div {
+      width: 100%;
+      margin-bottom: 5%;
+      /* justify-content: center; */
+      p {
+        justify-content: flex-start;
+        margin-bottom: 0;
+      }
+      .ant-select-selection--single {
+        width: 100%;
+        margin-left: 0%;
+      }
+    }
+  }
+`;
+
 const EmployeeInfo = styled.div`
   display: flex;
-  width: 60%;
+  width: 80%;
   justify-content: space-between;
 
   div.ant-row.ant-form-item {

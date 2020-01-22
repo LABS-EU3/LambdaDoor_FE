@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Tabs } from 'antd';
 import styled from 'styled-components';
 import CompanyReviewForm from '../components/CompanyReviewForm';
 import SalaryReviewForm from '../components/SalaryReviewForm';
 
 const { TabPane } = Tabs;
-const AddReview = () => {
+const AddReview = ({ history }) => {
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      history.push('/');
+    }
+  }, []);
   return (
     <StyledContainer>
       <div>

@@ -4,11 +4,9 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import ReviewList from '../../components/ReviewList/ReviewList';
 import JobTitleVisualization from '../../components/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
-import MyReviewList from '../../components/MyReviews/MyReviewList';
 
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 import { getCompanyReviews } from '../../state/actions/reviews';

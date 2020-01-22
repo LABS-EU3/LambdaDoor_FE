@@ -1,6 +1,5 @@
 import React from 'react';
-import { Select, AutoComplete } from 'antd';
-import currencies from './currencies';
+import { Select } from 'antd';
 
 const { Option } = Select;
 
