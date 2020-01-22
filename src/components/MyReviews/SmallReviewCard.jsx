@@ -49,7 +49,9 @@ export const SmallReviewCard = ({
   return (
     <StyledCard onClick={() => history.push(`/reviews/${id}`)}>
       <div className="card-top">
-        <h2 onClick={handleCompanyClick}>{name}</h2>
+        <h2 role="link" onClick={handleCompanyClick}>
+          {name}
+        </h2>
       </div>
       {review.length > 30 ? (
         <span>{review.slice(0, 30)}...</span>

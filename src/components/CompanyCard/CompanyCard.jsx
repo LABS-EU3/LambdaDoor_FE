@@ -77,6 +77,7 @@ const CompanyCard = props => {
         Reiciendis, iusto labore? Quae distinctio quam reprehenderit! Id est
         perspiciatis, cum recusandae nesciunt sapiente eius ex, pariatur
         obcaecati veniam dignissimos nihil ipsum.
+        {/* I've added the placeholder text above for now as we don't yet have descriptions in the db. Further styling is to be done when the salary component is added. (Lisa) */}
         {company.description}
       </p>
     </StyledDiv>
