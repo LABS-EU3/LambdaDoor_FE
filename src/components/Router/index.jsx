@@ -10,7 +10,10 @@ import ReviewList from '../ReviewList/ReviewList';
 import store from '../../state/store';
 import { SetAuthenticated } from '../../state/actions/auth';
 import ManageReviews from '../../pages/ManageReviews';
-import { getCompanyReviews } from '../../state/actions/reviews';
+import {
+  getCompanyReviews,
+  getSalaryReviews,
+} from '../../state/actions/reviews';
 import { getCompanies } from '../../state/actions/companies';
 
 const start = async () => {
@@ -19,6 +22,7 @@ const start = async () => {
     const { id } = decode(token);
     await store.dispatch(SetAuthenticated(id));
     await store.dispatch(getCompanyReviews(id));
+    await store.dispatch(getSalaryReviews(id));
     await store.dispatch(getCompanies());
   }
 };
