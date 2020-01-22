@@ -95,7 +95,7 @@ const CompanyReview = ({
               />
             </div>
             <div>
-              <p>I accept more questions</p>
+              <p>I am accepting more questions</p>
               <Switch
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
@@ -123,7 +123,15 @@ const CompanyReview = ({
           />
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          onClick={handleSubmit}
+          disabled={Boolean(
+            Object.keys(formValues).filter(elem => formValues[elem] === '')
+              .length
+          )}
+        >
           Submit
         </Button>
       </Form>
