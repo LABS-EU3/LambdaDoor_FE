@@ -49,7 +49,7 @@ export default connect(state => state, { getTopRatedReviews })(TopRatedList);
 const StyledDiv = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   position: relative;
   min-height: 300px;
 

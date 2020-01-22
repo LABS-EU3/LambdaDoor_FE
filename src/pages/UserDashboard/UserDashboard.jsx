@@ -4,8 +4,8 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import ReviewList from '../../components/ReviewList/ReviewList';
 import TopRatedList from '../../components/TopRated/TopRatedList';
+import ClosestLocationList from '../../components/UserLocationComp/ClosestLocationList';
 import JobTitleVisualization from '../../components/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
@@ -81,7 +81,7 @@ export const UserDashboard = ({
       </div>
       <div className="bottom-layout">
         <h2>Recommended Based on Location</h2>
-        <ReviewList />
+        <ClosestLocationList />
       </div>
     </StyledContainer>
   );
