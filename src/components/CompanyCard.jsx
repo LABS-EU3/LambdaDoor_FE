@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Rate, Spin, Card } from 'antd';
 import styled from 'styled-components';
@@ -58,7 +58,7 @@ const CompanyCard = props => {
         <p>{company.location}</p>
         <span>
           Average Rating:
-          <Rate defaultValue={4} />
+          <Rate defaultValue={company.average_rating} />
         </span>
       </div>
       <a href={company.website}>{company.website}</a>
