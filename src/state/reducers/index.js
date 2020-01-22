@@ -3,6 +3,7 @@ import { reviewsReducer, reviewsError } from './reviews';
 import { authState } from './auth';
 import { interestReducer } from './interests';
 import { topRatedReviewsReducer } from './topRatedReviews';
+import { jobrolesReducer } from './jobroles';
 
 const rootReducer = combineReducers({
   reviews: reviewsReducer,
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   authState: authState,
   interests: interestReducer,
   topRatedReviews: topRatedReviewsReducer,
+  jobroles: jobrolesReducer,
 });
 
 export default rootReducer;

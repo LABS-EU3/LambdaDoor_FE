@@ -32,7 +32,7 @@ const beforeUpload = file => {
   return isJpgOrPng && isLt2M;
 };
 
-const Avatar = ({ userImage, id, EditProfile }) => {
+const Avatar = ({ userImage, id, editProfile }) => {
   const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -49,7 +49,7 @@ const Avatar = ({ userImage, id, EditProfile }) => {
     if (info.file.status === 'done') {
       getBase64(info.file.originFileObj, async imageUrl => {
         setLoading(false);
-        await EditProfile(
+        await editProfile(
           {
             profile_picture: imageUrl,
           },

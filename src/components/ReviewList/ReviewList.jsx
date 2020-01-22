@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import { interviewReviews } from '../../utils/data';
 
-const StyledDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1400px;
-`;
 
 const ReviewList = () => {
   return (
@@ -26,3 +21,54 @@ const ReviewList = () => {
 };
 
 export default ReviewList;
+
+const StyledDiv = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  min-height: 100%;
+
+  .cards {
+    position: relative;
+    min-height: 300px;
+    
+    a {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      padding: 1rem;
+      color: rgba(0, 0, 0, 0.65);
+      border: 1px solid #e8e8e8;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    h3 {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .ant-rate,
+    .ant-rate-star-first,
+    .ant-rate-star-second {
+      height: 20px;
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ant-rate-star-first i,
+    .ant-rate-star-second i {
+      font-size: 14px;
+    }
+
+    .ant-rate-star:not(:last-child) {
+      margin-right: 3px;
+    }
+  }
+`;

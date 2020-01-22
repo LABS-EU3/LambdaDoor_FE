@@ -2,19 +2,16 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 import ReviewList from '../../components/ReviewList/ReviewList';
 import TopRatedList from '../../components/TopRated/TopRatedList';
+import JobTitleVisualization from '../../components/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
+import MyReviewList from '../../components/MyReviews/MyReviewList';
 
-const StyledH1 = styled.h1`
-  font-family: Roboto;
-  padding-left: 9px;
-`;
+import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 
 export const UserDashboard = ({
   authState: {
@@ -67,13 +64,22 @@ export const UserDashboard = ({
   }, [location]);
 
   return (
-    <div>
-      <StyledH1>Top Rated Companies</StyledH1>
-      <TopRatedList />
-      <br /> <br /> <br />
-      <StyledH1>Recommended Based on Location</StyledH1>
-      <ReviewList />
-    </div>
+    <StyledContainer>
+      <div className="top-layout">
+        <div>
+          <h2>Top Rated Companies</h2>
+          <TopRatedList />
+        </div>
+        <div>
+          <h2>Popular Job Roles</h2>
+          <JobTitleVisualization />
+        </div>
+      </div>
+      <div className="bottom-layout">
+        <h2>Recommended Based on Location</h2>
+        <ReviewList />
+      </div>
+    </StyledContainer>
   );
 };
 export default connect(state => state, {
@@ -81,3 +87,24 @@ export default connect(state => state, {
   SetAuthenticated,
   editProfile,
 })(UserDashboard);
+
+const StyledContainer = styled.div`
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .top-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    & > div {
+      width: calc(50% - 1.5rem);
+    }
+  }
+
+  .bottom-layout {
+    margin-top: 3rem;
+  }
+`;
