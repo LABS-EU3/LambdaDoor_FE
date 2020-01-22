@@ -95,7 +95,7 @@ const CompanyReview = ({
               />
             </div>
             <div>
-              <p>I accept more questions</p>
+              <p>I am accepting more questions</p>
               <Switch
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}

@@ -166,6 +166,17 @@ const SalaryReview = ({
                 onChange={value => handleComponentChange('is_anonymous', value)}
               />
             </div>
+            <div>
+              <p>I am accepting more questions</p>
+              <Switch
+                checkedChildren={<Icon type="check" />}
+                unCheckedChildren={<Icon type="close" />}
+                defaultChecked={false}
+                onChange={value =>
+                  handleComponentChange('is_accepting_questions', value)
+                }
+              />
+            </div>
           </SwitchContainer>
         </Form.Item>
 
@@ -206,13 +217,14 @@ const StyledContainer = styled.div`
 
 const SwitchContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
 
   div {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     p {
       margin-right: 10px;
       margin-bottom: 0;
