@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Rate, Spin, Card } from 'antd';
 import styled from 'styled-components';
-import { mobilePortrait, tabletPortrait } from '../styles/theme.styles';
+import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
 
 const StyledDiv = styled.div`
   max-width: 800px;
