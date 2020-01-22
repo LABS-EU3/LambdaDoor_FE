@@ -4,7 +4,7 @@ import { Rate, Spin, Card } from 'antd';
 import styled from 'styled-components';
 import { mobilePortrait, tabletPortrait } from '../styles/theme.styles';
 
-const StyledCard = styled(Card)`
+const StyledDiv = styled.div`
   max-width: 800px;
   padding: 50px !important;
   display: flex;
@@ -21,6 +21,9 @@ const StyledCard = styled(Card)`
 
   @media ${tabletPortrait} {
     padding: 0 !important;
+  }
+  .company-type {
+    margin-top: 1rem;
   }
   p {
     font-size: 1rem;
@@ -53,7 +56,7 @@ const CompanyCard = props => {
   const company = companies.find(elem => elem.id === Number(companyId));
   console.log(company);
   return (
-    <StyledCard>
+    <StyledDiv>
       <h2>{company.name}</h2>
       <div className="location-rating">
         <p>{company.location}</p>
@@ -65,8 +68,8 @@ const CompanyCard = props => {
       <a target="_blank" rel="noopener noreferrer" href={company.website}>
         {company.website}
       </a>
-      <p>
-        Company Type:
+      <p className="company-type">
+        Company Type: &nbsp;
         {company.type}
       </p>
       <p className="description">
@@ -76,7 +79,7 @@ const CompanyCard = props => {
         obcaecati veniam dignissimos nihil ipsum.
         {company.description}
       </p>
-    </StyledCard>
+    </StyledDiv>
   );
 };
 
