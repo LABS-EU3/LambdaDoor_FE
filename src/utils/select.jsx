@@ -1,17 +1,23 @@
 import React from 'react';
-import { Select, AutoComplete } from 'antd';
+import { Select } from 'antd';
 
-const { Option } = AutoComplete;
+const { Option } = Select;
 
-const SelectOptions = ({ placeholder, info }) => {
+const SelectOptions = ({ placeholder, arr, onChange }) => {
+  const options = arr.map(opt => (
+    <Option key={opt.id} value={opt.id}>
+      {opt.name}
+    </Option>
+  ));
+
   return (
-    <Select placeholder={placeholder}>
-      {info.map(singleInfo => (
-        // eslint-disable-next-line react/jsx-one-expression-per-line
-        <Option key={singleInfo.id} value={singleInfo.id}>
-          {singleInfo.name}{' '}
-        </Option>
-      ))}
+    <Select
+      onChange={e => {
+        onChange('interest_id', e);
+      }}
+      placeholder={placeholder}
+    >
+      {options}
     </Select>
   );
 };

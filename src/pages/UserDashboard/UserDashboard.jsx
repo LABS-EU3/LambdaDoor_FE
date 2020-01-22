@@ -4,11 +4,9 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import ReviewList from '../../components/ReviewList/ReviewList';
 import JobTitleVisualization from '../../components/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
-import MyReviewList from '../../components/MyReviews/MyReviewList';
 
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 import { getCompanyReviews } from '../../state/actions/reviews';
@@ -48,9 +46,9 @@ export const UserDashboard = ({
           `https://slack.com/api/oauth.access?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
         );
         window.history.replaceState(null, null, window.location.pathname);
-        await LoginUser(userId, name, email, profilePicture);
-        await getCompanyReviews(id);
-        await getCompanies(id);
+        const user = await LoginUser(userId, name, email, profilePicture);
+        await getCompanyReviews(user);
+        await getCompanies();
       };
       if (code) {
         await getUserDetails();

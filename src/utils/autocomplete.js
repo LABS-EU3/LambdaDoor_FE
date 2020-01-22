@@ -48,6 +48,7 @@ const AutoCompleted = ({ label, dataSource, placeholder, onChange }) => {
             ) {
               return true;
             }
+            return false;
           }}
           onChange={onChange}
         >

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import Script from 'react-load-script';
 
 /* global google */
@@ -25,7 +25,6 @@ const LocationSearch = props => {
     longitude.target.name = 'longitude';
     longitude.target.value = place.geometry.location.lng();
     props.onChange(longitude);
-    console.log(place);
   };
 
   const handleLoad = () => {
