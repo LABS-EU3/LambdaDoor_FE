@@ -56,6 +56,15 @@ export const reviewsReducer = (state = initialState, action) => {
         },
       };
 
+    case types.ADD_SALARY_REVIEW_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          salary: [...state.reviews.salary, action.payload],
+        },
+      };
+
     case types.GET_SALARY_REVIEWS_SUCCESS:
       return {
         ...state,

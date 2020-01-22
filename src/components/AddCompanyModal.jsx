@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import * as yup from 'yup';
@@ -19,11 +19,6 @@ const AddCompanyModal = props => {
     errors,
   } = props;
 
-  const [loading, setLoading] = useState(false);
-
-  const handleOk = () => {
-    setAddingCompany(false);
-  };
   const handleClose = () => {
     setAddingCompany(false);
   };
@@ -121,12 +116,7 @@ const AddCompanyModal = props => {
             prefix={<Icon type="book" style={{ color: 'rgba(0,0,0,.25)' }} />}
           />
         </Form.Item>
-        <Button
-          htmlType="submit"
-          type="primary"
-          loading={!!loading}
-          disabled={!!loading}
-        >
+        <Button htmlType="submit" type="primary">
           Add Company
         </Button>
       </form>
