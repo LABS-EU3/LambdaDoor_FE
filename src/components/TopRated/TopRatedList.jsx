@@ -2,10 +2,12 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { Spin } from 'antd';
 import TopRatedCard from './TopRatedCard';
 import { getTopRatedReviews } from '../../state/actions/topRatedReviews';
 
 const TopRatedList = ({
+  isFetching,
   getTopRatedReviews,
   topRatedReviews: { topRatedReviews },
 }) => {
@@ -14,16 +16,30 @@ const TopRatedList = ({
   }, []);
   return (
     <StyledDiv>
-      {topRatedReviews.map(topRated => (
-        // eslint-disable-next-line react/no-array-index-key
-        <TopRatedCard
-          key={`${topRated.id}`}
-          text={topRated.description || 'Its A beautiful Day to be alive'}
-          name={topRated.name}
-          id={topRated.id}
-          rating={topRated.average_rating}
-        />
-      ))}
+      {!isFetching ? (
+        <>
+          {topRatedReviews.length !== 0 ? (
+            topRatedReviews.map(topRated => (
+              // eslint-disable-next-line react/no-array-index-key
+              <TopRatedCard
+                key={`${topRated.id}`}
+                text={topRated.description || 'Its A beautiful Day to be alive'}
+                name={topRated.name}
+                id={topRated.id}
+                rating={topRated.average_rating}
+              />
+            ))
+          ) : (
+            <div className="empty-state">
+              <p>No data to display</p>
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="empty-state">
+          <Spin />
+        </div>
+      )}
     </StyledDiv>
   );
 };
@@ -34,11 +50,13 @@ const StyledDiv = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
+  position: relative;
+  min-height: 300px;
 
   .cards {
     position: relative;
     min-height: 150px;
-    
+
     a {
       position: absolute;
       left: 0;

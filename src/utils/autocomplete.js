@@ -1,0 +1,61 @@
+/* eslint-disable react/jsx-no-undef */
+import React, { useState } from 'react';
+import { Form, Input, AutoComplete, Button } from 'antd';
+import AddCompanyModal from '../components/AddCompanyModal';
+
+const { Option } = AutoComplete;
+
+const renderOption = Item => {
+  return (
+    // eslint-disable-next-line react/jsx-filename-extension
+    <Option key={Item.name} text={Item.name}>
+      <p>{Item.name}</p>
+    </Option>
+  );
+};
+
+const AutoCompleted = ({ label, dataSource, placeholder, onChange }) => {
+  const [addingCompany, setAddingCompany] = useState(false);
+
+  const options = dataSource.map(renderOption).concat([
+    <Option key="all" value="" className="show-all">
+      <Button type="button" onClick={() => setAddingCompany(true)}>
+        Add Company
+      </Button>
+    </Option>,
+  ]);
+
+  return (
+    <>
+      <AddCompanyModal
+        visible={addingCompany}
+        setAddingCompany={setAddingCompany}
+      />
+      <Form.Item label={label}>
+        <AutoComplete
+          className="certain-category-search"
+          dropdownClassName="certain-category-search-dropdown"
+          dropdownMatchSelectWidth={false}
+          dropdownStyle={{ width: 300 }}
+          size="default"
+          style={{ width: '100%' }}
+          dataSource={options}
+          optionLabelProp="value"
+          filterOption={(inputValue, option) => {
+            if (
+              option.key.toLowerCase().includes(inputValue.toLowerCase()) ||
+              option.key.toLowerCase() === 'all'
+            ) {
+              return true;
+            }
+          }}
+          onChange={onChange}
+        >
+          <Input size="default" placeholder={placeholder} />
+        </AutoComplete>
+      </Form.Item>
+    </>
+  );
+};
+
+export default AutoCompleted;

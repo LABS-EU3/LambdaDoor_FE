@@ -1,5 +1,6 @@
 export const companies = [
   {
+    id: 1,
     name: 'Accenture',
     website: 'www.accenture.com.',
     location: 'Atlanta, GA',
@@ -8,6 +9,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 2,
     name: 'Anthem, Inc.',
     website: 'https://www.antheminc.com',
     location: 'Atlanta, GA',
@@ -16,6 +18,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 3,
     name: 'Ahalogy',
     website: 'https://www.ahalogy.com',
     location: 'Cincinnati, OH',
@@ -24,6 +27,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 4,
     name: 'Bad Rabbit',
     website: 'https://www.badrabbit.com',
     location: 'Portland, OR',
@@ -32,6 +36,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 5,
     name: 'DoNotPay Inc',
     website: 'https://donotpay.com',
     location: 'Technology',
@@ -40,6 +45,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 6,
     name: 'Newfront Insurance',
     website: 'https://www.newfrontinsurance.com',
     location: 'San Francisco, CA',
@@ -48,6 +54,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 7,
     name: 'Unspun',
     website: 'https://www.unspuntech.com/',
     location: 'San Francisco, CA',
@@ -56,6 +63,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 8,
     name: 'rideOS',
     website: 'https://rideos.ai',
     location: 'San Francisco, CA',
@@ -64,6 +72,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 9,
     name: 'Mesa',
     website: '',
     location: 'Austin, TX',
@@ -72,6 +81,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 10,
     name: 'Paystack',
     website: 'https://paystack.com/',
     location: 'Lagos, NG',
@@ -80,6 +90,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 11,
     name: 'BuyCoins',
     website: 'https://buycoins.africa/',
     location: 'Lagos, NG',
@@ -88,6 +99,7 @@ export const companies = [
     description: '',
   },
   {
+    id: 12,
     name: 'Chipper Cash',
     website: 'https://chippercash.com/',
     location: 'Lagos, NG',
@@ -96,10 +108,20 @@ export const companies = [
     description: '',
   },
   {
+    id: 13,
     name: 'Cowrywise',
     website: 'https://www.cowrywise.com/',
     location: 'Lagos, NG',
     type: 'FinTech',
+    logo: '',
+    description: '',
+  },
+  {
+    id: 14,
+    name: 'Others',
+    website: '',
+    location: '',
+    type: '',
     logo: '',
     description: '',
   },
@@ -211,4 +233,60 @@ export const allInterests = [
   'User Experience',
   'Mobile Development',
   'Product Manager',
+];
+export const jobCategories = [
+  {
+    id: 1,
+    name: 'Software Engineer',
+  },
+  {
+    id: 2,
+    name: 'Front End',
+  },
+  {
+    id: 3,
+    name: 'Back End',
+  },
+  {
+    id: 4,
+    name: 'Full Stack',
+  },
+  {
+    id: 5,
+    name: 'Data Science',
+  },
+  {
+    id: 6,
+    name: 'Machine Learning',
+  },
+  {
+    id: 7,
+    name: 'User Experience',
+  },
+];
+export const currencies = [
+  {
+    id: 1,
+    name: 'USD',
+    symbol: '$',
+    full_name: 'USD Dollars',
+  },
+  {
+    id: 2,
+    name: 'EUR',
+    symbol: '',
+    full_name: 'EUROS',
+  },
+  {
+    id: 3,
+    name: 'GBP',
+    symbol: '',
+    full_name: 'British Pounds',
+  },
+  {
+    id: 4,
+    name: 'NAIRA',
+    symbol: '',
+    full_name: 'Nigerian Naira',
+  },
 ];

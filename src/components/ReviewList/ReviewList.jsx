@@ -1,21 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Spin } from 'antd';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import { interviewReviews } from '../../utils/data';
-
 
 const ReviewList = () => {
   return (
     <StyledDiv>
-      {interviewReviews.map(review => (
-        // eslint-disable-next-line react/no-array-index-key
-        <ReviewCard
-          key={`${review.id}${review.user_id}`}
-          text={review.text}
-          name={review.company_name}
-          id={review.id}
-        />
-      ))}
+      {!isFetching ? (
+        <>
+          {topRatedReviews.length !== 0 ? (
+            interviewReviews.map(review => (
+              // eslint-disable-next-line react/no-array-index-key
+              <ReviewCard
+                key={`${review.id}${review.user_id}`}
+                text={review.text}
+                name={review.company_name}
+                id={review.id}
+              />
+            ))
+          ) : (
+            <div className="empty-state">
+              <p>No data to display</p>
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="empty-state">
+          <Spin />
+        </div>
+      )}
     </StyledDiv>
   );
 };
@@ -27,11 +41,13 @@ const StyledDiv = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
   min-height: 100%;
+  position: relative;
+  min-height: 300px;
 
   .cards {
     position: relative;
     min-height: 300px;
-    
+
     a {
       position: absolute;
       left: 0;

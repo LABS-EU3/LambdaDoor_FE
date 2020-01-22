@@ -154,4 +154,14 @@ const StyledContainer = styled.div`
       display: none;
     }
   }
+
+  .empty-state {
+    min-height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    max-width: 100%;
+  }
 `;

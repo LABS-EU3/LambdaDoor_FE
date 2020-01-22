@@ -3,6 +3,8 @@ import { reviewsReducer, reviewsError } from './reviews';
 import { authState } from './auth';
 import { interestReducer } from './interests';
 import { topRatedReviewsReducer } from './topRatedReviews';
+import { closestCompaniesReducer } from './closestCompanies'
+import { companiesReducer } from './companies';
 import { jobrolesReducer } from './jobroles';
 
 const rootReducer = combineReducers({
@@ -11,6 +13,8 @@ const rootReducer = combineReducers({
   authState: authState,
   interests: interestReducer,
   topRatedReviews: topRatedReviewsReducer,
+  closestCompanies: closestCompaniesReducer,
+  companies: companiesReducer,
   jobroles: jobrolesReducer,
 });
 

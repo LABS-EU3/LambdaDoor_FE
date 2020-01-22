@@ -9,9 +9,9 @@ import TopRatedList from '../../components/TopRated/TopRatedList';
 import JobTitleVisualization from '../../components/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
-import MyReviewList from '../../components/MyReviews/MyReviewList';
-
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
+import { getCompanyReviews } from '../../state/actions/reviews';
+import { getCompanies } from '../../state/actions/companies';
 
 export const UserDashboard = ({
   authState: {
@@ -19,6 +19,8 @@ export const UserDashboard = ({
   },
   LoginUser,
   SetAuthenticated,
+  getCompanyReviews,
+  getCompanies,
   history,
 }) => {
   useEffect(() => {
@@ -41,6 +43,8 @@ export const UserDashboard = ({
         );
         window.history.replaceState(null, null, window.location.pathname);
         await LoginUser(userId, name, email, profilePicture);
+        await getCompanyReviews(id);
+        await getCompanies(id);
       };
       if (code) {
         await getUserDetails();
@@ -86,6 +90,8 @@ export default connect(state => state, {
   LoginUser,
   SetAuthenticated,
   editProfile,
+  getCompanyReviews,
+  getCompanies,
 })(UserDashboard);
 
 const StyledContainer = styled.div`
