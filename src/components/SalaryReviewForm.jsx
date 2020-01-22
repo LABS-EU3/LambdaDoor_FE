@@ -29,7 +29,6 @@ const SalaryReview = ({
     interest_id: '',
     job_title: '',
     description: '',
-    salary: '',
     currency: '',
     unit: '',
     is_current_employee: false,
@@ -170,7 +169,15 @@ const SalaryReview = ({
           </SwitchContainer>
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          onClick={handleSubmit}
+          disabled={Boolean(
+            Object.keys(formValues).filter(elem => formValues[elem] === '')
+              .length
+          )}
+        >
           Submit
         </Button>
       </Form>
