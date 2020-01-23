@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { Tabs } from 'antd';
 import { connect } from 'react-redux';
-import MyReviewList from '../components/MyReviews/MyReviewList';
 import { getCompanyReviews, getSalaryReviews } from '../state/actions/reviews';
 import MySalaryReviewList from '../components/MyReviews/Salary/MySalaryReviewList';
 import CompanyReviewList from '../components/MyReviews/CompanyReviews/CompanyReviewList';
@@ -28,12 +27,9 @@ const ManageReviews = ({ history }) => {
         </TabPane>
         <TabPane tab="Salary Reviews" key="2">
           <MySalaryReviewList />
-         </TabPane>
-        <TabPane tab="Interview Reviews" key="2">
-          <InterviewReviewList />
         </TabPane>
         <TabPane tab="Interview Reviews" key="3">
-          Content of Tab Pane 3
+          <InterviewReviewList />
         </TabPane>
       </Tabs>
     </div>

@@ -15,8 +15,10 @@ import { SetAuthenticated } from '../../state/actions/auth';
 import ManageReviews from '../../pages/ManageReviews';
 import {
   getCompanyReviews,
-  getSalaryReviews, getInterviewReviews,
+  getSalaryReviews,
+  getInterviewReviews,
 } from '../../state/actions/reviews';
+import { getCompanies } from '../../state/actions/companies';
 import DetailedCompanyReviewCard from '../MyReviews/CompanyReviews/DetailedReviewCard';
 import DetailedInterviewReviewCard from '../MyReviews/InterviewReviews/DetailedReviewCard';
 
@@ -28,7 +30,6 @@ const start = async () => {
     await store.dispatch(getCompanies());
     await store.dispatch(getCompanyReviews(id));
     await store.dispatch(getSalaryReviews(id));
-    await store.dispatch(getCompanies());
     await store.dispatch(getInterviewReviews(id));
   }
 };

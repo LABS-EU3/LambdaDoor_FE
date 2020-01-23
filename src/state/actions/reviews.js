@@ -192,7 +192,7 @@ export const updateSalaryReview = update => async dispatch => {
   }
 };
 
-export const getInterviewReviews = () => async dispatch => {
+export const getInterviewReviews = id => async dispatch => {
   dispatch({
     type: types.GET_INTERVIEW_REVIEWS,
   });
