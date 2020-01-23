@@ -10,6 +10,7 @@ export const getClosestCompanies = req => async dispatch => {
 
   try {
     const response = await axios.get(
+      //I think this ID should be changed to be dynamic for users rather than be hardcoded to '2'
       `${process.env.REACT_APP_BACKEND_URL}/companies/2/closest`
     );
     dispatch({
