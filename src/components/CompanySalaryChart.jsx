@@ -80,8 +80,9 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
   return (
     <StyledDiv>
       <h3>
-        Average Company Salaries in &nbsp;
-        {avgSalaries.avgSalaries.length && avgSalaries.avgSalaries[0].currency}
+        Average Company Salaries
+        {avgSalaries.avgSalaries.length &&
+          ` in ${avgSalaries.avgSalaries[0].currency}`}
       </h3>
       {!isFetching ? (
         <>
@@ -102,7 +103,7 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="interest"  >
+                  <XAxis dataKey="interest">
                     <Label
                       value="Job Role"
                       position="insideBottom"
@@ -143,4 +144,8 @@ const StyledDiv = styled.div`
   @media ${mobilePortrait} {
     width: 99%;
   }
+`;
+
+const StyledAxis = styled(XAxis)`
+  transform: rotate(-90deg);
 `;
