@@ -92,8 +92,6 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
             <>
               <ResponsiveContainer width="95%" height={300}>
                 <BarChart
-                  //   width={500}
-                  //   height={300}
                   data={state}
                   margin={{
                     top: 5,
@@ -103,7 +101,12 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="interest">
+                  <XAxis
+                    className="salary-labels"
+                    dataKey="interest"
+                    height={40}
+                    angle={45}
+                  >
                     <Label
                       value="Job Role"
                       position="insideBottom"
@@ -144,8 +147,12 @@ const StyledDiv = styled.div`
   @media ${mobilePortrait} {
     width: 99%;
   }
-`;
-
-const StyledAxis = styled(XAxis)`
-  transform: rotate(-90deg);
+  .svg.recharts-surface tspan {
+    color: red !important;
+  }
+  /* recharts-surface {
+    tspan {
+      transform: rotate(-90deg);
+    }
+  } */
 `;
