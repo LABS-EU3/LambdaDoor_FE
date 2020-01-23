@@ -5,12 +5,14 @@ import { connect } from 'react-redux';
 import { Tabs } from 'antd';
 import { getCompanies } from '../state/actions/companies';
 import CompanyCard from '../components/CompanyCard/CompanyCard';
+import CompanySalaryChart from '../components/CompanySalaryChart';
 
 const { TabPane } = Tabs;
 
 const CompanyPage = ({
   getCompanies,
   companies: { companies },
+  avgSalaries: { avgSalaries },
   authState: {
     credentials: { id },
   },
@@ -24,6 +26,7 @@ const CompanyPage = ({
       <Tabs defaultActiveKey="1">
         <TabPane tab="Company Info" key="1">
           <CompanyCard companies={companies} />
+          <CompanySalaryChart avgSalaries={avgSalaries} />
         </TabPane>
         <TabPane tab="Company Reviews" key="2">
           Content of Tab Pane 2

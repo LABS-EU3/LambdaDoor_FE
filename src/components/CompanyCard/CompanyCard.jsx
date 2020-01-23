@@ -54,7 +54,6 @@ const CompanyCard = props => {
   const companyId = useParams().id;
   if (companies.length === 0) return <Spin />;
   const company = companies.find(elem => elem.id === Number(companyId));
-  console.log(company);
   return (
     <StyledDiv>
       <h2>{company.name}</h2>

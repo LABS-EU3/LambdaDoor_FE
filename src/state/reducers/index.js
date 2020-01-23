@@ -4,6 +4,7 @@ import { authState } from './auth';
 import { interestReducer } from './interests';
 import { companiesReducer } from './companies';
 import { jobrolesReducer } from './jobroles';
+import { avgSalariesReducer } from './avgSalaries';
 
 const rootReducer = combineReducers({
   reviews: reviewsReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   interests: interestReducer,
   companies: companiesReducer,
   jobroles: jobrolesReducer,
+  avgSalaries: avgSalariesReducer,
 });
 
 export default rootReducer;
