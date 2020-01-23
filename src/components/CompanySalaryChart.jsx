@@ -1,10 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import uuid from 'uuid';
 import {
   BarChart,
   Bar,
@@ -12,25 +11,13 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   Label,
   Cell,
-  ResponsiveContainer,
 } from 'recharts';
 import { connect } from 'react-redux';
-import { mobilePortrait } from '../styles/theme.styles';
 import { Spin } from 'antd';
 import { getAvgSalaries } from '../state/actions/avgSalaries';
-
-const startingData = [
-  { interest: 'Front End', id: uuid(), avg: 0, currency: 'USD' },
-  { interest: 'Back End', id: uuid(), avg: 0, currency: 'USD' },
-  { interest: 'Full Stack', id: uuid(), avg: 0, currency: 'USD' },
-  { interest: 'Data Science', id: uuid(), avg: 0, currency: 'USD' },
-  { interest: 'Machine Learning', id: uuid(), avg: 0, currency: 'USD' },
-  { interest: 'User Experience', id: uuid(), avg: 0, currency: 'USD' },
-  { interest: 'Mobile Development', id: uuid(), avg: 0, currency: 'USD' },
-  { interest: 'Product Manager', id: uuid(), avg: 0, currency: 'USD' },
-];
 
 const COLOURS = [
   '#1E5896',
@@ -47,82 +34,54 @@ const COLOURS = [
 const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
   const { id } = useParams();
   console.log(avgSalaries);
-  const [state, setState] = useState([]);
-
   useEffect(() => {
     getAvgSalaries(id);
   }, []);
 
-  useEffect(() => {
-    console.log('avgSalaries', avgSalaries);
-    const averages = [...avgSalaries.avgSalaries];
-
-    console.log('averages', averages);
-    console.log('starting data', startingData);
-    startingData.forEach(item => {
-      const index = averages.findIndex(e => e.interest === item.interest);
-
-      if (index === -1) {
-        averages.push(item);
-      }
-    });
-
-    setState(
-      averages.map(item => {
-        return {
-          ...item,
-          avg: parseInt(item.avg, 10),
-        };
-      })
-    );
-  }, [avgSalaries]);
-
   return (
     <StyledDiv>
       <h3>
-        Average Company Salaries
-        {avgSalaries.avgSalaries.length &&
-          ` in ${avgSalaries.avgSalaries[0].currency}`}
+        Average Company Salaries in &nbsp;
+        {avgSalaries.avgSalaries.length && avgSalaries.avgSalaries[0].currency}
       </h3>
       {!isFetching ? (
         <>
-          {avgSalaries.avgSalaries &&
-          avgSalaries.avgSalaries.length !== 0 &&
-          avgSalaries.avg !== 0 ? (
+          {avgSalaries.avgSalaries && avgSalaries.avgSalaries.length !== 0 ? (
             <>
-              <ResponsiveContainer width="95%" height={300}>
-                <BarChart
-                  data={state}
-                  margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis
-                    className="salary-labels"
-                    dataKey="interest"
-                    height={40}
-                    angle={45}
-                  >
+              <BarChart
+                width={500}
+                height={300}
+                data={avgSalaries.avgSalaries}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="interest">
+                  <Label value="Job Role" position="insideBottom" offset={-5} />
+                </XAxis>
+
+                <YAxis dataKey="avg">
+                  {/* {avgSalaries.avgSalaries && (
                     <Label
-                      value="Job Role"
+                      value={`${avgSalaries.avgSalaries[0].currency}`}
                       position="insideBottom"
-                      offset={-5}
+                      angle={-90}
+                      offset={0}
                     />
-                  </XAxis>
-                  <YAxis dataKey="avg" />
-                  <Tooltip />
-                  <Bar dataKey="avg" barSize={100}>
-                    {avgSalaries.avgSalaries &&
-                      avgSalaries.avgSalaries.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLOURS[index]} />
-                      ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
+                  )} */}
+                </YAxis>
+                <Tooltip />
+                <Bar dataKey="avg" barSize={100}>
+                  {avgSalaries.avgSalaries &&
+                    avgSalaries.avgSalaries.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLOURS[index]} />
+                    ))}
+                </Bar>
+              </BarChart>
             </>
           ) : (
             <div className="empty-state">
@@ -142,17 +101,6 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
 export default connect(state => state, { getAvgSalaries })(CompanySalaryChart);
 
 const StyledDiv = styled.div`
-  width: 800px;
+  width: 500px;
   height: 500px;
-  @media ${mobilePortrait} {
-    width: 99%;
-  }
-  .svg.recharts-surface tspan {
-    color: red !important;
-  }
-  /* recharts-surface {
-    tspan {
-      transform: rotate(-90deg);
-    }
-  } */
 `;
