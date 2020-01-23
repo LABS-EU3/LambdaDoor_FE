@@ -8,7 +8,7 @@ export default function ClosestLocationCard(props) {
   const { text, name, id, website } = props;
   return (
     <div className="cards">
-      <Link to={`interviews/${id}`} className="nav-link">
+      <Link to={`company-page/${id}`} className="nav-link">
         <div>
           <h3>{name}</h3>
           <p>{text}</p>

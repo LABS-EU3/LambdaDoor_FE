@@ -9,7 +9,7 @@ export default function TopRatedCard(props) {
   const { text, name, id, rating } = props;
   return (
     <div className="cards">
-      <Link to={`topratings/${id}`} className="nav-link">
+      <Link to={`company-page/${id}`} className="nav-link">
         <div>
           <h3>{name}</h3>
           <p>{text}</p>
