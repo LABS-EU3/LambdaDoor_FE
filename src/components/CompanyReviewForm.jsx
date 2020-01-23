@@ -43,7 +43,6 @@ const CompanyReview = ({
       setFormValues({
         ...formValues,
         company_id: company.id,
-        location: company.location,
       });
     }
   };

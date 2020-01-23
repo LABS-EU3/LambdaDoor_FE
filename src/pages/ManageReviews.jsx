@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import MyReviewList from '../components/MyReviews/MyReviewList';
 import { getCompanyReviews, getSalaryReviews } from '../state/actions/reviews';
 import MySalaryReviewList from '../components/MyReviews/Salary/MySalaryReviewList';
-
+import CompanyReviewList from '../components/MyReviews/CompanyReviews/CompanyReviewList';
+import InterviewReviewList from '../components/MyReviews/InterviewReviews/InterviewReviewList';
 const { TabPane } = Tabs;
 
 const ManageReviews = ({ history }) => {
@@ -23,10 +24,12 @@ const ManageReviews = ({ history }) => {
       <h1>My Reviews</h1>
       <Tabs defaultActiveKey="1">
         <TabPane tab="Company Reviews" key="1">
-          <MyReviewList />
+          <CompanyReviewList />
         </TabPane>
         <TabPane tab="Salary Reviews" key="2">
           <MySalaryReviewList />
+        <TabPane tab="Interview Reviews" key="2">
+          <InterviewReviewList />
         </TabPane>
         <TabPane tab="Interview Reviews" key="3">
           Content of Tab Pane 3

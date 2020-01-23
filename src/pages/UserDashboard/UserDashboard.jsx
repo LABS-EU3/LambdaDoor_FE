@@ -11,7 +11,10 @@ import JobTitleVisualization from '../../components/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
-import { getCompanyReviews } from '../../state/actions/reviews';
+import {
+  getCompanyReviews,
+  getInterviewReviews,
+} from '../../state/actions/reviews';
 import { getCompanies } from '../../state/actions/companies';
 
 export const UserDashboard = ({
@@ -45,6 +48,7 @@ export const UserDashboard = ({
         window.history.replaceState(null, null, window.location.pathname);
         const user = await LoginUser(userId, name, email, profilePicture);
         await getCompanyReviews(user);
+        await getInterviewReviews(user);
         await getCompanies();
       };
       if (code) {

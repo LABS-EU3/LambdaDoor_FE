@@ -17,9 +17,9 @@ import { connect } from 'react-redux';
 import {
   deleteCompanyReview,
   updateCompanyReview,
-} from '../../state/actions/reviews';
-import openNotification from '../../utils/openNotification';
-import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
+} from '../../../state/actions/reviews';
+import openNotification from '../../../utils/openNotification';
+import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
 
 const { Paragraph } = Typography;
 let updatedReview;
