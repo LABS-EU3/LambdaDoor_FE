@@ -19,7 +19,7 @@ const TopRatedList = ({
       {!isFetching ? (
         <>
           {topRatedReviews.length !== 0 ? (
-            topRatedReviews.map(topRated => (
+            topRatedReviews.slice(0, 4).map(topRated => (
               // eslint-disable-next-line react/no-array-index-key
               <TopRatedCard
                 key={`${topRated.id}`}
