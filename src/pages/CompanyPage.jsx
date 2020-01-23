@@ -26,7 +26,7 @@ const CompanyPage = ({
       <Tabs defaultActiveKey="1">
         <TabPane tab="Company Info" key="1">
           <CompanyCard companies={companies} />
-          <CompanySalaryChart avgSalaries={avgSalaries} />
+          {/* <CompanySalaryChart avgSalaries={avgSalaries} /> */}
         </TabPane>
         <TabPane tab="Company Reviews" key="2">
           Content of Tab Pane 2

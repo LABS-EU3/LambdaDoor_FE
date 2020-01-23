@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Rate, Spin, Card } from 'antd';
 import styled from 'styled-components';
 import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
+import CompanySalaryChart from '../CompanySalaryChart';
 
 const StyledDiv = styled.div`
   max-width: 800px;
@@ -79,6 +80,7 @@ const CompanyCard = props => {
         {/* I've added the placeholder text above for now as we don't yet have descriptions in the db. Further styling is to be done when the salary component is added. (Lisa) */}
         {company.description}
       </p>
+      <CompanySalaryChart />
     </StyledDiv>
   );
 };
