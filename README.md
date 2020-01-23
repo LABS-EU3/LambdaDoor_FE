@@ -88,7 +88,8 @@ Sometimes it's helpful to know what all these different files are for…
 │  ├─ components/    # Components
 │  │  ├─ Layouts/    # …that govern macro layout
 │  │  ├─ Router/     # …that handles all files that pertain to app routing
-│  │  ├─ templates/  # …that combine components to render page
+│  │  ├─ TopRated/   # …that handles the components for top rated companies
+|  |  ├─ UserLocationComp/ # …that handles the components for recommended user location
 |  |
 |  ├─ pages/         # Pages
 │  │  ├─ Home/       # …that renders Home-specific content

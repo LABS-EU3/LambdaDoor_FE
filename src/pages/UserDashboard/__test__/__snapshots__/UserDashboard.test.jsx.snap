@@ -3,37 +3,77 @@
 exports[`ConnectedUserDashboard renders correctly 1`] = `
 <body>
   <div>
-    <div>
-      <h1
-        class="sc-bwzfXH ifdESB"
-      >
-        Latest Reviews
-      </h1>
+    <div
+      class="sc-bxivhb dUvSaQ"
+    >
       <div
-        class="sc-bdVaJa jlQmNR"
+        class="top-layout"
       >
+        <div>
+          <h2>
+            Top Rated Companies
+          </h2>
+          <div
+            class="sc-bdVaJa dDCHnS"
+          >
+            <div
+              class="empty-state"
+            >
+              <p>
+                No data to display
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2>
+            Popular Job Roles
+          </h2>
+          <div
+            class="sc-htpNat djbdYV"
+          >
+            <div
+              class="empty-state"
+            >
+              <div
+                class="ant-spin ant-spin-spinning"
+              >
+                <span
+                  class="ant-spin-dot ant-spin-dot-spin"
+                >
+                  <i
+                    class="ant-spin-dot-item"
+                  />
+                  <i
+                    class="ant-spin-dot-item"
+                  />
+                  <i
+                    class="ant-spin-dot-item"
+                  />
+                  <i
+                    class="ant-spin-dot-item"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bottom-layout"
+      >
+        <h2>
+          Recommended Based on Location
+        </h2>
         <div
-          class="empty-state"
+          class="sc-bwzfXH gWFEPE"
         >
           <div
-            class="ant-spin ant-spin-spinning"
+            class="empty-state"
           >
-            <span
-              class="ant-spin-dot ant-spin-dot-spin"
-            >
-              <i
-                class="ant-spin-dot-item"
-              />
-              <i
-                class="ant-spin-dot-item"
-              />
-              <i
-                class="ant-spin-dot-item"
-              />
-              <i
-                class="ant-spin-dot-item"
-              />
-            </span>
+            <p>
+              No data to display
+            </p>
           </div>
         </div>
       </div>

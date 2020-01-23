@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClosestLocationList renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bdVaJa iJTzEj"
+    >
+      <div
+        class="cards"
+      >
+        <a
+          class="nav-link"
+          href="/interviews/undefined"
+        >
+          <div>
+            <h3>
+              Accenture
+            </h3>
+            <p />
+          </div>
+          <p
+            style="margin-bottom: 0px;"
+          >
+            Link:
+             
+            <a
+              href="www.accenture.com."
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              www.accenture.com.
+            </a>
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+`;
