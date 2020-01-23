@@ -28,6 +28,7 @@ const ManageReviews = ({ history }) => {
         </TabPane>
         <TabPane tab="Salary Reviews" key="2">
           <MySalaryReviewList />
+         </TabPane>
         <TabPane tab="Interview Reviews" key="2">
           <InterviewReviewList />
         </TabPane>
