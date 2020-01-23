@@ -23,7 +23,7 @@ export const TopRatedList = ({
               // eslint-disable-next-line react/no-array-index-key
               <TopRatedCard
                 key={`${topRated.id}`}
-                text={topRated.description || 'Its A beautiful Day to be alive'}
+                text={topRated.description }
                 name={topRated.name}
                 id={topRated.id}
                 rating={topRated.average_rating}

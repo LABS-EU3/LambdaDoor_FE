@@ -23,7 +23,7 @@ export const ClosestLocationList = ({
               // eslint-disable-next-line react/no-array-index-key
               <ClosestLocationCard
                 key={`${closest.id}`}
-                text={closest.description || 'Its A beautiful Day to be alive'}
+                text={closest.description }
                 name={closest.name}
                 id={closest.id}
                 website={closest.website}

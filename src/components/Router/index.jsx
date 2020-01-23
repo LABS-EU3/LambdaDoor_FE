@@ -7,7 +7,6 @@ import UserDashboard from '../../pages/UserDashboard/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 import ReviewDetails from '../ReviewDetails';
 import AddReview from '../../pages/AddReview';
-import ReviewList from '../ReviewList/ReviewList';
 import store from '../../state/store';
 import { SetAuthenticated } from '../../state/actions/auth';
 import ManageReviews from '../../pages/ManageReviews';
