@@ -15,9 +15,7 @@ exports[`TopRatedList renders correctly 1`] = `
         >
           <div>
             <h3 />
-            <p>
-              Its A beautiful Day to be alive
-            </p>
+            <p />
           </div>
           <ul
             class="ant-rate ant-rate-disabled"

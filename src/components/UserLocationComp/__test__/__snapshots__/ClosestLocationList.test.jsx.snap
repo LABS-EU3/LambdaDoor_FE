@@ -17,9 +17,7 @@ exports[`ClosestLocationList renders correctly 1`] = `
             <h3>
               Accenture
             </h3>
-            <p>
-              Its A beautiful Day to be alive
-            </p>
+            <p />
           </div>
           <p
             style="margin-bottom: 0px;"
