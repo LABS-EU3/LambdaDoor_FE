@@ -4,8 +4,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Tabs } from 'antd';
 import { getCompanies } from '../state/actions/companies';
-import CompanyCard from '../components/CompanyCard';
-import CompanyReviewCard from '../components/CompanyReviewCard';
+import CompanyCard from '../components/CompanyCard/CompanyCard';
+import CompanyReviewCard from '../components/CompanyReview/CompanyReviewCard';
 
 const { TabPane } = Tabs;
 const CompanyPage = ({

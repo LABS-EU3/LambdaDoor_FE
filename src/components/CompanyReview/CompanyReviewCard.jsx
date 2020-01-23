@@ -6,8 +6,8 @@ import { useParams, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Rate, Card, Empty, Button } from 'antd';
 import styled from 'styled-components';
-import { getReviewsByCompanyId } from '../state/actions/reviews';
-import { mobilePortrait, tabletPortrait } from '../styles/theme.styles';
+import { getReviewsByCompanyId } from '../../state/actions/reviews';
+import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
 
 const ReviewCard = styled.div`
   display: flex;
@@ -26,26 +26,15 @@ const StyledEmpty = styled.div`
 `;
 
 const StyledCard = styled(Card)`
-  margin: 1rem 1.5rem 1rem 0rem !important;
-  width: 270px;
-  height: 300px;
+  margin: 2rem 1.5rem 1rem 0rem !important;
+  width: 280px;
+  height: 180px;
+  padding-top: 1rem !important;
+  font-size: 16px;
   cursor: pointer;
 
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.3rem;
-    height: 50px;
-    h2 {
-      margin-bottom: 0;
-      padding-top: 5px !important;
-      font-size: 18px;
-      font-weight: 900;
-    }
-  }
-
   .stars {
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 14px;
   }
 
@@ -90,36 +79,16 @@ const CompanyReviewCard = ({
         <StyledCard
           onClick={() => history.push(`/companyReviews/${companyReview.id}`)}
         >
-          <div className="card-top">
-            <h2>
-              Company Name
-              {companyReview.name}
-            </h2>
-          </div>
           <p>
-            <i>
-              <div>Review Headline:</div>
-              {companyReview.review_headline.length > 50 ? (
-                <span>
-                  {companyReview.review_headline.slice(0, 50)}
-                  ...
-                </span>
-              ) : (
-                <span>{companyReview.review_headline}</span>
-              )}
-            </i>
-          </p>
-          <i>
-            <div>Review</div>
-            {companyReview.review.length > 30 ? (
+            {companyReview.review_headline.length > 25 ? (
               <span>
-                {companyReview.review.slice(0, 30)}
+                {companyReview.review_headline.slice(0, 25)}
                 ...
               </span>
             ) : (
-              <span>{companyReview.review}</span>
+              <span>{companyReview.review_headline}</span>
             )}
-          </i>
+          </p>
           <div className="stars">
             <div>Rating:</div>
             <Rate disabled defaultValue={companyReview.ratings} size="small" />

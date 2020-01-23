@@ -1,28 +1,41 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Rate, Card, Icon, Button } from 'antd';
+import { Rate, Card, Icon, Button, Skeleton } from 'antd';
 import styled from 'styled-components';
-import { getReviewsByCompanyId } from '../state/actions/reviews';
-import { mobilePortrait, tabletPortrait } from '../styles/theme.styles';
+import { getReviewsByReviewId } from '../../state/actions/reviews';
+import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
 
 const CompanyReviewCardDetailed = ({
   history,
-  getReviewsByCompanyId,
+  getReviewsByReviewId,
+  singleReview: {
+    reviews: { companyReview: singleCompanyReview },
+  },
   singleCompanyReviews: {
     reviews: { companyReview },
   },
 }) => {
+  const [review, setReview] = useState(null);
   const reviewId = useParams().id;
-  const review = companyReview.find(elem => elem.id === Number(reviewId));
-
-  useEffect(() => {
-    getReviewsByCompanyId(reviewId);
+  setReview(companyReview.find(elem => elem.id === Number(reviewId)));
+  useEffect(async () => {
+    if (!review) {
+      await getReviewsByReviewId(reviewId);
+      setReview(singleCompanyReview);
+    }
   }, []);
-  return (
+  // useEffect(() => {
+  //   setReview(singleCompanyReview);
+  //   console.log(review);
+  // }, [singleCompanyReview]);
+
+  return !review ? (
+    <Skeleton />
+  ) : (
     <>
       <Button
         style={{
@@ -30,11 +43,12 @@ const CompanyReviewCardDetailed = ({
           border: '1px solid #BB1333',
           color: '#BB1333',
         }}
-        onClick={() => history.push(`/reviews/`)}
+        onClick={() => history.push(`/company-page/${reviewId}`)}
       >
         <Icon type="left" />
         Back to Reviews
       </Button>
+      {/* {companyReview.map(review => ( */}
       <StyledCard>
         <div className="card-top">
           <h2>
@@ -57,7 +71,7 @@ const CompanyReviewCardDetailed = ({
           <Rate disabled defaultValue={review.ratings} size="small" />
         </div>
       </StyledCard>
-      ))
+      {/* ))} */}
     </>
   );
 };
@@ -275,5 +289,5 @@ const StyledCard = styled(Card)`
 `;
 
 export default connect(state => state, {
-  getReviewsByCompanyId,
+  getReviewsByReviewId,
 })(CompanyReviewCardDetailed);

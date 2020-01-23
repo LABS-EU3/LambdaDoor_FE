@@ -67,7 +67,7 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
 
   useEffect(() => {
     getJobRoles();
-  }, []);
+  }, [getJobRoles]);
 
   useEffect(() => {
     const roles = [...jobroles];
@@ -167,6 +167,12 @@ export default connect(mapStateToProps, { getJobRoles })(JobTitleVisualization);
 const StyledContainer = styled.div`
   display: flex;
   align-items: center;
+  min-height: 300px;
+  position: relative;
+
+  @media (max-width: 845px) {
+    flex-direction: column;
+  }
 
   .recharts-legend-wrapper {
     position: static !important;
@@ -190,14 +196,5 @@ const StyledContainer = styled.div`
       margin-right: 0.5rem;
       display: inline-block;
     }
-  }
-
-  .empty-state {
-    max-width: 400px;
-    min-height: 300px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 `;
