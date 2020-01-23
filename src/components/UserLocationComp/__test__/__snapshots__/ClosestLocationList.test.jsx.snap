@@ -4,14 +4,14 @@ exports[`ClosestLocationList renders correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-bdVaJa iJTzEj"
+      class="sc-bwzfXH gWFEPE"
     >
       <div
         class="cards"
       >
         <a
           class="nav-link"
-          href="/interviews/undefined"
+          href="/company-page/undefined"
         >
           <div>
             <h3>
@@ -22,16 +22,16 @@ exports[`ClosestLocationList renders correctly 1`] = `
           <p
             style="margin-bottom: 0px;"
           >
-            Link:
-             
-            <a
-              href="www.accenture.com."
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              www.accenture.com.
-            </a>
+            Link: 
           </p>
+        </a>
+        <a
+          class="sc-bdVaJa cZrYsx"
+          href="www.accenture.com."
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          www.accenture.com.
         </a>
       </div>
     </div>
