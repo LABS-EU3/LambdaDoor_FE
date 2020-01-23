@@ -8,10 +8,9 @@ export const getClosestCompanies = () => async (dispatch, getState) => {
   });
 
   try {
+    const { id } = await getState().authState.credentials;
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/companies/${
-        getState().authState.credentials.id
-      }/closest`
+      `${process.env.REACT_APP_BACKEND_URL}/companies/${id}/closest`
     );
     dispatch({
       type: types.GET_CLOSEST_COMPANIES_SUCCESS,
