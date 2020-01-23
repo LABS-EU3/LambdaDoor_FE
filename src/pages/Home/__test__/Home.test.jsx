@@ -79,6 +79,8 @@ describe('ConnectedHome', () => {
         credentials: {},
         error: null,
       },
+      topRatedReviews: { isfetching: false, topRatedReviews: [] },
+      closestCompanies: { isfetching: false, closestCompanies: [] },
     });
   });
   // it('decodes the token of a previously authenticated user and passes them to the dashboard', async () => {

@@ -7,7 +7,6 @@ import UserDashboard from '../../pages/UserDashboard/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 import ReviewDetails from '../ReviewDetails';
 import AddReview from '../../pages/AddReview';
-import ReviewList from '../ReviewList/ReviewList';
 import store from '../../state/store';
 import { SetAuthenticated } from '../../state/actions/auth';
 import ManageReviews from '../../pages/ManageReviews';
@@ -33,8 +32,6 @@ const AppRouter = () => {
         <DashboardLayout path="/dashboard" component={UserDashboard} />
         <DashboardLayout path="/companies" component={UserDashboard} />
         <DashboardLayout path="/reviews" exact component={ManageReviews} />
-        <DashboardLayout path="/salaries" exact component={ReviewList} />
-        <DashboardLayout path="/interviews" exact component={ReviewList} />
         <DashboardLayout path="/interviews/:id" component={ReviewDetails} />
         <DashboardLayout path="/salaries/:id" component={ReviewDetails} />
         <DashboardLayout path="/reviews/:id" component={ReviewDetails} />
