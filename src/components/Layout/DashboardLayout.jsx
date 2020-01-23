@@ -144,7 +144,7 @@ const StyledContainer = styled.div`
   }
 
   .main-content {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     height: calc(100vh - 70px);
     overflow-y: auto;
     @media ${mobilePortrait} {
@@ -156,6 +156,16 @@ const StyledContainer = styled.div`
     @media ${mobilePortrait} {
       display: none;
     }
+  }
+
+  .empty-state {
+    min-height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    max-width: 100%;
   }
 
   .footer {

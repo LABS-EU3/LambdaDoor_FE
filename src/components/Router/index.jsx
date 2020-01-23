@@ -32,8 +32,6 @@ const AppRouter = () => {
         <DashboardLayout path="/dashboard" component={UserDashboard} />
         <DashboardLayout path="/companies" component={UserDashboard} />
         <DashboardLayout path="/reviews" exact component={ManageReviews} />
-        <DashboardLayout path="/salaries" exact component={ReviewList} />
-        <DashboardLayout path="/interviews" exact component={ReviewList} />
         <DashboardLayout path="/interviews/:id" component={ReviewDetails} />
         <DashboardLayout path="/salaries/:id" component={ReviewDetails} />
         <DashboardLayout path="/reviews/:id" component={ReviewDetails} />
