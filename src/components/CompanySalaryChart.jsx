@@ -44,6 +44,27 @@ const COLOURS = [
   '#D2E3D0',
 ];
 
+class CustomizedAxisTick extends React.PureComponent {
+  render() {
+    const { x, y, payload } = this.props;
+
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text
+          x={0}
+          y={0}
+          dy={0}
+          textAnchor="end"
+          fill="#666"
+          transform="rotate(-90)"
+        >
+          {payload.value}
+        </text>
+      </g>
+    );
+  }
+}
+
 const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
   const { id } = useParams();
   console.log(avgSalaries);
@@ -90,7 +111,7 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
           avgSalaries.avgSalaries.length !== 0 &&
           avgSalaries.avg !== 0 ? (
             <>
-              <ResponsiveContainer width="95%" height={300}>
+              <ResponsiveContainer width="95%" height={400}>
                 <BarChart
                   data={state}
                   margin={{
@@ -102,9 +123,9 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis
-                    className="salary-labels"
+                    tick={<CustomizedAxisTick />}
                     dataKey="interest"
-                    height={40}
+                    height={170}
                     angle={45}
                   >
                     <Label
