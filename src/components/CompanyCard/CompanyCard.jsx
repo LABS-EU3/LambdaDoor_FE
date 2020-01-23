@@ -70,7 +70,7 @@ const CompanyCard = props => {
           <p>{company.location}</p>
           <span>
             Average Rating:
-            <Rate defaultValue={Number(company.average_rating)} />
+            <Rate disabled defaultValue={Number(company.average_rating)} />
           </span>
         </div>
         <a target="_blank" rel="noopener noreferrer" href={company.website}>

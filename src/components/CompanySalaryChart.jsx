@@ -14,8 +14,10 @@ import {
   Tooltip,
   Label,
   Cell,
+  ResponsiveContainer,
 } from 'recharts';
 import { connect } from 'react-redux';
+import { mobilePortrait } from '../styles/theme.styles';
 import { Spin } from 'antd';
 import { getAvgSalaries } from '../state/actions/avgSalaries';
 
@@ -87,40 +89,36 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
           avgSalaries.avgSalaries.length !== 0 &&
           avgSalaries.avg !== 0 ? (
             <>
-              <BarChart
-                width={500}
-                height={300}
-                data={state}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="interest">
-                  <Label value="Job Role" position="insideBottom" offset={-5} />
-                </XAxis>
-
-                <YAxis dataKey="avg">
-                  {/* {avgSalaries.avgSalaries && (
+              <ResponsiveContainer width="95%" height={300}>
+                <BarChart
+                  //   width={500}
+                  //   height={300}
+                  data={state}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="interest"  >
                     <Label
-                      value={`${avgSalaries.avgSalaries[0].currency}`}
+                      value="Job Role"
                       position="insideBottom"
-                      angle={-90}
-                      offset={0}
+                      offset={-5}
                     />
-                  )} */}
-                </YAxis>
-                <Tooltip />
-                <Bar dataKey="avg" barSize={100}>
-                  {avgSalaries.avgSalaries &&
-                    avgSalaries.avgSalaries.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLOURS[index]} />
-                    ))}
-                </Bar>
-              </BarChart>
+                  </XAxis>
+                  <YAxis dataKey="avg" />
+                  <Tooltip />
+                  <Bar dataKey="avg" barSize={100}>
+                    {avgSalaries.avgSalaries &&
+                      avgSalaries.avgSalaries.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLOURS[index]} />
+                      ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
             </>
           ) : (
             <div className="empty-state">
@@ -142,4 +140,7 @@ export default connect(state => state, { getAvgSalaries })(CompanySalaryChart);
 const StyledDiv = styled.div`
   width: 800px;
   height: 500px;
+  @media ${mobilePortrait} {
+    width: 99%;
+  }
 `;

@@ -3,6 +3,8 @@ import {
   getSalaryReviews,
   getInterviewReviews,
 } from './reviews';
+import { getTopRatedReviews } from './topRatedReviews';
+import { getClosestCompanies } from './closestCompanies';
 
 import { getAvgSalaries } from './avgSalaries';
 
@@ -12,4 +14,6 @@ export const actions = {
   getSalaryReviews,
   getInterviewReviews,
   getAvgSalaries,
+  getTopRatedReviews,
+  getClosestCompanies,
 };

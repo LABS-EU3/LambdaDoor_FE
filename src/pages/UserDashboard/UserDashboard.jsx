@@ -1,21 +1,21 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import TopRatedList from '../../components/TopRated/TopRatedList';
+import ClosestLocationList from '../../components/UserLocationComp/ClosestLocationList';
 import JobTitleVisualization from '../../components/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
-
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
-import { getCompanyReviews } from '../../state/actions/reviews';
+import {
+  getCompanyReviews,
+  getInterviewReviews,
+} from '../../state/actions/reviews';
 import { getCompanies } from '../../state/actions/companies';
-
-const StyledH1 = styled.h1`
-  font-family: Roboto;
-  padding-left: 9px;
-`;
 
 export const UserDashboard = ({
   authState: {
@@ -48,6 +48,7 @@ export const UserDashboard = ({
         window.history.replaceState(null, null, window.location.pathname);
         const user = await LoginUser(userId, name, email, profilePicture);
         await getCompanyReviews(user);
+        await getInterviewReviews(user);
         await getCompanies();
       };
       if (code) {
@@ -72,10 +73,22 @@ export const UserDashboard = ({
   }, [location]);
 
   return (
-    <div>
-      <StyledH1>Latest Reviews</StyledH1>
-      <JobTitleVisualization />
-    </div>
+    <StyledContainer>
+      <div className="top-layout">
+        <div>
+          <h2>Top Rated Companies</h2>
+          <TopRatedList />
+        </div>
+        <div>
+          <h2>Popular Job Roles</h2>
+          <JobTitleVisualization />
+        </div>
+      </div>
+      <div className="bottom-layout">
+        <h2>Recommended Based on Location</h2>
+        <ClosestLocationList />
+      </div>
+    </StyledContainer>
   );
 };
 export default connect(state => state, {
@@ -85,3 +98,41 @@ export default connect(state => state, {
   getCompanyReviews,
   getCompanies,
 })(UserDashboard);
+
+const StyledContainer = styled.div`
+  @media (max-width: 1280px) {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 500px;
+  }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .top-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    & > div {
+      width: calc(50% - 1.5rem);
+
+      @media (max-width: 1280px) {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
+
+    @media (max-width: 1280px) {
+      flex-direction: column;
+    }
+  }
+
+  .bottom-layout {
+    margin-top: 3rem;
+  }
+`;
