@@ -1,10 +1,10 @@
 /* eslint-disable no-debugger */
 /* eslint-disable no-shadow */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Tabs } from 'antd';
 import { getCompanies } from '../state/actions/companies';
-import CompanyCard from '../components/CompanyCard';
+import CompanyCard from '../components/CompanyCard/CompanyCard';
 
 const { TabPane } = Tabs;
 
