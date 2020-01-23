@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Rate, Card, Icon, Button, Skeleton } from 'antd';
@@ -19,19 +19,15 @@ const CompanyReviewCardDetailed = ({
     reviews: { companyReview },
   },
 }) => {
-  const [review, setReview] = useState(null);
   const reviewId = useParams().id;
-  setReview(companyReview.find(elem => elem.id === Number(reviewId)));
-  useEffect(async () => {
-    if (!review) {
-      await getReviewsByReviewId(reviewId);
-      setReview(singleCompanyReview);
+  const review =
+    companyReview.find(elem => elem.id === Number(reviewId)) ||
+    singleCompanyReview;
+  useEffect(() => {
+    if (!Object.keys(review).length) {
+      getReviewsByReviewId(reviewId);
     }
   }, []);
-  // useEffect(() => {
-  //   setReview(singleCompanyReview);
-  //   console.log(review);
-  // }, [singleCompanyReview]);
 
   return !review ? (
     <Skeleton />
@@ -53,7 +49,7 @@ const CompanyReviewCardDetailed = ({
         <div className="card-top">
           <h2>
             Company Name
-            {/* {review.name} */}
+            {review.name}
           </h2>
         </div>
         <p>
@@ -68,7 +64,7 @@ const CompanyReviewCardDetailed = ({
         </i>
         <div className="stars">
           <div>Rating:</div>
-          <Rate disabled defaultValue={review.ratings} size="small" />
+          <Rate disabled defaultValue={Number(review.ratings)} size="small" />
         </div>
       </StyledCard>
       {/* ))} */}
