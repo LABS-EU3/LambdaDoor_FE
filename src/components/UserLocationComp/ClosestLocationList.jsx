@@ -6,7 +6,7 @@ import { Spin } from 'antd';
 import ClosestLocationCard from './ClosestLocationCard';
 import { getClosestCompanies } from '../../state/actions/closestCompanies';
 
-const ClosestLocationList = ({
+export const ClosestLocationList = ({
   isFetching,
   getClosestCompanies,
   closestCompanies: { closestCompanies },

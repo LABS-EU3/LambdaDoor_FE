@@ -6,7 +6,7 @@ import { Spin } from 'antd';
 import TopRatedCard from './TopRatedCard';
 import { getTopRatedReviews } from '../../state/actions/topRatedReviews';
 
-const TopRatedList = ({
+export const TopRatedList = ({
   isFetching,
   getTopRatedReviews,
   topRatedReviews: { topRatedReviews },
