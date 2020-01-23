@@ -74,12 +74,43 @@ export const reviewsReducer = (state = initialState, action) => {
         },
       };
 
+    case types.ADD_INTERVIEW_REVIEW_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          interview: [...state.reviews.interview, action.payload],
+        },
+      };
+
     case types.GET_INTERVIEW_REVIEWS_SUCCESS:
       return {
         ...state,
         reviews: {
           ...state.reviews,
           interview: action.payload,
+        },
+      };
+
+    case types.DELETE_INTERVIEW_REVIEW_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          interview: state.reviews.interview.filter(
+            elem => elem.id !== action.payload
+          ),
+        },
+      };
+
+    case types.UPDATE_INTERVIEW_REVIEW_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          interview: state.reviews.interview.map(elem => {
+            return elem.id === action.payload.id ? action.payload : elem;
+          }),
         },
       };
 

@@ -3,6 +3,7 @@ import { Tabs } from 'antd';
 import styled from 'styled-components';
 import CompanyReviewForm from '../components/CompanyReviewForm';
 import SalaryReviewForm from '../components/SalaryReviewForm';
+import InterviewReviewForm from '../components/InterviewReviewForm';
 
 const { TabPane } = Tabs;
 const AddReview = ({ history }) => {
@@ -23,7 +24,7 @@ const AddReview = ({ history }) => {
             <SalaryReviewForm />
           </TabPane>
           <TabPane tab="Interview Process" key="3">
-            Content of Tab 3
+            <InterviewReviewForm />
           </TabPane>
         </Tabs>
       </div>

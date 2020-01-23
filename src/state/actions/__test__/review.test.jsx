@@ -127,27 +127,31 @@ describe('Action/types interview review testing', () => {
   });
 
   it('should execute fetch interview review data with success', async () => {
-    mock.onGet('/').reply(200, interviewReview);
+    mock
+      .onGet(`${process.env.REACT_APP_BACKEND_URL}/interviewreviews/user/1`)
+      .reply(200, interviewReview);
     const expectedActions = {
       type: types.GET_INTERVIEW_REVIEWS_SUCCESS,
       payload: interviewReview,
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getInterviewReviews());
+    await store.dispatch(getInterviewReviews(1));
     expect(actions[1]).toEqual(expectedActions);
   });
 
   it('should execute fetch Error data', async () => {
-    const code3 = 401;
-    mock.onGet('/').reply(401);
+    const code = 401;
+    mock
+      .onGet(`${process.env.REACT_APP_BACKEND_URL}/interviewreviews/user/1`)
+      .reply(code, interviewReview);
     const expectedAction = {
       type: types.GET_INTERVIEW_REVIEWS_FAILURE,
-      payload: `Request failed with status code ${code3}`,
+      payload: `Request failed with status code ${code}`,
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getInterviewReviews());
+    await store.dispatch(getInterviewReviews(1));
     expect(actions[1]).toEqual(expectedAction);
   });
 
