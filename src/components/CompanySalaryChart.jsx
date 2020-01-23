@@ -165,6 +165,9 @@ export default connect(state => state, { getAvgSalaries })(CompanySalaryChart);
 const StyledDiv = styled.div`
   width: 800px;
   height: 500px;
+  h3 {
+      margin-bottom: 40px;
+  }
   @media ${mobilePortrait} {
     width: 99%;
   }
