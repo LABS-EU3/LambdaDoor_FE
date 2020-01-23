@@ -3,17 +3,13 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
+import decode from 'jwt-decode';
 import ClosestLocationCard from './ClosestLocationCard';
-import { getClosestCompanies } from '../../state/actions/closestCompanies';
 
 export const ClosestLocationList = ({
   isFetching,
-  getClosestCompanies,
   closestCompanies: { closestCompanies },
 }) => {
-  useEffect(() => {
-    getClosestCompanies();
-  }, []);
   return (
     <StyledContainer>
       {!isFetching ? (
@@ -23,7 +19,7 @@ export const ClosestLocationList = ({
               // eslint-disable-next-line react/no-array-index-key
               <ClosestLocationCard
                 key={`${closest.id}`}
-                text={closest.description }
+                text={closest.description}
                 name={closest.name}
                 id={closest.id}
                 website={closest.website}
@@ -44,9 +40,7 @@ export const ClosestLocationList = ({
   );
 };
 
-export default connect(state => state, { getClosestCompanies })(
-  ClosestLocationList
-);
+export default connect(state => state, {})(ClosestLocationList);
 
 const StyledContainer = styled.div`
   display: grid;
