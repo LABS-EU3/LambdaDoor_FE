@@ -7,7 +7,7 @@ import UserDashboard from '../../pages/UserDashboard/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 import ReviewDetails from '../ReviewDetails';
 import AddReview from '../../pages/AddReview';
-import ReviewList from '../ReviewList/ReviewList';
+// import ReviewList from '../ReviewList/ReviewList';
 import CompanyPage from '../../pages/CompanyPage';
 import store from '../../state/store';
 import { SetAuthenticated } from '../../state/actions/auth';
