@@ -116,6 +116,7 @@ export const DetailedSalaryReviewCard = ({
             <h3>Job Catergory</h3>
             {isEditing ? (
               <Select
+                defaultValue={review.interest_id}
                 onChange={e => {
                   handleSelect(e);
                 }}
@@ -148,32 +149,32 @@ export const DetailedSalaryReviewCard = ({
         <div className="switch-statements">
           <div
             className="current-employee"
-            data-testid={`employee - ${review.is_currently_employed}`}
+            data-testid={`employee - ${review.is_current_employee}`}
           >
             <h3>Current Employee</h3>
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="close" />}
-              defaultChecked={review.is_currently_employed}
+              defaultChecked={review.is_current_employee}
               disabled={!isEditing}
               onChange={e => {
-                updateReview('is_currently_employed', e === true ? 1 : 0);
+                updateReview('is_current_employee', e === true ? 1 : 0);
               }}
             />
           </div>
 
           <div
             className="accepting-questions"
-            data-testid={`questions - ${review.is_accepting_questions}`}
+            data-testid={`questions - ${review.is_anonymous}`}
           >
             <h3>Anonymous</h3>
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="close" />}
-              defaultChecked={review.is_accepting_questions}
+              defaultChecked={review.is_anonymous}
               disabled={!isEditing}
               onChange={e => {
-                updateReview('is_accepting_questions', e === true ? 1 : 0);
+                updateReview('is_anonymous', e === true ? 1 : 0);
               }}
             />
           </div>

@@ -87,20 +87,25 @@ describe('Action/types salary review testing', () => {
   });
 
   it('should execute fetch salary review data with success', async () => {
-    mock.onGet('/').reply(200, salaryReview);
+    mock
+      .onGet(`${process.env.REACT_APP_BACKEND_URL}/salaryreviews/user/1`)
+      .reply(200, salaryReview);
     const expectedActions = {
       type: types.GET_SALARY_REVIEWS_SUCCESS,
       payload: salaryReview,
     };
     const store = mockStore({});
+    await store.dispatch(getSalaryReviews(1));
     const actions = store.getActions();
-    await store.dispatch(getSalaryReviews());
+
     expect(actions[1]).toEqual(expectedActions);
   });
 
   it('should execute fetch Error data', async () => {
-    const code2 = 402;
-    mock.onGet('/').reply(code2);
+    const code2 = 404;
+    mock
+      .onGet(`${process.env.REACT_APP_BACKEND_URL}/salaryreviews/user/1`)
+      .reply(code2, { message: 'Request failed with status code 404' });
     const expectedAction = {
       type: types.GET_SALARY_REVIEWS_FAILURE,
       payload: `Request failed with status code ${code2}`,
