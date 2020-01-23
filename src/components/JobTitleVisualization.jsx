@@ -169,6 +169,10 @@ const StyledContainer = styled.div`
   min-height: 300px;
   position: relative;
 
+  @media (max-width: 845px) {
+    flex-direction: column;
+  }
+
   .recharts-legend-wrapper {
     position: static !important;
     top: unset !important;

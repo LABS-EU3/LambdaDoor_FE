@@ -13,7 +13,12 @@ export default function ClosestLocationCard(props) {
           <h3>{name}</h3>
           <p>{text}</p>
         </div>
-        <p style={{ marginBottom: 0 }}>Link: <a href={website} target="_blank" rel="noopener noreferrer">{website}</a></p>
+        <p style={{ marginBottom: 0 }}>
+          Link:{' '}
+          <a href={website} target="_blank" rel="noopener noreferrer">
+            {website}
+          </a>
+        </p>
       </Link>
     </div>
   );

@@ -95,6 +95,14 @@ export default connect(state => state, {
 })(UserDashboard);
 
 const StyledContainer = styled.div`
+  @media (max-width: 1280px) {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 500px;
+  }
   h2 {
     font-size: 1.1rem;
     font-weight: 600;
@@ -107,6 +115,15 @@ const StyledContainer = styled.div`
 
     & > div {
       width: calc(50% - 1.5rem);
+
+      @media (max-width: 1280px) {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
+
+    @media (max-width: 1280px) {
+      flex-direction: column;
     }
   }
 

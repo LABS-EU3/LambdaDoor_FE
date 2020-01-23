@@ -56,6 +56,14 @@ const StyledContainer = styled.div`
   position: relative;
   min-height: 150px;
 
+  @media (max-width: 1280px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .cards {
     position: relative;
     min-height: 150px;
