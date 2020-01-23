@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
@@ -60,7 +61,8 @@ export const LoginUser = (
     );
     const token = jwt.sign({ id }, process.env.REACT_APP_JWT_SECRET);
     localStorage.setItem('token', token);
-    dispatch(SetAuthenticated(id));
+    await dispatch(SetAuthenticated(id));
+    return id;
   } catch (error) {
     dispatch({
       type: types.LOG_IN_USER_FAILURE,

@@ -1,18 +1,17 @@
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import { Tabs } from 'antd';
 import MyReviewList from '../components/MyReviews/MyReviewList';
-import { getCompanyReviews } from '../state/actions/reviews';
 
 const { TabPane } = Tabs;
 
-const ManageReviews = ({
-  authState: {
-    credentials: { id },
-  },
-  getCompanyReviews,
-}) => {
+const ManageReviews = ({ history }) => {
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      history.push('/');
+    }
+  }, []);
   return (
     <div>
       <h1>My Reviews</h1>
@@ -31,4 +30,4 @@ const ManageReviews = ({
   );
 };
 
-export default connect(state => state, { getCompanyReviews })(ManageReviews);
+export default ManageReviews;

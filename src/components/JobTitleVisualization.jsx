@@ -86,6 +86,7 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
         };
       })
     );
+
     setTotal(
       state.reduce((acc, obj) => {
         acc += obj.count;
