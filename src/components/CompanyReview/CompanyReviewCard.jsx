@@ -12,7 +12,6 @@ import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
 const ReviewCard = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 `;
 
 const StyledEmpty = styled.div`
@@ -32,6 +31,10 @@ const StyledCard = styled(Card)`
   padding-top: 1rem !important;
   font-size: 16px;
   cursor: pointer;
+
+  span {
+    font-size: 18px;
+  }
 
   .stars {
     margin-top: 30px;
@@ -80,6 +83,7 @@ const CompanyReviewCard = ({
           onClick={() => history.push(`/companyReviews/${companyReview.id}`)}
         >
           <p>
+            <div>Headline:</div>
             {companyReview.review_headline.length > 25 ? (
               <span>
                 {companyReview.review_headline.slice(0, 25)}
