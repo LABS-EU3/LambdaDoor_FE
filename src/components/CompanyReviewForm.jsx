@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable no-shadow */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Input, Rate, Switch, Form, Button, Icon } from 'antd';
 import styled from 'styled-components';
@@ -69,6 +69,7 @@ const CompanyReview = ({
       <Form layout="vertical">
         <AutoComplete
           label="Company Name"
+          placeholder="Company name"
           onChange={e => handleCompanyName(e)}
           dataSource={companies}
         />
@@ -94,7 +95,7 @@ const CompanyReview = ({
               />
             </div>
             <div>
-              <p>I accept more questions</p>
+              <p>I am accepting more questions</p>
               <Switch
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
@@ -107,7 +108,11 @@ const CompanyReview = ({
           </EmployeeInfo>
         </Form.Item>
         <Form.Item label="Review Headline">
-          <Input name="review_headline" onChange={handleChange} />
+          <Input
+            name="review_headline"
+            placeholder="Review Headline"
+            onChange={handleChange}
+          />
         </Form.Item>
         <Form.Item label="Review">
           <TextArea
@@ -118,7 +123,15 @@ const CompanyReview = ({
           />
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          onClick={handleSubmit}
+          disabled={Boolean(
+            Object.keys(formValues).filter(elem => formValues[elem] === '')
+              .length
+          )}
+        >
           Submit
         </Button>
       </Form>

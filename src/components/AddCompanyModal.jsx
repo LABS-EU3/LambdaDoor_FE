@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+/* eslint-disable react/no-array-index-key */
+import React from 'react';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import * as yup from 'yup';
-import { Modal, Form, Input, Icon, Button } from 'antd';
+import { Modal, Form, Input, Icon, Button, Select } from 'antd';
 import { addCompany } from '../state/actions/companies';
 import LocationSearch from './LocationSearch';
 import openNotification from '../utils/openNotification';
+
+const { Option } = Select;
 
 const AddCompanyModal = props => {
   const {
@@ -19,11 +22,6 @@ const AddCompanyModal = props => {
     errors,
   } = props;
 
-  const [loading, setLoading] = useState(false);
-
-  const handleOk = () => {
-    setAddingCompany(false);
-  };
   const handleClose = () => {
     setAddingCompany(false);
   };
@@ -90,17 +88,40 @@ const AddCompanyModal = props => {
           help={touched.type && errors.type ? errors.type : ''}
           validateStatus={touched.type && errors.type ? 'error' : undefined}
         >
-          <Input
-            size="large"
+          <Select
             name="type"
             value={values.type}
-            onChange={handleChange}
-            onBlur={handleBlur}
             placeholder="Company Type"
-            prefix={
-              <Icon type="control" style={{ color: 'rgba(0,0,0,.25)' }} />
-            }
-          />
+            onChange={value => {
+              const event = { ...document.createEvent('Event') };
+              event.target = {};
+              event.target.name = 'type';
+              event.target.value = value;
+              handleChange(event);
+            }}
+            onBlur={handleBlur}
+          >
+            {[
+              'Company - Public',
+              'Company - Private',
+              'Contract',
+              'Franchise',
+              'Subsidiary or Business Segment',
+              'Hospital',
+              'Private Practice',
+              'School',
+              'College',
+              'Government',
+              'Self Employed',
+              'Other',
+            ].map((elem, idx) => {
+              return (
+                <Option key={idx} value={elem}>
+                  {elem}
+                </Option>
+              );
+            })}
+          </Select>
         </Form.Item>
 
         <Form.Item
@@ -121,12 +142,7 @@ const AddCompanyModal = props => {
             prefix={<Icon type="book" style={{ color: 'rgba(0,0,0,.25)' }} />}
           />
         </Form.Item>
-        <Button
-          htmlType="submit"
-          type="primary"
-          loading={!!loading}
-          disabled={!!loading}
-        >
+        <Button htmlType="submit" type="primary">
           Add Company
         </Button>
       </form>
@@ -155,7 +171,6 @@ const CompanyModal = withFormik({
     name: '',
     location: '',
     website: '',
-    type: '',
     description: '',
     latitude: '',
     longitude: '',

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { decode } from 'jsonwebtoken';
@@ -5,7 +6,7 @@ import Home from '../../pages/Home/Home';
 import UserDashboard from '../../pages/UserDashboard/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 import ReviewDetails from '../ReviewDetails';
-import AddReview from '../AddReview';
+import AddReview from '../../pages/AddReview';
 import ReviewList from '../ReviewList/ReviewList';
 import store from '../../state/store';
 import { SetAuthenticated } from '../../state/actions/auth';
