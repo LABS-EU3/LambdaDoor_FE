@@ -11,16 +11,22 @@ import ReviewList from '../ReviewList/ReviewList';
 import store from '../../state/store';
 import { SetAuthenticated } from '../../state/actions/auth';
 import ManageReviews from '../../pages/ManageReviews';
-import { getCompanyReviews } from '../../state/actions/reviews';
+import {
+  getCompanyReviews,
+  getInterviewReviews,
+} from '../../state/actions/reviews';
 import { getCompanies } from '../../state/actions/companies';
+import DetailedCompanyReviewCard from '../MyReviews/CompanyReviews/DetailedReviewCard';
+import DetailedInterviewReviewCard from '../MyReviews/InterviewReviews/DetailedReviewCard';
 
 const start = async () => {
   const token = localStorage.getItem('token');
   if (token) {
     const { id } = decode(token);
     await store.dispatch(SetAuthenticated(id));
-    await store.dispatch(getCompanyReviews(id));
     await store.dispatch(getCompanies());
+    await store.dispatch(getCompanyReviews(id));
+    await store.dispatch(getInterviewReviews(id));
   }
 };
 start();
@@ -37,7 +43,14 @@ const AppRouter = () => {
         <DashboardLayout path="/interviews" exact component={ReviewList} />
         <DashboardLayout path="/interviews/:id" component={ReviewDetails} />
         <DashboardLayout path="/salaries/:id" component={ReviewDetails} />
-        <DashboardLayout path="/reviews/:id" component={ReviewDetails} />
+        <DashboardLayout
+          path="/reviews/company/:id"
+          component={DetailedCompanyReviewCard}
+        />
+        <DashboardLayout
+          path="/reviews/interview/:id"
+          component={DetailedInterviewReviewCard}
+        />
         <DashboardLayout path="/add-review" component={AddReview} />
       </Switch>
     </BrowserRouter>

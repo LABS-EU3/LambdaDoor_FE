@@ -36,7 +36,7 @@ export const SmallReviewCard = ({
   review: { id, review_headline: review, ratings, name },
 }) => {
   return (
-    <StyledCard onClick={() => history.push(`/reviews/${id}`)}>
+    <StyledCard onClick={() => history.push(`/reviews/company/${id}`)}>
       <div className="card-top">
         <h2>{name}</h2>
       </div>
