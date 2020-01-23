@@ -36,7 +36,7 @@ const CompanySalaryChart = ({ getAvgSalaries, avgSalaries }) => {
   useEffect(() => {
     getAvgSalaries(id);
   }, []);
-  console.log('avg salaries', avgSalaries);
+  console.log('avg salaries', avgSalaries.avgSalaries);
 
   return (
     <BarChart
@@ -54,13 +54,13 @@ const CompanySalaryChart = ({ getAvgSalaries, avgSalaries }) => {
       <XAxis dataKey="interest" />
       <YAxis dataKey="avg" />
       <Tooltip />
-      <Legend />
-      <Bar dataKey="avg" fill="#1E5896" barSize={100} />
-
-      {/* {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLOURS[index]} />
-        ))}
-      </Bar> */}
+      <Legend verticalAlign="left" name="boo" />
+      <Bar dataKey="avg" barSize={100}>
+        {avgSalaries.avgSalaries &&
+          avgSalaries.avgSalaries.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLOURS[index]} />
+          ))}
+      </Bar>
     </BarChart>
   );
 };
