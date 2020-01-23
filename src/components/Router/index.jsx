@@ -48,7 +48,6 @@ const AppRouter = () => {
           path="/salaries/:id"
           component={DetailedSalaryReview}
         />
-        <DashboardLayout path="/reviews/:id" component={ReviewDetails} />
         <DashboardLayout
           path="/reviews/company/:id"
           component={DetailedCompanyReviewCard}
