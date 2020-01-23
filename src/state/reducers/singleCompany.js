@@ -23,7 +23,7 @@ const companyReviewsReducer = (state = initialState, action) => {
         },
       };
 
-    case types.GET_COMPANY_REVIEWS_FAILURE:
+    case types.GET_SINGLE_COMPANY_REVIEWS_FAILURE:
       return { ...state, isFetching: false };
 
     default:

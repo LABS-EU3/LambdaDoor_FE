@@ -26,6 +26,31 @@ export const getReviewsByCompanyId = id => async dispatch => {
   }
 };
 
+export const getReviewsByReviewId = id => async dispatch => {
+  dispatch({
+    type: types.GET_SINGLE_REVIEWS,
+  });
+
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/companyreviews/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
+
+    dispatch({
+      type: types.GET_SINGLE_REVIEWS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.GET_SINGLE_REVIEWS_FAILURE,
+      payload: error.message || 'Something went wrong.',
+    });
+  }
+};
+
 export const getCompanyReviews = id => async dispatch => {
   dispatch({
     type: types.GET_COMPANY_REVIEWS,

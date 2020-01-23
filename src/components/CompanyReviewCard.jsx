@@ -2,7 +2,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-wrap-multilines */
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Rate, Card, Empty, Button } from 'antd';
 import styled from 'styled-components';
@@ -58,6 +58,7 @@ const StyledCard = styled(Card)`
 `;
 
 const CompanyReviewCard = ({
+  history,
   getReviewsByCompanyId,
   singleCompanyReviews: {
     reviews: { companyReview },
@@ -86,7 +87,9 @@ const CompanyReviewCard = ({
   ) : (
     <ReviewCard>
       {companyReview.map(companyReview => (
-        <StyledCard>
+        <StyledCard
+          onClick={() => history.push(`/companyReviews/${companyReview.id}`)}
+        >
           <div className="card-top">
             <h2>
               Company Name
@@ -126,6 +129,8 @@ const CompanyReviewCard = ({
     </ReviewCard>
   );
 };
-export default connect(state => state, {
-  getReviewsByCompanyId,
-})(CompanyReviewCard);
+export default withRouter(
+  connect(state => state, {
+    getReviewsByCompanyId,
+  })(CompanyReviewCard)
+);
