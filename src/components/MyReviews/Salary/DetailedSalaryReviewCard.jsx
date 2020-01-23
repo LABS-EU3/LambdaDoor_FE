@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
 import {
-  Rate,
   Switch,
   Icon,
   Card,
@@ -10,6 +9,7 @@ import {
   Skeleton,
   Popconfirm,
   Typography,
+  Select,
 } from 'antd';
 import styled from 'styled-components';
 import { withRouter, useParams } from 'react-router-dom';
@@ -20,6 +20,7 @@ import {
 } from '../../../state/actions/reviews';
 import openNotification from '../../../utils/openNotification';
 import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
+import { jobCategories } from '../../../utils/data';
 
 const { Paragraph } = Typography;
 let updatedReview;
@@ -27,7 +28,7 @@ let updatedReview;
 export const DetailedSalaryReviewCard = ({
   history,
   reviews: {
-    reviews: { company },
+    reviews: { salary },
   },
   deleteSalaryReview,
   updateSalaryReview,
@@ -36,11 +37,14 @@ export const DetailedSalaryReviewCard = ({
   const [loading, setLoading] = useState(false);
 
   const reviewId = useParams().id;
-  const review = company.find(elem => elem.id === Number(reviewId));
+  const review = salary.find(elem => elem.id === Number(reviewId));
 
   useEffect(() => {
-    updatedReview = { ...review };
+    updatedReview = {
+      ...review,
+    };
     delete updatedReview.name;
+    delete updatedReview.interest;
   }, [review]);
 
   const handleDelete = async id => {
@@ -53,12 +57,25 @@ export const DetailedSalaryReviewCard = ({
     updatedReview[key] = value;
   };
 
+  const handleSelect = value => {
+    updateReview('interest_id', value);
+    console.log(value);
+  };
+
   const handleEdit = async () => {
     setLoading(true);
+    console.log(updatedReview);
     await updateSalaryReview(updatedReview);
     setLoading(false);
     setEditing(false);
   };
+
+  const { Option } = Select;
+  const options = jobCategories.map(opt => (
+    <Option key={opt.id} value={opt.id}>
+      {opt.name}
+    </Option>
+  ));
 
   return !review ? (
     <Skeleton />
@@ -77,25 +94,63 @@ export const DetailedSalaryReviewCard = ({
       </Button>
       <StyledReview>
         <div className="title-div">
-          <h2>Company Name</h2>
-          <span className="company">{review.name}</span>
+          <h2>{review.name}</h2>
         </div>
-        <div className="ratings">
-          <h2>Overall Rating</h2>
-          <div className="stars" data-testid={review.ratings}>
-            <Rate
-              disabled={!isEditing}
-              defaultValue={review.ratings}
-              onChange={e => updateReview('ratings', e)}
-            />
+        <div className="banner">
+          <div className="salary-div">
+            <h3>Salary </h3>
+            <Paragraph
+              editable={{
+                onChange: e => {
+                  updateReview('salary', e);
+                },
+                editing: isEditing,
+              }}
+              className="editable-text salary"
+            >
+              {review.salary}
+            </Paragraph>
+          </div>
+
+          <div className="interest">
+            <h3>Job Catergory</h3>
+            {isEditing ? (
+              <Select
+                onChange={e => {
+                  handleSelect(e);
+                }}
+              >
+                {options}
+              </Select>
+            ) : (
+              review.interest
+            )}
           </div>
         </div>
+
+        <div>
+          <div className="description">
+            <h3>Job Description</h3>
+            <Paragraph
+              className="editable-text"
+              editable={{
+                onChange: e => {
+                  updateReview('description', e);
+                },
+                editing: isEditing,
+              }}
+            >
+              {review.description}
+            </Paragraph>
+          </div>
+        </div>
+
         <div className="switch-statements">
           <div
             className="current-employee"
             data-testid={`employee - ${review.is_currently_employed}`}
           >
-            <h2>I am a current employee</h2>
+            <h3>Current Employee</h3>
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="close" />}
@@ -111,7 +166,7 @@ export const DetailedSalaryReviewCard = ({
             className="accepting-questions"
             data-testid={`questions - ${review.is_accepting_questions}`}
           >
-            <h2>Accepting questions</h2>
+            <h3>Anonymous</h3>
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="close" />}
@@ -123,36 +178,7 @@ export const DetailedSalaryReviewCard = ({
             />
           </div>
         </div>
-        <div>
-          <div className="headline-div">
-            <h2>Review Headline </h2>
-            <Paragraph
-              editable={{
-                onChange: e => {
-                  updateReview('review_headline', e);
-                },
-                editing: isEditing,
-              }}
-              className="editable-text headline"
-            >
-              {review.review_headline}
-            </Paragraph>
-          </div>
-          <div className="review-body">
-            <h2>Review</h2>
-            <Paragraph
-              className="editable-text"
-              editable={{
-                onChange: e => {
-                  updateReview('review', e);
-                },
-                editing: isEditing,
-              }}
-            >
-              {review.review}
-            </Paragraph>
-          </div>
-        </div>
+
         <div className="buttons">
           {!isEditing && (
             <Popconfirm
@@ -221,10 +247,10 @@ const StyledReview = styled(Card)`
   @media ${tabletPortrait} {
     padding: 0 !important;
   }
+.ant-select-selection {
+  min-width: 150px;
+}
 
-  Paragraph {
-    font-size: 20px;
-  }
   .title-div {
     display: flex;
     justify-content: flex-start;
@@ -274,27 +300,7 @@ const StyledReview = styled(Card)`
     margin-left: 42px;
     margin-bottom: 20px;
   }
-  .ratings {
-    display: flex;
-    width: 50%;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    @media ${mobilePortrait} {
-      justify-content: flex-start;
-      margin: 0;
-      margin-top: 20px;
-      width: 100%;
-
-      .stars {
-        transform: scale(0.8);
-        width: 60%;
-      }
-      h2 {
-        margin: 0;
-        font-size: 18px;
-        width: 50%;
-      }
-    }
+  
     @media ${tabletPortrait} {
       justify-content: flex-start;
       margin: 0;
@@ -308,11 +314,17 @@ const StyledReview = styled(Card)`
       }
     }
   }
+
+  .banner {
+  padding-bottom: 1.5rem;
+  }
+
   .switch-statements {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 20px;
+    padding-top: 1.5rem;
     @media ${mobilePortrait} {
       flex-direction: column;
       margin-top: 20px;

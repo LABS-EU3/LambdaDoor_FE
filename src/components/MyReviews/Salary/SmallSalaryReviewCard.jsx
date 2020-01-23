@@ -25,35 +25,28 @@ const StyledCard = styled(Card)`
     }
   }
 
-  .stars {
-    margin-top: 20px;
-    font-size: 10px;
+  .description {
+    padding-top: 1rem;
   }
 `;
 
 export const SmallSalaryReviewCard = ({
   history,
-  review: {
-    id,
-    name,
-    description,
-    salary,
-    currency,
-    interest,
-    is_current_employee,
-    is_accepting_questions,
-  },
+  review: { id, name, description, salary, interest },
 }) => {
   return (
-    <StyledCard onClick={() => history.push(`/reviews/${id}`)}>
+    <StyledCard onClick={() => history.push(`/salaries/${id}`)}>
       <div className="card-top">
         <h2>{name}</h2>
       </div>
-      {description.length > 30 ? (
-        <span>{description.slice(0, 30)}...</span>
-      ) : (
-        <span>{description}</span>
-      )}
+      <div>{salary}</div>
+      <div className="description">
+        {description.length > 30 ? (
+          <span>{description.slice(0, 30)}...</span>
+        ) : (
+          <span>{description}</span>
+        )}
+      </div>
     </StyledCard>
   );
 };

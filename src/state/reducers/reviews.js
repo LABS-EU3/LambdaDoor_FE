@@ -92,7 +92,7 @@ export const reviewsReducer = (state = initialState, action) => {
         ...state,
         reviews: {
           ...state.reviews,
-          company: state.reviews.salary.map(elem => {
+          salary: state.reviews.salary.map(elem => {
             return elem.id === action.payload.id ? action.payload : elem;
           }),
         },

@@ -5,6 +5,7 @@ import Home from '../../pages/Home/Home';
 import UserDashboard from '../../pages/UserDashboard/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 import ReviewDetails from '../ReviewDetails';
+import DetailedSalaryReview from '../MyReviews/Salary/DetailedSalaryReviewCard';
 import AddReview from '../../pages/AddReview';
 import ReviewList from '../ReviewList/ReviewList';
 import store from '../../state/store';
@@ -39,7 +40,10 @@ const AppRouter = () => {
         <DashboardLayout path="/salaries" exact component={ReviewList} />
         <DashboardLayout path="/interviews" exact component={ReviewList} />
         <DashboardLayout path="/interviews/:id" component={ReviewDetails} />
-        <DashboardLayout path="/salaries/:id" component={ReviewDetails} />
+        <DashboardLayout
+          path="/salaries/:id"
+          component={DetailedSalaryReview}
+        />
         <DashboardLayout path="/reviews/:id" component={ReviewDetails} />
         <DashboardLayout path="/add-review" component={AddReview} />
       </Switch>
