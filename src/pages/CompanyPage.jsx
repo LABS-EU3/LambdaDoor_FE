@@ -1,13 +1,13 @@
 /* eslint-disable no-debugger */
 /* eslint-disable no-shadow */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Tabs } from 'antd';
 import { getCompanies } from '../state/actions/companies';
 import CompanyCard from '../components/CompanyCard';
+import CompanyReviewCard from '../components/CompanyReviewCard';
 
 const { TabPane } = Tabs;
-
 const CompanyPage = ({
   getCompanies,
   companies: { companies },
@@ -18,7 +18,6 @@ const CompanyPage = ({
   useEffect(() => {
     getCompanies();
   }, []);
-
   return (
     <div>
       <Tabs defaultActiveKey="1">
@@ -26,7 +25,7 @@ const CompanyPage = ({
           <CompanyCard companies={companies} />
         </TabPane>
         <TabPane tab="Company Reviews" key="2">
-          Content of Tab Pane 2
+          <CompanyReviewCard />
         </TabPane>
         <TabPane tab="Salary Reviews" key="3">
           Content of Tab Pane 3
@@ -38,5 +37,4 @@ const CompanyPage = ({
     </div>
   );
 };
-
 export default connect(state => state, { getCompanies })(CompanyPage);

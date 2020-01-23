@@ -12,6 +12,7 @@ import { SetAuthenticated } from '../../state/actions/auth';
 import ManageReviews from '../../pages/ManageReviews';
 import { getCompanyReviews } from '../../state/actions/reviews';
 import { getCompanies } from '../../state/actions/companies';
+import CompanyPage from '../../pages/CompanyPage';
 
 const start = async () => {
   const token = localStorage.getItem('token');
@@ -38,6 +39,7 @@ const AppRouter = () => {
         <DashboardLayout path="/salaries/:id" component={ReviewDetails} />
         <DashboardLayout path="/reviews/:id" component={ReviewDetails} />
         <DashboardLayout path="/add-review" component={AddReview} />
+        <DashboardLayout path="/company-page/:id" component={CompanyPage} />
       </Switch>
     </BrowserRouter>
   );
