@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Rate, Spin, Card } from 'antd';
+import { Rate, Spin } from 'antd';
 import styled from 'styled-components';
 import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
 import CompanySalaryChart from '../CompanySalaryChart';
@@ -23,6 +23,15 @@ const StyledDiv = styled.div`
   @media ${tabletPortrait} {
     padding: 0 !important;
   }
+
+  .location-rating {
+    display: flex;
+    justify-content: space-between;
+    .ant-rate {
+      padding-left: 1rem !important;
+      margin-bottom: 40px;
+    }
+  }
   .company-type {
     margin-top: 1rem;
   }
@@ -33,16 +42,14 @@ const StyledDiv = styled.div`
   span {
     font-size: 1rem;
   }
-  .location-rating {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    p {
-      margin: 0;
-    }
-    .ant-rate {
-      padding-left: 1rem !important;
-    }
+
+  .text-info {
+    margin-right: 20px;
+  }
+
+  .visual-info {
+    margin-top: 50px;
+
     @media ${mobilePortrait} {
       flex-direction: column;
       align-items: flex-start;
@@ -57,30 +64,35 @@ const CompanyCard = props => {
   const company = companies.find(elem => elem.id === Number(companyId));
   return (
     <StyledDiv>
-      <h2>{company.name}</h2>
-      <div className="location-rating">
-        <p>{company.location}</p>
-        <span>
-          Average Rating:
-          <Rate defaultValue={Number(company.average_rating)} />
-        </span>
+      <div className="textInfo">
+        <h2>{company.name}</h2>
+        <div className="location-rating">
+          <p>{company.location}</p>
+          <span>
+            Average Rating:
+            <Rate defaultValue={Number(company.average_rating)} />
+          </span>
+        </div>
+        <a target="_blank" rel="noopener noreferrer" href={company.website}>
+          {company.website}
+        </a>
+        <p className="company-type">
+          Company Type: &nbsp;
+          {company.type}
+        </p>
+        <p className="description">
+          Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Reiciendis, iusto labore? Quae distinctio quam reprehenderit! Id est
+          perspiciatis, cum recusandae nesciunt sapiente eius ex, pariatur
+          obcaecati veniam dignissimos nihil ipsum.
+          {/* I've added the placeholder text above for now as we don't yet have descriptions in the db. Further styling is to be done when the salary component is added. (Lisa) */}
+          {company.description}
+        </p>
       </div>
-      <a target="_blank" rel="noopener noreferrer" href={company.website}>
-        {company.website}
-      </a>
-      <p className="company-type">
-        Company Type: &nbsp;
-        {company.type}
-      </p>
-      <p className="description">
-        Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Reiciendis, iusto labore? Quae distinctio quam reprehenderit! Id est
-        perspiciatis, cum recusandae nesciunt sapiente eius ex, pariatur
-        obcaecati veniam dignissimos nihil ipsum.
-        {/* I've added the placeholder text above for now as we don't yet have descriptions in the db. Further styling is to be done when the salary component is added. (Lisa) */}
-        {company.description}
-      </p>
-      <CompanySalaryChart />
+
+      <div className="visual-info">
+        <CompanySalaryChart />
+      </div>
     </StyledDiv>
   );
 };

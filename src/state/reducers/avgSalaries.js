@@ -2,7 +2,7 @@ import * as types from '../types';
 
 const initialState = {
   isfetching: false,
-  salaries: [],
+  avgSalaries: [],
 };
 
 // eslint-disable-next-line import/prefer-default-export

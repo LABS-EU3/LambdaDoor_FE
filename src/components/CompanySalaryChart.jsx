@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import uuid from 'uuid';
 import {
   BarChart,
   Bar,
@@ -11,13 +12,23 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   Label,
   Cell,
 } from 'recharts';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
 import { getAvgSalaries } from '../state/actions/avgSalaries';
+
+const startingData = [
+  { interest: 'Front End', id: uuid(), avg: 0, currency: 'USD' },
+  { interest: 'Back End', id: uuid(), avg: 0, currency: 'USD' },
+  { interest: 'Full Stack', id: uuid(), avg: 0, currency: 'USD' },
+  { interest: 'Data Science', id: uuid(), avg: 0, currency: 'USD' },
+  { interest: 'Machine Learning', id: uuid(), avg: 0, currency: 'USD' },
+  { interest: 'User Experience', id: uuid(), avg: 0, currency: 'USD' },
+  { interest: 'Mobile Development', id: uuid(), avg: 0, currency: 'USD' },
+  { interest: 'Product Manager', id: uuid(), avg: 0, currency: 'USD' },
+];
 
 const COLOURS = [
   '#1E5896',
@@ -34,24 +45,52 @@ const COLOURS = [
 const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
   const { id } = useParams();
   console.log(avgSalaries);
+  const [state, setState] = useState([]);
+
   useEffect(() => {
     getAvgSalaries(id);
   }, []);
+
+  useEffect(() => {
+    console.log('avgSalaries', avgSalaries);
+    const averages = [...avgSalaries.avgSalaries];
+
+    console.log('averages', averages);
+    console.log('starting data', startingData);
+    startingData.forEach(item => {
+      const index = averages.findIndex(e => e.interest === item.interest);
+
+      if (index === -1) {
+        averages.push(item);
+      }
+    });
+
+    setState(
+      averages.map(item => {
+        return {
+          ...item,
+          avg: parseInt(item.avg, 10),
+        };
+      })
+    );
+  }, [avgSalaries]);
 
   return (
     <StyledDiv>
       <h3>
         Average Company Salaries in &nbsp;
-        {avgSalaries.avgSalaries && avgSalaries.avgSalaries[0].currency}
+        {avgSalaries.avgSalaries.length && avgSalaries.avgSalaries[0].currency}
       </h3>
       {!isFetching ? (
         <>
-          {avgSalaries.avgSalaries && avgSalaries.avgSalaries.length !== 0 ? (
+          {avgSalaries.avgSalaries &&
+          avgSalaries.avgSalaries.length !== 0 &&
+          avgSalaries.avg !== 0 ? (
             <>
               <BarChart
                 width={500}
                 height={300}
-                data={avgSalaries.avgSalaries}
+                data={state}
                 margin={{
                   top: 5,
                   right: 30,
@@ -101,6 +140,6 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
 export default connect(state => state, { getAvgSalaries })(CompanySalaryChart);
 
 const StyledDiv = styled.div`
-  width: 500px;
+  width: 800px;
   height: 500px;
 `;

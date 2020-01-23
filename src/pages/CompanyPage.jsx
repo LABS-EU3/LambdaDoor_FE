@@ -5,14 +5,13 @@ import { connect } from 'react-redux';
 import { Tabs } from 'antd';
 import { getCompanies } from '../state/actions/companies';
 import CompanyCard from '../components/CompanyCard/CompanyCard';
-import CompanySalaryChart from '../components/CompanySalaryChart';
 
 const { TabPane } = Tabs;
 
 const CompanyPage = ({
   getCompanies,
   companies: { companies },
-  avgSalaries: { avgSalaries },
+  // avgSalaries: { avgSalaries },
   authState: {
     credentials: { id },
   },
