@@ -99,13 +99,15 @@ export const updateCompanyReview = update => async dispatch => {
   }
 };
 
-export const getSalaryReviews = () => async dispatch => {
+export const getSalaryReviews = id => async dispatch => {
   dispatch({
     type: types.GET_SALARY_REVIEWS,
   });
 
   try {
-    const response = await axios.get('/');
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/salaryreviews/user/${id}`
+    );
     dispatch({
       type: types.GET_SALARY_REVIEWS_SUCCESS,
       payload: response.data,
@@ -139,8 +141,58 @@ export const addSalaryReview = (review, id) => async dispatch => {
     });
   }
 };
+export const deleteSalaryReview = id => async dispatch => {
+  dispatch({
+    type: types.DELETE_SALARY_REVIEWS,
+  });
 
-export const getInterviewReviews = id => async dispatch => {
+  try {
+    await axios.delete(
+      `${process.env.REACT_APP_BACKEND_URL}/salaryreviews/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
+
+    dispatch({
+      type: types.DELETE_SALARY_REVIEWS_SUCCESS,
+      payload: id,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.DELETE_SALARY_REVIEWS_FAILURE,
+      payload: error.message || 'Something went wrong.',
+    });
+  }
+};
+
+export const updateSalaryReview = update => async dispatch => {
+  dispatch({
+    type: types.UPDATE_COMPANY_REVIEWS,
+  });
+
+  try {
+    const { data } = await axios.patch(
+      `${process.env.REACT_APP_BACKEND_URL}/salaryreviews/${update.id}`,
+      update,
+      {
+        withCredentials: true,
+      }
+    );
+
+    dispatch({
+      type: types.UPDATE_SALARY_REVIEWS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.UPDATE_SALARY_REVIEWS_FAILURE,
+      payload: error.message || 'Something went wrong.',
+    });
+  }
+};
+
+export const getInterviewReviews = () => async dispatch => {
   dispatch({
     type: types.GET_INTERVIEW_REVIEWS,
   });

@@ -6,6 +6,7 @@ import Home from '../../pages/Home/Home';
 import UserDashboard from '../../pages/UserDashboard/UserDashboard';
 import DashboardLayout from '../Layout/DashboardLayout';
 import ReviewDetails from '../ReviewDetails';
+import DetailedSalaryReview from '../MyReviews/Salary/DetailedSalaryReviewCard';
 import AddReview from '../../pages/AddReview';
 // import ReviewList from '../ReviewList/ReviewList';
 import CompanyPage from '../../pages/CompanyPage';
@@ -14,9 +15,8 @@ import { SetAuthenticated } from '../../state/actions/auth';
 import ManageReviews from '../../pages/ManageReviews';
 import {
   getCompanyReviews,
-  getInterviewReviews,
+  getSalaryReviews, getInterviewReviews,
 } from '../../state/actions/reviews';
-import { getCompanies } from '../../state/actions/companies';
 import DetailedCompanyReviewCard from '../MyReviews/CompanyReviews/DetailedReviewCard';
 import DetailedInterviewReviewCard from '../MyReviews/InterviewReviews/DetailedReviewCard';
 
@@ -27,6 +27,8 @@ const start = async () => {
     await store.dispatch(SetAuthenticated(id));
     await store.dispatch(getCompanies());
     await store.dispatch(getCompanyReviews(id));
+    await store.dispatch(getSalaryReviews(id));
+    await store.dispatch(getCompanies());
     await store.dispatch(getInterviewReviews(id));
   }
 };
@@ -41,7 +43,11 @@ const AppRouter = () => {
         <DashboardLayout path="/companies" component={UserDashboard} />
         <DashboardLayout path="/reviews" exact component={ManageReviews} />
         <DashboardLayout path="/interviews/:id" component={ReviewDetails} />
-        <DashboardLayout path="/salaries/:id" component={ReviewDetails} />
+        <DashboardLayout
+          path="/salaries/:id"
+          component={DetailedSalaryReview}
+        />
+        <DashboardLayout path="/reviews/:id" component={ReviewDetails} />
         <DashboardLayout
           path="/reviews/company/:id"
           component={DetailedCompanyReviewCard}
