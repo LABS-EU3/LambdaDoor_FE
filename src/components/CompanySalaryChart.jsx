@@ -174,6 +174,6 @@ const StyledDiv = styled.div`
     width: 99%;
   }
   .empty-state {
-    text-align: left;
+    max-width: 800px;
   }
 `;
