@@ -248,9 +248,9 @@ const StyledReview = styled(Card)`
   @media ${tabletPortrait} {
     padding: 0 !important;
   }
-.ant-select-selection {
-  min-width: 150px;
-}
+  .ant-select-selection {
+    min-width: 150px;
+  }
 
   .title-div {
     display: flex;
@@ -301,23 +301,22 @@ const StyledReview = styled(Card)`
     margin-left: 42px;
     margin-bottom: 20px;
   }
-  
-    @media ${tabletPortrait} {
-      justify-content: flex-start;
-      margin: 0;
-      margin-top: 20px;
-      width: 100%;
 
-      h2 {
-        margin: 0;
-        font-size: 20px;
-        width: 50%;
-      }
+  @media ${tabletPortrait} {
+    justify-content: flex-start;
+    margin: 0;
+    margin-top: 20px;
+    width: 100%;
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      width: 50%;
     }
   }
 
   .banner {
-  padding-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .switch-statements {

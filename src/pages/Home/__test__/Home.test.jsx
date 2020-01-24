@@ -81,6 +81,10 @@ describe('ConnectedHome', () => {
       },
       topRatedReviews: { isfetching: false, topRatedReviews: [] },
       closestCompanies: { isfetching: false, closestCompanies: [] },
+      singleCompany: {
+        isFetching: false,
+        reviews: { company: [], salary: [], interview: [] },
+      },
     });
   });
   // it('decodes the token of a previously authenticated user and passes them to the dashboard', async () => {
