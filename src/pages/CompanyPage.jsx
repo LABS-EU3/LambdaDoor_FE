@@ -3,12 +3,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Tabs } from 'antd';
+import { Tabs, Button, Icon } from 'antd';
 import { getCompanies } from '../state/actions/companies';
-import { getInterviewReviewsByCompanyId } from '../state/actions/reviews';
+import {
+  getInterviewReviewsByCompanyId,
+  getSalaryReviewsByCompanyId,
+} from '../state/actions/reviews';
 import CompanyCard from '../components/CompanyCard/CompanyCard';
 import CompanyReviewCard from '../components/CompanyReview/CompanyReviewCard';
 import InterviewReviewList from '../components/CompanyReviews/InterviewReviews/InterviewReviewList';
+import SalaryReviewsList from '../components/CompanyReviews/SalaryReviews/SalaryReviewsList';
 
 const { TabPane } = Tabs;
 const CompanyPage = ({
@@ -18,16 +22,30 @@ const CompanyPage = ({
   authState: {
     credentials: { id },
   },
+  getSalaryReviewsByCompanyId,
+  history,
 }) => {
   const companyId = useParams().id;
 
   useEffect(() => {
     getCompanies();
     getInterviewReviewsByCompanyId(companyId);
+    getSalaryReviewsByCompanyId(companyId);
   }, []);
 
   return (
     <div>
+      <Button
+        style={{
+          marginBottom: '30px',
+          border: '1px solid #BB1333',
+          color: '#BB1333',
+        }}
+        onClick={() => history.goBack()}
+      >
+        <Icon type="left" />
+        Back
+      </Button>
       <Tabs defaultActiveKey="1">
         <TabPane tab="Company Info" key="1">
           <CompanyCard companies={companies} />
@@ -36,7 +54,7 @@ const CompanyPage = ({
           <CompanyReviewCard />
         </TabPane>
         <TabPane tab="Salary Reviews" key="3">
-          Content of Tab Pane 3
+          <SalaryReviewsList />
         </TabPane>
         <TabPane tab="Interview Process Reviews" key="4">
           <InterviewReviewList />
@@ -48,4 +66,5 @@ const CompanyPage = ({
 export default connect(state => state, {
   getCompanies,
   getInterviewReviewsByCompanyId,
+  getSalaryReviewsByCompanyId,
 })(CompanyPage);

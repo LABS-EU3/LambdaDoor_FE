@@ -1,8 +1,12 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import { Empty, Button } from 'antd';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import SmallSalaryReviewCard from './SmallSalaryReviewCard';
 
 const StyledDiv = styled.div`
@@ -41,9 +45,9 @@ const MySalaryReviewList = ({
           </span>
         }
       >
-        <Button onClick={() => history.push('/add-review')}>
-          Post a Review
-        </Button>
+        <Link to="/add-review">
+          <Button>Post a Review</Button>
+        </Link>
       </Empty>
     </StyledEmpty>
   ) : (

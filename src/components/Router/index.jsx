@@ -18,11 +18,14 @@ import {
   getSalaryReviews,
   getInterviewReviews,
 } from '../../state/actions/reviews';
+import { getClosestCompanies } from '../../state/actions/closestCompanies';
+
 import { getCompanies } from '../../state/actions/companies';
 import DetailedCompanyReviewCard from '../MyReviews/CompanyReviews/DetailedReviewCard';
 import DetailedInterviewReviewCard from '../MyReviews/InterviewReviews/DetailedReviewCard';
 import CompanyReview from '../CompanyReview/CompanyReviewCardDetails';
 import InterviewReview from '../CompanyReviews/InterviewReviews/InterviewReviewDetails';
+import SalaryReview from '../CompanyReviews/SalaryReviews/SalaryReviewDetails';
 
 const start = async () => {
   const token = localStorage.getItem('token');
@@ -33,6 +36,7 @@ const start = async () => {
     await store.dispatch(getCompanyReviews(id));
     await store.dispatch(getSalaryReviews(id));
     await store.dispatch(getInterviewReviews(id));
+    await store.dispatch(getClosestCompanies(id));
   }
 };
 start();
@@ -64,6 +68,10 @@ const AppRouter = () => {
         <DashboardLayout
           path="/interviewreviews/:id"
           component={InterviewReview}
+        />
+        <DashboardLayout
+          path="/company/:companyId/salary/:id"
+          component={SalaryReview}
         />
       </Switch>
     </BrowserRouter>

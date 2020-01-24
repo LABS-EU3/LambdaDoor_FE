@@ -14,6 +14,7 @@ import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
 import {
   getCompanyReviews,
   getInterviewReviews,
+  getSalaryReviews,
 } from '../../state/actions/reviews';
 import { getCompanies } from '../../state/actions/companies';
 import { getClosestCompanies } from '../../state/actions/closestCompanies';
@@ -26,8 +27,9 @@ export const UserDashboard = ({
   SetAuthenticated,
   getCompanyReviews,
   getCompanies,
-  getClosestCompanies,
   history,
+  getSalaryReviews,
+  getClosestCompanies,
 }) => {
   useEffect(() => {
     async function start() {
@@ -51,6 +53,8 @@ export const UserDashboard = ({
         const user = await LoginUser(userId, name, email, profilePicture);
         await getCompanyReviews(user);
         await getInterviewReviews(user);
+        await getSalaryReviews(user);
+        await getClosestCompanies(user);
         await getCompanies();
       };
       if (code) {
@@ -69,7 +73,6 @@ export const UserDashboard = ({
         if (location === null) {
           await getLocation(id);
         }
-        await getClosestCompanies(id);
       }
     }
     start();
@@ -100,6 +103,7 @@ export default connect(state => state, {
   editProfile,
   getCompanyReviews,
   getCompanies,
+  getSalaryReviews,
   getClosestCompanies,
 })(UserDashboard);
 
