@@ -70,7 +70,9 @@ const CompanyReviewCard = ({
           </span>
         }
       >
-        <Button>Post a Review</Button>
+        <Button onClick={() => history.push('/add-review')}>
+          Post a Review
+        </Button>
       </Empty>
     </StyledEmpty>
   ) : (

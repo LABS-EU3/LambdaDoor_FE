@@ -2,6 +2,7 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { Empty, Button } from 'antd';
 import { connect } from 'react-redux';
@@ -23,6 +24,7 @@ const StyledEmpty = styled.div`
 `;
 
 const MyReviewList = ({
+  history,
   authState: { isLoggedIn },
   reviews: {
     reviews: { company },
@@ -42,7 +44,9 @@ const MyReviewList = ({
           </span>
         }
       >
-        <Button>Post a Review</Button>
+        <Button onClick={() => history.push('/add-review')}>
+          Post a Review
+        </Button>
       </Empty>
     </StyledEmpty>
   ) : (
@@ -54,4 +58,4 @@ const MyReviewList = ({
   );
 };
 
-export default connect(state => state)(MyReviewList);
+export default withRouter(connect(state => state)(MyReviewList));

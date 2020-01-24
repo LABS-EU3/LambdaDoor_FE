@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 import { Empty, Button } from 'antd';
 import { connect } from 'react-redux';
 import SmallSalaryReviewCard from './SmallSalaryReviewCard';
@@ -20,6 +21,7 @@ const StyledEmpty = styled.div`
 `;
 
 const MySalaryReviewList = ({
+  history,
   authState: { isLoggedIn },
   reviews: {
     reviews: { salary },
@@ -39,7 +41,9 @@ const MySalaryReviewList = ({
           </span>
         }
       >
-        <Button>Post a Review</Button>
+        <Button onClick={() => history.push('/add-review')}>
+          Post a Review
+        </Button>
       </Empty>
     </StyledEmpty>
   ) : (
@@ -51,4 +55,4 @@ const MySalaryReviewList = ({
   );
 };
 
-export default connect(state => state)(MySalaryReviewList);
+export default withRouter(connect(state => state)(MySalaryReviewList));
