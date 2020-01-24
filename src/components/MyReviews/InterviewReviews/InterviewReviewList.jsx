@@ -3,6 +3,7 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 import { Empty, Button } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -24,6 +25,7 @@ const StyledEmpty = styled.div`
 `;
 
 const InterviewReviewList = ({
+  history,
   authState: { isLoggedIn },
   reviews: {
     reviews: { interview },
@@ -45,7 +47,7 @@ const InterviewReviewList = ({
       >
         <Link to="/add-review">
           <Button>Post a Review</Button>
-        </Link>{' '}
+        </Link>
       </Empty>
     </StyledEmpty>
   ) : (
@@ -57,4 +59,4 @@ const InterviewReviewList = ({
   );
 };
 
-export default connect(state => state)(InterviewReviewList);
+export default withRouter(connect(state => state)(InterviewReviewList));

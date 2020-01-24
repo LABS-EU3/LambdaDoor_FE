@@ -39,12 +39,15 @@ const InterviewReviewDetails = ({
           border: '1px solid #BB1333',
           color: '#BB1333',
         }}
-        onClick={() => history.push(`/company-page/${reviewId}`)}
+        onClick={() => history.push(`/company-page/${review.company_id}`)}
       >
         <Icon type="left" />
         Back to Reviews
       </Button>
-      <StyledCard>{review.text}</StyledCard>
+      <StyledCard>
+        <div>{review.text}</div>
+        <div className="username">{review.full_name}</div>
+      </StyledCard>
     </>
   );
 };
@@ -52,6 +55,9 @@ const InterviewReviewDetails = ({
 const StyledCard = styled(Card)`
   max-width: 800px;
   padding: 50px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media ${mobilePortrait} {
     padding: 0 !important;
@@ -61,9 +67,9 @@ const StyledCard = styled(Card)`
   @media ${tabletPortrait} {
     padding: 0 !important;
   }
-
-  p {
-    font-size: 20px;
+  .username {
+    padding-top: 2rem;
+    text-align: right;
   }
 
   .buttons {
