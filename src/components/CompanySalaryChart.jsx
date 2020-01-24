@@ -102,8 +102,9 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
     <StyledDiv>
       <h3>
         Average Company Salaries
-        {avgSalaries.avgSalaries.length &&
-          ` in ${avgSalaries.avgSalaries[0].currency}`}
+        {avgSalaries.avgSalaries.length
+          ? ` in ${avgSalaries.avgSalaries[0].currency}`
+          : ` `}
       </h3>
       {!isFetching ? (
         <>
@@ -127,6 +128,7 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
                     dataKey="interest"
                     height={170}
                     angle={45}
+                    interval={0}
                   >
                     <Label
                       value="Job Role"
@@ -166,17 +168,12 @@ const StyledDiv = styled.div`
   width: 800px;
   height: 500px;
   h3 {
-      margin-bottom: 40px;
+    margin-bottom: 40px;
   }
   @media ${mobilePortrait} {
     width: 99%;
   }
-  .svg.recharts-surface tspan {
-    color: red !important;
+  .empty-state {
+    text-align: left;
   }
-  /* recharts-surface {
-    tspan {
-      transform: rotate(-90deg);
-    }
-  } */
 `;
