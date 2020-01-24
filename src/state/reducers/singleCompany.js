@@ -4,7 +4,7 @@ const initialState = {
   isFetching: false,
   reviews: {
     companyReview: [],
-    // salaryReview: [],
+    salaryReview: [],
     interviewReview: [],
   },
 };
@@ -27,10 +27,20 @@ const companyReviewsReducer = (state = initialState, action) => {
     case types.GET_SINGLE_COMPANY_INTERVIEW_REVIEWS_SUCCESS:
       return {
         ...state,
+        isFetching: false,
         reviews: {
           ...state.reviews,
           interviewReview: action.payload,
-          isFetching: false,
+        },
+      };
+
+    case types.GET_SINGLE_COMPANY_SALARY_REVIEWS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        reviews: {
+          ...state.reviews,
+          salaryReview: action.payload,
         },
       };
 
