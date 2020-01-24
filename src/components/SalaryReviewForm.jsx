@@ -39,11 +39,12 @@ const SalaryReview = ({
     e.preventDefault();
     const { currency, unit, ...rest } = formValues;
     const review = { ...rest };
-    const currencyUnit = currencies.find(curr => curr.name === unit).symbol;
+    // const currencyUnit = currencies.find(curr => curr.name === unit).symbol;
 
-    review.salary = `${currencyUnit}${Number(currency)
-      .toFixed(2)
-      .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+    // review.salary = `${currencyUnit}${Number(currency)
+    //   .toFixed(2)
+    //   .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+    review.salary = Number(currency);
     review.currency = unit;
 
     await addSalaryReview(review, id);

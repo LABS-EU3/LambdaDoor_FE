@@ -4,6 +4,7 @@ import React from 'react';
 import { Button, Card, Rate } from 'antd';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import currencies from '../../../utils/currencies';
 
 const StyledCard = styled(Card)`
   margin: 1.5rem !important;
@@ -32,14 +33,18 @@ const StyledCard = styled(Card)`
 
 export const SmallSalaryReviewCard = ({
   history,
-  review: { id, name, description, salary, interest },
+  review: { id, name, description, salary, interest, currency },
 }) => {
+  const currencyUnit = currencies.find(curr => curr.name === currency).symbol;
+  const salaryFormatted = `${currencyUnit}${Number(salary)
+    .toFixed(2)
+    .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
   return (
     <StyledCard onClick={() => history.push(`/salaries/${id}`)}>
       <div className="card-top">
         <h2>{name}</h2>
       </div>
-      <div>{salary}</div>
+      <div>{salaryFormatted}</div>
       <div className="description">
         {description.length > 30 ? (
           <span>{description.slice(0, 30)}...</span>

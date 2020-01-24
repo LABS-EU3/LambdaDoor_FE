@@ -6,6 +6,7 @@ import { getCompanyReviews, getSalaryReviews } from '../state/actions/reviews';
 import MySalaryReviewList from '../components/MyReviews/Salary/MySalaryReviewList';
 import CompanyReviewList from '../components/MyReviews/CompanyReviews/CompanyReviewList';
 import InterviewReviewList from '../components/MyReviews/InterviewReviews/InterviewReviewList';
+
 const { TabPane } = Tabs;
 
 const ManageReviews = ({ history }) => {
@@ -15,8 +16,6 @@ const ManageReviews = ({ history }) => {
       history.push('/');
     }
   }, []);
-
-  const { TabPane } = Tabs;
 
   return (
     <div>

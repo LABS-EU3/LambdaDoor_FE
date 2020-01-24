@@ -84,6 +84,7 @@ describe('ConnectedHome', () => {
         reviews: {
           companyReview: [],
           interviewReview: [],
+          salaryReview: [],
         },
       },
       singleReview: {
