@@ -12,6 +12,7 @@ import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
 const ReviewCard = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const StyledEmpty = styled.div`
@@ -41,11 +42,30 @@ const StyledCard = styled(Card)`
     font-size: 14px;
   }
 
+  .Headline {
+    height: 60px;
+  }
+
   @media ${mobilePortrait} {
     padding: 0 !important;
   }
   @media ${tabletPortrait} {
     padding: 0 !important;
+  }
+  @media only screen and (max-width: 530px) {
+    span {
+      font-size: 14px;
+    }
+    .stars {
+      margin-top: 25px;
+      font-size: 12px;
+    }
+    font-size: 11px;
+    height: 220px;
+    padding-top: 0.1rem !important;
+  }
+  @media only screen and (max-width: 480px) {
+    height: 230px;
   }
 `;
 
@@ -85,7 +105,7 @@ const CompanyReviewCard = ({
           key={companyReview.id}
           onClick={() => history.push(`/companyReviews/${companyReview.id}`)}
         >
-          <p>
+          <p className="headline">
             Headline:
             <br />
             {companyReview.review_headline.length > 25 ? (

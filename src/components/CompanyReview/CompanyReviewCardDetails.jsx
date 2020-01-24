@@ -76,7 +76,7 @@ const StyledCard = styled(Card)`
     font-size: 15px;
   }
   .company-name {
-    font-size: 25px;
+    font-size: 2rem;
     text-align: center;
     margin: 0;
     margin-bottom: 20px;
@@ -84,6 +84,21 @@ const StyledCard = styled(Card)`
   }
   .review-div {
     font-size: 20px;
+  }
+  @media only screen and (max-width: 550px) {
+    .company-name {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 12px;
+    }
+    .review-div {
+      font-size: 15px;
+    }
+    .start {
+      font-size: 12px;
+    }
+    padding: 10px 10px 10px 5px !important;
   }
 `;
 
