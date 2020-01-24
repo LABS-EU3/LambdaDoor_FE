@@ -3,10 +3,9 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { Empty, Button } from 'antd';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import SmallReviewCard from './SmallReviewCard';
 
 const StyledDiv = styled.div`

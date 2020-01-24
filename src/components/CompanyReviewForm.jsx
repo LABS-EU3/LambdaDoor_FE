@@ -111,6 +111,7 @@ const CompanyReview = ({
             name="review_headline"
             placeholder="Review Headline"
             onChange={handleChange}
+            maxLength={100}
           />
         </Form.Item>
         <Form.Item label="Review">
