@@ -155,12 +155,7 @@ const validationSchema = yup.object().shape({
   location: yup.string().required('Please provide a location'),
   website: yup
     .string()
-    .matches(
-      /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/,
-      {
-        message: 'Enter a valid website',
-      }
-    )
+    .url('Please enter a valid URL')
     .required('Please provide a website'),
   type: yup.string().required('Please provide a company type'),
   description: yup.string().required('Please provide a description'),
