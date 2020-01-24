@@ -27,7 +27,7 @@ const StyledEmpty = styled.div`
 const StyledCard = styled(Card)`
   margin: 2rem 1.5rem 1rem 0rem !important;
   width: 280px;
-  height: 180px;
+  height: 200px;
   padding-top: 1rem !important;
   font-size: 16px;
   cursor: pointer;
@@ -73,7 +73,9 @@ const CompanyReviewCard = ({
           </span>
         }
       >
-        <Button>Post a Review</Button>
+        <Button onClick={() => history.push('/add-review')}>
+          Post a Review
+        </Button>
       </Empty>
     </StyledEmpty>
   ) : (
