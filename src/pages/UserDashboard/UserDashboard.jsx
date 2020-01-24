@@ -16,6 +16,7 @@ import {
   getInterviewReviews,
 } from '../../state/actions/reviews';
 import { getCompanies } from '../../state/actions/companies';
+import { getClosestCompanies } from '../../state/actions/closestCompanies';
 
 export const UserDashboard = ({
   authState: {
@@ -25,6 +26,7 @@ export const UserDashboard = ({
   SetAuthenticated,
   getCompanyReviews,
   getCompanies,
+  getClosestCompanies,
   history,
 }) => {
   useEffect(() => {
@@ -67,6 +69,7 @@ export const UserDashboard = ({
         if (location === null) {
           await getLocation(id);
         }
+        await getClosestCompanies(id);
       }
     }
     start();
@@ -97,6 +100,7 @@ export default connect(state => state, {
   editProfile,
   getCompanyReviews,
   getCompanies,
+  getClosestCompanies,
 })(UserDashboard);
 
 const StyledContainer = styled.div`
