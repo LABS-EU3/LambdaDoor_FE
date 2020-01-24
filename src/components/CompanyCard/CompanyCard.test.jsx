@@ -1,6 +1,15 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import { render, cleanup } from '@testing-library/react';
 import CompanyCard from './CompanyCard';
+jest.mock('../CompanySalaryChart', () => () => (
+  <div id="mockSalaryChart">mockSalaryChart</div>
+));
+
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
 
 const testArray = [
   {
@@ -29,6 +38,23 @@ const testArray = [
   },
 ];
 
+const testSalaries = {
+  avgSalaries: [
+    {
+      interest_id: 2,
+      interest: 'Front End',
+      currency: 'USD',
+      avg: 95000,
+    },
+    {
+      interest_id: 4,
+      interest: 'Full Stack',
+      currency: 'USD',
+      avg: 67500,
+    },
+  ],
+};
+
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: () => ({
@@ -40,7 +66,13 @@ afterEach(cleanup);
 
 describe('Tests for CompanyCard ', () => {
   test('renders component', () => {
-    const { getByText } = render(<CompanyCard companies={testArray} />);
+    // const store = mockStore({});
+    const { getByText } = render(
+      // <Provider store={store}>
+
+      <CompanyCard companies={testArray} avgSalaries={testSalaries} />
+      // </Provider>
+    );
 
     expect(getByText('Newfront Insurance')).toBeTruthy();
     expect(getByText('Company Type: insurance')).toBeTruthy();

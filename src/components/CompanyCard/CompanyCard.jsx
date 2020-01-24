@@ -61,7 +61,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-const CompanyCard = props => {
+export const CompanyCard = props => {
   const { companies } = props;
   const companyId = useParams().id;
   if (companies.length === 0) return <Spin />;

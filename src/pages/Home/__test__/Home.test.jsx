@@ -80,6 +80,10 @@ describe('ConnectedHome', () => {
         error: null,
       },
       topRatedReviews: { isfetching: false, topRatedReviews: [] },
+      avgSalaries: {
+        avgSalaries: [],
+        isfetching: false,
+      },
       closestCompanies: { isfetching: false, closestCompanies: [] },
     });
   });
