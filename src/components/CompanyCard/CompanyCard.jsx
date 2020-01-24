@@ -31,6 +31,9 @@ const StyledDiv = styled.div`
       padding-left: 1rem !important;
       margin-bottom: 40px;
     }
+    @media ${mobilePortrait} {
+      flex-direction: column;
+    }
   }
   .company-type {
     margin-top: 1rem;
