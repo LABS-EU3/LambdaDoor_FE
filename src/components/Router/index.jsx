@@ -21,6 +21,7 @@ import {
 import { getCompanies } from '../../state/actions/companies';
 import DetailedCompanyReviewCard from '../MyReviews/CompanyReviews/DetailedReviewCard';
 import DetailedInterviewReviewCard from '../MyReviews/InterviewReviews/DetailedReviewCard';
+import InterviewReviewDetails from '../CompanyCard/InterviewReviewDetails';
 
 const start = async () => {
   const token = localStorage.getItem('token');
@@ -55,6 +56,10 @@ const AppRouter = () => {
         <DashboardLayout
           path="/reviews/interview/:id"
           component={DetailedInterviewReviewCard}
+        />
+        <DashboardLayout
+          path="/company/:companyId/interview/:id"
+          component={InterviewReviewDetails}
         />
         <DashboardLayout path="/add-review" component={AddReview} />
         <DashboardLayout path="/company-page/:id" component={CompanyPage} />

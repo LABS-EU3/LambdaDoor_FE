@@ -113,7 +113,7 @@ export const DetailedSalaryReviewCard = ({
           </div>
 
           <div className="interest">
-            <h3>Job Catergory</h3>
+            <h3>Job Category</h3>
             {isEditing ? (
               <Select
                 defaultValue={review.interest_id}
