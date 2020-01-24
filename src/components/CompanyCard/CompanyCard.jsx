@@ -22,6 +22,7 @@ const StyledDiv = styled.div`
 
   @media ${tabletPortrait} {
     padding: 0 !important;
+    width: 98%;
   }
 
   .location-rating {
