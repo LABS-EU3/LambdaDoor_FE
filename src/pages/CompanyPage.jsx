@@ -2,22 +2,30 @@
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Tabs } from 'antd';
 import { getCompanies } from '../state/actions/companies';
+import { getInterviewReviewsByCompanyId } from '../state/actions/reviews';
 import CompanyCard from '../components/CompanyCard/CompanyCard';
 import CompanyReviewCard from '../components/CompanyReview/CompanyReviewCard';
+import InterviewReviewList from '../components/CompanyReviews/InterviewReviews/InterviewReviewList';
 
 const { TabPane } = Tabs;
 const CompanyPage = ({
   getCompanies,
+  getInterviewReviewsByCompanyId,
   companies: { companies },
   authState: {
     credentials: { id },
   },
 }) => {
+  const companyId = useParams().id;
+
   useEffect(() => {
     getCompanies();
+    getInterviewReviewsByCompanyId(companyId);
   }, []);
+
   return (
     <div>
       <Tabs defaultActiveKey="1">
@@ -31,10 +39,13 @@ const CompanyPage = ({
           Content of Tab Pane 3
         </TabPane>
         <TabPane tab="Interview Process Reviews" key="4">
-          Content of Tab Pane 4
+          <InterviewReviewList />
         </TabPane>
       </Tabs>
     </div>
   );
 };
-export default connect(state => state, { getCompanies })(CompanyPage);
+export default connect(state => state, {
+  getCompanies,
+  getInterviewReviewsByCompanyId,
+})(CompanyPage);
