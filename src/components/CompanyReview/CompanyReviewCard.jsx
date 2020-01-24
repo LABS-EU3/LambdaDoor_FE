@@ -12,7 +12,7 @@ import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
 const ReviewCard = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const StyledEmpty = styled.div`
@@ -28,14 +28,22 @@ const StyledEmpty = styled.div`
 const StyledCard = styled(Card)`
   margin: 2rem 1.5rem 1rem 0rem !important;
   width: 280px;
-  height: 180px;
+  height: 200px;
   padding-top: 1rem !important;
   font-size: 16px;
   cursor: pointer;
 
+  span {
+    font-size: 18px;
+  }
+
   .stars {
     margin-top: 30px;
     font-size: 14px;
+  }
+
+  .Headline {
+    height: 60px;
   }
 
   @media ${mobilePortrait} {
@@ -43,6 +51,21 @@ const StyledCard = styled(Card)`
   }
   @media ${tabletPortrait} {
     padding: 0 !important;
+  }
+  @media only screen and (max-width: 530px) {
+    span {
+      font-size: 14px;
+    }
+    .stars {
+      margin-top: 25px;
+      font-size: 12px;
+    }
+    font-size: 11px;
+    height: 220px;
+    padding-top: 0.1rem !important;
+  }
+  @media only screen and (max-width: 480px) {
+    height: 230px;
   }
 `;
 
@@ -70,16 +93,21 @@ const CompanyReviewCard = ({
           </span>
         }
       >
-        <Button>Post a Review</Button>
+        <Button onClick={() => history.push('/add-review')}>
+          Post a Review
+        </Button>
       </Empty>
     </StyledEmpty>
   ) : (
     <ReviewCard>
       {companyReview.map(companyReview => (
         <StyledCard
+          key={companyReview.id}
           onClick={() => history.push(`/companyReviews/${companyReview.id}`)}
         >
-          <p>
+          <p className="headline">
+            Headline:
+            <br />
             {companyReview.review_headline.length > 25 ? (
               <span>
                 {companyReview.review_headline.slice(0, 25)}
@@ -90,7 +118,8 @@ const CompanyReviewCard = ({
             )}
           </p>
           <div className="stars">
-            <div>Rating:</div>
+            Rating:
+            <br />
             <Rate disabled defaultValue={companyReview.ratings} size="small" />
           </div>
         </StyledCard>

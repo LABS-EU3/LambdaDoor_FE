@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Rate, Spin, Card } from 'antd';
+import { Rate, Spin } from 'antd';
 import styled from 'styled-components';
 import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
 
@@ -71,14 +71,7 @@ const CompanyCard = props => {
         Company Type: &nbsp;
         {company.type}
       </p>
-      <p className="description">
-        Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Reiciendis, iusto labore? Quae distinctio quam reprehenderit! Id est
-        perspiciatis, cum recusandae nesciunt sapiente eius ex, pariatur
-        obcaecati veniam dignissimos nihil ipsum.
-        {/* I've added the placeholder text above for now as we don't yet have descriptions in the db. Further styling is to be done when the salary component is added. (Lisa) */}
-        {company.description}
-      </p>
+      <p className="description">{company.description}</p>
     </StyledDiv>
   );
 };
