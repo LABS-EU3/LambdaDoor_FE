@@ -60,6 +60,7 @@ const StyledDiv = styled.div`
   .cards {
     position: relative;
     height: 150px;
+    max-width: 350px;
 
     a {
       position: absolute;

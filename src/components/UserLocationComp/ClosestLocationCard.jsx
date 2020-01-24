@@ -8,8 +8,15 @@ import styled from 'styled-components';
 const Website = styled.a`
   position: absolute;
   top: 113px;
-  left: 50px;
+  left: 16px;
   z-index: 2;
+  width: 300;
+  overflow: hidden;
+`;
+
+const StyledP = styled.p`
+  height: 40px !important;
+  overflow: hidden !important;
 `;
 
 export default function ClosestLocationCard(props) {
@@ -19,9 +26,9 @@ export default function ClosestLocationCard(props) {
       <Link to={`company-page/${id}`} className="nav-link">
         <div>
           <h3>{name}</h3>
-          <p>{text}</p>
+          <StyledP>{text}</StyledP>
         </div>
-        <p style={{ marginBottom: 0 }}>Link: </p>
+        {/* <p style={{ marginBottom: 0 }}>Link: </p> */}
       </Link>
       <Website href={website} target="_blank" rel="noopener noreferrer">
         {website}
