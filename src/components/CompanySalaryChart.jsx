@@ -44,25 +44,23 @@ const COLOURS = [
   '#D2E3D0',
 ];
 
-class CustomizedAxisTick extends React.PureComponent {
-  render() {
-    const { x, y, payload } = this.props;
+function CustomizedAxisTick(props) {
+  const { x, y, payload } = props;
 
-    return (
-      <g transform={`translate(${x},${y})`}>
-        <text
-          x={0}
-          y={0}
-          dy={0}
-          textAnchor="end"
-          fill="#666"
-          transform="rotate(-90)"
-        >
-          {payload.value}
-        </text>
-      </g>
-    );
-  }
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text
+        x={0}
+        y={0}
+        dy={0}
+        textAnchor="end"
+        fill="#666"
+        transform="rotate(-90)"
+      >
+        {payload.value}
+      </text>
+    </g>
+  );
 }
 
 const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
