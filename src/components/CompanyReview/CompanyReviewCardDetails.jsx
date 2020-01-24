@@ -28,7 +28,6 @@ const CompanyReviewCardDetailed = ({
       getReviewsByReviewId(reviewId);
     }
   }, []);
-
   return !review ? (
     <Skeleton />
   ) : (
@@ -47,11 +46,13 @@ const CompanyReviewCardDetailed = ({
       <StyledCard>
         <h2 className="company-name">{review.name}</h2>
         <p>
-          <div>Review:</div>
+          Review:
+          <br />
           <span className="review-div">{review.review}</span>
         </p>
         <div className="stars">
-          <div>Rating:</div>
+          Rating:
+          <br />
           <Rate disabled defaultValue={Number(review.ratings)} size="small" />
         </div>
       </StyledCard>

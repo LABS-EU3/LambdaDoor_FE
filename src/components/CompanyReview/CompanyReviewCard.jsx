@@ -80,10 +80,12 @@ const CompanyReviewCard = ({
     <ReviewCard>
       {companyReview.map(companyReview => (
         <StyledCard
+          key={companyReview.id}
           onClick={() => history.push(`/companyReviews/${companyReview.id}`)}
         >
           <p>
-            <div>Headline:</div>
+            Headline:
+            <br />
             {companyReview.review_headline.length > 25 ? (
               <span>
                 {companyReview.review_headline.slice(0, 25)}
@@ -94,7 +96,8 @@ const CompanyReviewCard = ({
             )}
           </p>
           <div className="stars">
-            <div>Rating:</div>
+            Rating:
+            <br />
             <Rate disabled defaultValue={companyReview.ratings} size="small" />
           </div>
         </StyledCard>
