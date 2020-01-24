@@ -95,6 +95,10 @@ describe('ConnectedHome', () => {
         },
       },
       topRatedReviews: { isfetching: false, topRatedReviews: [] },
+      avgSalaries: {
+        avgSalaries: [],
+        isfetching: false,
+      },
       closestCompanies: { isfetching: false, closestCompanies: [] },
     });
   });

@@ -6,6 +6,7 @@ import { topRatedReviewsReducer } from './topRatedReviews';
 import { closestCompaniesReducer } from './closestCompanies';
 import { companiesReducer } from './companies';
 import { jobrolesReducer } from './jobroles';
+import { avgSalariesReducer } from './avgSalaries';
 import companyReviewsReducer from './singleCompany';
 import singleReviewReducer from './singleReview';
 
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   closestCompanies: closestCompaniesReducer,
   companies: companiesReducer,
   jobroles: jobrolesReducer,
+  avgSalaries: avgSalariesReducer,
   singleCompanyReviews: companyReviewsReducer,
   singleReview: singleReviewReducer,
 });

@@ -19,6 +19,7 @@ const CompanyPage = ({
   getCompanies,
   getInterviewReviewsByCompanyId,
   companies: { companies },
+  // avgSalaries: { avgSalaries },
   authState: {
     credentials: { id },
   },
@@ -49,6 +50,7 @@ const CompanyPage = ({
       <Tabs defaultActiveKey="1">
         <TabPane tab="Company Info" key="1">
           <CompanyCard companies={companies} />
+          {/* <CompanySalaryChart avgSalaries={avgSalaries} /> */}
         </TabPane>
         <TabPane tab="Company Reviews" key="2">
           <CompanyReviewCard />
