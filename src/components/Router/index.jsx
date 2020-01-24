@@ -21,6 +21,8 @@ import {
 import { getCompanies } from '../../state/actions/companies';
 import DetailedCompanyReviewCard from '../MyReviews/CompanyReviews/DetailedReviewCard';
 import DetailedInterviewReviewCard from '../MyReviews/InterviewReviews/DetailedReviewCard';
+import CompanyReview from '../CompanyReview/CompanyReviewCardDetails';
+import InterviewReview from '../CompanyReviews/InterviewReviews/InterviewReviewDetails';
 
 const start = async () => {
   const token = localStorage.getItem('token');
@@ -58,6 +60,11 @@ const AppRouter = () => {
         />
         <DashboardLayout path="/add-review" component={AddReview} />
         <DashboardLayout path="/company-page/:id" component={CompanyPage} />
+        <DashboardLayout path="/companyReviews/:id" component={CompanyReview} />
+        <DashboardLayout
+          path="/interviewreviews/:id"
+          component={InterviewReview}
+        />
       </Switch>
     </BrowserRouter>
   );

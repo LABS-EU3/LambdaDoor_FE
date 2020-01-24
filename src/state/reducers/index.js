@@ -3,9 +3,11 @@ import { reviewsReducer, reviewsError } from './reviews';
 import { authState } from './auth';
 import { interestReducer } from './interests';
 import { topRatedReviewsReducer } from './topRatedReviews';
-import { closestCompaniesReducer } from './closestCompanies'
+import { closestCompaniesReducer } from './closestCompanies';
 import { companiesReducer } from './companies';
 import { jobrolesReducer } from './jobroles';
+import companyReviewsReducer from './singleCompany';
+import singleReviewReducer from './singleReview';
 
 const rootReducer = combineReducers({
   reviews: reviewsReducer,
@@ -16,6 +18,8 @@ const rootReducer = combineReducers({
   closestCompanies: closestCompaniesReducer,
   companies: companiesReducer,
   jobroles: jobrolesReducer,
+  singleCompanyReviews: companyReviewsReducer,
+  singleReview: singleReviewReducer,
 });
 
 export default rootReducer;
