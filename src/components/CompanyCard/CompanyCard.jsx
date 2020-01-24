@@ -77,26 +77,20 @@ export const CompanyCard = props => {
             <Rate disabled defaultValue={Number(company.average_rating)} />
           </span>
         </div>
-        <a target="_blank" rel="noopener noreferrer" href={company.website}>
-          {company.website}
-        </a>
-        <p className="company-type">
-          Company Type: &nbsp;
-          {company.type}
-        </p>
-        <p className="description">
-          Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Reiciendis, iusto labore? Quae distinctio quam reprehenderit! Id est
-          perspiciatis, cum recusandae nesciunt sapiente eius ex, pariatur
-          obcaecati veniam dignissimos nihil ipsum.
-          {/* I've added the placeholder text above for now as we don't yet have descriptions in the db. Further styling is to be done when the salary component is added. (Lisa) */}
-          {company.description}
-        </p>
+     <a target="_blank" rel="noopener noreferrer" href={company.website}>
+        {company.website}
+      </a>
+      <p className="company-type">
+        Company Type: &nbsp;
+        {company.type}
+      </p>
+      <p className="description">{company.description}</p>
       </div>
 
       <div className="visual-info">
         <CompanySalaryChart />
       </div>
+
     </StyledDiv>
   );
 };
