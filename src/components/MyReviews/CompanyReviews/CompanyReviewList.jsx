@@ -5,6 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Empty, Button } from 'antd';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import SmallReviewCard from './SmallReviewCard';
 
 const StyledDiv = styled.div`
@@ -42,7 +43,9 @@ const MyReviewList = ({
           </span>
         }
       >
-        <Button>Post a Review</Button>
+        <Link to="/add-review">
+          <Button>Post a Review</Button>
+        </Link>
       </Empty>
     </StyledEmpty>
   ) : (
