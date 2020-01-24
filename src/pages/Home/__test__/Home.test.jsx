@@ -79,6 +79,20 @@ describe('ConnectedHome', () => {
         credentials: {},
         error: null,
       },
+      singleCompanyReviews: {
+        isFetching: false,
+        reviews: {
+          companyReview: [],
+          interviewReview: [],
+        },
+      },
+      singleReview: {
+        isFetching: false,
+        reviews: {
+          companyReview: [],
+          interviewReview: [],
+        },
+      },
       topRatedReviews: { isfetching: false, topRatedReviews: [] },
       closestCompanies: { isfetching: false, closestCompanies: [] },
     });
