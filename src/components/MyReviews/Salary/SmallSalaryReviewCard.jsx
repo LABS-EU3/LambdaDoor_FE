@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable camelcase */
 import React from 'react';
-import { Button, Card, Rate } from 'antd';
+import { Card } from 'antd';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import currencies from '../../../utils/currencies';
@@ -33,7 +33,7 @@ const StyledCard = styled(Card)`
 
 export const SmallSalaryReviewCard = ({
   history,
-  review: { id, name, description, salary, interest, currency },
+  review: { id, name, description, salary, currency },
 }) => {
   const currencyUnit = currencies.find(curr => curr.name === currency).symbol;
   const salaryFormatted = `${currencyUnit}${Number(salary)

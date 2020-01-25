@@ -1,9 +1,8 @@
 /* eslint-disable no-shadow */
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
-import decode from 'jwt-decode';
 import ClosestLocationCard from './ClosestLocationCard';
 
 export const ClosestLocationList = ({

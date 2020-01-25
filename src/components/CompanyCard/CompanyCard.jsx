@@ -77,20 +77,19 @@ export const CompanyCard = props => {
             <Rate disabled defaultValue={Number(company.average_rating)} />
           </span>
         </div>
-     <a target="_blank" rel="noopener noreferrer" href={company.website}>
-        {company.website}
-      </a>
-      <p className="company-type">
-        Company Type: &nbsp;
-        {company.type}
-      </p>
-      <p className="description">{company.description}</p>
+        <a target="_blank" rel="noopener noreferrer" href={company.website}>
+          {company.website}
+        </a>
+        <p className="company-type">
+          Company Type: &nbsp;
+          {company.type}
+        </p>
+        <p className="description">{company.description}</p>
       </div>
 
       <div className="visual-info">
         <CompanySalaryChart />
       </div>
-
     </StyledDiv>
   );
 };
