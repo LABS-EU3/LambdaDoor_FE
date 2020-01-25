@@ -12,6 +12,10 @@ const StyledCard = styled(Card)`
   height: 200px;
   cursor: pointer;
 
+  &:hover {
+    border: 2px solid #bb1333;
+  }
+
   .card-top {
     display: flex;
     justify-content: space-between;

@@ -32,6 +32,9 @@ const StyledCard = styled(Card)`
   padding-top: 1rem !important;
   font-size: 16px;
   cursor: pointer;
+  &:hover {
+    border: 2px solid #bb1333;
+  }
 
   .stars {
     margin-top: 30px;
