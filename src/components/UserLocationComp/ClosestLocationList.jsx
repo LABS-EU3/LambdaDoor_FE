@@ -59,7 +59,8 @@ const StyledContainer = styled.div`
 
   .cards {
     position: relative;
-    min-height: 150px;
+    height: 150px;
+    max-width: 350px;
 
     a.nav-link {
       position: absolute;
