@@ -4,7 +4,7 @@ exports[`ClosestLocationList renders correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-bwzfXH gWFEPE"
+      class="sc-htpNat jRlZbR"
     >
       <div
         class="cards"
@@ -17,16 +17,13 @@ exports[`ClosestLocationList renders correctly 1`] = `
             <h3>
               Accenture
             </h3>
-            <p />
+            <p
+              class="sc-bwzfXH hKkmqJ"
+            />
           </div>
-          <p
-            style="margin-bottom: 0px;"
-          >
-            Link: 
-          </p>
         </a>
         <a
-          class="sc-bdVaJa cZrYsx"
+          class="sc-bdVaJa buLEa"
           href="www.accenture.com."
           rel="noopener noreferrer"
           target="_blank"

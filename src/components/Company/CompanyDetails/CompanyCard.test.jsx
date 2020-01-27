@@ -4,7 +4,8 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { render, cleanup } from '@testing-library/react';
 import CompanyCard from './CompanyCard';
-jest.mock('../CompanySalaryChart', () => () => (
+
+jest.mock('./CompanySalaryChart', () => () => (
   <div id="mockSalaryChart">mockSalaryChart</div>
 ));
 
