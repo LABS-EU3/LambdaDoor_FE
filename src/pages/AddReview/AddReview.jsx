@@ -16,6 +16,7 @@ const AddReview = ({ history }) => {
   return (
     <StyledContainer>
       <div>
+        <h1>Leave a Review</h1>
         <Tabs>
           <TabPane tab="Company Review" key="1">
             <CompanyReviewForm />
@@ -34,6 +35,6 @@ const AddReview = ({ history }) => {
 export default AddReview;
 
 const StyledContainer = styled.div`
-  width: 90%;
-  margin: 0 5%;
+  /* width: 90%;
+  margin: 0 5%; */
 `;

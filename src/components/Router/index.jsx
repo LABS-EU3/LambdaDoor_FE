@@ -10,6 +10,7 @@ import UserDashboard from '../../pages/UserDashboard/UserDashboard';
 import AddReview from '../../pages/AddReview/AddReview';
 import CompanyPage from '../../pages/Company/CompanyPage';
 import ManageReviews from '../../pages/MyReviews/ManageReviews';
+import NotFound from '../../pages/NotFound';
 
 import DetailedSalaryReview from '../MyReviews/Salary/DetailedSalaryReviewCard';
 import DetailedCompanyReview from '../MyReviews/Company/DetailedReviewCard';
@@ -57,6 +58,7 @@ const AppRouter = () => {
           component={DetailedInterviewReview}
         />
         <DashboardLayout
+          exact
           path="/reviews/company/:id"
           component={DetailedCompanyReview}
         />
@@ -68,8 +70,10 @@ const AppRouter = () => {
         <DashboardLayout path="/interviewreviews/:id" component={InterviewReview} />
         <DashboardLayout
           path="/company/:companyId/salary/:id"
+          exact
           component={SalaryReview}
         />
+        <DashboardLayout component={NotFound} />
       </Switch>
     </BrowserRouter>
   );

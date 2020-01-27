@@ -46,7 +46,7 @@ export const SmallReviewCard = ({
 }) => {
   const handleCompanyClick = e => {
     e.stopPropagation();
-    history.push(`/company-page/${company_id}`);
+    history.push(`/reviews/company/${company_id}`);
   };
   return (
     <StyledCard onClick={() => history.push(`/reviews/company/${id}`)}>
