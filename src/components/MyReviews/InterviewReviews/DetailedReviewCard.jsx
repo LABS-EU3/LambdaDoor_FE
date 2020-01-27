@@ -94,6 +94,39 @@ export const DetailedReviewCard = ({
             {review.text}
           </Paragraph>
         </div>
+        <div className="switch-statements">
+          <div
+            className="current-employee"
+            data-testid={`employee - ${review.is_current_employee}`}
+          >
+            <h2>I am a current employee</h2>
+            <Switch
+              checkedChildren={<Icon type="check" />}
+              unCheckedChildren={<Icon type="close" />}
+              defaultChecked={review.is_current_employee}
+              disabled={!isEditing}
+              onChange={e => {
+                updateReview('is_current_employee', e === true ? 1 : 0);
+              }}
+            />
+          </div>
+
+          <div
+            className="accepting-questions"
+            data-testid={`questions - ${review.is_accepting_questions}`}
+          >
+            <h2>Accepting questions</h2>
+            <Switch
+              checkedChildren={<Icon type="check" />}
+              unCheckedChildren={<Icon type="close" />}
+              defaultChecked={review.is_accepting_questions}
+              disabled={!isEditing}
+              onChange={e => {
+                updateReview('is_accepting_questions', e === true ? 1 : 0);
+              }}
+            />
+          </div>
+        </div>
         <div className="buttons">
           {!isEditing && (
             <Popconfirm

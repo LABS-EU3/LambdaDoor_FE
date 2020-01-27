@@ -82,9 +82,9 @@ const InterviewReviewForm = ({
               <Switch
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
-                name="is_currently_employed"
+                name="is_current_employee"
                 onChange={value =>
-                  handleComponentChange('is_currently_employed', value)
+                  handleComponentChange('is_current_employee', value)
                 }
               />
             </div>
