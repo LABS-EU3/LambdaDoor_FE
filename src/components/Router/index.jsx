@@ -47,31 +47,48 @@ const AppRouter = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <DashboardLayout path="/dashboard" component={UserDashboard} />
-        <DashboardLayout path="/companies" component={UserDashboard} />
+        <DashboardLayout path="/dashboard" exact component={UserDashboard} />
+        <DashboardLayout path="/companies" exact component={UserDashboard} />
         <DashboardLayout path="/reviews" exact component={ManageReviews} />
-        <DashboardLayout path="/interviews/:id" component={ReviewDetails} />
         <DashboardLayout
+          path="/interviews/:id"
+          exact
+          component={ReviewDetails}
+        />
+        <DashboardLayout
+          exact
           path="/salaries/:id"
           component={DetailedSalaryReview}
         />
         <DashboardLayout
+          exact
           path="/reviews/company/:id"
           component={DetailedCompanyReviewCard}
         />
         <DashboardLayout
+          exact
           path="/reviews/interview/:id"
           component={DetailedInterviewReviewCard}
         />
-        <DashboardLayout path="/add-review" component={AddReview} />
-        <DashboardLayout path="/company-page/:id" component={CompanyPage} />
-        <DashboardLayout path="/companyReviews/:id" component={CompanyReview} />
+        <DashboardLayout path="/add-review" exact component={AddReview} />
+        <DashboardLayout
+          path="/company-page/:id"
+          exact
+          component={CompanyPage}
+        />
+        <DashboardLayout
+          path="/companyReviews/:id"
+          exact
+          component={CompanyReview}
+        />
         <DashboardLayout
           path="/interviewreviews/:id"
+          exact
           component={InterviewReview}
         />
         <DashboardLayout
           path="/company/:companyId/salary/:id"
+          exact
           component={SalaryReview}
         />
         <DashboardLayout component={NotFound} />
