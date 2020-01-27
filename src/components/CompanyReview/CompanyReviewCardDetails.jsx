@@ -55,6 +55,7 @@ const CompanyReviewCardDetailed = ({
           <br />
           <Rate disabled defaultValue={Number(review.ratings)} size="small" />
         </div>
+        <div className="username">{review.full_name}</div>
       </StyledCard>
     </>
   );
@@ -84,6 +85,10 @@ const StyledCard = styled(Card)`
   }
   .review-div {
     font-size: 20px;
+  }
+  .username {
+    padding-top: 2rem;
+    text-align: right;
   }
   @media only screen and (max-width: 550px) {
     .company-name {

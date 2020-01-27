@@ -1,9 +1,8 @@
 /* eslint-disable no-shadow */
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
-import decode from 'jwt-decode';
 import ClosestLocationCard from './ClosestLocationCard';
 
 export const ClosestLocationList = ({
@@ -60,7 +59,8 @@ const StyledContainer = styled.div`
 
   .cards {
     position: relative;
-    min-height: 150px;
+    height: 150px;
+    max-width: 350px;
 
     a.nav-link {
       position: absolute;

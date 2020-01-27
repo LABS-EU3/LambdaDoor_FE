@@ -26,6 +26,7 @@ import DetailedInterviewReviewCard from '../MyReviews/InterviewReviews/DetailedR
 import CompanyReview from '../CompanyReview/CompanyReviewCardDetails';
 import InterviewReview from '../CompanyReviews/InterviewReviews/InterviewReviewDetails';
 import SalaryReview from '../CompanyReviews/SalaryReviews/SalaryReviewDetails';
+import NotFound from '../../pages/NotFound';
 
 const start = async () => {
   const token = localStorage.getItem('token');
@@ -73,6 +74,7 @@ const AppRouter = () => {
           path="/company/:companyId/salary/:id"
           component={SalaryReview}
         />
+        <DashboardLayout component={NotFound} />
       </Switch>
     </BrowserRouter>
   );

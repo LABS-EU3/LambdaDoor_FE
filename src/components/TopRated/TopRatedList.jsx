@@ -23,7 +23,7 @@ export const TopRatedList = ({
               // eslint-disable-next-line react/no-array-index-key
               <TopRatedCard
                 key={`${topRated.id}`}
-                text={topRated.description }
+                text={topRated.description}
                 name={topRated.name}
                 id={topRated.id}
                 rating={topRated.average_rating}
@@ -59,7 +59,8 @@ const StyledDiv = styled.div`
 
   .cards {
     position: relative;
-    min-height: 150px;
+    height: 150px;
+    max-width: 350px;
 
     a {
       position: absolute;
@@ -74,6 +75,11 @@ const StyledDiv = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    p {
+      height: 40px;
+      overflow: hidden;
     }
 
     h3 {

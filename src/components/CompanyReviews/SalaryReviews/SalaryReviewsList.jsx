@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Card, Spin, Empty } from 'antd';
+import { Card, Empty } from 'antd';
 import { withRouter, useParams } from 'react-router-dom';
 import currencies from '../../../utils/currencies';
 
