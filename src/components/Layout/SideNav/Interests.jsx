@@ -5,8 +5,8 @@
 import React, { useState } from 'react';
 import { Tag, Dropdown, Icon, Menu } from 'antd';
 import { connect } from 'react-redux';
-import { allInterests } from '../utils/data';
-import { removeInterest, addInterest } from '../state/actions/interests';
+import { allInterests } from '../../../utils/data';
+import { removeInterest, addInterest } from '../../../state/actions/interests';
 
 const Interests = ({
   authState: {

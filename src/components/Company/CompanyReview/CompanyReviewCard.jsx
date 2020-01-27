@@ -6,8 +6,8 @@ import { useParams, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Rate, Card, Empty, Button } from 'antd';
 import styled from 'styled-components';
-import { getReviewsByCompanyId } from '../../state/actions/reviews';
-import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
+import { getReviewsByCompanyId } from '../../../state/actions/reviews';
+import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
 
 const ReviewCard = styled.div`
   display: flex;

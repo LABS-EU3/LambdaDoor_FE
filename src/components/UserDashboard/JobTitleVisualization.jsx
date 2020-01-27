@@ -7,7 +7,7 @@ import uuid from 'uuid';
 import { PieChart, Pie, Cell, Legend } from 'recharts';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
-import { getJobRoles } from '../state/actions/jobroles';
+import { getJobRoles } from '../../state/actions/jobroles';
 
 const data = [
   { interest: 'Front End', id: uuid(), count: 10 },

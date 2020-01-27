@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
 import TopRatedCard from './TopRatedCard';
-import { getTopRatedReviews } from '../../state/actions/topRatedReviews';
+import { getTopRatedReviews } from '../../../state/actions/topRatedReviews';
 
 export const TopRatedList = ({
   isFetching,

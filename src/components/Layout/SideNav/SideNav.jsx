@@ -7,15 +7,15 @@ import { NavLink } from 'react-router-dom';
 import { Typography, Spin, Button, Icon, Tooltip } from 'antd';
 import styled from 'styled-components';
 
-import { mobilePortrait, primaryGrey } from '../styles/theme.styles';
+import { mobilePortrait, primaryGrey } from '../../../styles/theme.styles';
 
-import { editProfile } from '../state/actions/user';
+import { editProfile } from '../../../state/actions/user';
 import Logo from './Logo';
 import Avatar from './Avatar';
-import openNotification from '../utils/openNotification';
-import { getLocation } from '../utils/getLocation';
+import openNotification from '../../../utils/openNotification';
+import { getLocation } from '../../../utils/getLocation';
 import Interests from './Interests';
-import { LogoutUser } from '../state/actions/auth';
+import { LogoutUser } from '../../../state/actions/auth';
 
 const { Paragraph } = Typography;
 

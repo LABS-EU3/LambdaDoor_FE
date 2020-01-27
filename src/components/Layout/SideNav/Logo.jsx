@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mobileLandscape, mobilePortrait } from '../styles/theme.styles';
-import logo from '../assets/img/lambda-logo.png';
+import { mobileLandscape, mobilePortrait } from '../../../styles/theme.styles';
+import logo from '../../../assets/lambda-logo.png';
 
 // eslint-disable-next-line react/prop-types
 const Logo = ({ smaller }) => {

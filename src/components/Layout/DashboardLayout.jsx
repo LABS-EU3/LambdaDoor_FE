@@ -8,8 +8,8 @@ import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 import { Button, Icon } from 'antd';
 import { connect } from 'react-redux';
-import SideNav from '../SideNav';
-import SearchForm from '../Search/Search';
+import SideNav from './SideNav/SideNav';
+import SearchForm from './Search/Search';
 import {
   primaryGrey,
   textGrey,
@@ -19,7 +19,7 @@ import {
 
 import { LogoutUser } from '../../state/actions/auth';
 
-import logo from '../../assets/img/lambda-logo.png';
+import logo from '../../assets/lambda-logo.png';
 
 const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
   const [visible, setVisible] = useState(false);

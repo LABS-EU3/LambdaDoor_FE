@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import * as yup from 'yup';
 import { Modal, Form, Input, Icon, Button, Select } from 'antd';
-import { addCompany } from '../state/actions/companies';
-import LocationSearch from './LocationSearch';
-import openNotification from '../utils/openNotification';
+import { addCompany } from '../../state/actions/companies';
+import LocationSearch from '../LocationSearch';
+import openNotification from '../../utils/openNotification';
 
 const { Option } = Select;
 

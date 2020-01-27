@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Input } from 'antd';
 import styled from 'styled-components';
-import { mobilePortrait } from '../../styles/theme.styles';
+import { mobilePortrait } from '../../../styles/theme.styles';
 
 const { Search } = Input;
 

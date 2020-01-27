@@ -2,8 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Rate, Spin } from 'antd';
 import styled from 'styled-components';
-import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
-import CompanySalaryChart from '../CompanySalaryChart';
+import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
+import CompanySalaryChart from './CompanySalaryChart';
 
 const StyledDiv = styled.div`
   max-width: 800px;
@@ -68,28 +68,34 @@ export const CompanyCard = props => {
   const company = companies.find(elem => elem.id === Number(companyId));
   return (
     <StyledDiv>
-      <div className="textInfo">
-        <h2>{company.name}</h2>
-        <div className="location-rating">
-          <p>{company.location}</p>
-          <span>
-            Average Rating:
-            <Rate disabled defaultValue={Number(company.average_rating)} />
-          </span>
-        </div>
-        <a target="_blank" rel="noopener noreferrer" href={company.website}>
-          {company.website}
-        </a>
-        <p className="company-type">
-          Company Type: &nbsp;
-          {company.type}
-        </p>
-        <p className="description">{company.description}</p>
-      </div>
+      {
+        company && (
+          <>
+            <div className="textInfo">
+              <h2>{company.name}</h2>
+              <div className="location-rating">
+                <p>{company.location}</p>
+                <span>
+                  Average Rating:
+                  <Rate disabled defaultValue={Number(company.average_rating)} />
+                </span>
+              </div>
+              <a target="_blank" rel="noopener noreferrer" href={company.website}>
+                {company.website}
+              </a>
+              <p className="company-type">
+                Company Type: &nbsp;
+                {company.type}
+              </p>
+              <p className="description">{company.description}</p>
+            </div>
 
-      <div className="visual-info">
-        <CompanySalaryChart />
-      </div>
+            <div className="visual-info">
+              <CompanySalaryChart />
+            </div>
+          </>
+        )
+      }
     </StyledDiv>
   );
 };

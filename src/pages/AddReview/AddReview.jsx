@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Tabs } from 'antd';
 import styled from 'styled-components';
-import CompanyReviewForm from '../components/CompanyReviewForm';
-import SalaryReviewForm from '../components/SalaryReviewForm';
-import InterviewReviewForm from '../components/InterviewReviewForm';
+import CompanyReviewForm from '../../components/AddReview/CompanyReviewForm';
+import SalaryReviewForm from '../../components/AddReview/SalaryReviewForm';
+import InterviewReviewForm from '../../components/AddReview/InterviewReviewForm';
 
 const { TabPane } = Tabs;
 const AddReview = ({ history }) => {

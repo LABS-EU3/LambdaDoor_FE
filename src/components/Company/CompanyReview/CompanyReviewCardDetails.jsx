@@ -6,8 +6,8 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Rate, Card, Icon, Button, Skeleton } from 'antd';
 import styled from 'styled-components';
-import { getReviewsByReviewId } from '../../state/actions/reviews';
-import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
+import { getReviewsByReviewId } from '../../../state/actions/reviews';
+import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
 
 const CompanyReviewCardDetailed = ({
   history,

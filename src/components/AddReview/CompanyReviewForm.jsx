@@ -6,11 +6,11 @@ import { Input, Rate, Switch, Form, Button, Icon } from 'antd';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 
-import { addCompanyReview } from '../state/actions/reviews';
-import { mobilePortrait } from '../styles/theme.styles';
+import { addCompanyReview } from '../../state/actions/reviews';
+import { mobilePortrait } from '../../styles/theme.styles';
 
-import AutoComplete from '../utils/autocomplete';
-import openNotification from '../utils/openNotification';
+import AutoComplete from '../../utils/autocomplete';
+import openNotification from '../../utils/openNotification';
 
 const { TextArea } = Input;
 

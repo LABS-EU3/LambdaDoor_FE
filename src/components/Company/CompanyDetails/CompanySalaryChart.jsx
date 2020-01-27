@@ -17,9 +17,9 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { connect } from 'react-redux';
-import { mobilePortrait } from '../styles/theme.styles';
+import { mobilePortrait } from '../../../styles/theme.styles';
 import { Spin } from 'antd';
-import { getAvgSalaries } from '../state/actions/avgSalaries';
+import { getAvgSalaries } from '../../../state/actions/avgSalaries';
 
 const startingData = [
   { interest: 'Front End', id: uuid(), avg: 0, currency: 'USD' },
@@ -65,7 +65,6 @@ function CustomizedAxisTick(props) {
 
 const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
   const { id } = useParams();
-  console.log(avgSalaries);
   const [state, setState] = useState([]);
 
   useEffect(() => {
@@ -73,11 +72,8 @@ const CompanySalaryChart = ({ isFetching, getAvgSalaries, avgSalaries }) => {
   }, []);
 
   useEffect(() => {
-    console.log('avgSalaries', avgSalaries);
     const averages = [...avgSalaries.avgSalaries];
 
-    console.log('averages', averages);
-    console.log('starting data', startingData);
     startingData.forEach(item => {
       const index = averages.findIndex(e => e.interest === item.interest);
 

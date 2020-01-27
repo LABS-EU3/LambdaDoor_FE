@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Upload, Icon, Tooltip, Button, message, Spin } from 'antd';
-import imageUpload from '../utils/ImageUpload';
-import { editProfile } from '../state/actions/user';
-import openNotification from '../utils/openNotification';
+import imageUpload from '../../../utils/ImageUpload';
+import { editProfile } from '../../../state/actions/user';
+import openNotification from '../../../utils/openNotification';
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();

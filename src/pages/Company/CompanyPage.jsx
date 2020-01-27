@@ -4,15 +4,15 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Tabs, Button, Icon } from 'antd';
-import { getCompanies } from '../state/actions/companies';
+import { getCompanies } from '../../state/actions/companies';
 import {
   getInterviewReviewsByCompanyId,
   getSalaryReviewsByCompanyId,
-} from '../state/actions/reviews';
-import CompanyCard from '../components/CompanyCard/CompanyCard';
-import CompanyReviewCard from '../components/CompanyReview/CompanyReviewCard';
-import InterviewReviewList from '../components/CompanyReviews/InterviewReviews/InterviewReviewList';
-import SalaryReviewsList from '../components/CompanyReviews/SalaryReviews/SalaryReviewsList';
+} from '../../state/actions/reviews';
+import CompanyCard from '../../components/Company/CompanyDetails/CompanyCard';
+import CompanyReviewCard from '../../components/Company/CompanyReview/CompanyReviewCard';
+import InterviewReviewList from '../../components/Company/InterviewReviews/InterviewReviewList';
+import SalaryReviewsList from '../../components/Company/SalaryReviews/SalaryReviewsList';
 
 const { TabPane } = Tabs;
 const CompanyPage = ({

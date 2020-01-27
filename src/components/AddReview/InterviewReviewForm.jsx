@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import { Form, Input, Button } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import AutoCompleteComponent from '../utils/autocomplete';
-import { addInterviewReview } from '../state/actions/reviews';
-import openNotification from '../utils/openNotification';
+import AutoCompleteComponent from '../../utils/autocomplete';
+import { addInterviewReview } from '../../state/actions/reviews';
+import openNotification from '../../utils/openNotification';
 
 const InterviewReviewForm = ({
   companies: { companies },
