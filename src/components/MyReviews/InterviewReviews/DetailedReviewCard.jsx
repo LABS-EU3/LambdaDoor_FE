@@ -1,7 +1,15 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
-import { Icon, Card, Button, Skeleton, Popconfirm, Typography } from 'antd';
+import {
+  Icon,
+  Card,
+  Button,
+  Skeleton,
+  Popconfirm,
+  Typography,
+  Switch,
+} from 'antd';
 import styled from 'styled-components';
 import { withRouter, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
