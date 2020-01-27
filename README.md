@@ -83,17 +83,21 @@ Sometimes it's helpful to know what all these different files are for…
 /
 ├─ src/
 │  ├─ assets/        # Assets
-│  │  ├─ img/     # Raster images (used in component examples)
 │  │
 │  ├─ components/    # Components
-│  │  ├─ Layouts/    # …that govern macro layout
+|  |  ├─ AddReview/  # …that manages all components under the Add Review Page
+│  │  ├─ Company/    # …that manages all component referring to a single company including reviews
+│  │  ├─ MyReviews/    # …that manages all component referring to the user's reviews
+│  │  ├─ Layouts/    # …that governs all site layouts including layout-specific components
 │  │  ├─ Router/     # …that handles all files that pertain to app routing
-│  │  ├─ TopRated/   # …that handles the components for top rated companies
-|  |  ├─ UserLocationComp/ # …that handles the components for recommended user location
+│  │  ├─ UserDashboard/ # …that handles all the components that display on the user's dashboard
 |  |
 |  ├─ pages/         # Pages
-│  │  ├─ Home/       # …that renders Home-specific content
-│  │  ├─ UserDashboard/ # …that renders User-Dashboard content
+│  │  ├─ AddReview/  # …that renders Add-Review page content
+│  │  ├─ Company/    # …that renders Company page content
+│  │  ├─ Home/       # …that renders Home page content
+│  │  ├─ MyReviews/  # …that renders user's reviews for management
+│  │  ├─ UserDashboard/ # …that renders User-Dashboard page content
 │  |
 |  |─ state/         # State
 │  │  ├─ actions/    # …that handles redux actions

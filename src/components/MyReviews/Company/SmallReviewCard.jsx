@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable camelcase */
 import React from 'react';
@@ -44,10 +46,10 @@ export const SmallReviewCard = ({
 }) => {
   const handleCompanyClick = e => {
     e.stopPropagation();
-    history.push(`/company-page/${company_id}`);
+    history.push(`/reviews/company/${company_id}`);
   };
   return (
-    <StyledCard onClick={() => history.push(`/reviews/${id}`)}>
+    <StyledCard onClick={() => history.push(`/reviews/company/${id}`)}>
       <div className="card-top">
         <h2 role="link" onClick={handleCompanyClick}>
           {name}

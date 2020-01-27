@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
 import { Form, Input, AutoComplete, Button } from 'antd';
-import AddCompanyModal from '../components/AddCompanyModal';
+import AddCompanyModal from '../components/AddReview/AddCompanyModal';
 
 const { Option } = AutoComplete;
 
