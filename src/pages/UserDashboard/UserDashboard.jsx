@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
@@ -91,7 +92,7 @@ export const UserDashboard = ({
         </div>
       </div>
       <div className="bottom-layout">
-        <h2>Recommended Based on Location</h2>
+        {location && <h2>Recommended Based on Location - {location}</h2>}
         <ClosestLocationList />
       </div>
     </StyledContainer>
