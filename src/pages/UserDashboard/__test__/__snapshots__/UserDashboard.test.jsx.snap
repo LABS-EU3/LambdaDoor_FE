@@ -62,6 +62,9 @@ exports[`ConnectedUserDashboard renders correctly 1`] = `
       <div
         class="bottom-layout"
       >
+        <h2>
+          Companies Near You
+        </h2>
         <div
           class="sc-bxivhb hfTuEU"
         >
