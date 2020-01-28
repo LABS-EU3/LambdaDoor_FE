@@ -4,7 +4,7 @@ exports[`ConnectedUserDashboard renders correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-ifAKCX kRZLQy"
+      class="sc-EHOje bgQjtM"
     >
       <div
         class="top-layout"
@@ -14,7 +14,7 @@ exports[`ConnectedUserDashboard renders correctly 1`] = `
             Top Rated Companies
           </h2>
           <div
-            class="sc-bdVaJa dDCHnS"
+            class="sc-bdVaJa gygcmf"
           >
             <div
               class="empty-state"
@@ -30,7 +30,7 @@ exports[`ConnectedUserDashboard renders correctly 1`] = `
             Popular Job Roles
           </h2>
           <div
-            class="sc-bxivhb gTPLYz"
+            class="sc-ifAKCX gLjPjf"
           >
             <div
               class="empty-state"
@@ -66,7 +66,7 @@ exports[`ConnectedUserDashboard renders correctly 1`] = `
           Recommended Based on Location
         </h2>
         <div
-          class="sc-htpNat kzNAEe"
+          class="sc-bxivhb hfTuEU"
         >
           <div
             class="empty-state"

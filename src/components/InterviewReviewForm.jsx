@@ -22,7 +22,7 @@ const InterviewReviewForm = ({
     company_id: '',
     text: '',
     is_accepting_questions: false,
-    is_currently_employed: false,
+    is_current_employee: false,
   });
 
   const handleCompanyName = name => {
@@ -46,7 +46,7 @@ const InterviewReviewForm = ({
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    console.log(formValues);
     addInterviewReview(formValues, id);
     history.push('/reviews');
     openNotification('Review Added Successfully! ');

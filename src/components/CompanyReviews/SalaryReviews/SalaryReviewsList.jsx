@@ -24,7 +24,7 @@ const SalaryReviewsList = ({
         description={
           <span className="text">
             Oops!! <br />
-            No interview reviews yet
+            No salary reviews yet
           </span>
         }
       />

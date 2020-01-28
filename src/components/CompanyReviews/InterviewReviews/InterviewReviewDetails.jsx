@@ -46,13 +46,26 @@ const InterviewReviewDetails = ({
       </Button>
       <StyledCard>
         <div>{review.text}</div>
-        <div className="username">{review.full_name}</div>
+        <div className="bottom">
+          <div className="contact">
+            {review.is_accepting_questions ? (
+              <p>
+                Have questions?
+                <Button>Contact Me</Button>
+              </p>
+            ) : (
+              ''
+            )}
+          </div>
+          <div className="username">{review.full_name}</div>
+        </div>
       </StyledCard>
     </>
   );
 };
 
 const StyledCard = styled(Card)`
+  width: 100%;
   max-width: 800px;
   padding: 50px !important;
   display: flex;
@@ -67,9 +80,23 @@ const StyledCard = styled(Card)`
   @media ${tabletPortrait} {
     padding: 0 !important;
   }
+
+  .ant-card-body {
+    width: 100%;
+  }
+
   .username {
     padding-top: 2rem;
     text-align: right;
+    justify-content: flex-end;
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 2rem;
   }
 
   .buttons {

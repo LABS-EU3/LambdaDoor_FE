@@ -66,6 +66,20 @@ const SalaryReviewDetails = ({
           <h2>Job Description</h2>
           <span>{review.description}</span>
         </div>
+
+        <div className="bottom">
+          <div className="contact">
+            {review.is_accepting_questions ? (
+              <p>
+                Have questions?
+                <Button>Contact Me</Button>
+              </p>
+            ) : (
+              ''
+            )}
+          </div>
+          <div className="username">{review.full_name}</div>
+        </div>
       </StyledCard>
     </div>
   );
@@ -82,6 +96,19 @@ const StyledCard = styled(Card)`
     .description {
       margin-top: 20px;
     }
+  }
+  .username {
+    padding-top: 2rem;
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 2rem;
   }
 `;
 
