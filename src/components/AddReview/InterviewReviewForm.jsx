@@ -2,9 +2,10 @@
 /* eslint-disable react/jsx-curly-newline */
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Icon, Switch } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { mobilePortrait } from '../../styles/theme.styles';
 import AutoCompleteComponent from '../../utils/autocomplete';
 import { addInterviewReview } from '../../state/actions/reviews';
 import openNotification from '../../utils/openNotification';
@@ -20,6 +21,8 @@ const InterviewReviewForm = ({
   const [formValues, setFormValues] = useState({
     company_id: '',
     text: '',
+    is_accepting_questions: false,
+    is_current_employee: false,
   });
 
   const handleCompanyName = name => {
@@ -34,9 +37,16 @@ const InterviewReviewForm = ({
     }
   };
 
+  const handleComponentChange = (name, value) => {
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-
+    console.log(formValues);
     addInterviewReview(formValues, id);
     history.push('/reviews');
     openNotification('Review Added Successfully! ');
@@ -65,6 +75,33 @@ const InterviewReviewForm = ({
           />
         </Form.Item>
 
+        <Form.Item>
+          <EmployeeInfo>
+            <div>
+              <p>I am a current employee</p>
+              <Switch
+                checkedChildren={<Icon type="check" />}
+                unCheckedChildren={<Icon type="close" />}
+                name="is_current_employee"
+                onChange={value =>
+                  handleComponentChange('is_current_employee', value)
+                }
+              />
+            </div>
+            <div>
+              <p>I am accepting more questions</p>
+              <Switch
+                checkedChildren={<Icon type="check" />}
+                unCheckedChildren={<Icon type="close" />}
+                name="is_accepting_questions"
+                onChange={value =>
+                  handleComponentChange('is_accepting_questions', value)
+                }
+              />
+            </div>
+          </EmployeeInfo>
+        </Form.Item>
+
         <Button
           type="primary"
           htmlType="submit"
@@ -84,6 +121,25 @@ const InterviewReviewForm = ({
 const StyledContainer = styled.div`
   @media (min-width: 1024px) {
     width: 60%;
+  }
+`;
+
+const EmployeeInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  div {
+    width: 50%;
+    p {
+      display: inline;
+      margin-right: 10%;
+    }
+  }
+  @media ${mobilePortrait} {
+    flex-direction: column;
+    div {
+      margin-bottom: 5%;
+      width: 100%;
+    }
   }
 `;
 

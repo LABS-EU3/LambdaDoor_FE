@@ -39,7 +39,7 @@ export const DetailedReviewCard = ({
 
   useEffect(() => {
     updatedReview = { ...review };
-    delete updatedReview.name;
+    delete updatedReview.full_name;
   }, [review]);
 
   const handleDelete = async id => {
@@ -54,6 +54,7 @@ export const DetailedReviewCard = ({
 
   const handleEdit = async () => {
     setLoading(true);
+    console.log(updatedReview);
     await updateInterviewReview(updatedReview);
     setLoading(false);
     setEditing(false);

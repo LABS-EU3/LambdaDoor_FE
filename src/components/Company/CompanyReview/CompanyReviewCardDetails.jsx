@@ -13,6 +13,7 @@ const CompanyReviewCardDetailed = ({
   history,
   getReviewsByReviewId,
   singleReview: {
+    isFetching,
     reviews: { companyReview: singleCompanyReview },
   },
   singleCompanyReviews: {
@@ -53,9 +54,23 @@ const CompanyReviewCardDetailed = ({
         <div className="stars">
           Rating:
           <br />
-          <Rate disabled defaultValue={Number(review.ratings)} size="small" />
+          {!isFetching ? (
+            <Rate disabled defaultValue={review.ratings} size="small" />
+          ) : null}
         </div>
-        <div className="username">{review.full_name}</div>
+        <div className="bottom">
+          <div className="contact">
+            {review.is_accepting_questions ? (
+              <p>
+                Have questions?
+                <Button>Contact Me</Button>
+              </p>
+            ) : (
+              ''
+            )}
+          </div>
+          <div className="username">{review.full_name}</div>
+        </div>
       </StyledCard>
     </>
   );
@@ -89,7 +104,17 @@ const StyledCard = styled(Card)`
   .username {
     padding-top: 2rem;
     text-align: right;
+    justify-content: flex-end;
   }
+
+  .bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 2rem;
+  }
+
   @media only screen and (max-width: 550px) {
     .company-name {
       font-size: 1.5rem;

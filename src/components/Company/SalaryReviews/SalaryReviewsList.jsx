@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Card, Empty } from 'antd';
+import { Card, Empty, Button } from 'antd';
 import { withRouter, useParams } from 'react-router-dom';
 import currencies from '../../../utils/currencies';
 
@@ -24,34 +24,52 @@ const SalaryReviewsList = ({
         description={
           <span className="text">
             Oops!! <br />
-            No interview reviews yet
+            No salary reviews yet
           </span>
         }
-      />
+      >
+        <Button
+          onClick={() => {
+            history.push('/add-review');
+          }}
+        >
+          Post a Review
+        </Button>
+      </Empty>
     </StyledEmpty>
   ) : (
-    salaryReview.map(elem => {
-      const currencyUnit = currencies.find(curr => curr.name === elem.currency)
-        .symbol;
-      const salaryFormatted = `${currencyUnit}${Number(elem.salary)
-        .toFixed(2)
-        .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
-      return (
-        <StyledCard
-          key={elem.id}
-          onClick={() => history.push(`/company/${id}/salary/${elem.id}`)}
-        >
-          <div className="card-top">
-            <h2>{elem.name}</h2>
-          </div>
-          <h2>{elem.interest}</h2>
+    <ReviewCard>
+      {salaryReview.map(elem => {
+        const currencyUnit = currencies.find(
+          curr => curr.name === elem.currency
+        ).symbol;
+        const salaryFormatted = `${currencyUnit}${Number(elem.salary)
+          .toFixed(2)
+          .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+        return (
+          <StyledCard
+            key={elem.id}
+            onClick={() => history.push(`/company/${id}/salary/${elem.id}`)}
+          >
+            <div className="card-top">
+              <h2>{elem.name}</h2>
+            </div>
+            <h2>{elem.interest}</h2>
 
-          <h3>{salaryFormatted}</h3>
-        </StyledCard>
-      );
-    })
+            <h3>{salaryFormatted}</h3>
+          </StyledCard>
+        );
+      })}
+    </ReviewCard>
   );
 };
+
+const ReviewCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+`;
 
 const StyledCard = styled(Card)`
   margin: 1.5rem !important;

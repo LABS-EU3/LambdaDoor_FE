@@ -110,8 +110,6 @@ const CompanyReviewCard = ({
           onClick={() => history.push(`/companyReviews/${companyReview.id}`)}
         >
           <p className="headline">
-            Headline:
-            <br />
             {companyReview.review_headline.length > 25 ? (
               <span>
                 {companyReview.review_headline.slice(0, 25)}

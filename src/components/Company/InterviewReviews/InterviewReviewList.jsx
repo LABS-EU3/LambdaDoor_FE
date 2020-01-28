@@ -12,7 +12,7 @@ import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
 const ReviewCard = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const StyledEmpty = styled.div`
