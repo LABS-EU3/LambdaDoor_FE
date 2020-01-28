@@ -8,7 +8,6 @@ import { withRouter } from 'react-router-dom';
 import { mobilePortrait } from '../../styles/theme.styles';
 import AutoCompleteComponent from '../../utils/autocomplete';
 import { addInterviewReview } from '../../state/actions/reviews';
-import openNotification from '../../utils/openNotification';
 
 const InterviewReviewForm = ({
   companies: { companies },
@@ -24,7 +23,7 @@ const InterviewReviewForm = ({
     is_accepting_questions: false,
     is_current_employee: false,
   });
-
+  const [loading, setLoading] = useState(false);
   const handleCompanyName = name => {
     const company = companies.find(element => {
       return element.name === name;
@@ -44,11 +43,12 @@ const InterviewReviewForm = ({
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
+    console.log(formValues);
     e.preventDefault();
-    addInterviewReview(formValues, id);
-    history.push('/reviews');
-    openNotification('Review Added Successfully! ');
+    setLoading(true);
+    await addInterviewReview(formValues, id, history);
+    setLoading(false);
   };
 
   return (
@@ -104,6 +104,7 @@ const InterviewReviewForm = ({
         <Button
           type="primary"
           htmlType="submit"
+          loading={loading}
           onClick={handleSubmit}
           disabled={Boolean(
             Object.keys(formValues).filter(elem => formValues[elem] === '')

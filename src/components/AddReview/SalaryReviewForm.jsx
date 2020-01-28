@@ -34,22 +34,20 @@ const SalaryReview = ({
     is_current_employee: false,
     is_anonymous: false,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setLoading(true);
     const { currency, unit, ...rest } = formValues;
     const review = { ...rest };
-    // const currencyUnit = currencies.find(curr => curr.name === unit).symbol;
 
-    // review.salary = `${currencyUnit}${Number(currency)
-    //   .toFixed(2)
-    //   .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
     review.salary = Number(currency);
     review.currency = unit;
 
-    await addSalaryReview(review, id);
-    history.push('/reviews');
-    openNotification('Review Added Successfully! ');
+    console.log(review);
+    await addSalaryReview(review, id, history);
+    setLoading(false);
   };
 
   const handleCompanyName = name => {
@@ -96,11 +94,11 @@ const SalaryReview = ({
         <Form.Item label="Job Category">
           <Select
             placeholder="Category"
-            arr={allInterests.interests.map((obj) => {
+            arr={allInterests.interests.map(obj => {
               return {
                 id: obj.id,
-                name: obj.interest
-              }
+                name: obj.interest,
+              };
             })}
             onChange={handleComponentChange}
           />
@@ -190,6 +188,7 @@ const SalaryReview = ({
           type="primary"
           htmlType="submit"
           onClick={handleSubmit}
+          loading={loading}
           disabled={Boolean(
             Object.keys(formValues).filter(elem => formValues[elem] === '')
               .length

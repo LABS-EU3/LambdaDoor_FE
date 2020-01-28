@@ -40,6 +40,7 @@ const SalaryReviewsList = ({
   ) : (
     <ReviewCard>
       {salaryReview.map(elem => {
+        console.log(elem);
         const currencyUnit = currencies.find(
           curr => curr.name === elem.currency
         ).symbol;

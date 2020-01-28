@@ -36,7 +36,7 @@ export const DetailedReviewCard = ({
 
   const reviewId = useParams().id;
   const review = interview.find(elem => elem.id === Number(reviewId));
-
+  console.log(updatedReview);
   useEffect(() => {
     updatedReview = { ...review };
     delete updatedReview.name;

@@ -10,7 +10,6 @@ import { addCompanyReview } from '../../state/actions/reviews';
 import { mobilePortrait } from '../../styles/theme.styles';
 
 import AutoComplete from '../../utils/autocomplete';
-import openNotification from '../../utils/openNotification';
 
 const { TextArea } = Input;
 
@@ -30,6 +29,7 @@ const CompanyReview = ({
     review: '',
     is_accepting_questions: false,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = event => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
@@ -54,13 +54,13 @@ const CompanyReview = ({
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+    setLoading(true);
     const { location, ...rest } = formValues;
 
-    addCompanyReview({ ...rest, user_id: id }, id);
-    history.push('/reviews');
-    openNotification('Review Added Successfully! ');
+    await addCompanyReview({ ...rest, user_id: id }, id, history);
+    setLoading(false);
   };
 
   return (
@@ -126,6 +126,7 @@ const CompanyReview = ({
         <Button
           type="primary"
           htmlType="submit"
+          loading={loading}
           onClick={handleSubmit}
           disabled={Boolean(
             Object.keys(formValues).filter(elem => formValues[elem] === '')

@@ -47,7 +47,7 @@ const CompanyPage = ({
         <Icon type="left" />
         Back
       </Button>
-      <Tabs defaultActiveKey="1">
+      <Tabs>
         <TabPane tab="Company Info" key="1">
           <CompanyCard companies={companies} />
           {/* <CompanySalaryChart avgSalaries={avgSalaries} /> */}

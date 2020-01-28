@@ -41,6 +41,8 @@ export const DetailedReviewCard = ({
   useEffect(() => {
     updatedReview = { ...review };
     delete updatedReview.name;
+    delete updatedReview.full_name;
+    delete updatedReview.company_id;
   }, [review]);
 
   const handleDelete = async id => {
@@ -55,6 +57,7 @@ export const DetailedReviewCard = ({
 
   const handleEdit = async () => {
     setLoading(true);
+    console.log(updatedReview);
     await updateCompanyReview(updatedReview);
     setLoading(false);
     setEditing(false);

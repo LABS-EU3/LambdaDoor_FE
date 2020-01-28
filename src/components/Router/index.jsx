@@ -29,6 +29,8 @@ import {
 } from '../../state/actions/reviews';
 import { getClosestCompanies } from '../../state/actions/closestCompanies';
 import { getCompanies } from '../../state/actions/companies';
+import { connect } from 'react-redux';
+import { Spin } from 'antd';
 
 const start = async () => {
   const token = localStorage.getItem('token');
@@ -44,7 +46,11 @@ const start = async () => {
 };
 start();
 // eslint-disable-next-line react/prop-types
-const AppRouter = () => {
+const AppRouter = ({
+  authState: {
+    credentials: { isLoading },
+  },
+}) => {
   return (
     <BrowserRouter>
       <Switch>
@@ -67,7 +73,10 @@ const AppRouter = () => {
           component={DetailedSalaryReview}
         />
         <DashboardLayout path="/companyReviews/:id" component={CompanyReview} />
-        <DashboardLayout path="/interviewreviews/:id" component={InterviewReview} />
+        <DashboardLayout
+          path="/interviewreviews/:id"
+          component={InterviewReview}
+        />
         <DashboardLayout
           path="/company/:companyId/salary/:id"
           exact
@@ -79,4 +88,4 @@ const AppRouter = () => {
   );
 };
 
-export default AppRouter;
+export default connect(state => state)(AppRouter);

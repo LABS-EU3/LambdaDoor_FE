@@ -18,13 +18,11 @@ import {
   deleteSalaryReview,
   updateSalaryReview,
 } from '../../../state/actions/reviews';
-import openNotification from '../../../utils/openNotification';
 import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
 import { jobCategories } from '../../../utils/data';
 
 const { Paragraph } = Typography;
 let updatedReview;
-
 export const DetailedSalaryReviewCard = ({
   history,
   reviews: {
@@ -48,9 +46,7 @@ export const DetailedSalaryReviewCard = ({
   }, [review]);
 
   const handleDelete = async id => {
-    await deleteSalaryReview(id);
-    history.push(`/reviews/`);
-    openNotification('Review deleted successfully!');
+    await deleteSalaryReview(id, history);
   };
 
   const updateReview = (key, value) => {
@@ -106,7 +102,7 @@ export const DetailedSalaryReviewCard = ({
               }}
               className="editable-text salary"
             >
-              {String(review.salary)}
+              {review.salary}
             </Paragraph>
           </div>
 
