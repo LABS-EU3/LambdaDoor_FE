@@ -2,21 +2,20 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
 import {
-  Rate,
-  Switch,
   Icon,
   Card,
   Button,
   Skeleton,
   Popconfirm,
   Typography,
+  Switch,
 } from 'antd';
 import styled from 'styled-components';
 import { withRouter, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
-  deleteCompanyReview,
-  updateCompanyReview,
+  deleteInterviewReview,
+  updateInterviewReview,
 } from '../../../state/actions/reviews';
 import openNotification from '../../../utils/openNotification';
 import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
@@ -27,16 +26,16 @@ let updatedReview;
 export const DetailedReviewCard = ({
   history,
   reviews: {
-    reviews: { company },
+    reviews: { interview },
   },
-  deleteCompanyReview,
-  updateCompanyReview,
+  deleteInterviewReview,
+  updateInterviewReview,
 }) => {
   const [isEditing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const reviewId = useParams().id;
-  const review = company.find(elem => elem.id === Number(reviewId));
+  const review = interview.find(elem => elem.id === Number(reviewId));
 
   useEffect(() => {
     updatedReview = { ...review };
@@ -44,7 +43,7 @@ export const DetailedReviewCard = ({
   }, [review]);
 
   const handleDelete = async id => {
-    await deleteCompanyReview(id);
+    await deleteInterviewReview(id);
     history.push(`/reviews/`);
     openNotification('Review deleted successfully!');
   };
@@ -55,7 +54,7 @@ export const DetailedReviewCard = ({
 
   const handleEdit = async () => {
     setLoading(true);
-    await updateCompanyReview(updatedReview);
+    await updateInterviewReview(updatedReview);
     setLoading(false);
     setEditing(false);
   };
@@ -78,38 +77,35 @@ export const DetailedReviewCard = ({
       <StyledReview>
         <div className="title-div">
           <h2>Company Name</h2>
-          <span
-            className="company"
-            onClick={() => {
-              history.push(`/company-page/${review.company_id}`);
+          <span className="company">{review.name}</span>
+        </div>
+        <div className="review-body">
+          <h2>Review</h2>
+          <Paragraph
+            className="editable-text"
+            editable={{
+              onChange: e => {
+                updateReview('text', e);
+              },
+              editing: isEditing,
             }}
           >
-            {review.name}
-          </span>
-        </div>
-        <div className="ratings">
-          <h2>Overall Rating</h2>
-          <div className="stars" data-testid={review.ratings}>
-            <Rate
-              disabled={!isEditing}
-              defaultValue={review.ratings}
-              onChange={e => updateReview('ratings', e)}
-            />
-          </div>
+            {review.text}
+          </Paragraph>
         </div>
         <div className="switch-statements">
           <div
             className="current-employee"
-            data-testid={`employee - ${review.is_currently_employed}`}
+            data-testid={`employee - ${review.is_current_employee}`}
           >
             <h2>I am a current employee</h2>
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="close" />}
-              defaultChecked={review.is_currently_employed}
+              defaultChecked={review.is_current_employee}
               disabled={!isEditing}
               onChange={e => {
-                updateReview('is_currently_employed', e === true ? 1 : 0);
+                updateReview('is_current_employee', e === true ? 1 : 0);
               }}
             />
           </div>
@@ -130,44 +126,14 @@ export const DetailedReviewCard = ({
             />
           </div>
         </div>
-        <div>
-          <div className="headline-div">
-            <h2>Review Headline </h2>
-            <Paragraph
-              editable={{
-                onChange: e => {
-                  updateReview('review_headline', e);
-                },
-                editing: isEditing,
-              }}
-              className="editable-text headline"
-            >
-              {review.review_headline}
-            </Paragraph>
-          </div>
-          <div className="review-body">
-            <h2>Review</h2>
-            <Paragraph
-              className="editable-text"
-              editable={{
-                onChange: e => {
-                  updateReview('review', e);
-                },
-                editing: isEditing,
-              }}
-            >
-              {review.review}
-            </Paragraph>
-          </div>
-        </div>
         <div className="buttons">
           {!isEditing && (
             <Popconfirm
               placement="bottom"
               title="Are you sure to delete this review?"
-              onConfirm={() => handleDelete(review.id)}
               okText="Yes"
               cancelText="No"
+              onConfirm={() => handleDelete(review.id)}
             >
               <Button type="danger" size="default">
                 <Icon type="delete" /> Delete
@@ -280,14 +246,6 @@ const StyledReview = styled(Card)`
     font-size: 1.2rem;
     margin-left: 42px;
     margin-bottom: 20px;
-    cursor: pointer;
-    transition: 1s hover;
-    &:hover {
-      opacity: 0.6;
-    }
-    &:active {
-      transform: scale(1.05);
-    }
   }
   .ratings {
     display: flex;
@@ -482,7 +440,7 @@ const StyledReview = styled(Card)`
 `;
 
 export default withRouter(
-  connect(state => state, { deleteCompanyReview, updateCompanyReview })(
+  connect(state => state, { deleteInterviewReview, updateInterviewReview })(
     DetailedReviewCard
   )
 );

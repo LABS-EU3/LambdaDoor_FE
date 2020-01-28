@@ -40,7 +40,7 @@ export const SmallSalaryReviewCard = ({
     .toFixed(2)
     .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
   return (
-    <StyledCard onClick={() => history.push(`/salaries/${id}`)}>
+    <StyledCard onClick={() => history.push(`/reviews/salary/${id}`)}>
       <div className="card-top">
         <h2>{name}</h2>
       </div>

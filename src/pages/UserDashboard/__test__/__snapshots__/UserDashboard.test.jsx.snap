@@ -62,9 +62,6 @@ exports[`ConnectedUserDashboard renders correctly 1`] = `
       <div
         class="bottom-layout"
       >
-        <h2>
-          Recommended Based on Location
-        </h2>
         <div
           class="sc-bxivhb hfTuEU"
         >

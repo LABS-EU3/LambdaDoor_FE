@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
@@ -5,9 +6,9 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import TopRatedList from '../../components/TopRated/TopRatedList';
-import ClosestLocationList from '../../components/UserLocationComp/ClosestLocationList';
-import JobTitleVisualization from '../../components/JobTitleVisualization';
+import TopRatedList from '../../components/UserDashboard/TopRated/TopRatedList';
+import ClosestLocationList from '../../components/UserDashboard/UserLocationComp/ClosestLocationList';
+import JobTitleVisualization from '../../components/UserDashboard/JobTitleVisualization';
 import { editProfile } from '../../state/actions/user';
 import { getLocation } from '../../utils/getLocation';
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
@@ -91,7 +92,7 @@ export const UserDashboard = ({
         </div>
       </div>
       <div className="bottom-layout">
-        <h2>Recommended Based on Location</h2>
+        {location && <h2>Recommended Based on Location - {location}</h2>}
         <ClosestLocationList />
       </div>
     </StyledContainer>
