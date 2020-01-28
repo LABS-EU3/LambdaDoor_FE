@@ -59,12 +59,10 @@ export const DetailedSalaryReviewCard = ({
 
   const handleSelect = value => {
     updateReview('interest_id', value);
-    console.log(value);
   };
 
   const handleEdit = async () => {
     setLoading(true);
-    console.log(updatedReview);
     await updateSalaryReview(updatedReview);
     setLoading(false);
     setEditing(false);

@@ -42,10 +42,11 @@ const Interests = ({
     addInterest(userId, interestId);
   };
 
-  console.log(allInterests.interests);
   const menu = (
     <Menu>
-      {allInterests.interests.map(obj => (
+      {allInterests.interests
+      .filter(elem => !userInterests.interests.map(int => int.interest).includes(elem.interest))
+      .map(obj => (
           <Menu.Item
             onClick={() => handleAddInterest(id, obj.id)}
             key={obj.id}

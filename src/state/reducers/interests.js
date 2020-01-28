@@ -64,10 +64,7 @@ export const userInterestReducer = (state = initialUserInterestState, action) =>
     case types.ADD_INTEREST:
       return {
         ...state,
-        interests: [
-          ...state.interests,
-          action.payload,
-        ],
+        interests: action.payload,
       };
     default:
       return state;

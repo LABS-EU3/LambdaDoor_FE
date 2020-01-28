@@ -12,7 +12,7 @@ export const removeInterest = id => async dispatch => {
 };
 
 export const addInterest = (userId, interestId) => async dispatch => {
-  const response = axios.post(`${process.env.REACT_APP_BACKEND_URL}/interests`, {
+  const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/interests`, {
     user_id: userId,
     interest_id: interestId,
   });
@@ -32,7 +32,6 @@ export const getUsersInterests = (id) => async dispatch => {
     const response = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/interests/user/${id}`
     );
-    console.log(response)
     dispatch({
       type: types.GET_USER_INTERESTS_SUCCESS,
       payload: response.data,
@@ -54,7 +53,6 @@ export const getInterests = () => async dispatch => {
     const response = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/interests`
     );
-    console.log(response)
     dispatch({
       type: types.GET_INTERESTS_SUCCESS,
       payload: response.data,

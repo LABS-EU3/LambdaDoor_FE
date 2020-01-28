@@ -46,7 +46,6 @@ const InterviewReviewForm = ({
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(formValues);
     addInterviewReview(formValues, id);
     history.push('/reviews');
     openNotification('Review Added Successfully! ');

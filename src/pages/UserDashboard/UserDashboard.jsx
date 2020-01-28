@@ -92,7 +92,7 @@ export const UserDashboard = ({
         </div>
       </div>
       <div className="bottom-layout">
-        {location && <h2>Recommended Based on Location - {location}</h2>}
+        <h2>Companies Near You</h2>
         <ClosestLocationList />
       </div>
     </StyledContainer>
