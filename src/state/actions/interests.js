@@ -12,13 +12,57 @@ export const removeInterest = id => async dispatch => {
 };
 
 export const addInterest = (userId, interestId) => async dispatch => {
-  axios.post(`${process.env.REACT_APP_BACKEND_URL}/interests`, {
+  const response = axios.post(`${process.env.REACT_APP_BACKEND_URL}/interests`, {
     user_id: userId,
     interest_id: interestId,
   });
 
   dispatch({
     type: types.ADD_INTEREST,
-    payload: interestId - 1,
+    payload: response.data,
   });
+};
+
+export const getUsersInterests = (id) => async dispatch => {
+  dispatch({
+    type: types.GET_USER_INTERESTS,
+  });
+
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/interests/user/${id}`
+    );
+    console.log(response)
+    dispatch({
+      type: types.GET_USER_INTERESTS_SUCCESS,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.GET_USER_INTERESTS_FAILURE,
+      payload: error.message || 'Something went wrong.',
+    });
+  }
+};
+
+export const getInterests = () => async dispatch => {
+  dispatch({
+    type: types.GET_INTERESTS,
+  });
+
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/interests`
+    );
+    console.log(response)
+    dispatch({
+      type: types.GET_INTERESTS_SUCCESS,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.GET_INTERESTS_FAILURE,
+      payload: error.message || 'Something went wrong.',
+    });
+  }
 };
