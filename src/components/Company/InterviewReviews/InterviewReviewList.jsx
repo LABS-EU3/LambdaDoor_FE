@@ -13,7 +13,6 @@ const ReviewCard = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
 `;
 
 const StyledEmpty = styled.div`
