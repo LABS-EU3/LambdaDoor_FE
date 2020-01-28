@@ -20,21 +20,6 @@ export const SetAuthenticated = id => async dispatch => {
     type: types.LOG_IN_USER_SUCCESS,
     payload: data,
   });
-
-  dispatch({
-    type: types.GET_INTERESTS,
-  });
-
-  const { data: interests } = await axios.get(
-    `${process.env.REACT_APP_BACKEND_URL}/interests/user/${id}`,
-    {
-      withCredentials: true,
-    }
-  );
-  dispatch({
-    type: types.GET_INTERESTS_SUCCESS,
-    payload: interests,
-  });
 };
 
 export const LoginUser = (

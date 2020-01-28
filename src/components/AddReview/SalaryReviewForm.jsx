@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
-import { jobCategories } from '../../utils/data';
 import currencies from '../../utils/currencies';
 import Select from '../../utils/select';
 import AutoCompleteComponent from '../../utils/autocomplete';
@@ -22,6 +21,7 @@ const SalaryReview = ({
   authState: {
     credentials: { id },
   },
+  allInterests,
   history,
 }) => {
   const [formValues, setFormValues] = useState({
@@ -96,7 +96,12 @@ const SalaryReview = ({
         <Form.Item label="Job Category">
           <Select
             placeholder="Category"
-            arr={jobCategories}
+            arr={allInterests.interests.map((obj) => {
+              return {
+                id: obj.id,
+                name: obj.interest
+              }
+            })}
             onChange={handleComponentChange}
           />
         </Form.Item>
