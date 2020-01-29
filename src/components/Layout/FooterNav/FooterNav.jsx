@@ -14,6 +14,7 @@ const StyledDiv = styled.div`
   padding: 5px 10px;
   justify-content: center;
   color: #ffffff;
+  margin-top: 20px;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -87,6 +88,12 @@ const StyledDiv = styled.div`
       display: none;
     }
     justify-content: space-evenly;
+  }
+  @media only screen and (max-width: 359px) {
+    a {
+      margin: 0 0.2rem;
+      font-size: 10px;
+    }
   }
 `;
 

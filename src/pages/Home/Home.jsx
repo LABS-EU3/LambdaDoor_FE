@@ -106,18 +106,20 @@ const HomeContainer = styled.div`
 `;
 
 const HomeContentContainer = styled.div`
-  ${FlexFunc('column', 'space-between', 'flex-start')};
-  height: 90%;
+  ${FlexFunc('column', 'flex-start')};
+  height: 100%;
   width: 50%;
   padding: 1% 10%;
 
-  /* .tag-paragraph {
+  .tag-paragraph {
     display: none;
-  } */
-  @media only screen and (max-width: 705px) {
+  }
+  @media (max-width: 705px) {
     .tag-paragraph {
       display: block;
+      margin-bottom: 80px;
     }
+    ${FlexFunc('column', 'space-between', 'flex-start')};
   }
   @media ${tabletPortrait} {
     align-items: center;
@@ -154,8 +156,10 @@ const OnboardingContainer = styled.div`
     font-size: 20px;
     line-height: 32px;
   }
-  /* margin-top: 20%; */
-
+  margin-top: 10%;
+  @media (max-width: 705px) {
+    margin-top: 0;
+  }
   @media ${tabletPortrait} {
     align-items: center;
     width: 100%;
