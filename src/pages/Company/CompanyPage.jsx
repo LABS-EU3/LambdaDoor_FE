@@ -29,6 +29,10 @@ const CompanyPage = ({
   const companyId = useParams().id;
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      history.push('/');
+    }
     getCompanies();
     getInterviewReviewsByCompanyId(companyId);
     getSalaryReviewsByCompanyId(companyId);
