@@ -67,7 +67,10 @@ const AppRouter = () => {
           component={DetailedSalaryReview}
         />
         <DashboardLayout path="/companyReviews/:id" component={CompanyReview} />
-        <DashboardLayout path="/interviewreviews/:id" component={InterviewReview} />
+        <DashboardLayout
+          path="/interviewreviews/:id"
+          component={InterviewReview}
+        />
         <DashboardLayout
           path="/company/:companyId/salary/:id"
           exact

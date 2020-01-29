@@ -6,6 +6,7 @@ import decode from 'jwt-decode';
 
 import { connect } from 'react-redux';
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
+import Footer from '../../components/Layout/FooterNav/FooterNav';
 
 import {
   tabletPortrait,
@@ -73,10 +74,11 @@ export const Home = ({ history, SetAuthenticated }) => {
           )}
         </OnboardingContainer>
 
-        <Paragraph style={{ color: 'white' }}>
+        <Paragraph style={{ color: 'white' }} className="tag-paragraph">
           Built by Lambda students, for Lambda students.
         </Paragraph>
       </HomeContentContainer>
+      <Footer className="footer" />
     </HomeContainer>
   );
 };
@@ -105,10 +107,18 @@ const HomeContainer = styled.div`
 
 const HomeContentContainer = styled.div`
   ${FlexFunc('column', 'space-between', 'flex-start')};
-  height: 100%;
+  height: 90%;
   width: 50%;
   padding: 1% 10%;
 
+  /* .tag-paragraph {
+    display: none;
+  } */
+  @media only screen and (max-width: 705px) {
+    .tag-paragraph {
+      display: block;
+    }
+  }
   @media ${tabletPortrait} {
     align-items: center;
     width: 100%;
@@ -144,6 +154,7 @@ const OnboardingContainer = styled.div`
     font-size: 20px;
     line-height: 32px;
   }
+  /* margin-top: 20%; */
 
   @media ${tabletPortrait} {
     align-items: center;
