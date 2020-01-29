@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { Button, Icon, Skeleton, Card } from 'antd';
+import { Button, Icon, Card } from 'antd';
 import { connect } from 'react-redux';
 import { useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
@@ -29,11 +31,29 @@ const DetailedInterviewSearchCard = ({
         <Icon type="left" />
         Back to Results
       </Button>
-      <div className="title-div">
-        <h1 onClick={handleCompanyClick}>{review.name}</h1>
+      <div>
+        <div className="title-div">
+          <h1 onClick={handleCompanyClick}>{review.name}</h1>
+        </div>
+        <div>{review.text}</div>
+        <p>
+          Job Type: &nbsp;
+          {review.interest}
+        </p>
+        <div className="bottom">
+          <div className="contact">
+            {review.is_accepting_questions ? (
+              <p>
+                Have questions? &nbsp;
+                <Button>Contact Me</Button>
+              </p>
+            ) : (
+              ''
+            )}
+          </div>
+          <div className="username">{review.full_name}</div>
+        </div>
       </div>
-      <div>{review.text}</div>
-      <div>{review.interest}</div>
     </InterviewCardContainer>
   );
 };
@@ -41,9 +61,13 @@ const DetailedInterviewSearchCard = ({
 export default withRouter(connect(state => state)(DetailedInterviewSearchCard));
 
 const InterviewCardContainer = styled.div`
+  max-width: 500px;
+  p {
+    padding-top: 2rem;
+  }
   h1 {
     margin-bottom: 0;
-    padding-top: 35px !important;
+    padding-bottom: 35px !important;
     font-size: 20px;
     font-weight: 900;
     transition: 1s hover;

@@ -21,4 +21,10 @@ export default CompanySearchCard;
 const StyledCard = styled(Card)`
   height: 200px;
   width: 350px;
+  margin-right: 1rem !important;
+  margin-bottom: 1rem !important;
+  &:hover {
+    border: 2px solid #bb1333;
+    cursor: pointer;
+  }
 `;

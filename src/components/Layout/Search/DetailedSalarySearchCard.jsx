@@ -40,25 +40,24 @@ const DetailedSalarySearchCard = ({ search: { searchResults }, history }) => {
       </div>
 
       <div className="salary-div">
-        <h2>Salary</h2>
-        <h3>{salaryFormatted}</h3>
+        <p>{salaryFormatted}</p>
       </div>
 
       <div className="interest">
-        <h2>Job Category</h2>
-        <h3>{review.interest}</h3>
+        <h3>Job Category</h3>
+        <p>{review.interest}</p>
       </div>
 
       <div className="description">
-        <h2>Job Description</h2>
-        <span>{review.description}</span>
+        <h3>Job Description</h3>
+        <p>{review.description}</p>
       </div>
 
       <div className="bottom">
         <div className="contact">
           {review.is_accepting_questions ? (
             <p>
-              Have questions?
+              Have questions? &nbsp;
               <Button>Contact Me</Button>
             </p>
           ) : (
@@ -74,6 +73,13 @@ const DetailedSalarySearchCard = ({ search: { searchResults }, history }) => {
 export default withRouter(connect(state => state)(DetailedSalarySearchCard));
 
 const SalaryCardContainer = styled.div`
+  div {
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-weight: bold !important;
+  }
   h1 {
     margin-bottom: 0;
     padding-top: 35px !important;
@@ -87,5 +93,9 @@ const SalaryCardContainer = styled.div`
     &:active {
       transform: scale(1.05);
     }
+  }
+
+  .salary-div {
+    font-size: 1.5rem;
   }
 `;

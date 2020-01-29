@@ -17,7 +17,7 @@ const getSearchResults = request => async dispatch => {
     console.log(results);
     dispatch({
       type: types.SEARCH_SUCCESS,
-      payload: [results.data, request.search_category],
+      payload: [results.data, request.search_category, request.search_query],
     });
   } catch (error) {
     dispatch({
