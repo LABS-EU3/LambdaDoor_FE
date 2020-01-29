@@ -105,20 +105,17 @@ export default function Footer() {
       </div>
       <div className="copy-right"> &copy; 2020 LambdaDoor</div>
       <div className="social-handle">
-        <a
-          href="https://www.linkedin.com/in/onyedikachi-martins-28b890101/"
-          className="twitter"
-        >
+        <a href="https://twitter.com/LambdaSchool" className="twitter">
           <FontAwesomeIcon icon={faTwitter} size="2x" />
         </a>
         <a
-          href="https://www.linkedin.com/in/onyedikachi-martins-28b890101/"
+          href="https://www.facebook.com/LambdaSchoolOnline/"
           className="facebook"
         >
           <FontAwesomeIcon icon={faFacebook} size="2x" />
         </a>
         <a
-          href="https://www.linkedin.com/in/onyedikachi-martins-28b890101/"
+          href="https://www.linkedin.com/school/lambdaschool/"
           className="linkdIn"
         >
           <FontAwesomeIcon icon={faLinkedin} size="2x" />
