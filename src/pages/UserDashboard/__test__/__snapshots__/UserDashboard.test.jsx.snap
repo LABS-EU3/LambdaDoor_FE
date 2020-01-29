@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectedUserDashboard renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-EHOje bgQjtM"
+    >
+      <div
+        class="top-layout"
+      >
+        <div>
+          <h2>
+            Top Rated Companies
+          </h2>
+          <div
+            class="sc-bdVaJa gygcmf"
+          >
+            <div
+              class="empty-state"
+            >
+              <p>
+                No data to display
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2>
+            Popular Job Roles
+          </h2>
+          <div
+            class="sc-ifAKCX gLjPjf"
+          >
+            <div
+              class="empty-state"
+            >
+              <div
+                class="ant-spin ant-spin-spinning"
+              >
+                <span
+                  class="ant-spin-dot ant-spin-dot-spin"
+                >
+                  <i
+                    class="ant-spin-dot-item"
+                  />
+                  <i
+                    class="ant-spin-dot-item"
+                  />
+                  <i
+                    class="ant-spin-dot-item"
+                  />
+                  <i
+                    class="ant-spin-dot-item"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bottom-layout"
+      >
+        <h2>
+          Companies Near You
+        </h2>
+        <div
+          class="sc-bxivhb hfTuEU"
+        >
+          <div
+            class="empty-state"
+          >
+            <p>
+              No data to display
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
