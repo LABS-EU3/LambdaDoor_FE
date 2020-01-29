@@ -15,7 +15,6 @@ import { LogoutUser } from '../../../state/actions/auth';
 import { editProfile } from '../../../state/actions/user';
 
 import { getLocation } from '../../../utils/getLocation';
-import openNotification from '../../../utils/openNotification';
 
 import { mobilePortrait, primaryGrey } from '../../../styles/theme.styles';
 
@@ -31,7 +30,6 @@ const StyledSpin = styled.div`
 const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
   const handleChange = async fullname => {
     await editProfile({ full_name: fullname }, user.id);
-    openNotification('Full name updated');
   };
 
   const updateLocation = async () => {
