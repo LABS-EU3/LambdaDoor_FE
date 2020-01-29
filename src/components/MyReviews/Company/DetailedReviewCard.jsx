@@ -57,7 +57,6 @@ export const DetailedReviewCard = ({
 
   const handleEdit = async () => {
     setLoading(true);
-    console.log(updatedReview);
     await updateCompanyReview(updatedReview);
     setLoading(false);
     setEditing(false);

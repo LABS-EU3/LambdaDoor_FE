@@ -18,7 +18,7 @@ export const editProfile = (value, id) => async dispatch => {
       type: types.EDIT_PROFILE_PICTURE_SUCCESS,
       payload: data[0],
     });
-    openNotification('Profile UPdated Succesfully');
+    openNotification('Profile Updated Succesfully');
   } catch (error) {
     dispatch({
       type: types.EDIT_PROFILE_PICTURE_FAILURE,

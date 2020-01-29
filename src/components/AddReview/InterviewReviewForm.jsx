@@ -44,7 +44,6 @@ const InterviewReviewForm = ({
   };
 
   const handleSubmit = async e => {
-    console.log(formValues);
     e.preventDefault();
     setLoading(true);
     await addInterviewReview(formValues, id, history);

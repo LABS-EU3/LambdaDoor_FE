@@ -43,6 +43,7 @@ export const DetailedSalaryReviewCard = ({
     };
     delete updatedReview.name;
     delete updatedReview.interest;
+    delete updatedReview['i.id'];
   }, [review]);
 
   const handleDelete = async id => {
@@ -102,7 +103,7 @@ export const DetailedSalaryReviewCard = ({
               }}
               className="editable-text salary"
             >
-              {review.salary}
+              {String(review.salary)}
             </Paragraph>
           </div>
 
@@ -110,7 +111,7 @@ export const DetailedSalaryReviewCard = ({
             <h3>Job Catergory</h3>
             {isEditing ? (
               <Select
-                defaultValue={review.interest_id}
+                defaultValue={review.interest}
                 onChange={e => {
                   handleSelect(e);
                 }}
@@ -159,16 +160,16 @@ export const DetailedSalaryReviewCard = ({
 
           <div
             className="accepting-questions"
-            data-testid={`questions - ${review.is_anonymous}`}
+            data-testid={`questions - ${review.is_accepting_questions}`}
           >
             <h3>Anonymous</h3>
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="close" />}
-              defaultChecked={review.is_anonymous}
+              defaultChecked={review.is_accepting_questions}
               disabled={!isEditing}
               onChange={e => {
-                updateReview('is_anonymous', e === true ? 1 : 0);
+                updateReview('is_accepting_questions', e === true ? 1 : 0);
               }}
             />
           </div>

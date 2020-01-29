@@ -10,7 +10,6 @@ import currencies from '../../utils/currencies';
 import Select from '../../utils/select';
 import AutoCompleteComponent from '../../utils/autocomplete';
 import { addSalaryReview } from '../../state/actions/reviews';
-import openNotification from '../../utils/openNotification';
 
 const { TextArea } = Input;
 const { Option } = AutoComplete;
@@ -32,7 +31,7 @@ const SalaryReview = ({
     currency: '',
     unit: '',
     is_current_employee: false,
-    is_anonymous: false,
+    is_accepting_questions: false,
   });
   const [loading, setLoading] = useState(false);
 
@@ -45,7 +44,6 @@ const SalaryReview = ({
     review.salary = Number(currency);
     review.currency = unit;
 
-    console.log(review);
     await addSalaryReview(review, id, history);
     setLoading(false);
   };
@@ -163,15 +161,6 @@ const SalaryReview = ({
             </div>
             <div>
               <p>I want to be anonymous</p>
-              <Switch
-                checkedChildren={<Icon type="check" />}
-                unCheckedChildren={<Icon type="close" />}
-                defaultChecked={false}
-                onChange={value => handleComponentChange('is_anonymous', value)}
-              />
-            </div>
-            <div>
-              <p>I am accepting more questions</p>
               <Switch
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
