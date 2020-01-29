@@ -1,7 +1,6 @@
 import axios from 'axios';
 import store from '../state/store';
 import { editProfile } from '../state/actions/user';
-import openNotification from './openNotification';
 
 export async function showPosition(position, id) {
   const { longitude, latitude } = position.coords;
@@ -16,7 +15,6 @@ export async function showPosition(position, id) {
   await store.dispatch(
     editProfile({ location: results[0].formatted_address }, id)
   );
-  openNotification('Location updated successfully');
 }
 
 function showError(error) {
