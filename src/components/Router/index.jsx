@@ -29,6 +29,9 @@ import {
 } from '../../state/actions/reviews';
 import { getClosestCompanies } from '../../state/actions/closestCompanies';
 import { getCompanies } from '../../state/actions/companies';
+import SearchResults from '../Layout/Search/SearchResults';
+import DetailedSalarySearchCard from '../Layout/Search/DetailedSalarySearchCard';
+import DetailedInterviewSearchCard from '../Layout/Search/DetailedInterviewSearchCard';
 
 const start = async () => {
   const token = localStorage.getItem('token');
@@ -67,11 +70,27 @@ const AppRouter = () => {
           component={DetailedSalaryReview}
         />
         <DashboardLayout path="/companyReviews/:id" component={CompanyReview} />
-        <DashboardLayout path="/interviewreviews/:id" component={InterviewReview} />
+        <DashboardLayout
+          path="/interviewreviews/:id"
+          component={InterviewReview}
+        />
         <DashboardLayout
           path="/company/:companyId/salary/:id"
           exact
           component={SalaryReview}
+        />
+        <DashboardLayout
+          path="/search-results"
+          exact
+          component={SearchResults}
+        />
+        <DashboardLayout
+          path="/search-results/salary/:id"
+          component={DetailedSalarySearchCard}
+        />
+        <DashboardLayout
+          path="/search-results/interview/:id"
+          component={DetailedInterviewSearchCard}
         />
         <DashboardLayout component={NotFound} />
       </Switch>
