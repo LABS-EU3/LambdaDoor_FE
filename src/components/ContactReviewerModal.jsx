@@ -1,8 +1,11 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
+import axios from 'axios';
 import { Modal, Form, Input, Icon, Button, Select } from 'antd';
 import openNotification from '../utils/openNotification';
 
@@ -16,43 +19,16 @@ function ContactReviewer({
   handleSubmit,
   touched,
   errors,
+  loading,
 }) {
   return (
     <Modal
-      title="Basic Modal"
+      title="Referral Form"
       visible={open}
       onCancel={() => setOpen(false)}
-      footer={[<Button>cancel</Button>]}
+      footer={[<Button key="back">Cancel</Button>]}
     >
       <form onSubmit={handleSubmit}>
-        <Form.Item
-          help={touched.name && errors.name ? errors.name : ''}
-          validateStatus={touched.name && errors.name ? 'error' : undefined}
-        >
-          <Input
-            size="large"
-            name="name"
-            value={values.name}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            placeholder="Your Name"
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-          />
-        </Form.Item>
-        <Form.Item
-          help={touched.email && errors.email ? errors.email : ''}
-          validateStatus={touched.email && errors.email ? 'error' : undefined}
-        >
-          <Input
-            size="large"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            placeholder="Your Email Address"
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-          />
-        </Form.Item>
         <Form.Item
           help={
             touched.description && errors.description ? errors.description : ''
@@ -61,7 +37,8 @@ function ContactReviewer({
             touched.description && errors.description ? 'error' : undefined
           }
         >
-          <Input
+          <Input.TextArea
+            rows={5}
             size="large"
             name="description"
             value={values.description}
@@ -71,7 +48,7 @@ function ContactReviewer({
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
           />
         </Form.Item>
-        <Button htmlType="submit" type="secondary">
+        <Button htmlType="submit" type="secondary" loading={loading}>
           Send Message
         </Button>
       </form>
@@ -80,27 +57,33 @@ function ContactReviewer({
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().required('Please provide your name'),
-  email: yup
-    .string()
-    .email('Please provide a vaild email address')
-    .required('Please provide your email address'),
   description: yup.string().required('Please ask your question'),
 });
 
 const ContactReviewerModal = withFormik({
   mapPropsToValues: () => ({
-    name: '',
-    email: '',
     description: '',
   }),
-  handleSubmit: (values, { props, setSubmitting }) => {
-    // props.addCompany(values);
-    // props.setAddingCompany(false);
-    console.log(values);
+  handleSubmit: async (values, { props, setSubmitting }) => {
+    const {
+      authState: {
+        credentials: { email_address: senderEmail, full_name },
+      },
+      email: recipientEmail,
+      setLoading,
+    } = props;
+    setLoading(true);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/referral/`, {
+      senderEmail,
+      recipientEmail,
+      name: full_name,
+      description: values.description,
+    });
+    setLoading(false);
+    props.setOpen(false);
     openNotification('Message Sent Successfully!');
     setSubmitting(false);
   },
   validationSchema: validationSchema,
 })(ContactReviewer);
-export default ContactReviewerModal;
+export default connect(state => state)(ContactReviewerModal);
