@@ -54,7 +54,10 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
                   <img className="lambda-logo" src={logo} alt="Lambda logo" />
                   <Icon type="menu" className="hamburger" />
                 </button>
-                <SearchForm />
+                <SearchForm
+                  searchVisible={searchVisible}
+                  setSearchVisible={setSearchVisible}
+                />
                 <div className="sign-out-btn">
                   <Button type="link" onClick={LogoutUser}>
                     Sign Out
