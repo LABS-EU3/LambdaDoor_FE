@@ -7,12 +7,11 @@ import {
   faFacebook,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
-import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
 
 const StyledDiv = styled.div`
   background: #bb1333;
   display: flex;
-  padding: 5px 10px;
+  padding: 10px 5px 15px 5px;
   justify-content: center;
   color: #ffffff;
   margin-top: 20px;
@@ -20,14 +19,7 @@ const StyledDiv = styled.div`
   bottom: 0;
   width: 100%;
   height: 2.5rem; /* Footer height */
-
-  @media ${mobilePortrait} {
-    padding: 0 !important;
-  }
-
-  @media ${tabletPortrait} {
-    padding: 0 !important;
-  }
+  align-items: center;
 
   a {
     margin: 0 1rem;
