@@ -56,20 +56,16 @@ const StyledCard = styled(Card)`
   @media ${tabletPortrait} {
     padding: 0 !important;
   }
-  @media only screen and (max-width: 530px) {
+  @media only screen and (max-width: 540px) {
     span {
-      font-size: 14px;
+      font-size: 15px;
     }
     .stars {
       margin-top: 25px;
       font-size: 12px;
     }
     font-size: 11px;
-    height: 220px;
     padding-top: 0.1rem !important;
-  }
-  @media only screen and (max-width: 480px) {
-    height: 230px;
   }
 `;
 

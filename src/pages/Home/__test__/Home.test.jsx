@@ -61,8 +61,13 @@ describe('ConnectedHome', () => {
         companies: [],
         isLoading: false,
       },
-      interests: {
+      allInterests: {
         interests: [],
+        isLoading: false,
+      },
+      userInterests: {
+        interests: [],
+        isLoading: false,
       },
       jobroles: {
         isfetching: false,
@@ -78,6 +83,10 @@ describe('ConnectedHome', () => {
         isLoggedIn: false,
         credentials: {},
         error: null,
+      },
+      search: {
+        isSearching: false,
+        searchResults: [],
       },
       singleCompanyReviews: {
         isFetching: false,

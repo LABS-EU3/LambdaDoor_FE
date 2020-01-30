@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { reviewsReducer, reviewsError } from './reviews';
 import { authState } from './auth';
-import { interestReducer } from './interests';
+import { interestReducer, userInterestReducer } from './interests';
 import { topRatedReviewsReducer } from './topRatedReviews';
 import { closestCompaniesReducer } from './closestCompanies';
 import { companiesReducer } from './companies';
@@ -15,7 +15,8 @@ const rootReducer = combineReducers({
   reviews: reviewsReducer,
   reviewsError: reviewsError,
   authState: authState,
-  interests: interestReducer,
+  allInterests: interestReducer,
+  userInterests: userInterestReducer,
   topRatedReviews: topRatedReviewsReducer,
   closestCompanies: closestCompaniesReducer,
   companies: companiesReducer,

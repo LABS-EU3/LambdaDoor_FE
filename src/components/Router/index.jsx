@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { decode } from 'jsonwebtoken';
+import { connect } from 'react-redux';
 
 import DashboardLayout from '../Layout/DashboardLayout';
 
@@ -47,7 +48,11 @@ const start = async () => {
 };
 start();
 // eslint-disable-next-line react/prop-types
-const AppRouter = () => {
+const AppRouter = ({
+  authState: {
+    credentials: { isLoading },
+  },
+}) => {
   return (
     <BrowserRouter>
       <Switch>
@@ -98,4 +103,4 @@ const AppRouter = () => {
   );
 };
 
-export default AppRouter;
+export default connect(state => state)(AppRouter);

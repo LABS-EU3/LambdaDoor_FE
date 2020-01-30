@@ -10,7 +10,6 @@ import { addCompanyReview } from '../../state/actions/reviews';
 import { mobilePortrait } from '../../styles/theme.styles';
 
 import AutoComplete from '../../utils/autocomplete';
-import openNotification from '../../utils/openNotification';
 
 const { TextArea } = Input;
 
@@ -30,6 +29,7 @@ const CompanyReview = ({
     review: '',
     is_accepting_questions: false,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = event => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
@@ -44,6 +44,11 @@ const CompanyReview = ({
         ...formValues,
         company_id: company.id,
       });
+    } else {
+      setFormValues({
+        ...formValues,
+        company_id: name,
+      });
     }
   };
 
@@ -54,24 +59,41 @@ const CompanyReview = ({
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+    setLoading(true);
     const { location, ...rest } = formValues;
 
-    addCompanyReview({ ...rest, user_id: id }, id);
-    history.push('/reviews');
-    openNotification('Review Added Successfully! ');
+    await addCompanyReview({ ...rest, user_id: id }, id, history);
+    setLoading(false);
   };
 
   return (
     <StyledContainer>
       <Form layout="vertical">
-        <AutoComplete
-          label="Company Name"
-          placeholder="Company name"
-          onChange={e => handleCompanyName(e)}
-          dataSource={companies}
-        />
+        <Form.Item
+          validateStatus={
+            Number(formValues.company_id) === formValues.company_id ||
+            formValues.company_id === ''
+              ? 'validating'
+              : 'error'
+          }
+          hasFeedback={Number(formValues.company_id) !== formValues.company_id}
+          help={
+            Number(formValues.company_id) !== formValues.company_id &&
+            formValues.company_id !== '' &&
+            'You have not selected a company'
+          }
+        >
+          <AutoComplete
+            label="Company Name"
+            placeholder="Company name"
+            onChange={e => {
+              handleCompanyName(e);
+            }}
+            dataSource={companies}
+          />
+        </Form.Item>
 
         <Form.Item label="Overall Rating">
           <Rate
@@ -126,11 +148,14 @@ const CompanyReview = ({
         <Button
           type="primary"
           htmlType="submit"
+          loading={loading}
           onClick={handleSubmit}
-          disabled={Boolean(
-            Object.keys(formValues).filter(elem => formValues[elem] === '')
-              .length
-          )}
+          disabled={
+            Boolean(
+              Object.keys(formValues).filter(elem => formValues[elem] === '')
+                .length
+            ) || Number(formValues.company_id) !== formValues.company_id
+          }
         >
           Submit
         </Button>

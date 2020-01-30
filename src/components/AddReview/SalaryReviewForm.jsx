@@ -6,12 +6,10 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { mobilePortrait, tabletPortrait } from '../../styles/theme.styles';
-import { jobCategories } from '../../utils/data';
 import currencies from '../../utils/currencies';
 import Select from '../../utils/select';
 import AutoCompleteComponent from '../../utils/autocomplete';
 import { addSalaryReview } from '../../state/actions/reviews';
-import openNotification from '../../utils/openNotification';
 
 const { TextArea } = Input;
 const { Option } = AutoComplete;
@@ -22,6 +20,7 @@ const SalaryReview = ({
   authState: {
     credentials: { id },
   },
+  allInterests,
   history,
 }) => {
   const [formValues, setFormValues] = useState({
@@ -32,24 +31,21 @@ const SalaryReview = ({
     currency: '',
     unit: '',
     is_current_employee: false,
-    is_anonymous: false,
+    is_accepting_questions: false,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setLoading(true);
     const { currency, unit, ...rest } = formValues;
     const review = { ...rest };
-    // const currencyUnit = currencies.find(curr => curr.name === unit).symbol;
 
-    // review.salary = `${currencyUnit}${Number(currency)
-    //   .toFixed(2)
-    //   .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
     review.salary = Number(currency);
     review.currency = unit;
 
-    await addSalaryReview(review, id);
-    history.push('/reviews');
-    openNotification('Review Added Successfully! ');
+    await addSalaryReview(review, id, history);
+    setLoading(false);
   };
 
   const handleCompanyName = name => {
@@ -60,6 +56,11 @@ const SalaryReview = ({
       setFormValues({
         ...formValues,
         company_id: company.id,
+      });
+    } else {
+      setFormValues({
+        ...formValues,
+        company_id: name,
       });
     }
   };
@@ -79,12 +80,29 @@ const SalaryReview = ({
     <StyledContainer>
       <Form layout="vertical">
         <div>
-          <AutoCompleteComponent
-            label="Company Name"
-            placeholder="Company name"
-            dataSource={companies}
-            onChange={e => handleCompanyName(e)}
-          />
+          <Form.Item
+            validateStatus={
+              Number(formValues.company_id) === formValues.company_id ||
+              formValues.company_id === ''
+                ? 'validating'
+                : 'error'
+            }
+            hasFeedback={
+              Number(formValues.company_id) !== formValues.company_id
+            }
+            help={
+              Number(formValues.company_id) !== formValues.company_id &&
+              formValues.company_id !== '' &&
+              'You have not selected a company'
+            }
+          >
+            <AutoCompleteComponent
+              label="Company Name"
+              placeholder="Company name"
+              dataSource={companies}
+              onChange={e => handleCompanyName(e)}
+            />
+          </Form.Item>
         </div>
         <Form.Item label="Job Title">
           <Input
@@ -96,7 +114,12 @@ const SalaryReview = ({
         <Form.Item label="Job Category">
           <Select
             placeholder="Category"
-            arr={jobCategories}
+            arr={allInterests.interests.map(obj => {
+              return {
+                id: obj.id,
+                name: obj.interest,
+              };
+            })}
             onChange={handleComponentChange}
           />
         </Form.Item>
@@ -164,15 +187,6 @@ const SalaryReview = ({
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
                 defaultChecked={false}
-                onChange={value => handleComponentChange('is_anonymous', value)}
-              />
-            </div>
-            <div>
-              <p>I am accepting more questions</p>
-              <Switch
-                checkedChildren={<Icon type="check" />}
-                unCheckedChildren={<Icon type="close" />}
-                defaultChecked={false}
                 onChange={value =>
                   handleComponentChange('is_accepting_questions', value)
                 }
@@ -185,10 +199,13 @@ const SalaryReview = ({
           type="primary"
           htmlType="submit"
           onClick={handleSubmit}
-          disabled={Boolean(
-            Object.keys(formValues).filter(elem => formValues[elem] === '')
-              .length
-          )}
+          loading={loading}
+          disabled={
+            Boolean(
+              Object.keys(formValues).filter(elem => formValues[elem] === '')
+                .length
+            ) || Number(formValues.company_id) !== formValues.company_id
+          }
         >
           Submit
         </Button>
