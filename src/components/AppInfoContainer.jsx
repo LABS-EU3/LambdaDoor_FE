@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from 'antd';
 import styled from 'styled-components';
-import Footer from '../components/Layout/FooterNav/FooterNav';
+import Footer from './Layout/FooterNav/FooterNav';
 
 function AppInfoContainer({ infoVisible, hideInfo }) {
   return (
