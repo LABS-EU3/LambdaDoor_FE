@@ -81,7 +81,7 @@ export const reviewsReducer = (state = initialState, action) => {
         ...state,
         reviews: {
           ...state.reviews,
-          company: state.reviews.salary.filter(
+          salary: state.reviews.salary.filter(
             elem => elem.id !== action.payload
           ),
         },

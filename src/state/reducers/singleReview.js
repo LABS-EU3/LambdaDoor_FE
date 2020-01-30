@@ -17,20 +17,20 @@ const singleReviewsReducer = (state = initialState, action) => {
     case types.GET_SINGLE_REVIEWS_SUCCESS:
       return {
         ...state,
+        isFetching: false,
         reviews: {
           ...state.reviews,
           companyReview: action.payload,
-          isFetching: false,
         },
       };
 
     case types.GET_SINGLE_INTERVIEW_REVIEWS_SUCCESS:
       return {
         ...state,
+        isFetching: false,
         reviews: {
           ...state.reviews,
           interviewReview: action.payload,
-          isFetching: false,
         },
       };
 

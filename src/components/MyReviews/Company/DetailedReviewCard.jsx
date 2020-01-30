@@ -41,6 +41,8 @@ export const DetailedReviewCard = ({
   useEffect(() => {
     updatedReview = { ...review };
     delete updatedReview.name;
+    delete updatedReview.full_name;
+    delete updatedReview.company_id;
   }, [review]);
 
   const handleDelete = async id => {
@@ -78,7 +80,14 @@ export const DetailedReviewCard = ({
       <StyledReview>
         <div className="title-div">
           <h2>Company Name</h2>
-          <span className="company">{review.name}</span>
+          <span
+            className="company"
+            onClick={() => {
+              history.push(`/company-page/${review.company_id}`);
+            }}
+          >
+            {review.name}
+          </span>
         </div>
         <div className="ratings">
           <h2>Overall Rating</h2>
@@ -273,6 +282,14 @@ const StyledReview = styled(Card)`
     font-size: 1.2rem;
     margin-left: 42px;
     margin-bottom: 20px;
+    cursor: pointer;
+    transition: 1s hover;
+    &:hover {
+      opacity: 0.6;
+    }
+    &:active {
+      transform: scale(1.05);
+    }
   }
   .ratings {
     display: flex;

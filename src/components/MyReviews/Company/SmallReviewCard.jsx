@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable camelcase */
 import React from 'react';
@@ -11,6 +13,10 @@ const StyledCard = styled(Card)`
   width: 270px;
   height: 200px;
   cursor: pointer;
+
+  &:hover {
+    border: 2px solid #bb1333;
+  }
 
   .card-top {
     display: flex;
@@ -47,7 +53,7 @@ export const SmallReviewCard = ({
     history.push(`/company-page/${company_id}`);
   };
   return (
-    <StyledCard onClick={() => history.push(`/reviews/${id}`)}>
+    <StyledCard onClick={() => history.push(`/reviews/company/${id}`)}>
       <div className="card-top">
         <h2 role="link" onClick={handleCompanyClick}>
           {name}

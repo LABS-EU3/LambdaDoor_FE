@@ -6,10 +6,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
-import { Button, Icon } from 'antd';
+import { Button, Icon, Spin } from 'antd';
 import { connect } from 'react-redux';
-import SideNav from '../SideNav';
-import SearchForm from '../Search/Search';
+import SideNav from './SideNav/SideNav';
+import SearchForm from './Search/Search';
 import {
   primaryGrey,
   textGrey,
@@ -19,7 +19,7 @@ import {
 
 import { LogoutUser } from '../../state/actions/auth';
 
-import logo from '../../assets/img/lambda-logo.png';
+import logo from '../../assets/lambda-logo.png';
 
 const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
   const [visible, setVisible] = useState(false);
@@ -36,38 +36,43 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => (
-        <StyledContainer>
-          <SideNav visible={visible} />
-          <div
-            className="main-container"
-            onKeyDown={toggleDrawer}
-            onClick={hideDrawer}
-          >
-            <div className="top-bar">
-              <button
-                type="button"
-                className="mobile-logo-btn"
-                onClick={e => toggleDrawer(e)}
-              >
-                <img className="lambda-logo" src={logo} alt="Lambda logo" />
-                <Icon type="menu" className="hamburger" />
-              </button>
-              <SearchForm />
-              <div className="sign-out-btn">
-                <Button type="link" onClick={LogoutUser}>
-                  Sign Out
-                  <Icon type="right" />
-                </Button>
+      render={props => {
+        return (
+          <StyledContainer>
+            <SideNav visible={visible} />
+            <div
+              className="main-container"
+              onKeyDown={toggleDrawer}
+              onClick={hideDrawer}
+            >
+              <div className="top-bar">
+                <button
+                  type="button"
+                  className="mobile-logo-btn"
+                  onClick={e => toggleDrawer(e)}
+                >
+                  <img className="lambda-logo" src={logo} alt="Lambda logo" />
+                  <Icon type="menu" className="hamburger" />
+                </button>
+                <SearchForm />
+                <div className="sign-out-btn">
+                  <Button type="link" onClick={LogoutUser}>
+                    Sign Out
+                    <Icon type="right" />
+                  </Button>
+                </div>
+              </div>
+              <div className="main-content">
+                <Component {...props} />
               </div>
               <img className="right-hand-logo" src={logo} alt="Lambda logo" />
             </div>
-            <div className="main-content">
-              <Component {...props} />
+            <div className="footer">
+              <h2>Lambda Door</h2>
             </div>
-          </div>
-        </StyledContainer>
-      )}
+          </StyledContainer>
+        );
+      }}
     />
   );
 };

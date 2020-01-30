@@ -1,7 +1,15 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
-import { Icon, Card, Button, Skeleton, Popconfirm, Typography } from 'antd';
+import {
+  Icon,
+  Card,
+  Button,
+  Skeleton,
+  Popconfirm,
+  Typography,
+  Switch,
+} from 'antd';
 import styled from 'styled-components';
 import { withRouter, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -31,7 +39,7 @@ export const DetailedReviewCard = ({
 
   useEffect(() => {
     updatedReview = { ...review };
-    delete updatedReview.name;
+    delete updatedReview.full_name;
   }, [review]);
 
   const handleDelete = async id => {
@@ -84,6 +92,39 @@ export const DetailedReviewCard = ({
           >
             {review.text}
           </Paragraph>
+        </div>
+        <div className="switch-statements">
+          <div
+            className="current-employee"
+            data-testid={`employee - ${review.is_current_employee}`}
+          >
+            <h2>I am a current employee</h2>
+            <Switch
+              checkedChildren={<Icon type="check" />}
+              unCheckedChildren={<Icon type="close" />}
+              defaultChecked={review.is_current_employee}
+              disabled={!isEditing}
+              onChange={e => {
+                updateReview('is_current_employee', e === true ? 1 : 0);
+              }}
+            />
+          </div>
+
+          <div
+            className="accepting-questions"
+            data-testid={`questions - ${review.is_accepting_questions}`}
+          >
+            <h2>Accepting questions</h2>
+            <Switch
+              checkedChildren={<Icon type="check" />}
+              unCheckedChildren={<Icon type="close" />}
+              defaultChecked={review.is_accepting_questions}
+              disabled={!isEditing}
+              onChange={e => {
+                updateReview('is_accepting_questions', e === true ? 1 : 0);
+              }}
+            />
+          </div>
         </div>
         <div className="buttons">
           {!isEditing && (

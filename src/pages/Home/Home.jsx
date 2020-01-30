@@ -14,8 +14,8 @@ import {
   mobilePortrait,
   FlexFunc,
 } from '../../styles/theme.styles';
-import Logo from '../../components/Logo';
-import background from '../../assets/img/lambda-door-lp-vector.svg';
+import Logo from '../../components/Layout/SideNav/Logo';
+import background from '../../assets/lambda-door-lp-vector.svg';
 
 const { Title, Paragraph } = Typography;
 

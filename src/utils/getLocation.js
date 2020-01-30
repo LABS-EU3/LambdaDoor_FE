@@ -1,7 +1,6 @@
 import axios from 'axios';
 import store from '../state/store';
 import { editProfile } from '../state/actions/user';
-import openNotification from './openNotification';
 
 export async function showPosition(position, id) {
   const { longitude, latitude } = position.coords;
@@ -11,12 +10,12 @@ export async function showPosition(position, id) {
   } = await axios.get(
     `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&result_type=country&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
   );
-  await store.dispatch(editProfile({ longitude }, id));
-  await store.dispatch(editProfile({ latitude }, id));
   await store.dispatch(
-    editProfile({ location: results[0].formatted_address }, id)
+    editProfile(
+      { longitude, latitude, location: results[0].formatted_address },
+      id
+    )
   );
-  openNotification('Location updated successfully');
 }
 
 function showError(error) {

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable camelcase */
 import React from 'react';
@@ -13,6 +15,10 @@ const StyledCard = styled(Card)`
   height: 200px;
   cursor: pointer;
 
+  &:hover {
+    border: 2px solid #bb1333;
+  }
+
   .card-top {
     display: flex;
     justify-content: space-between;
@@ -23,6 +29,13 @@ const StyledCard = styled(Card)`
       padding-top: 35px !important;
       font-size: 20px;
       font-weight: 900;
+
+      &:hover {
+        opacity: 0.6;
+      }
+      &:active {
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -33,16 +46,20 @@ const StyledCard = styled(Card)`
 
 export const SmallSalaryReviewCard = ({
   history,
-  review: { id, name, description, salary, currency },
+  review: { id, name, description, salary, currency, company_id },
 }) => {
   const currencyUnit = currencies.find(curr => curr.name === currency).symbol;
   const salaryFormatted = `${currencyUnit}${Number(salary)
     .toFixed(2)
     .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+  const handleCompanyClick = e => {
+    e.stopPropagation();
+    history.push(`/company-page/${company_id}`);
+  };
   return (
-    <StyledCard onClick={() => history.push(`/salaries/${id}`)}>
+    <StyledCard onClick={() => history.push(`/reviews/salary/${id}`)}>
       <div className="card-top">
-        <h2>{name}</h2>
+        <h2 onClick={handleCompanyClick}>{name}</h2>
       </div>
       <div>{salaryFormatted}</div>
       <div className="description">
