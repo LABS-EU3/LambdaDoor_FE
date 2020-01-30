@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import { Typography, Alert } from 'antd';
+import { Typography, Alert, Icon } from 'antd';
 import styled from 'styled-components';
 import decode from 'jwt-decode';
 
 import { connect } from 'react-redux';
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
+import Footer from '../../components/Layout/FooterNav/FooterNav';
 
 import {
   tabletPortrait,
@@ -16,12 +17,14 @@ import {
 } from '../../styles/theme.styles';
 import Logo from '../../components/Layout/SideNav/Logo';
 import background from '../../assets/lambda-door-lp-vector.svg';
+import AppInfoContainer from '../../components/AppInfoContainer';
 
 const { Title, Paragraph } = Typography;
 
 // eslint-disable-next-line no-shadow
 export const Home = ({ history, SetAuthenticated }) => {
   const [error, setError] = useState(null);
+  const [infoVisible, setInfoVisible] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -34,6 +37,7 @@ export const Home = ({ history, SetAuthenticated }) => {
 
   return (
     <HomeContainer>
+      {/* <AppInfoContainer infoVisible={infoVisible} /> */}
       <HomeContentContainer>
         <Logo />
 
@@ -44,6 +48,7 @@ export const Home = ({ history, SetAuthenticated }) => {
             The one-stop portal for Lambda graduates looking for company
             information in the quest for a job.
           </Paragraph>
+          {/* <Icon type="arrow-down" onClick={setInfoVisible(true)} /> */}
 
           <a
             href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`}
@@ -73,10 +78,11 @@ export const Home = ({ history, SetAuthenticated }) => {
           )}
         </OnboardingContainer>
 
-        <Paragraph style={{ color: 'white' }}>
+        <Paragraph style={{ color: 'white' }} className="tag-paragraph">
           Built by Lambda students, for Lambda students.
         </Paragraph>
       </HomeContentContainer>
+      <Footer className="footer" />
     </HomeContainer>
   );
 };
@@ -104,11 +110,21 @@ const HomeContainer = styled.div`
 `;
 
 const HomeContentContainer = styled.div`
-  ${FlexFunc('column', 'space-between', 'flex-start')};
+  ${FlexFunc('column', 'flex-start')};
   height: 100%;
   width: 50%;
   padding: 1% 10%;
 
+  .tag-paragraph {
+    display: none;
+  }
+  @media (max-width: 705px) {
+    .tag-paragraph {
+      display: block;
+      margin-bottom: 80px;
+    }
+    ${FlexFunc('column', 'space-between', 'flex-start')};
+  }
   @media ${tabletPortrait} {
     align-items: center;
     width: 100%;
@@ -144,7 +160,10 @@ const OnboardingContainer = styled.div`
     font-size: 20px;
     line-height: 32px;
   }
-
+  margin-top: 10%;
+  @media (max-width: 705px) {
+    margin-top: 0;
+  }
   @media ${tabletPortrait} {
     align-items: center;
     width: 100%;

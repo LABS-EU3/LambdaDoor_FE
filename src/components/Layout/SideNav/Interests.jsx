@@ -2,45 +2,56 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tag, Dropdown, Icon, Menu } from 'antd';
 import { connect } from 'react-redux';
-import { allInterests } from '../../../utils/data';
-import { removeInterest, addInterest } from '../../../state/actions/interests';
+import { removeInterest, addInterest, getInterests, getUsersInterests } from '../../../state/actions/interests';
 
 const Interests = ({
   authState: {
     credentials: { id },
   },
-  interests: { interests },
+  allInterests,
+  userInterests,
   removeInterest,
   addInterest,
+  getInterests,
+  getUsersInterests 
 }) => {
   const [inputVisible, setInputVisible] = useState(false);
+
+  useEffect(() => {
+    async function allInterests() {
+      await getInterests();
+      await getUsersInterests(id); 
+    }
+
+    allInterests();
+  }, [])
 
   const showInput = () => {
     setInputVisible(true);
   };
 
-  const handleRemoveInterest = async (e, intId) => {
+  const handleRemoveInterest = async (e, interestId) => {
     e.preventDefault();
-    await removeInterest(intId);
+    await removeInterest(interestId);
   };
 
-  const handleAddInterest = e => {
-    addInterest(id, Number(e.key) + 1);
+  const handleAddInterest = (userId, interestId) => {
+    addInterest(userId, interestId);
   };
 
   const menu = (
     <Menu>
-      {allInterests
-        .filter(elem => !interests.map(int => int.interest).includes(elem))
-        .map(interest => (
+      {allInterests.interests
+      .filter(elem => !userInterests.interests.map(int => int.interest).includes(elem.interest))
+      .map(obj => (
           <Menu.Item
-            onClick={handleAddInterest}
-            key={allInterests.indexOf(interest)}
+            onClick={() => handleAddInterest(id, obj.id)}
+            key={obj.id}
           >
-            {interest}
+            {obj.interest}
           </Menu.Item>
         ))}
     </Menu>
@@ -48,16 +59,15 @@ const Interests = ({
 
   return (
     <div>
-      {!interests.length ? (
+      {!userInterests.interests.length ? (
         <p>No interests yet</p>
       ) : (
         <>
           {!inputVisible &&
-            interests.map((elem, id) => {
-              return <Tag key={id}>{elem.interest}</Tag>;
-            })}
+            userInterests.interests.map((elem) => <Tag key={elem.id}>{elem.interest}</Tag> )
+          }
           {inputVisible &&
-            interests.map(elem => {
+            userInterests.interests.map(elem => {
               return (
                 <Tag
                   key={elem.id}
@@ -70,7 +80,9 @@ const Interests = ({
             })}
         </>
       )}
+
       <br />
+
       {inputVisible && (
         <>
           <Dropdown overlay={menu} trigger={['click']}>
@@ -97,6 +109,6 @@ const Interests = ({
   );
 };
 
-export default connect(state => state, { removeInterest, addInterest })(
+export default connect(state => state, { removeInterest, addInterest, getInterests, getUsersInterests  })(
   Interests
 );

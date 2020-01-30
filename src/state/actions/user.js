@@ -2,6 +2,8 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import * as types from '../types';
+import openNotification from '../../utils/openNotification';
+import failureNotification from '../../utils/failureNotification';
 
 export const editProfile = (value, id) => async dispatch => {
   dispatch({
@@ -16,10 +18,12 @@ export const editProfile = (value, id) => async dispatch => {
       type: types.EDIT_PROFILE_PICTURE_SUCCESS,
       payload: data[0],
     });
+    openNotification('Profile Updated Succesfully');
   } catch (error) {
     dispatch({
       type: types.EDIT_PROFILE_PICTURE_FAILURE,
       payload: error.message,
     });
+    failureNotification('Profile could not be updated');
   }
 };

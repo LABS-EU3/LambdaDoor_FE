@@ -2,7 +2,10 @@
 import React, { useEffect } from 'react';
 import { Tabs } from 'antd';
 import { connect } from 'react-redux';
-import { getCompanyReviews, getSalaryReviews } from '../../state/actions/reviews';
+import {
+  getCompanyReviews,
+  getSalaryReviews,
+} from '../../state/actions/reviews';
 import MySalaryReviewList from '../../components/MyReviews/Salary/MySalaryReviewList';
 import CompanyReviewList from '../../components/MyReviews/Company/CompanyReviewList';
 import InterviewReviewList from '../../components/MyReviews/Interview/InterviewReviewList';

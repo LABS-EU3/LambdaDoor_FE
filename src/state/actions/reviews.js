@@ -1,5 +1,7 @@
 import axios from 'axios';
 import * as types from '../types';
+import openNotification from '../../utils/openNotification';
+import failureNotification from '../../utils/failureNotification';
 
 export const getReviewsByCompanyId = id => async dispatch => {
   dispatch({
@@ -151,7 +153,7 @@ export const getCompanyReviews = id => async dispatch => {
   }
 };
 
-export const addCompanyReview = (review, id) => async dispatch => {
+export const addCompanyReview = (review, id, history) => async dispatch => {
   dispatch({
     type: types.ADD_COMPANY_REVIEW,
   });
@@ -165,11 +167,15 @@ export const addCompanyReview = (review, id) => async dispatch => {
       type: types.ADD_COMPANY_REVIEW_SUCCESS,
       payload: response.data,
     });
+
+    history.push('/reviews');
+    openNotification('Review Added Successfully! ');
   } catch (error) {
     dispatch({
       type: types.ADD_COMPANY_REVIEW_FAILURE,
       payload: error.message,
     });
+    failureNotification('Review could not be added');
   }
 };
 
@@ -216,11 +222,14 @@ export const updateCompanyReview = update => async dispatch => {
       type: types.UPDATE_COMPANY_REVIEWS_SUCCESS,
       payload: data,
     });
+
+    openNotification('Review Edited Successfully');
   } catch (error) {
     dispatch({
       type: types.UPDATE_COMPANY_REVIEWS_FAILURE,
       payload: error.message || 'Something went wrong.',
     });
+    failureNotification('Review could not be Edited');
   }
 };
 
@@ -245,7 +254,7 @@ export const getSalaryReviews = id => async dispatch => {
   }
 };
 
-export const addSalaryReview = (review, id) => async dispatch => {
+export const addSalaryReview = (review, id, history) => async dispatch => {
   dispatch({
     type: types.ADD_SALARY_REVIEW,
   });
@@ -259,14 +268,18 @@ export const addSalaryReview = (review, id) => async dispatch => {
       type: types.ADD_SALARY_REVIEW_SUCCESS,
       payload: response.data,
     });
+
+    history.push('/reviews');
+    openNotification('Review Added Successfully! ');
   } catch (error) {
     dispatch({
       type: types.ADD_SALARY_REVIEW_FAILURE,
       payload: error.message || 'Something went wrong.',
     });
+    failureNotification('Review could not be added');
   }
 };
-export const deleteSalaryReview = id => async dispatch => {
+export const deleteSalaryReview = (id, history) => async dispatch => {
   dispatch({
     type: types.DELETE_SALARY_REVIEWS,
   });
@@ -283,11 +296,15 @@ export const deleteSalaryReview = id => async dispatch => {
       type: types.DELETE_SALARY_REVIEWS_SUCCESS,
       payload: id,
     });
+    history.push(`/reviews/`);
+    openNotification('Review deleted successfully!');
   } catch (error) {
     dispatch({
       type: types.DELETE_SALARY_REVIEWS_FAILURE,
       payload: error.message || 'Something went wrong.',
     });
+    failureNotification('Review could not be deleted');
+    console.log(error.message);
   }
 };
 
@@ -309,11 +326,14 @@ export const updateSalaryReview = update => async dispatch => {
       type: types.UPDATE_SALARY_REVIEWS_SUCCESS,
       payload: data,
     });
+
+    openNotification('Review updated successfully!');
   } catch (error) {
     dispatch({
       type: types.UPDATE_SALARY_REVIEWS_FAILURE,
       payload: error.message || 'Something went wrong.',
     });
+    failureNotification('Review could not be updated');
   }
 };
 
@@ -341,7 +361,7 @@ export const getInterviewReviews = id => async dispatch => {
   }
 };
 
-export const addInterviewReview = (review, id) => async dispatch => {
+export const addInterviewReview = (review, id, history) => async dispatch => {
   dispatch({
     type: types.ADD_INTERVIEW_REVIEW,
   });
@@ -355,11 +375,14 @@ export const addInterviewReview = (review, id) => async dispatch => {
       type: types.ADD_INTERVIEW_REVIEW_SUCCESS,
       payload: response.data,
     });
+    history.push('/reviews');
+    openNotification('Review Added Successfully! ');
   } catch (error) {
     dispatch({
       type: types.ADD_INTERVIEW_REVIEW_FAILURE,
       payload: error.message || 'Something went wrong.',
     });
+    failureNotification('Review could not be added');
   }
 };
 
@@ -406,10 +429,12 @@ export const updateInterviewReview = update => async dispatch => {
       type: types.UPDATE_INTERVIEW_REVIEW_SUCCESS,
       payload: data,
     });
+    openNotification('Review Updated Successfully');
   } catch (error) {
     dispatch({
       type: types.UPDATE_INTERVIEW_REVIEW_FAILURE,
       payload: error.message || 'Something went wrong.',
     });
+    failureNotification('Review could not be updated');
   }
 };

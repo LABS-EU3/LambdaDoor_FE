@@ -62,6 +62,10 @@ const StyledDiv = styled.div`
     height: 150px;
     max-width: 350px;
 
+    &:hover {
+      border: 2px solid #bb1333;
+    }
+
     a {
       position: absolute;
       left: 0;
