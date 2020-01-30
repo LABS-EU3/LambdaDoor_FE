@@ -130,7 +130,7 @@ const StyledContainer = styled.div`
             display: none;
             @media ${mobilePortrait} {
               display: block;
-              font-size: 2.2rem;
+              font-size: 1.9rem;
               color: #bb1333;
             }
           }

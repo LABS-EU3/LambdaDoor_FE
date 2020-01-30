@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import { Typography, Alert } from 'antd';
+import { Typography, Alert, Icon } from 'antd';
 import styled from 'styled-components';
 import decode from 'jwt-decode';
 
@@ -16,12 +16,14 @@ import {
 } from '../../styles/theme.styles';
 import Logo from '../../components/Layout/SideNav/Logo';
 import background from '../../assets/lambda-door-lp-vector.svg';
+import AppInfoContainer from '../../components/AppInfoContainer';
 
 const { Title, Paragraph } = Typography;
 
 // eslint-disable-next-line no-shadow
 export const Home = ({ history, SetAuthenticated }) => {
   const [error, setError] = useState(null);
+  const [infoVisible, setInfoVisible] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -34,6 +36,7 @@ export const Home = ({ history, SetAuthenticated }) => {
 
   return (
     <HomeContainer>
+      {/* <AppInfoContainer infoVisible={infoVisible} /> */}
       <HomeContentContainer>
         <Logo />
 
@@ -44,6 +47,7 @@ export const Home = ({ history, SetAuthenticated }) => {
             The one-stop portal for Lambda graduates looking for company
             information in the quest for a job.
           </Paragraph>
+          {/* <Icon type="arrow-down" onClick={setInfoVisible(true)} /> */}
 
           <a
             href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`}
