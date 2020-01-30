@@ -61,14 +61,11 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
                     <Icon type="right" />
                   </Button>
                 </div>
+                <img className="right-hand-logo" src={logo} alt="Lambda logo" />
               </div>
               <div className="main-content">
                 <Component {...props} />
               </div>
-              <img className="right-hand-logo" src={logo} alt="Lambda logo" />
-            </div>
-            <div className="footer">
-              <h2>Lambda Door</h2>
             </div>
           </StyledContainer>
         );
