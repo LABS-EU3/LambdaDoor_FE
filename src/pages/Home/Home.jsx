@@ -6,6 +6,7 @@ import decode from 'jwt-decode';
 
 import { connect } from 'react-redux';
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
+import Footer from '../../components/Layout/FooterNav/FooterNav';
 
 import {
   tabletPortrait,
@@ -73,10 +74,11 @@ export const Home = ({ history, SetAuthenticated }) => {
           )}
         </OnboardingContainer>
 
-        <Paragraph style={{ color: 'white' }}>
+        <Paragraph style={{ color: 'white' }} className="tag-paragraph">
           Built by Lambda students, for Lambda students.
         </Paragraph>
       </HomeContentContainer>
+      <Footer className="footer" />
     </HomeContainer>
   );
 };
@@ -104,11 +106,21 @@ const HomeContainer = styled.div`
 `;
 
 const HomeContentContainer = styled.div`
-  ${FlexFunc('column', 'space-between', 'flex-start')};
+  ${FlexFunc('column', 'flex-start')};
   height: 100%;
   width: 50%;
   padding: 1% 10%;
 
+  .tag-paragraph {
+    display: none;
+  }
+  @media (max-width: 705px) {
+    .tag-paragraph {
+      display: block;
+      margin-bottom: 80px;
+    }
+    ${FlexFunc('column', 'space-between', 'flex-start')};
+  }
   @media ${tabletPortrait} {
     align-items: center;
     width: 100%;
@@ -144,7 +156,10 @@ const OnboardingContainer = styled.div`
     font-size: 20px;
     line-height: 32px;
   }
-
+  margin-top: 10%;
+  @media (max-width: 705px) {
+    margin-top: 0;
+  }
   @media ${tabletPortrait} {
     align-items: center;
     width: 100%;
