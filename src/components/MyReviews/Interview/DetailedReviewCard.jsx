@@ -36,10 +36,11 @@ export const DetailedReviewCard = ({
 
   const reviewId = useParams().id;
   const review = interview.find(elem => elem.id === Number(reviewId));
-
   useEffect(() => {
     updatedReview = { ...review };
     delete updatedReview.name;
+    delete updatedReview.full_name;
+    delete updatedReview.company_id;
   }, [review]);
 
   const handleDelete = async id => {

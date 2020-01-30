@@ -162,14 +162,16 @@ const validationSchema = yup.object().shape({
 });
 
 const CompanyModal = withFormik({
-  mapPropsToValues: () => ({
-    name: '',
-    location: '',
-    website: '',
-    description: '',
-    latitude: '',
-    longitude: '',
-  }),
+  mapPropsToValues: props => {
+    return {
+      name: props.value,
+      location: '',
+      website: '',
+      description: '',
+      latitude: '',
+      longitude: '',
+    };
+  },
   handleSubmit: (values, { props, setSubmitting }) => {
     props.addCompany(values);
     props.setAddingCompany(false);
@@ -177,6 +179,7 @@ const CompanyModal = withFormik({
     setSubmitting(false);
   },
   validationSchema: validationSchema,
+  enableReinitialize: true,
 })(AddCompanyModal);
 
 export default connect(state => state, { addCompany })(CompanyModal);

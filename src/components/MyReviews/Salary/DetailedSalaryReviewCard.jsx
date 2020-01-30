@@ -18,13 +18,11 @@ import {
   deleteSalaryReview,
   updateSalaryReview,
 } from '../../../state/actions/reviews';
-import openNotification from '../../../utils/openNotification';
 import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
 import { jobCategories } from '../../../utils/data';
 
 const { Paragraph } = Typography;
 let updatedReview;
-
 export const DetailedSalaryReviewCard = ({
   history,
   reviews: {
@@ -45,12 +43,11 @@ export const DetailedSalaryReviewCard = ({
     };
     delete updatedReview.name;
     delete updatedReview.interest;
+    delete updatedReview['i.id'];
   }, [review]);
 
   const handleDelete = async id => {
-    await deleteSalaryReview(id);
-    history.push(`/reviews/`);
-    openNotification('Review deleted successfully!');
+    await deleteSalaryReview(id, history);
   };
 
   const updateReview = (key, value) => {
@@ -114,7 +111,7 @@ export const DetailedSalaryReviewCard = ({
             <h3>Job Catergory</h3>
             {isEditing ? (
               <Select
-                defaultValue={review.interest_id}
+                defaultValue={review.interest}
                 onChange={e => {
                   handleSelect(e);
                 }}
@@ -163,16 +160,16 @@ export const DetailedSalaryReviewCard = ({
 
           <div
             className="accepting-questions"
-            data-testid={`questions - ${review.is_anonymous}`}
+            data-testid={`questions - ${review.is_accepting_questions}`}
           >
             <h3>Anonymous</h3>
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="close" />}
-              defaultChecked={review.is_anonymous}
+              defaultChecked={review.is_accepting_questions}
               disabled={!isEditing}
               onChange={e => {
-                updateReview('is_anonymous', e === true ? 1 : 0);
+                updateReview('is_accepting_questions', e === true ? 1 : 0);
               }}
             />
           </div>

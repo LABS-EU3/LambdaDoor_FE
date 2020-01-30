@@ -16,6 +16,7 @@ const renderOption = Item => {
 
 const AutoCompleted = ({ label, dataSource, placeholder, onChange }) => {
   const [addingCompany, setAddingCompany] = useState(false);
+  const [value, setValue] = useState('');
 
   const options = dataSource.map(renderOption).concat([
     <Option key="all" value="" className="show-all">
@@ -30,6 +31,7 @@ const AutoCompleted = ({ label, dataSource, placeholder, onChange }) => {
       <AddCompanyModal
         visible={addingCompany}
         setAddingCompany={setAddingCompany}
+        value={value}
       />
       <Form.Item label={label}>
         <AutoComplete
@@ -50,7 +52,12 @@ const AutoCompleted = ({ label, dataSource, placeholder, onChange }) => {
             }
             return false;
           }}
-          onChange={onChange}
+          onChange={e => {
+            if (e) {
+              onChange(e);
+              setValue(e);
+            }
+          }}
         >
           <Input size="default" placeholder={placeholder} />
         </AutoComplete>

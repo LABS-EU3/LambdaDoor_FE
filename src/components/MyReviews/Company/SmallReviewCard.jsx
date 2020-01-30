@@ -14,6 +14,10 @@ const StyledCard = styled(Card)`
   height: 200px;
   cursor: pointer;
 
+  &:hover {
+    border: 2px solid #bb1333;
+  }
+
   .card-top {
     display: flex;
     justify-content: space-between;
@@ -46,7 +50,7 @@ export const SmallReviewCard = ({
 }) => {
   const handleCompanyClick = e => {
     e.stopPropagation();
-    history.push(`/reviews/company/${company_id}`);
+    history.push(`/company-page/${company_id}`);
   };
   return (
     <StyledCard onClick={() => history.push(`/reviews/company/${id}`)}>
