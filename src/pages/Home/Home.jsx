@@ -49,13 +49,20 @@ export const Home = ({ history, SetAuthenticated }) => {
           <Logo />
 
           <OnboardingContainer>
-            <Title className="siteTitle">Lambda Door</Title>
+            <div className="title-and-arrow">
+              <Title className="siteTitle">Lambda Door</Title>
+              <Icon
+                type="down-circle"
+                theme="filled"
+                style={{ fontSize: 30, color: '#bb1333' }}
+                onClick={viewInfo}
+              />
+            </div>
 
             <Paragraph>
               The one-stop portal for Lambda graduates looking for company
               information in the quest for a job.
             </Paragraph>
-            <Icon type="arrow-down" onClick={viewInfo} />
 
             <a
               href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`}
@@ -96,10 +103,6 @@ export const Home = ({ history, SetAuthenticated }) => {
 };
 
 export default connect(null, { LoginUser, SetAuthenticated })(Home);
-
-const StyledContainer = styled.div`
-   
-`;
 
 const HomeContainer = styled.div`
   background-image: url(${background});
@@ -161,6 +164,12 @@ const OnboardingContainer = styled.div`
   div {
     font-size: 20px;
     line-height: 32px;
+  }
+  .title-and-arrow {
+    display: flex;
+    width: 75%;
+    align-items: center;
+    justify-content: space-between;
   }
 
   @media ${tabletPortrait} {

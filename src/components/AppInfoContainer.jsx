@@ -2,30 +2,40 @@ import React from 'react';
 import { Icon } from 'antd';
 import styled from 'styled-components';
 
-function AppInfoContainer(props) {
+function AppInfoContainer({ infoVisible, hideInfo }) {
   return (
-    <StyledDiv infoVisible={props.infoVisible}>
+    <StyledDiv infoVisible={infoVisible}>
       <TextBox>
         <div className="heading">
           <h2>Features</h2>
-          <Icon type="arrow-up" className="arrow-up" onClick={props.hideInfo} />
+          {/* <Icon type="arrow-up" className="arrow-up" onClick={props.hideInfo} /> */}
+          <Icon
+            type="up-circle"
+            theme="filled"
+            style={{ fontSize: 30, color: '#bb1333' }}
+            onClick={hideInfo}
+          />
         </div>
         <InfoBox>
           <p className="left-outer">
+            <Icon type="slack-circle" theme="filled" className="icon" />
             No need to sign up: Lambda students have automatic access. Just sign
             in via Slack.
           </p>
           <p className="left-center">
-            Leave company reviews, salary reviews and interview reviews publicly
-            or anonymously.
+            <Icon type="edit" theme="filled" className="icon" />
+            Leave company reviews, salary reviews and interview reviews,
+            publicly or anonymously.
           </p>
           <p className="right-center">
+            <Icon type="info-circle" theme="filled" className="icon" />
             Access up to date information about companies in your area or around
             the world.
           </p>
           <p className="right-outer">
-            Email referrals: contact fellow students at the click of a button
-            with questions about the companies you're interested in.
+            <Icon type="mail" theme="filled" className="icon" />
+            Email referrals: ask questions at the click of a button about the
+            companies you're interested in.
           </p>
         </InfoBox>
       </TextBox>
@@ -50,7 +60,7 @@ const StyledDiv = styled.div`
 const TextBox = styled.div`
   /* margin: 50px auto; */
   width: 80%;
-  height: 70%;
+  height: 600px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -62,7 +72,7 @@ const TextBox = styled.div`
     margin-bottom: 0;
   }
   .heading {
-    width: 150px;
+    width: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,9 +86,44 @@ const InfoBox = styled.div`
   display: flex;
   align-items: center;
   padding: 2rem;
+
   p {
     width: 25%;
-    padding: 1rem;
+    height: 200px;
+    padding: 2rem;
     font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    margin-top: 100px;
+  }
+
+  .left-outer {
+    border-right: 1px solid grey;
+    .icon {
+      font-size: 30px !important;
+    }
+  }
+
+  .left-center {
+    border-right: 1px solid grey;
+    .icon {
+      font-size: 30px !important;
+    }
+  }
+
+  .right-center {
+    border-right: 1px solid grey;
+    .icon {
+      font-size: 30px !important;
+    }
+  }
+
+  .right-outer {
+    .icon {
+      font-size: 30px !important;
+    }
   }
 `;
