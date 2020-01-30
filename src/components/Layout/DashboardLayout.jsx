@@ -171,33 +171,33 @@ const StyledContainer = styled.div`
             font-weight: 500;
           }
         }
+      }
 
-        .sign-out-btn {
-          @media ${mobilePortrait} {
-            display: none;
-          }
-        }
-
-        .empty-state {
-          min-height: 300px;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          max-width: 100%;
-        }
-
-        .footer {
+      .sign-out-btn {
+        @media ${mobilePortrait} {
           display: none;
-          background-color: ${primaryGrey};
-          position: fixed;
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          text-align: center;
-          height: 70px;
         }
+      }
+
+      .empty-state {
+        min-height: 300px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        max-width: 100%;
+      }
+
+      .footer {
+        display: none;
+        background-color: ${primaryGrey};
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        height: 70px;
       }
     }
   }
