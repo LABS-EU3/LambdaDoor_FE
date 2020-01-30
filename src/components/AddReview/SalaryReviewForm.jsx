@@ -57,6 +57,11 @@ const SalaryReview = ({
         ...formValues,
         company_id: company.id,
       });
+    } else {
+      setFormValues({
+        ...formValues,
+        company_id: name,
+      });
     }
   };
 
@@ -75,12 +80,29 @@ const SalaryReview = ({
     <StyledContainer>
       <Form layout="vertical">
         <div>
-          <AutoCompleteComponent
-            label="Company Name"
-            placeholder="Company name"
-            dataSource={companies}
-            onChange={e => handleCompanyName(e)}
-          />
+          <Form.Item
+            validateStatus={
+              Number(formValues.company_id) === formValues.company_id ||
+              formValues.company_id === ''
+                ? 'validating'
+                : 'error'
+            }
+            hasFeedback={
+              Number(formValues.company_id) !== formValues.company_id
+            }
+            help={
+              Number(formValues.company_id) !== formValues.company_id &&
+              formValues.company_id !== '' &&
+              'You have not selected a company'
+            }
+          >
+            <AutoCompleteComponent
+              label="Company Name"
+              placeholder="Company name"
+              dataSource={companies}
+              onChange={e => handleCompanyName(e)}
+            />
+          </Form.Item>
         </div>
         <Form.Item label="Job Title">
           <Input
@@ -178,10 +200,12 @@ const SalaryReview = ({
           htmlType="submit"
           onClick={handleSubmit}
           loading={loading}
-          disabled={Boolean(
-            Object.keys(formValues).filter(elem => formValues[elem] === '')
-              .length
-          )}
+          disabled={
+            Boolean(
+              Object.keys(formValues).filter(elem => formValues[elem] === '')
+                .length
+            ) || Number(formValues.company_id) !== formValues.company_id
+          }
         >
           Submit
         </Button>
