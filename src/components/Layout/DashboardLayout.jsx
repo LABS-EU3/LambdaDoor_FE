@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
@@ -23,7 +24,7 @@ import logo from '../../assets/lambda-logo.png';
 
 const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
   const [visible, setVisible] = useState(false);
-
+  const [searchVisible, setSearchVisible] = useState(false);
   const hideDrawer = () => {
     setVisible(false);
   };
@@ -32,7 +33,10 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
     e.stopPropagation();
     setVisible(!visible);
   };
-
+  const toggleSearch = e => {
+    e.stopPropagation();
+    setSearchVisible(!searchVisible);
+  };
   return (
     <Route
       {...rest}
@@ -41,7 +45,7 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
           <SideNav visible={visible} />
           <div
             className="main-container"
-            onKeyDown={toggleDrawer}
+            // onKeyDown={toggleDrawer}
             onClick={hideDrawer}
           >
             <div className="top-bar">
@@ -52,7 +56,10 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
               >
                 <img src={logo} alt="Lambda logo" />
               </button>
-              <SearchForm />
+              <SearchForm
+                searchVisible={searchVisible}
+                setSearchVisible={setSearchVisible}
+              />
 
               <div className="sign-out-btn">
                 <Button type="link" onClick={LogoutUser}>
@@ -68,6 +75,12 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
           <div className="footer">
             <h2>Lambda Door</h2>
           </div>
+          <SearchButton onClick={toggleSearch}>
+            <Icon
+              type="search"
+              style={{ fontSize: '1.5rem', color: 'white' }}
+            />
+          </SearchButton>
         </StyledContainer>
       )}
     />
@@ -145,7 +158,7 @@ const StyledContainer = styled.div`
 
   .main-content {
     padding: 2rem 1.5rem;
-    height: calc(100vh - 70px);
+    height: 100vh;
     overflow-y: auto;
     @media ${mobilePortrait} {
       padding-top: 100px;
@@ -191,5 +204,30 @@ const StyledContainer = styled.div`
       } */
       /* I've commented out the footer for now but left the code just in case changes are needed.*/
 
+  }
+`;
+
+const SearchButton = styled.div`
+  background-color: #bb1333;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  display: none;
+  @media ${tabletPortrait} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media ${mobilePortrait} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ant-icon {
+    color: white !important;
   }
 `;

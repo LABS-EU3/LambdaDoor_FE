@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import CompanySearchCard from './CompanySearchCard';
 import SalarySearchCard from './SalarySearchCard';
 import InterviewSearchCard from './InterviewSearchCard';
+import {mobilePortrait} from '../../../styles/theme.styles';
 
 const SearchResults = ({ search: { isSearching, searchResults }, history }) => {
   console.log('is searching', isSearching);
@@ -93,6 +94,7 @@ const CardContainer = styled.div`
   flex-direction: table-row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  align-items: flex-start;
   height: 80%;
   width: 100%;
 
