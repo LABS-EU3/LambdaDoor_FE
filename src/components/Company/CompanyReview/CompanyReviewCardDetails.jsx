@@ -46,6 +46,11 @@ const CompanyReviewCardDetailed = ({
       </Button>
       <StyledCard>
         <h2 className="company-name">{review.name}</h2>
+        <h3>
+          &quot;
+          {review.review_headline}
+          &quot;
+        </h3>
         <p>
           Review:
           <br />
@@ -62,7 +67,7 @@ const CompanyReviewCardDetailed = ({
           <div className="contact">
             {review.is_accepting_questions ? (
               <p>
-                Have questions?
+                Have questions? &nbsp;
                 <Button>Contact Me</Button>
               </p>
             ) : (
@@ -79,6 +84,10 @@ const CompanyReviewCardDetailed = ({
 const StyledCard = styled(Card)`
   max-width: 800px;
   padding: 20px 50px 50px 50px !important;
+
+  h3 {
+    text-align: center;
+  }
 
   @media ${mobilePortrait} {
     padding: 0 !important;
