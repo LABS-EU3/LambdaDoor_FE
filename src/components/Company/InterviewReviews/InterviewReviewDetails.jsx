@@ -1,11 +1,12 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, Icon, Button, Skeleton } from 'antd';
 import styled from 'styled-components';
+import ContactReviewer from '../../ContactReviewerModal';
 import { getInterviewReviewsByReviewId } from '../../../state/actions/reviews';
 import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
 
@@ -23,6 +24,8 @@ const InterviewReviewDetails = ({
   const review =
     interviewReview.find(elem => elem.id === Number(reviewId)) ||
     singleinterviewReview;
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (!Object.keys(review).length) {
       getInterviewReviewsByReviewId(Number(reviewId));
@@ -33,6 +36,13 @@ const InterviewReviewDetails = ({
     <Skeleton />
   ) : (
     <>
+      <ContactReviewer
+        loading={loading}
+        setLoading={setLoading}
+        open={open}
+        setOpen={setOpen}
+        email={review.email_address}
+      />
       <Button
         style={{
           marginBottom: '30px',
@@ -50,8 +60,8 @@ const InterviewReviewDetails = ({
           <div className="contact">
             {review.is_accepting_questions ? (
               <p>
-                Have questions?
-                <Button>Contact Me</Button>
+                Have questions? &nbsp;&nbsp;
+                <Button onClick={() => setOpen(true)}> Contact Me</Button>
               </p>
             ) : (
               ''
