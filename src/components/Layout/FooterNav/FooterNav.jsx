@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import {
   faTwitter,
   faFacebook,
@@ -41,10 +42,10 @@ const StyledDiv = styled.div`
   .social-handle {
     display: flex;
     text-align: right;
-    margin-right: 15%;
+    margin-right: 3%;
   }
   .copy-right {
-    margin-right: 10%;
+    margin-right: 16%;
   }
   .tagline {
     text-align: left;
@@ -52,42 +53,55 @@ const StyledDiv = styled.div`
   }
   @media only screen and (max-width: 1125px) {
     .social-handle {
-      margin-right: 10%;
+      margin-right: 3%;
     }
     .tagline {
       margin-right: 10%;
     }
     .copy-right {
-      margin-right: 7.5%;
+      margin-right: 10%;
     }
   }
   @media only screen and (max-width: 900px) {
     .social-handle {
-      margin-right: 7%;
+      margin-right: 3%;
     }
     .tagline {
-      margin-right: 7%;
+      margin-right: 5%;
     }
     .copy-right {
       margin-right: 5%;
     }
   }
-  @media only screen and (max-width: 775px) {
+  @media only screen and (max-width: 790px) {
     .social-handle {
-      margin-right: 4%;
+      margin-right: 2%;
     }
     .tagline {
-      margin-right: 4%;
+      margin-right: 3.5%;
     }
     .copy-right {
-      margin-right: 2.5%;
+      margin-right: 3.5%;
     }
+    a {
+      margin: 0 0.5rem;
+    }
+    font-size: 14px;
   }
   @media only screen and (max-width: 705px) {
     .tagline {
       display: none;
     }
+    a {
+      margin: 0 1rem;
+    }
     justify-content: space-evenly;
+  }
+  @media only screen and (max-width: 400px) {
+    a {
+      margin: 0 0.4rem;
+      font-size: 12px;
+    }
   }
   @media only screen and (max-width: 359px) {
     a {
@@ -119,6 +133,9 @@ export default function Footer() {
           className="linkdIn"
         >
           <FontAwesomeIcon icon={faLinkedin} size="2x" />
+        </a>
+        <a href="https://lambdaschool.com/" className="webpage">
+          <FontAwesomeIcon icon={faGlobe} size="2x" />
         </a>
       </div>
     </StyledDiv>
