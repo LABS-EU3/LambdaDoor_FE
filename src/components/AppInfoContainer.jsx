@@ -39,7 +39,7 @@ function AppInfoContainer({ infoVisible, hideInfo }) {
           </p>
         </InfoBox>
       </TextBox>
-      <Footer />
+      {/* <Footer /> */}
     </StyledDiv>
   );
 }

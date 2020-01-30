@@ -94,9 +94,10 @@ export const Home = ({ history, SetAuthenticated }) => {
             Built by Lambda students, for Lambda students.
           </Paragraph>
         </HomeContentContainer>
-        <Footer className="footer" />
+        {/* <Footer className="footer" /> */}
       </HomeContainer>
       <AppInfoContainer infoVisible={infoVisible} hideInfo={hideInfo} />
+      <Footer className="footer" />
     </div>
   );
 };
