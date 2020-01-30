@@ -6,6 +6,7 @@ import decode from 'jwt-decode';
 
 import { connect } from 'react-redux';
 import { LoginUser, SetAuthenticated } from '../../state/actions/auth';
+import Footer from '../../components/Layout/FooterNav/FooterNav';
 
 import {
   tabletPortrait,
@@ -58,12 +59,10 @@ export const Home = ({ history, SetAuthenticated }) => {
                 onClick={viewInfo}
               />
             </div>
-
             <Paragraph>
               The one-stop portal for Lambda graduates looking for company
               information in the quest for a job.
             </Paragraph>
-
             <a
               href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`}
             >
@@ -91,11 +90,11 @@ export const Home = ({ history, SetAuthenticated }) => {
               />
             )}
           </OnboardingContainer>
-
-          <Paragraph style={{ color: 'white' }}>
+          <Paragraph style={{ color: 'white' }} className="tag-paragraph">
             Built by Lambda students, for Lambda students.
           </Paragraph>
         </HomeContentContainer>
+        <Footer className="footer" />
       </HomeContainer>
       <AppInfoContainer infoVisible={infoVisible} hideInfo={hideInfo} />
     </div>
@@ -108,11 +107,9 @@ const HomeContainer = styled.div`
   background-image: url(${background});
   background-size: cover;
   background-position: top right;
-  /* background-attachment: fixed; */
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
-  /* position: absolute; */
   @media ${tabletPortrait} {
     background-position: -180px 50px;
   }
@@ -125,11 +122,21 @@ const HomeContainer = styled.div`
 `;
 
 const HomeContentContainer = styled.div`
-  ${FlexFunc('column', 'space-between', 'flex-start')};
+  ${FlexFunc('column', 'flex-start')};
   height: 100%;
   width: 50%;
   padding: 1% 10%;
 
+  .tag-paragraph {
+    display: none;
+  }
+  @media (max-width: 705px) {
+    .tag-paragraph {
+      display: block;
+      margin-bottom: 80px;
+    }
+    ${FlexFunc('column', 'space-between', 'flex-start')};
+  }
   @media ${tabletPortrait} {
     align-items: center;
     width: 100%;
@@ -172,6 +179,10 @@ const OnboardingContainer = styled.div`
     justify-content: space-between;
   }
 
+  margin-top: 30%;
+  @media (max-width: 705px) {
+    margin-top: 0;
+  }
   @media ${tabletPortrait} {
     align-items: center;
     width: 100%;

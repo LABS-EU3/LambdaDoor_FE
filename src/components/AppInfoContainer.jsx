@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from 'antd';
 import styled from 'styled-components';
+import Footer from '../components/Layout/FooterNav/FooterNav';
 
 function AppInfoContainer({ infoVisible, hideInfo }) {
   return (
@@ -39,6 +40,7 @@ function AppInfoContainer({ infoVisible, hideInfo }) {
           </p>
         </InfoBox>
       </TextBox>
+      <Footer />
     </StyledDiv>
   );
 }
