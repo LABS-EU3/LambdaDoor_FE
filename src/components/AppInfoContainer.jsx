@@ -9,7 +9,6 @@ function AppInfoContainer({ infoVisible, hideInfo }) {
       <TextBox>
         <div className="heading">
           <h2>Features</h2>
-          {/* <Icon type="arrow-up" className="arrow-up" onClick={props.hideInfo} /> */}
           <Icon
             type="up-circle"
             theme="filled"
@@ -60,7 +59,6 @@ const StyledDiv = styled.div`
 `;
 
 const TextBox = styled.div`
-  /* margin: 50px auto; */
   width: 80%;
   height: 600px;
   background-color: white;
