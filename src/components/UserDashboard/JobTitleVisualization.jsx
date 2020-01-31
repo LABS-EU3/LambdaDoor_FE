@@ -36,7 +36,6 @@ const COLOURS = [
 let chartTotal = 0;
 const renderCustomizedLabel = data => {
   const { cx, cy, midAngle, innerRadius, outerRadius, percent, count } = data;
-  console.log(data);
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -93,7 +92,6 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
     );
   }, [jobroles]);
 
-  console.log(state);
   return (
     <StyledContainer>
       {!isFetching ? (
@@ -125,7 +123,6 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
                 content={() => (
                   <ul className="legends">
                     {state.map((entry, index) => {
-                      console.log(entry);
                       return (
                         <li key={entry.id}>
                           <span
