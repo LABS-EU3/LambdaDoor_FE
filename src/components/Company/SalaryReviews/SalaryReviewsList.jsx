@@ -110,4 +110,9 @@ const StyledEmpty = styled.div`
   }
 `;
 
+const ReviewerName = styled.div`
+  text-align: right;
+  padding: 1rem 0;
+`;
+
 export default withRouter(connect(state => state)(SalaryReviewsList));

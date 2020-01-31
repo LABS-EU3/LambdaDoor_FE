@@ -1,15 +1,17 @@
-/* eslint-disable react/self-closing-comp */
+//* eslint-disable react/self-closing-comp */
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Rate, Card, Icon, Button, Skeleton } from 'antd';
 import styled from 'styled-components';
 import { getReviewsByReviewId } from '../../../state/actions/reviews';
 import { mobilePortrait, tabletPortrait } from '../../../styles/theme.styles';
+import ContactReviewer from '../../ContactReviewerModal';
 
 const CompanyReviewCardDetailed = ({
+  props,
   history,
   getReviewsByReviewId,
   singleReview: {
@@ -24,6 +26,8 @@ const CompanyReviewCardDetailed = ({
   const review =
     companyReview.find(elem => elem.id === Number(reviewId)) ||
     singleCompanyReview;
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (!Object.keys(review).length) {
       getReviewsByReviewId(reviewId);
@@ -33,6 +37,14 @@ const CompanyReviewCardDetailed = ({
     <Skeleton />
   ) : (
     <>
+      <ContactReviewer
+        loading={loading}
+        setLoading={setLoading}
+        open={open}
+        setOpen={setOpen}
+        email={review.email_address}
+      />
+
       <Button
         style={{
           marginBottom: '30px',
@@ -46,6 +58,11 @@ const CompanyReviewCardDetailed = ({
       </Button>
       <StyledCard>
         <h2 className="company-name">{review.name}</h2>
+        <h3>
+          &quot;
+          {review.review_headline}
+          &quot;
+        </h3>
         <p>
           Review:
           <br />
@@ -61,10 +78,12 @@ const CompanyReviewCardDetailed = ({
         <div className="bottom">
           <div className="contact">
             {review.is_accepting_questions ? (
-              <p>
-                Have questions?
-                <Button>Contact Me</Button>
-              </p>
+              <>
+                <p>
+                  Have questions? &nbsp;&nbsp;
+                  <Button onClick={() => setOpen(true)}> Contact Me</Button>
+                </p>
+              </>
             ) : (
               ''
             )}
@@ -79,6 +98,10 @@ const CompanyReviewCardDetailed = ({
 const StyledCard = styled(Card)`
   max-width: 800px;
   padding: 20px 50px 50px 50px !important;
+
+  h3 {
+    text-align: center;
+  }
 
   @media ${mobilePortrait} {
     padding: 0 !important;

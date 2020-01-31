@@ -1,9 +1,10 @@
 /* eslint-disable no-shadow */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Icon, Skeleton, Card } from 'antd';
 import { withRouter, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import ContactReviewer from '../../ContactReviewerModal';
 import { getSalaryReviewsByCompanyId } from '../../../state/actions/reviews';
 import currencies from '../../../utils/currencies';
 
@@ -25,6 +26,8 @@ const SalaryReviewDetails = ({
       .toFixed(2)
       .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
   }
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!review) {
@@ -36,6 +39,13 @@ const SalaryReviewDetails = ({
     <Skeleton />
   ) : (
     <div>
+      <ContactReviewer
+        loading={loading}
+        setLoading={setLoading}
+        open={open}
+        setOpen={setOpen}
+        email={review.email_address}
+      />
       <Button
         style={{
           marginBottom: '30px',
@@ -69,10 +79,10 @@ const SalaryReviewDetails = ({
 
         <div className="bottom">
           <div className="contact">
-            {review.is_accepting_questions ? (
+            {!review.is_anonymous ? (
               <p>
-                Have questions?
-                <Button>Contact Me</Button>
+                Have questions? &nbsp;&nbsp;
+                <Button onClick={() => setOpen(true)}> Contact Me</Button>
               </p>
             ) : (
               ''

@@ -29,7 +29,7 @@ const StyledCard = styled(Card)`
   margin: 2rem 1.5rem 1rem 0rem !important;
   width: 280px;
   height: 200px;
-  padding-top: 1rem !important;
+  padding-top: 0.5rem !important;
   font-size: 16px;
   cursor: pointer;
 
@@ -67,6 +67,11 @@ const StyledCard = styled(Card)`
     font-size: 11px;
     padding-top: 0.1rem !important;
   }
+`;
+
+const ReviewerName = styled.div`
+  text-align: right;
+  padding: 1rem 0;
 `;
 
 const CompanyReviewCard = ({
@@ -120,6 +125,7 @@ const CompanyReviewCard = ({
             <br />
             <Rate disabled defaultValue={companyReview.ratings} size="small" />
           </div>
+          <ReviewerName>{companyReview.full_name}</ReviewerName>
         </StyledCard>
       ))}
     </ReviewCard>
