@@ -202,13 +202,13 @@ Shows the Dashboard display with TOP Rated Companies and a list of reviewed Job 
 
 ![Companies near user](https://media.giphy.com/media/eJMPVNFc6AaYmu71Sw/giphy.gif)
 
-Displays companies within a set distance of the user with a graph that shows an average pay for diierent roles
+Displays companies within a set distance of the user if one exist, with a graph that shows an average pay for different roles
 
 ### Company reviews
 
 ![Companies reviews](https://media.giphy.com/media/YOpOAQXeyPNFFAtyOi/giphy.gif)
 
-Shows information about selected company, its location and more along with clickable tabs for salary and interview review cards
+Shows information about selected company, its location and more, along with clickable tabs for salary and interview review cards
 
 ### Leave a review
 
