@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from 'antd';
 import styled from 'styled-components';
+import { tabletPortrait } from '../styles/theme.styles';
 
 function AppInfoContainer({ infoVisible, hideInfo }) {
   return (
@@ -8,12 +9,6 @@ function AppInfoContainer({ infoVisible, hideInfo }) {
       <TextBox>
         <div className="heading">
           <h2>Features</h2>
-          <Icon
-            type="up-circle"
-            theme="filled"
-            style={{ fontSize: 30, color: '#bb1333' }}
-            onClick={hideInfo}
-          />
         </div>
         <InfoBox>
           <p className="left-outer">
@@ -37,6 +32,15 @@ function AppInfoContainer({ infoVisible, hideInfo }) {
             companies you're interested in.
           </p>
         </InfoBox>
+        <a className="back-link" onClick={hideInfo}>
+          Go back &nbsp;
+          <Icon
+            type="up-circle"
+            theme="filled"
+            style={{ fontSize: 22, color: '#bb1333' }}
+            onClick={hideInfo}
+          />
+        </a>
       </TextBox>
     </StyledDiv>
   );
@@ -63,20 +67,21 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 4rem;
   h2 {
     font-size: 35px;
     font-family: 'Roboto';
     margin-bottom: 0;
+    text-align: center;
   }
-  .heading {
-    width: 200px;
+  .back-link {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .arrow-up {
-      font-size: 30px;
-    }
+    justify-content: flex-end;
+    align-items: flex-start;
+    font-size: 20px;
+    margin-top: 30px;
   }
 `;
 
@@ -96,6 +101,13 @@ const InfoBox = styled.div`
     text-align: center;
     justify-content: space-between;
     margin-top: 100px;
+    @media ${tabletPortrait} {
+      width: 50%;
+    }
+  }
+
+  @media ${tabletPortrait} {
+    flex-wrap: wrap;
   }
 
   .left-outer {
@@ -109,6 +121,9 @@ const InfoBox = styled.div`
     border-right: 1px solid grey;
     .icon {
       font-size: 30px !important;
+    }
+    @media ${tabletPortrait} {
+      border-right: none;
     }
   }
 
