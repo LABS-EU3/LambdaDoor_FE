@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import { Typography, Alert, Icon } from 'antd';
+import { Typography, Alert } from 'antd';
 import styled from 'styled-components';
 import decode from 'jwt-decode';
 
@@ -47,22 +50,19 @@ export const Home = ({ history, SetAuthenticated }) => {
     <div>
       <HomeContainer infoVisible={infoVisible}>
         <HomeContentContainer>
-          <Logo />
-
+          <div className="logo-div">
+            <Logo />
+          </div>
           <OnboardingContainer>
-            <div className="title-and-arrow">
-              <Title className="siteTitle">Lambda Door</Title>
-              {/* <Icon
-                type="down-circle"
-                theme="filled"
-                style={{ fontSize: 30, color: '#bb1333' }}
-                onClick={viewInfo}
-              /> */}
-            </div>
+            {/* <div className="title-and-arrow"> */}
+            <Title className="siteTitle">Lambda Door</Title>
+            {/* </div> */}
             <Paragraph>
               The one-stop portal for Lambda graduates looking for company
               information in the quest for a job. &nbsp;
-              <a onClick={viewInfo}>Learn more</a>
+              <a title="Learn more" onClick={viewInfo}>
+                <span>Learn more</span>
+              </a>
             </Paragraph>
             <a
               href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`}
@@ -111,6 +111,7 @@ const HomeContainer = styled.div`
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
+
   @media ${tabletPortrait} {
     background-position: -180px 50px;
   }
@@ -119,6 +120,12 @@ const HomeContainer = styled.div`
   }
   @media ${mobileLandscape} {
     background-image: none;
+  }
+  @media ${mobilePortrait} {
+    background-image: none;
+    /* height: 800px; */
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -130,6 +137,17 @@ const HomeContentContainer = styled.div`
 
   .tag-paragraph {
     display: none;
+  }
+
+  .logo-div {
+    @media ${mobilePortrait} {
+      z-index: 1;
+      padding-top: 10px;
+      .img {
+        position: sticky;
+        top: 0;
+      }
+    }
   }
   @media (max-width: 705px) {
     .tag-paragraph {
@@ -151,6 +169,7 @@ const HomeContentContainer = styled.div`
   @media ${mobilePortrait} {
     text-align: center;
     font-size: 12px;
+    width: 100%;
   }
   @media ${mobileLandscape} {
     text-align: center;
@@ -173,12 +192,6 @@ const OnboardingContainer = styled.div`
     font-size: 20px;
     line-height: 32px;
   }
-  .title-and-arrow {
-    display: flex;
-    width: 75%;
-    align-items: center;
-    justify-content: space-between;
-  }
 
   margin-top: 30%;
   @media (max-width: 705px) {
@@ -189,6 +202,9 @@ const OnboardingContainer = styled.div`
     width: 100%;
     text-align: center;
     padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15%;
   }
   @media ${tabletLandscape} {
     align-items: center;
@@ -198,6 +214,7 @@ const OnboardingContainer = styled.div`
   }
   @media ${mobilePortrait} {
     padding-bottom: 50px;
+    align-items: center;
     h1 {
       font-size: 32px;
       line-height: 48px;
@@ -205,6 +222,8 @@ const OnboardingContainer = styled.div`
     div {
       font-size: 16px;
       line-height: 24px;
+      display: flex;
+      flex-direction: column;
     }
   }
   @media ${mobileLandscape} {
