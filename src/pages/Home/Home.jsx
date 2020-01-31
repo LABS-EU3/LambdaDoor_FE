@@ -52,16 +52,17 @@ export const Home = ({ history, SetAuthenticated }) => {
           <OnboardingContainer>
             <div className="title-and-arrow">
               <Title className="siteTitle">Lambda Door</Title>
-              <Icon
+              {/* <Icon
                 type="down-circle"
                 theme="filled"
                 style={{ fontSize: 30, color: '#bb1333' }}
                 onClick={viewInfo}
-              />
+              /> */}
             </div>
             <Paragraph>
               The one-stop portal for Lambda graduates looking for company
-              information in the quest for a job.
+              information in the quest for a job. &nbsp;
+              <a onClick={viewInfo}>Learn more</a>
             </Paragraph>
             <a
               href={`https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`}
@@ -94,7 +95,6 @@ export const Home = ({ history, SetAuthenticated }) => {
             Built by Lambda students, for Lambda students.
           </Paragraph>
         </HomeContentContainer>
-        {/* <Footer className="footer" /> */}
       </HomeContainer>
       <AppInfoContainer infoVisible={infoVisible} hideInfo={hideInfo} />
       <Footer className="footer" />
