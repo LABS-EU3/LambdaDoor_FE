@@ -44,7 +44,7 @@ const InterviewReviewList = ({
           </span>
         }
       >
-        <Link to="/add-review">
+        <Link to={{ pathname: '/add-review', state: 2 }}>
           <Button>Post a Review</Button>
         </Link>
       </Empty>
