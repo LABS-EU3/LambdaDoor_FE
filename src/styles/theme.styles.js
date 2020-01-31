@@ -8,6 +8,8 @@ export const mobilePortrait =
 export const mobileLandscape =
   '(max-device-height : 480px) and (orientation: landscape)';
 export const tabletPortrait =
+  '(min-device-width: 480px) and (max-device-width : 1000px) and (orientation: portrait)';
+export const tabletPortraitLarge =
   '(min-device-width: 480px) and (max-device-width : 1024px) and (orientation: portrait)';
 export const tabletLandscape =
   '(max-device-height : 800px) and (orientation: landscape)';

@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { decode } from 'jsonwebtoken';
+import { connect } from 'react-redux';
 
 import DashboardLayout from '../Layout/DashboardLayout';
 
@@ -29,8 +30,9 @@ import {
 } from '../../state/actions/reviews';
 import { getClosestCompanies } from '../../state/actions/closestCompanies';
 import { getCompanies } from '../../state/actions/companies';
-import { connect } from 'react-redux';
-import { Spin } from 'antd';
+import SearchResults from '../Layout/Search/SearchResults';
+import DetailedSalarySearchCard from '../Layout/Search/DetailedSalarySearchCard';
+import DetailedInterviewSearchCard from '../Layout/Search/DetailedInterviewSearchCard';
 
 const start = async () => {
   const token = localStorage.getItem('token');
@@ -81,6 +83,19 @@ const AppRouter = ({
           path="/company/:companyId/salary/:id"
           exact
           component={SalaryReview}
+        />
+        <DashboardLayout
+          path="/search-results"
+          exact
+          component={SearchResults}
+        />
+        <DashboardLayout
+          path="/search-results/salary/:id"
+          component={DetailedSalarySearchCard}
+        />
+        <DashboardLayout
+          path="/search-results/interview/:id"
+          component={DetailedInterviewSearchCard}
         />
         <DashboardLayout component={NotFound} />
       </Switch>

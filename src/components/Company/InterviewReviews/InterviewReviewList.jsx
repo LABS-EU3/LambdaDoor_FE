@@ -29,7 +29,7 @@ const StyledCard = styled(Card)`
   margin: 2rem 1.5rem 1rem 0rem !important;
   width: 280px;
   height: 180px;
-  padding-top: 1rem !important;
+  padding-top: 0.5rem !important;
   font-size: 16px;
   cursor: pointer;
   &:hover {
@@ -47,6 +47,9 @@ const StyledCard = styled(Card)`
   @media ${tabletPortrait} {
     padding: 0 !important;
   }
+`;
+const ReviewerName = styled.div`
+  text-align: right;
 `;
 
 const InterviewReviewList = ({
@@ -96,6 +99,7 @@ const InterviewReviewList = ({
               <span>{interviewReview.text}</span>
             )}
           </p>
+          <ReviewerName>{interviewReview.full_name}</ReviewerName>
         </StyledCard>
       ))}
     </ReviewCard>

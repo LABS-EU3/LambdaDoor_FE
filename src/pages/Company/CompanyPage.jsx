@@ -46,7 +46,7 @@ const CompanyPage = ({
           border: '1px solid #BB1333',
           color: '#BB1333',
         }}
-        onClick={() => history.push('/dashboard')}
+        onClick={() => history.goBack()}
       >
         <Icon type="left" />
         Back

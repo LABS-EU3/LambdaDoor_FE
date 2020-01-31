@@ -1,4 +1,4 @@
-/* eslint-disable react/self-closing-comp */
+//* eslint-disable react/self-closing-comp */
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-wrap-multilines */
 import React, { useEffect, useState } from 'react';
@@ -58,6 +58,11 @@ const CompanyReviewCardDetailed = ({
       </Button>
       <StyledCard>
         <h2 className="company-name">{review.name}</h2>
+        <h3>
+          &quot;
+          {review.review_headline}
+          &quot;
+        </h3>
         <p>
           Review:
           <br />
@@ -93,6 +98,10 @@ const CompanyReviewCardDetailed = ({
 const StyledCard = styled(Card)`
   max-width: 800px;
   padding: 20px 50px 50px 50px !important;
+
+  h3 {
+    text-align: center;
+  }
 
   @media ${mobilePortrait} {
     padding: 0 !important;
