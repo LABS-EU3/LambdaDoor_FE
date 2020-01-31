@@ -15,7 +15,7 @@ const StyledDiv = styled.div`
   justify-content: center;
   color: #ffffff;
   margin-top: 20px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 2.5rem; /* Footer height */
