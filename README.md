@@ -188,30 +188,30 @@ See [Lambda_Door](https://github.com/LABS-EU3/lambdaDoor_backend/blob/develop/RE
 
 ### Sign-In
 
-<iframe src="https://giphy.com/embed/dVo7if5pt3iwDrIaqu" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+![Sign In clip](https://media.giphy.com/media/dVo7if5pt3iwDrIaqu/giphy.gif)
 
-Demonstrate the Log-in process showing user information the App will like to have access to
+Demonstrates the Log-in process showing user information in slack that the App will be having access to.
 
 ### Dashboard display
 
-<iframe src="https://giphy.com/embed/gdqwvVzH4pOoAI6QMG" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+![Dashboard display](https://media.giphy.com/media/gdqwvVzH4pOoAI6QMG/giphy.gif)
 
 Shows the Dashboard display with TOP Rated Companies and a list of reviewed Job roles by Percentages
 
 ### Companies near user
 
-<iframe src="https://giphy.com/embed/eJMPVNFc6AaYmu71Sw" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+![Companies near user](https://media.giphy.com/media/eJMPVNFc6AaYmu71Sw/giphy.gif)
 
 Displays companies within a set distance of the user with a graph that shows an average pay for diierent roles
 
 ### Company reviews
 
-<iframe src="https://giphy.com/embed/YOpOAQXeyPNFFAtyOi" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+![Companies reviews](https://media.giphy.com/media/YOpOAQXeyPNFFAtyOi/giphy.gif)
 
 Shows information about selected company, its location and more along with clickable tabs for salary and interview review cards
 
 ### Leave a review
 
-<iframe src="https://giphy.com/embed/SWWTv4Qoj7epVOHGfI" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+![Leave a review](https://media.giphy.com/media/SWWTv4Qoj7epVOHGfI/giphy.gif)
 
-# shows the Manage review page that contains reviews the user has made and the leave review page with tabs for salary, company and interview reviews
+shows the Manage review page that contains reviews the user has made and the leave review page with tabs for salary, company and interview reviews
