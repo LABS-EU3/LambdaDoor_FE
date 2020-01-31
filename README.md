@@ -79,6 +79,7 @@ An environment virriable was used for the developement and deployment file, thus
 ## Repo structure
 
 Sometimes it's helpful to know what all these different files are for…
+
 ```
 /
 ├─ src/
@@ -91,6 +92,8 @@ Sometimes it's helpful to know what all these different files are for…
 │  │  ├─ Layouts/    # …that governs all site layouts including layout-specific components
 │  │  ├─ Router/     # …that handles all files that pertain to app routing
 │  │  ├─ UserDashboard/ # …that handles all the components that display on the user's dashboard
+│  │  ├─ AppinfoContainer # …contains brief information about what the App offers
+│  │  ├─ LocationSearch # …retrives users location using google map
 |  |
 |  ├─ pages/         # Pages
 │  │  ├─ AddReview/  # …that renders Add-Review page content
@@ -98,11 +101,13 @@ Sometimes it's helpful to know what all these different files are for…
 │  │  ├─ Home/       # …that renders Home page content
 │  │  ├─ MyReviews/  # …that renders user's reviews for management
 │  │  ├─ UserDashboard/ # …that renders User-Dashboard page content
+│  │  ├─ NotFound    # …serves as a fallback path when a request link is not available
 │  |
 |  |─ state/         # State
 │  │  ├─ actions/    # …that handles redux actions
 │  │  ├─ reducers/   # …that handles app reducer functions
-│  │  ├─ types/      # …that handles all action types 
+│  │  ├─ types/      # …that handles all action types
+│  │  ├─ store       # …contains redux store and devtools extension information
 |  |
 |  |─ styles/        # Styles
 |  |
@@ -116,8 +121,8 @@ Sometimes it's helpful to know what all these different files are for…
 ├─ .gitignore        # List of files and folders not tracked by Git
 ├─ .prettierrc       # Code Formatting preferences for JavasScript
 ├─ .eslintrc         # Linting preferences for JavasScript
-├─ fractal.js        # Configuration for Fractal
-├─ gulpfile.js       # Configuration for Gulp tasks
+├─ travis.yml        # Configuration for Travis CI
+├─ commit_template   # Contains instruction for commit
 ├─ LICENSE           # License information for this project
 ├─ package.json      # Project manifest
 └─ README.md         # This file
@@ -178,3 +183,35 @@ See [Lambda_Door](https://github.com/LABS-EU3/lambdaDoor_backend/blob/develop/RE
 ### Backend is hosted on Heroku https://lambdadoor.herokuapp.com/
 
 ===============================================================================
+
+## Giphy Demonstrations for the App
+
+### Sign-In
+
+<iframe src="https://giphy.com/embed/dVo7if5pt3iwDrIaqu" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+Demonstrate the Log-in process showing user information the App will like to have access to
+
+### Dashboard display
+
+<iframe src="https://giphy.com/embed/gdqwvVzH4pOoAI6QMG" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+Shows the Dashboard display with TOP Rated Companies and a list of reviewed Job roles by Percentages
+
+### Companies near user
+
+<iframe src="https://giphy.com/embed/eJMPVNFc6AaYmu71Sw" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+Displays companies within a set distance of the user with a graph that shows an average pay for diierent roles
+
+### Company reviews
+
+<iframe src="https://giphy.com/embed/YOpOAQXeyPNFFAtyOi" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+Shows information about selected company, its location and more along with clickable tabs for salary and interview review cards
+
+### Leave a review
+
+<iframe src="https://giphy.com/embed/SWWTv4Qoj7epVOHGfI" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+# shows the Manage review page that contains reviews the user has made and the leave review page with tabs for salary, company and interview reviews
