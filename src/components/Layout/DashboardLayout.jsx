@@ -92,7 +92,6 @@ const StyledContainer = styled.div`
   @media ${tabletPortrait} {
     height: 100%;
   }
-
   .main-container {
     width: calc(100% - 250px);
     height: 100vh;
@@ -102,7 +101,6 @@ const StyledContainer = styled.div`
       display: flex;
       flex-direction: column;
     }
-
     .top-bar {
       width: 100%;
       padding: 1.5rem 1.5rem 2.5rem 0;
@@ -119,7 +117,6 @@ const StyledContainer = styled.div`
         width: 100%;
         z-index: 100;
       }
-
       .mobile-logo-btn {
         display: none;
         border: none;
@@ -154,54 +151,48 @@ const StyledContainer = styled.div`
           max-height: 2.9rem;
         }
       }
-
       .ant-input {
         background: transparent;
       }
-
       .ant-input-affix-wrapper {
         font-size: 18px;
       }
-
-      .main-content {
-        padding: 2rem 1.5rem;
-        height: 100vh;
-        overflow-y: auto;
-        @media ${mobilePortrait} {
-          padding-top: 100px;
-          .ant-btn-link {
-            color: ${textGrey};
-            font-weight: 500;
-          }
-        }
+      .ant-btn-link {
+        color: ${textGrey};
+        font-weight: 500;
       }
-
-      .sign-out-btn {
-        @media ${mobilePortrait} {
-          display: none;
-        }
+    }
+    .main-content {
+      padding: 2rem 1.5rem;
+      height: calc(100vh - 70px);
+      overflow-y: auto;
+      @media ${mobilePortrait} {
+        padding-top: 100px;
       }
-
-      .empty-state {
-        min-height: 300px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        max-width: 100%;
-      }
-
-      .footer {
+    }
+    .sign-out-btn {
+      @media ${mobilePortrait} {
         display: none;
-        background-color: ${primaryGrey};
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        height: 70px;
       }
+    }
+    .empty-state {
+      min-height: 300px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      max-width: 100%;
+    }
+    .footer {
+      display: none;
+      background-color: ${primaryGrey};
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      height: 70px;
     }
   }
 `;
