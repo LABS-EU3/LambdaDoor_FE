@@ -215,3 +215,9 @@ Shows information about selected company, its location and more, along with clic
 ![Leave a review](https://media.giphy.com/media/SWWTv4Qoj7epVOHGfI/giphy.gif)
 
 shows the Manage review page that contains reviews the user has made and the leave review page with tabs for salary, company and interview reviews
+
+### Search Bar
+
+![Search Bar](https://media.giphy.com/media/jQ8uoOo6m4lhN2OC5u/giphy.gif)
+
+Shows a clip of the search bar being used for search by company, while there are options for "by salary" and "by interview"
