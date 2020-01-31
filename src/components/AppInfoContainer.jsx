@@ -81,6 +81,7 @@ const TextBox = styled.div`
     justify-content: flex-end;
     align-items: flex-start;
     font-size: 20px;
+    margin-top: 30px;
   }
 `;
 
