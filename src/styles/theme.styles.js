@@ -14,6 +14,7 @@ export const tabletPortraitLarge =
 export const tabletLandscape =
   '(max-device-height : 800px) and (orientation: landscape)';
 
+
 // FUNCTIONS
 // Flexbox
 export const FlexFunc = (direction, justifyC, alignI) => {

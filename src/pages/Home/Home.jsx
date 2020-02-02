@@ -13,6 +13,7 @@ import Footer from '../../components/Layout/FooterNav/FooterNav';
 
 import {
   tabletPortrait,
+  tabletPortraitLarge,
   tabletLandscape,
   mobileLandscape,
   mobilePortrait,
@@ -54,9 +55,7 @@ export const Home = ({ history, SetAuthenticated }) => {
             <Logo />
           </div>
           <OnboardingContainer>
-            {/* <div className="title-and-arrow"> */}
             <Title className="siteTitle">Lambda Door</Title>
-            {/* </div> */}
             <Paragraph>
               The one-stop portal for Lambda graduates looking for company
               information in the quest for a job. &nbsp;
@@ -187,6 +186,13 @@ const OnboardingContainer = styled.div`
     line-height: 64px;
     font-family: 'Roboto', san-serif;
     margin-bottom: 10px;
+    @media ${tabletPortraitLarge} {
+      padding-top: 60px;
+    }
+  }
+  span {
+    position: relative;
+    left: -6px;
   }
   div {
     font-size: 20px;

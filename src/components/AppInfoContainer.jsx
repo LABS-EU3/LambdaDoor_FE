@@ -4,7 +4,11 @@
 import React from 'react';
 import { Icon } from 'antd';
 import styled from 'styled-components';
-import { tabletPortrait, mobilePortrait } from '../styles/theme.styles';
+import {
+  tabletPortrait,
+  mobilePortrait,
+  tabletPortraitLarge,
+} from '../styles/theme.styles';
 
 function AppInfoContainer({ infoVisible, hideInfo }) {
   return (
@@ -61,6 +65,9 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media ${tabletPortrait} {
+    background: #ffffff;
+  }
   @media ${mobilePortrait} {
     background: #ffffff;
     height: 1000px;
@@ -78,6 +85,10 @@ const TextBox = styled.div`
   align-items: center;
   justify-content: center;
   padding: 4rem;
+  @media ${tabletPortraitLarge} {
+    height: 1000px;
+    padding: 1rem;
+  }
 
   h2 {
     font-size: 35px;
@@ -110,6 +121,16 @@ const InfoBox = styled.div`
   display: flex;
   align-items: center;
   padding: 2rem;
+  @media ${tabletPortraitLarge} {
+    flex-wrap: wrap;
+    height: 800px;
+    width: 90%;
+  }
+  @media ${tabletPortrait} {
+    padding: 0;
+    width: 110%;
+    flex-wrap: wrap;
+  }
   @media ${mobilePortrait} {
     padding: 0;
     width: 100%;
@@ -127,8 +148,13 @@ const InfoBox = styled.div`
     text-align: center;
     justify-content: space-between;
     margin-top: 100px;
+    @media ${tabletPortraitLarge} {
+      width: 50%;
+    }
     @media ${tabletPortrait} {
       width: 50%;
+      height: 170px;
+      padding: 0.5rem;
     }
     @media ${mobilePortrait} {
       width: 100%;
@@ -155,6 +181,12 @@ const InfoBox = styled.div`
     .icon {
       font-size: 30px !important;
     }
+    @media ${tabletPortraitLarge} {
+      border-right: none;
+    }
+    @media ${tabletPortrait} {
+      border-right: none;
+    }
     @media ${mobilePortrait} {
       border-right: none;
     }
@@ -173,6 +205,9 @@ const InfoBox = styled.div`
   .right-outer {
     .icon {
       font-size: 30px !important;
+      @media ${tabletPortrait} {
+        padding-bottom: 2.5rem;
+      }
     }
   }
 `;
