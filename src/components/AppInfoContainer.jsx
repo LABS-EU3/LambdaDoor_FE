@@ -85,6 +85,9 @@ const TextBox = styled.div`
   align-items: center;
   justify-content: center;
   padding: 4rem;
+  @media only screen and (max-width: 1270px) {
+    padding: 1rem;
+  }
   @media ${tabletPortraitLarge} {
     height: 1000px;
     padding: 1rem;
@@ -96,7 +99,8 @@ const TextBox = styled.div`
     margin-bottom: 0;
     text-align: center;
     @media ${mobilePortrait} {
-      padding-top: 80px;
+      padding-top: 50px;
+      padding-bottom: 30px;
     }
   }
   .back-link {
@@ -121,10 +125,14 @@ const InfoBox = styled.div`
   display: flex;
   align-items: center;
   padding: 2rem;
+  @media only screen and (max-width: 1270px) {
+    padding: 0;
+  }
   @media ${tabletPortraitLarge} {
     flex-wrap: wrap;
     height: 800px;
     width: 90%;
+    padding: 2rem;
   }
   @media ${tabletPortrait} {
     padding: 0;
@@ -148,8 +156,12 @@ const InfoBox = styled.div`
     text-align: center;
     justify-content: space-between;
     margin-top: 100px;
+    @media only screen and (max-width: 1270px) {
+      padding: 1rem;
+    }
     @media ${tabletPortraitLarge} {
       width: 50%;
+      padding: 2rem;
     }
     @media ${tabletPortrait} {
       width: 50%;
@@ -159,6 +171,7 @@ const InfoBox = styled.div`
     @media ${mobilePortrait} {
       width: 100%;
       margin-top: 0;
+      height: 180px;
     }
   }
 
@@ -205,6 +218,12 @@ const InfoBox = styled.div`
   .right-outer {
     .icon {
       font-size: 30px !important;
+      @media only screen and (max-width: 1270px) {
+        padding-bottom: 2rem;
+      }
+      @media ${tabletPortraitLarge} {
+        padding-bottom: 0.4rem;
+      }
       @media ${tabletPortrait} {
         padding-bottom: 2.5rem;
       }

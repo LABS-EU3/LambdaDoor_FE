@@ -122,7 +122,6 @@ const HomeContainer = styled.div`
   }
   @media ${mobilePortrait} {
     background-image: none;
-    /* height: 800px; */
     display: flex;
     flex-direction: column;
   }
@@ -197,6 +196,12 @@ const OnboardingContainer = styled.div`
   div {
     font-size: 20px;
     line-height: 32px;
+    @media only screen and (max-width: 1270px) {
+      width: 300px;
+    }
+    @media ${mobilePortrait} {
+      width: 100%;
+    }
   }
 
   margin-top: 30%;
