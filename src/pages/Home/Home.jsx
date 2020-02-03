@@ -185,6 +185,7 @@ const OnboardingContainer = styled.div`
     line-height: 64px;
     font-family: 'Roboto', san-serif;
     margin-bottom: 10px;
+
     @media ${tabletPortraitLarge} {
       padding-top: 60px;
     }
@@ -222,6 +223,7 @@ const OnboardingContainer = styled.div`
     width: 100%;
     text-align: center;
     padding: 0 20%;
+    margin-top: 5%;
   }
   @media ${mobilePortrait} {
     padding-bottom: 50px;
