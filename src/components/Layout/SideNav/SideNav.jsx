@@ -36,13 +36,6 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
     await getLocation(user.id);
   };
 
-  // const openNotification = placement => {
-  //   notification.info({
-  //     description: 'test',
-  //     placement,
-  //   });
-  // };
-
   return (
     <StyledContainer className={visible ? 'show-drawer' : null}>
       {isLoading ? (
