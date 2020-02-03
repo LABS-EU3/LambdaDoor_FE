@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
-import ClosestLocationCard from './ClosestLocationCard';
+import CompanySummaryCard from '../../CompanySummaryCard';
 
 export const ClosestLocationList = ({
   isFetching,
@@ -16,12 +16,13 @@ export const ClosestLocationList = ({
           {closestCompanies.length !== 0 ? (
             closestCompanies.map(closest => (
               // eslint-disable-next-line react/no-array-index-key
-              <ClosestLocationCard
+              <CompanySummaryCard
                 key={`${closest.id}`}
                 text={closest.description}
                 name={closest.name}
                 id={closest.id}
                 website={closest.website}
+                rating={closest.rating}
               />
             ))
           ) : (
