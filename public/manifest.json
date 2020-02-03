@@ -1,8 +1,8 @@
 {
   "name": "Lambda Door",
   "short_name": "Lambda Door",
-  "theme_color": "#419ba0",
-  "background_color": "#419ba0",
+  "theme_color": "#BB1333",
+  "background_color": "#fff",
   "display": "standalone",
   "start_url": "/",
   "icons": [

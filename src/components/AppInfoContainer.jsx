@@ -1,7 +1,14 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Icon } from 'antd';
 import styled from 'styled-components';
-import { tabletPortrait } from '../styles/theme.styles';
+import {
+  tabletPortrait,
+  mobilePortrait,
+  tabletPortraitLarge,
+} from '../styles/theme.styles';
 
 function AppInfoContainer({ infoVisible, hideInfo }) {
   return (
@@ -58,6 +65,15 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media ${tabletPortrait} {
+    background: #ffffff;
+  }
+  @media ${mobilePortrait} {
+    background: #ffffff;
+    height: 1000px;
+    top: ${props => (props.infoVisible ? `0%` : `-1000px`)};
+    width: 100%;
+  }
 `;
 
 const TextBox = styled.div`
@@ -69,11 +85,23 @@ const TextBox = styled.div`
   align-items: center;
   justify-content: center;
   padding: 4rem;
+  @media only screen and (max-width: 1270px) {
+    padding: 1rem;
+  }
+  @media ${tabletPortraitLarge} {
+    height: 1000px;
+    padding: 1rem;
+  }
+
   h2 {
     font-size: 35px;
     font-family: 'Roboto';
     margin-bottom: 0;
     text-align: center;
+    @media ${mobilePortrait} {
+      padding-top: 50px;
+      padding-bottom: 30px;
+    }
   }
   .back-link {
     width: 100%;
@@ -82,6 +110,14 @@ const TextBox = styled.div`
     align-items: flex-start;
     font-size: 20px;
     margin-top: 30px;
+    @media ${mobilePortrait} {
+      margin-top: -20px;
+    }
+  }
+  @media ${mobilePortrait} {
+    width: 98%;
+    padding: 0;
+    height: 1200px;
   }
 `;
 
@@ -89,6 +125,25 @@ const InfoBox = styled.div`
   display: flex;
   align-items: center;
   padding: 2rem;
+  @media only screen and (max-width: 1270px) {
+    padding: 0;
+  }
+  @media ${tabletPortraitLarge} {
+    flex-wrap: wrap;
+    height: 800px;
+    width: 90%;
+    padding: 2rem;
+  }
+  @media ${tabletPortrait} {
+    padding: 0;
+    width: 110%;
+    flex-wrap: wrap;
+  }
+  @media ${mobilePortrait} {
+    padding: 0;
+    width: 100%;
+    flex-direction: column;
+  }
 
   p {
     width: 25%;
@@ -101,8 +156,22 @@ const InfoBox = styled.div`
     text-align: center;
     justify-content: space-between;
     margin-top: 100px;
+    @media only screen and (max-width: 1270px) {
+      padding: 1rem;
+    }
+    @media ${tabletPortraitLarge} {
+      width: 50%;
+      padding: 2rem;
+    }
     @media ${tabletPortrait} {
       width: 50%;
+      height: 170px;
+      padding: 0.5rem;
+    }
+    @media ${mobilePortrait} {
+      width: 100%;
+      margin-top: 0;
+      height: 180px;
     }
   }
 
@@ -115,6 +184,9 @@ const InfoBox = styled.div`
     .icon {
       font-size: 30px !important;
     }
+    @media ${mobilePortrait} {
+      border-right: none;
+    }
   }
 
   .left-center {
@@ -122,7 +194,13 @@ const InfoBox = styled.div`
     .icon {
       font-size: 30px !important;
     }
+    @media ${tabletPortraitLarge} {
+      border-right: none;
+    }
     @media ${tabletPortrait} {
+      border-right: none;
+    }
+    @media ${mobilePortrait} {
       border-right: none;
     }
   }
@@ -132,11 +210,23 @@ const InfoBox = styled.div`
     .icon {
       font-size: 30px !important;
     }
+    @media ${mobilePortrait} {
+      border-right: none;
+    }
   }
 
   .right-outer {
     .icon {
       font-size: 30px !important;
+      @media only screen and (max-width: 1270px) {
+        padding-bottom: 2rem;
+      }
+      @media ${tabletPortraitLarge} {
+        padding-bottom: 0.4rem;
+      }
+      @media ${tabletPortrait} {
+        padding-bottom: 2.5rem;
+      }
     }
   }
 `;

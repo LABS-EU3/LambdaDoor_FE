@@ -32,14 +32,10 @@ const COLOURS = [
   '#0C3C78',
   '#D2E3D0',
 ];
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-}) => {
+
+let chartTotal = 0;
+const renderCustomizedLabel = data => {
+  const { cx, cy, midAngle, innerRadius, outerRadius, percent, count } = data;
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -56,7 +52,7 @@ const renderCustomizedLabel = ({
       textAnchor="middle"
       dominantBaseline="central"
     >
-      {`${(percent * 100).toFixed(0)}%`}
+      {`${((count / chartTotal) * 100).toFixed(0)}%`}
     </text>
   );
 };
@@ -90,6 +86,7 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
     setTotal(
       state.reduce((acc, obj) => {
         acc += obj.count;
+        chartTotal += obj.count;
         return acc;
       }, 0)
     );
@@ -106,8 +103,8 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
                   data={state}
                   cx={150}
                   cy={150}
-                  innerRadius={50}
-                  outerRadius={100}
+                  innerRadius={70}
+                  outerRadius={140}
                   labelLine={false}
                   label={renderCustomizedLabel}
                   fill="#8884d8"
@@ -125,19 +122,21 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
                 verticalAlign="right"
                 content={() => (
                   <ul className="legends">
-                    {state.map((entry, index) => (
-                      <li key={entry.id}>
-                        <span
-                          style={{
-                            background: `${COLOURS[index % COLOURS.length]}`,
-                          }}
-                        />
-                        {`${entry.interest} - ${(
-                          (entry.count / total) *
-                          100
-                        ).toFixed(0)}%`}
-                      </li>
-                    ))}
+                    {state.map((entry, index) => {
+                      return (
+                        <li key={entry.id}>
+                          <span
+                            style={{
+                              background: `${COLOURS[index % COLOURS.length]}`,
+                            }}
+                          />
+                          {`${entry.interest} - ${(
+                            (entry.count / total) *
+                            100
+                          ).toFixed(0)}%`}
+                        </li>
+                      );
+                    })}
                   </ul>
                 )}
               />
@@ -169,6 +168,12 @@ const StyledContainer = styled.div`
   align-items: center;
   min-height: 300px;
   position: relative;
+
+  text {
+    font-size: 10px;
+    font-weight: bolder;
+    fill: white;
+  }
 
   @media (max-width: 845px) {
     flex-direction: column;
