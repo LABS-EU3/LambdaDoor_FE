@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { Typography, Spin, Button, Icon, Tooltip } from 'antd';
+import { Typography, Spin, Button, Icon, Tooltip, notification } from 'antd';
 
 import Logo from './Logo';
 import Avatar from './Avatar';
@@ -36,6 +36,13 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
     await getLocation(user.id);
   };
 
+  // const openNotification = placement => {
+  //   notification.info({
+  //     description: 'test',
+  //     placement,
+  //   });
+  // };
+
   return (
     <StyledContainer className={visible ? 'show-drawer' : null}>
       {isLoading ? (
@@ -47,6 +54,15 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
           <div className="branding">
             <Logo smaller />
             <h2>Lambda Door</h2>
+            {!user.location ? (
+              notification.info({
+                description:
+                  'You are currently blocking your location. To enable full functionality, disable location blocking in your browser.',
+                placement: 'topLeft',
+              })
+            ) : (
+              <div />
+            )}
           </div>
           <div className="user-profile-wrap">
             <Avatar userImage={user.profile_picture} />
@@ -61,7 +77,7 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
               <div className="location">
                 <i aria-label="location" className="fas fa-map-marker-alt" />
                 <Paragraph>{user.location}</Paragraph>
-                <Tooltip title="Edit">
+                <Tooltip title="Click to update">
                   <Button
                     icon="edit"
                     size="small"
