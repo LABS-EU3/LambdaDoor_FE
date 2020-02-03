@@ -57,7 +57,7 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
               {user.full_name}
             </Paragraph>
             <Paragraph>@{user.username}</Paragraph>
-            {user.location && (
+            {user.location ? (
               <div className="location">
                 <i aria-label="location" className="fas fa-map-marker-alt" />
                 <Paragraph>{user.location}</Paragraph>
@@ -72,7 +72,15 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
                   />
                 </Tooltip>
               </div>
-            )}
+            ) : (
+          (<div className="location-unknown">
+          <i aria-label="location" className="fas fa-map-marker-alt" />
+          <Tooltip title="To share your location clear your browser settings">
+          <Paragraph>Unknown location</Paragraph>
+          </Tooltip>
+              </div>
+          )
+          }
             <div className="interests">
               <Interests />
             </div>
