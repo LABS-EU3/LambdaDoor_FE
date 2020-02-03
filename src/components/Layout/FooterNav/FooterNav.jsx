@@ -7,6 +7,7 @@ import {
   faFacebook,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
+import { mobilePortrait } from '../../../styles/theme.styles';
 
 const StyledDiv = styled.div`
   background: #bb1333;
@@ -20,6 +21,10 @@ const StyledDiv = styled.div`
   width: 100%;
   height: 2.5rem; /* Footer height */
   align-items: center;
+  @media ${mobilePortrait} {
+    height: 2.7rem;
+    margin-top: 0;
+  }
 
   a {
     margin: 0 1rem;
@@ -82,7 +87,16 @@ const StyledDiv = styled.div`
   }
   @media only screen and (max-width: 705px) {
     .tagline {
-      display: none;
+      /* display: none; */
+      position: absolute;
+      width: 100vw;
+      background-color: #bb1333;
+      color: white;
+      bottom: 42px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
     a {
       margin: 0 1rem;
