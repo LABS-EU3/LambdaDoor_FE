@@ -90,9 +90,9 @@ const InterviewReviewList = ({
           }
         >
           <p>
-            {interviewReview.text.length > 150 ? (
+            {interviewReview.text.length > 100 ? (
               <span>
-                {interviewReview.text.slice(0, 150)}
+                {interviewReview.text.slice(0, 100)}
                 ...
               </span>
             ) : (

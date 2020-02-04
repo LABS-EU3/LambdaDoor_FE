@@ -6,25 +6,26 @@ import SalaryReviewForm from '../../components/AddReview/SalaryReviewForm';
 import InterviewReviewForm from '../../components/AddReview/InterviewReviewForm';
 
 const { TabPane } = Tabs;
-const AddReview = ({ history }) => {
+const AddReview = ({ history, location }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
       history.push('/');
     }
   }, []);
+
   return (
     <StyledContainer>
       <div>
         <h1>Leave a Review</h1>
-        <Tabs>
-          <TabPane tab="Company Review" key="1">
+        <Tabs defaultActiveKey={String(location.state)}>
+          <TabPane tab="Company Review" key="0">
             <CompanyReviewForm />
           </TabPane>
-          <TabPane tab="Salary Review" key="2">
+          <TabPane tab="Salary Review" key="1">
             <SalaryReviewForm />
           </TabPane>
-          <TabPane tab="Interview Process" key="3">
+          <TabPane tab="Interview Process" key="2">
             <InterviewReviewForm />
           </TabPane>
         </Tabs>
