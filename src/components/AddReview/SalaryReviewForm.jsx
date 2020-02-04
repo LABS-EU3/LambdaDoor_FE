@@ -31,6 +31,7 @@ const SalaryReview = ({
     currency: '',
     unit: '',
     is_current_employee: false,
+    is_anonymous: false,
     is_accepting_questions: false,
   });
   const [loading, setLoading] = useState(false);
@@ -74,6 +75,14 @@ const SalaryReview = ({
 
   const handleChange = event => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  };
+
+  const handleAnonymous = value => {
+    setFormValues({
+      ...formValues,
+      is_anonymous: value,
+      is_accepting_questions: !value,
+    });
   };
 
   return (
@@ -187,9 +196,7 @@ const SalaryReview = ({
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
                 defaultChecked={false}
-                onChange={value =>
-                  handleComponentChange('is_accepting_questions', value)
-                }
+                onChange={value => handleAnonymous(value)}
               />
             </div>
           </SwitchContainer>

@@ -65,6 +65,11 @@ export const DetailedSalaryReviewCard = ({
     setEditing(false);
   };
 
+  const updateAnonymous = value => {
+    updatedReview.is_anonymous = value;
+    updatedReview.is_accepting_questions = !value;
+  };
+
   const { Option } = Select;
   const options = jobCategories.map(opt => (
     <Option key={opt.id} value={opt.id}>
@@ -166,10 +171,10 @@ export const DetailedSalaryReviewCard = ({
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="close" />}
-              defaultChecked={review.is_accepting_questions}
+              defaultChecked={review.is_anonymous}
               disabled={!isEditing}
               onChange={e => {
-                updateReview('is_accepting_questions', e === true ? 1 : 0);
+                updateAnonymous(e);
               }}
             />
           </div>
