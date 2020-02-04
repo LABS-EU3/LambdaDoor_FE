@@ -4,7 +4,7 @@ export const textGrey = '#262626';
 
 // Media Queries
 export const mobilePortrait =
-  '(max-device-width : 480px) and (orientation: portrait)';
+  '(max-device-width : 480px) and (orientation: portrait), (max-device-width : 800px) and  (orientation: landscape)';
 export const mobileLandscape =
   '(max-device-height : 480px) and (orientation: landscape)';
 export const tabletPortrait =

@@ -57,6 +57,9 @@ const SalaryReviewsList = ({
             <h2>{elem.interest}</h2>
 
             <h3>{salaryFormatted}</h3>
+            <ReviewerName>
+              {elem.is_anonymous ? 'Anonymous User' : elem.full_name}
+            </ReviewerName>
           </StyledCard>
         );
       })}
@@ -84,18 +87,13 @@ const StyledCard = styled(Card)`
   .card-top {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.8rem;
     height: 60px;
     h2 {
       margin-bottom: 0;
-      padding-top: 35px !important;
+      padding-top: 20px !important;
       font-size: 20px;
       font-weight: 900;
     }
-  }
-  .stars {
-    margin-top: 20px;
-    font-size: 10px;
   }
 `;
 
@@ -112,7 +110,7 @@ const StyledEmpty = styled.div`
 
 const ReviewerName = styled.div`
   text-align: right;
-  padding: 1rem 0;
+  margin-bottom: 1rem;
 `;
 
 export default withRouter(connect(state => state)(SalaryReviewsList));
