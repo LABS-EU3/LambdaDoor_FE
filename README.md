@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/LABS-EU3/lambdaDoor_frontend.svg?branch=develop)](https://travis-ci.com/LABS-EU3/lambdaDoor_frontend) ![](badges.svg) [![Netlify Status](https://api.netlify.com/api/v1/badges/d7c57980-e371-4865-b666-2ebf173bcff9/deploy-status)](https://app.netlify.com/sites/lambdadoor/deploys)
 
-# LamdaDoor
+# LambdaDoor
 
 Many atimes Job seekers find it difficult getting information specific to their search with respect to companies' interview processes, cultures and salary information that are less generalized, hence they spend alot of time searching and filtering what's needed from the sea of available information.
 
@@ -10,7 +10,7 @@ LambdaDoor is here to make that search simpler by providing stream lined informa
 
 ## Tech stack
 
-HTML, CSS, Ant design, Formik, Styled-Component, Javascript, React, Redux, coveralls, Axios, Travis CI etc.
+HTML, CSS, Ant design, Formik, Styled-Component, Javascript, React, Redux, coveralls, Sentry, Travis CI etc.
 
 ===============================================================================
 
@@ -202,22 +202,22 @@ Shows the Dashboard display with TOP Rated Companies and a list of reviewed Job 
 
 ![Companies near user](https://media.giphy.com/media/eJMPVNFc6AaYmu71Sw/giphy.gif)
 
-Displays companies within a set distance of the user if one exist, with a graph that shows an average pay for different roles
+Displays companies within a set distance of the user location if they exist in the DB, with a graph that shows an average pay for different roles
 
 ### Company reviews
 
 ![Companies reviews](https://media.giphy.com/media/YOpOAQXeyPNFFAtyOi/giphy.gif)
 
-Shows information about selected company, its location and more, along with clickable tabs for salary and interview review cards
+Shows information about selected company, its location and more, along with tabs for salary and interview review, each tab having cickable cards for more information on the presented search.
 
 ### Leave a review
 
 ![Leave a review](https://media.giphy.com/media/SWWTv4Qoj7epVOHGfI/giphy.gif)
 
-shows the Manage review page that contains reviews the user has made and the leave review page with tabs for salary, company and interview reviews
+shows the Manage review page that contains reviews the user made as well as the leave review page with tabs for salary, company and interview reviews.
 
 ### Search Bar
 
 ![Search Bar](https://media.giphy.com/media/jQ8uoOo6m4lhN2OC5u/giphy.gif)
 
-Shows a clip of the search bar being used for search by company, while there are options for "by salary" and "by interview"
+Shows a clip of the search bar being used for search company, Salary and interview information either by location,company name or job title.
