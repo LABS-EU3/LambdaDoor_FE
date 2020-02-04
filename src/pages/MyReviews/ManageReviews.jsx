@@ -12,7 +12,7 @@ import InterviewReviewList from '../../components/MyReviews/Interview/InterviewR
 
 const { TabPane } = Tabs;
 
-const ManageReviews = ({ history }) => {
+const ManageReviews = ({ history, location }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -23,14 +23,14 @@ const ManageReviews = ({ history }) => {
   return (
     <div>
       <h1>My Reviews</h1>
-      <Tabs defaultActiveKey="1">
-        <TabPane tab="Company Reviews" key="1">
+      <Tabs defaultActiveKey={String(location.state)}>
+        <TabPane tab="Company Reviews" key="0">
           <CompanyReviewList />
         </TabPane>
-        <TabPane tab="Salary Reviews" key="2">
+        <TabPane tab="Salary Reviews" key="1">
           <MySalaryReviewList />
         </TabPane>
-        <TabPane tab="Interview Reviews" key="3">
+        <TabPane tab="Interview Reviews" key="2">
           <InterviewReviewList />
         </TabPane>
       </Tabs>
