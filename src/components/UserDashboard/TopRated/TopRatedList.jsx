@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
@@ -10,6 +11,9 @@ export const TopRatedList = ({
   isFetching,
   getTopRatedReviews,
   topRatedReviews: { topRatedReviews },
+  authState: {
+    credentials: { id, location },
+  },
 }) => {
   useEffect(() => {
     getTopRatedReviews();
@@ -18,8 +22,12 @@ export const TopRatedList = ({
     <StyledDiv>
       {!isFetching ? (
         <>
-          {topRatedReviews.length !== 0 ? (
-            topRatedReviews.slice(0, 4).map(topRated => (
+          {topRatedReviews.length === 0 ? (
+            <div className="empty-state">
+              <p>No data to display</p>
+            </div>
+          ) : !location ? (
+            topRatedReviews.slice(0, 8).map(topRated => (
               // eslint-disable-next-line react/no-array-index-key
               <CompanySummaryCard
                 key={`${topRated.id}`}
@@ -31,9 +39,17 @@ export const TopRatedList = ({
               />
             ))
           ) : (
-            <div className="empty-state">
-              <p>No data to display</p>
-            </div>
+            topRatedReviews.slice(0, 4).map(topRated => (
+              // eslint-disable-next-line react/no-array-index-key
+              <CompanySummaryCard
+                key={`${topRated.id}`}
+                text={topRated.description}
+                name={topRated.name}
+                id={topRated.id}
+                rating={topRated.average_rating}
+                website={topRated.website}
+              />
+            ))
           )}
         </>
       ) : (
