@@ -79,16 +79,18 @@ const SalaryReviewDetails = ({
 
         <div className="bottom">
           <div className="contact">
-            {!review.is_anonymous ? (
+            {!review.is_anonymous && (
               <p>
                 Have questions? &nbsp;&nbsp;
                 <Button onClick={() => setOpen(true)}> Contact Me</Button>
               </p>
-            ) : (
-              ''
             )}
           </div>
-          <div className="username">{review.full_name}</div>
+          {review.is_anonymous ? (
+            <div>Anonymous User</div>
+          ) : (
+            <div className="username">{review.full_name}</div>
+          )}
         </div>
       </StyledCard>
     </div>
