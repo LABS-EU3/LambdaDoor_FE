@@ -176,11 +176,7 @@ const InfoBox = styled.div`
     @media only screen and (max-width: 1270px) {
       padding: 1rem;
     }
-    @media ${mobileLandscape} {
-      width: 50%;
-      height: 175px;
-      margin-top: 5px;
-    }
+   
     @media ${tabletPortraitLarge} {
       width: 50%;
       padding: 2rem;
@@ -194,6 +190,11 @@ const InfoBox = styled.div`
       width: 100%;
       margin-top: 0;
       height: 180px;
+    }
+    @media ${mobileLandscape} {
+      width: 65%;
+      height: 155px;
+      margin-top: 5px;
     }
   }
 
