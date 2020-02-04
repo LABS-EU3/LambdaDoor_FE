@@ -98,7 +98,7 @@ const StyledDiv = styled.div`
       align-items: center;
       justify-content: space-around;
       @media ${mobileLandscape} {
-        bottom: 40px;
+        bottom: 39px;
       }
     }
     a {

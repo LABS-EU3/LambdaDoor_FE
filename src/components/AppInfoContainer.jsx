@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import {
   tabletPortrait,
   mobilePortrait,
+  mobileLandscape,
   tabletPortraitLarge,
 } from '../styles/theme.styles';
 
@@ -68,6 +69,11 @@ const StyledDiv = styled.div`
   @media ${tabletPortrait} {
     background: #ffffff;
   }
+  @media ${mobileLandscape} {
+    background: #ffffff;
+    height: 850px;
+    top: ${props => (props.infoVisible ? `0%` : `-850px`)};
+  }
   @media ${mobilePortrait} {
     background: #ffffff;
     height: 1000px;
@@ -87,6 +93,9 @@ const TextBox = styled.div`
   padding: 4rem;
   @media only screen and (max-width: 1270px) {
     padding: 1rem;
+  }
+  @media ${mobileLandscape} {
+    height: 700px;
   }
   @media ${tabletPortraitLarge} {
     height: 1000px;
@@ -110,8 +119,12 @@ const TextBox = styled.div`
     align-items: flex-start;
     font-size: 20px;
     margin-top: 30px;
+    @media ${mobileLandscape} {
+      margin-top: 0;
+    }
     @media ${mobilePortrait} {
       margin-top: -20px;
+      justify-content: center;
     }
   }
   @media ${mobilePortrait} {
@@ -139,6 +152,10 @@ const InfoBox = styled.div`
     width: 110%;
     flex-wrap: wrap;
   }
+  @media ${mobileLandscape} {
+    height: 800px;
+    flex-wrap: wrap;
+  }
   @media ${mobilePortrait} {
     padding: 0;
     width: 100%;
@@ -158,6 +175,11 @@ const InfoBox = styled.div`
     margin-top: 100px;
     @media only screen and (max-width: 1270px) {
       padding: 1rem;
+    }
+    @media ${mobileLandscape} {
+      width: 50%;
+      height: 175px;
+      margin-top: 5px;
     }
     @media ${tabletPortraitLarge} {
       width: 50%;
@@ -193,11 +215,17 @@ const InfoBox = styled.div`
     border-right: 1px solid grey;
     .icon {
       font-size: 30px !important;
+      @media ${mobileLandscape} {
+        padding-bottom: 1.8rem;
+      }
     }
     @media ${tabletPortraitLarge} {
       border-right: none;
     }
     @media ${tabletPortrait} {
+      border-right: none;
+    }
+    @media ${mobileLandscape} {
       border-right: none;
     }
     @media ${mobilePortrait} {
@@ -220,6 +248,9 @@ const InfoBox = styled.div`
       font-size: 30px !important;
       @media only screen and (max-width: 1270px) {
         padding-bottom: 2rem;
+      }
+      @media ${mobileLandscape} {
+        padding-bottom: 0;
       }
       @media ${tabletPortraitLarge} {
         padding-bottom: 0.4rem;

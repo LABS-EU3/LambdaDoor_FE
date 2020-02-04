@@ -200,6 +200,9 @@ const OnboardingContainer = styled.div`
     @media only screen and (max-width: 1270px) {
       width: 300px;
     }
+    @media ${mobileLandscape} {
+      width: 400px;
+    }
     @media ${mobilePortrait} {
       width: 100%;
     }
