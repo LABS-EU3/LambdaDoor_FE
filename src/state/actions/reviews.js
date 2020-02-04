@@ -168,7 +168,7 @@ export const addCompanyReview = (review, id, history) => async dispatch => {
       payload: response.data,
     });
 
-    history.push('/reviews');
+    history.push({ pathname: '/reviews', state: 0 });
     openNotification('Review Added Successfully! ');
   } catch (error) {
     dispatch({
@@ -269,7 +269,7 @@ export const addSalaryReview = (review, id, history) => async dispatch => {
       payload: response.data,
     });
 
-    history.push('/reviews');
+    history.push({ pathname: '/reviews', state: 1 });
     openNotification('Review Added Successfully! ');
   } catch (error) {
     dispatch({
@@ -375,7 +375,7 @@ export const addInterviewReview = (review, id, history) => async dispatch => {
       type: types.ADD_INTERVIEW_REVIEW_SUCCESS,
       payload: response.data,
     });
-    history.push('/reviews');
+    history.push({ pathname: '/reviews', state: 2 });
     openNotification('Review Added Successfully! ');
   } catch (error) {
     dispatch({
