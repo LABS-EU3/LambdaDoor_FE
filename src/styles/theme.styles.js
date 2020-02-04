@@ -1,11 +1,11 @@
-//Colors
+// Colors
 export const primaryGrey = '#FAFAFA';
 export const textGrey = '#262626';
 
 // Media Queries
 export const mobilePortrait =
   '(max-device-width : 480px) and (orientation: portrait), (max-device-width : 812px) and  (orientation: landscape)';
-  //I changed this to 812px from 800 to include the iPhone X dimensions at landscape.
+// I changed this to 812px from 800 to include the iPhone X dimensions at landscape.
 export const mobileLandscape =
   '(max-device-height : 480px) and (orientation: landscape)';
 export const tabletPortrait =

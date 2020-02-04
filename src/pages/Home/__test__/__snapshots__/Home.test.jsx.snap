@@ -5,16 +5,16 @@ exports[`ConnectedHome renders correctly 1`] = `
   <div>
     <div>
       <div
-        class="sc-EHOje cZOeGj"
+        class="sc-EHOje kgEXVB"
       >
         <div
-          class="sc-bZQynM loocQj"
+          class="sc-bZQynM cUURHD"
         >
           <div
             class="logo-div"
           >
             <div
-              class="sc-bwzfXH tLDVg"
+              class="sc-bwzfXH fgQGql"
             >
               <img
                 alt="Lambda School"
@@ -23,7 +23,7 @@ exports[`ConnectedHome renders correctly 1`] = `
             </div>
           </div>
           <div
-            class="sc-gzVnrw dJVsxp"
+            class="sc-gzVnrw bOTotm"
           >
             <h1
               class="ant-typography siteTitle"
@@ -63,10 +63,10 @@ exports[`ConnectedHome renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="sc-htpNat dTRRgl"
+        class="sc-htpNat dZxUZh"
       >
         <div
-          class="sc-bxivhb kceqlJ"
+          class="sc-bxivhb egdKxB"
         >
           <div
             class="heading"
@@ -76,7 +76,7 @@ exports[`ConnectedHome renders correctly 1`] = `
             </h2>
           </div>
           <div
-            class="sc-ifAKCX cFKmtb"
+            class="sc-ifAKCX hBrEpu"
           >
             <p
               class="left-outer"
@@ -204,7 +204,7 @@ exports[`ConnectedHome renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="sc-bdVaJa jTvVJD"
+        class="sc-bdVaJa kpDyBP"
       >
         <div
           class="tagline"
@@ -310,16 +310,16 @@ exports[`Home Displays a snapshot for the home page with it's image information 
 <div>
   <div>
     <div
-      class="sc-EHOje cZOeGj"
+      class="sc-EHOje kgEXVB"
     >
       <div
-        class="sc-bZQynM loocQj"
+        class="sc-bZQynM cUURHD"
       >
         <div
           class="logo-div"
         >
           <div
-            class="sc-bwzfXH tLDVg"
+            class="sc-bwzfXH fgQGql"
           >
             <img
               alt="Lambda School"
@@ -328,7 +328,7 @@ exports[`Home Displays a snapshot for the home page with it's image information 
           </div>
         </div>
         <div
-          class="sc-gzVnrw dJVsxp"
+          class="sc-gzVnrw bOTotm"
         >
           <h1
             class="ant-typography siteTitle"
@@ -368,10 +368,10 @@ exports[`Home Displays a snapshot for the home page with it's image information 
       </div>
     </div>
     <div
-      class="sc-htpNat dTRRgl"
+      class="sc-htpNat dZxUZh"
     >
       <div
-        class="sc-bxivhb kceqlJ"
+        class="sc-bxivhb egdKxB"
       >
         <div
           class="heading"
@@ -381,7 +381,7 @@ exports[`Home Displays a snapshot for the home page with it's image information 
           </h2>
         </div>
         <div
-          class="sc-ifAKCX cFKmtb"
+          class="sc-ifAKCX hBrEpu"
         >
           <p
             class="left-outer"
@@ -509,7 +509,7 @@ exports[`Home Displays a snapshot for the home page with it's image information 
       </div>
     </div>
     <div
-      class="sc-bdVaJa jTvVJD"
+      class="sc-bdVaJa kpDyBP"
     >
       <div
         class="tagline"
@@ -614,16 +614,16 @@ exports[`Home Displays a snapshot for the home page with it's image information 
 <DocumentFragment>
   <div>
     <div
-      class="sc-EHOje cZOeGj"
+      class="sc-EHOje kgEXVB"
     >
       <div
-        class="sc-bZQynM loocQj"
+        class="sc-bZQynM cUURHD"
       >
         <div
           class="logo-div"
         >
           <div
-            class="sc-bwzfXH tLDVg"
+            class="sc-bwzfXH fgQGql"
           >
             <img
               alt="Lambda School"
@@ -632,7 +632,7 @@ exports[`Home Displays a snapshot for the home page with it's image information 
           </div>
         </div>
         <div
-          class="sc-gzVnrw dJVsxp"
+          class="sc-gzVnrw bOTotm"
         >
           <h1
             class="ant-typography siteTitle"
@@ -672,10 +672,10 @@ exports[`Home Displays a snapshot for the home page with it's image information 
       </div>
     </div>
     <div
-      class="sc-htpNat dTRRgl"
+      class="sc-htpNat dZxUZh"
     >
       <div
-        class="sc-bxivhb kceqlJ"
+        class="sc-bxivhb egdKxB"
       >
         <div
           class="heading"
@@ -685,7 +685,7 @@ exports[`Home Displays a snapshot for the home page with it's image information 
           </h2>
         </div>
         <div
-          class="sc-ifAKCX cFKmtb"
+          class="sc-ifAKCX hBrEpu"
         >
           <p
             class="left-outer"
@@ -813,7 +813,7 @@ exports[`Home Displays a snapshot for the home page with it's image information 
       </div>
     </div>
     <div
-      class="sc-bdVaJa jTvVJD"
+      class="sc-bdVaJa kpDyBP"
     >
       <div
         class="tagline"
@@ -919,16 +919,16 @@ exports[`Home renders correctly 1`] = `
   <div>
     <div>
       <div
-        class="sc-EHOje cZOeGj"
+        class="sc-EHOje kgEXVB"
       >
         <div
-          class="sc-bZQynM loocQj"
+          class="sc-bZQynM cUURHD"
         >
           <div
             class="logo-div"
           >
             <div
-              class="sc-bwzfXH tLDVg"
+              class="sc-bwzfXH fgQGql"
             >
               <img
                 alt="Lambda School"
@@ -937,7 +937,7 @@ exports[`Home renders correctly 1`] = `
             </div>
           </div>
           <div
-            class="sc-gzVnrw dJVsxp"
+            class="sc-gzVnrw bOTotm"
           >
             <h1
               class="ant-typography siteTitle"
@@ -977,10 +977,10 @@ exports[`Home renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="sc-htpNat dTRRgl"
+        class="sc-htpNat dZxUZh"
       >
         <div
-          class="sc-bxivhb kceqlJ"
+          class="sc-bxivhb egdKxB"
         >
           <div
             class="heading"
@@ -990,7 +990,7 @@ exports[`Home renders correctly 1`] = `
             </h2>
           </div>
           <div
-            class="sc-ifAKCX cFKmtb"
+            class="sc-ifAKCX hBrEpu"
           >
             <p
               class="left-outer"
@@ -1118,7 +1118,7 @@ exports[`Home renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="sc-bdVaJa jTvVJD"
+        class="sc-bdVaJa kpDyBP"
       >
         <div
           class="tagline"

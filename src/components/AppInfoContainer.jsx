@@ -176,7 +176,7 @@ const InfoBox = styled.div`
     @media only screen and (max-width: 1270px) {
       padding: 1rem;
     }
-   
+
     @media ${tabletPortraitLarge} {
       width: 50%;
       padding: 2rem;

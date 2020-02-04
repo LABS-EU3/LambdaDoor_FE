@@ -11,9 +11,7 @@ export const TopRatedList = ({
   isFetching,
   getTopRatedReviews,
   topRatedReviews: { topRatedReviews },
-  authState: {
-    credentials: { id, location },
-  },
+  location,
 }) => {
   useEffect(() => {
     getTopRatedReviews();

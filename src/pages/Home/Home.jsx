@@ -186,7 +186,6 @@ const OnboardingContainer = styled.div`
     font-family: 'Roboto', san-serif;
     margin-bottom: 10px;
 
-
     @media ${tabletPortraitLarge} {
       padding-top: 60px;
     }
