@@ -16,7 +16,12 @@ import { editProfile } from '../../../state/actions/user';
 
 import { getLocation } from '../../../utils/getLocation';
 
-import { mobilePortrait, primaryGrey } from '../../../styles/theme.styles';
+import {
+  mobilePortrait,
+  primaryGrey,
+  tabletPortraitLarge,
+  tabletPortrait,
+} from '../../../styles/theme.styles';
 
 const { Paragraph } = Typography;
 
@@ -220,6 +225,12 @@ const StyledContainer = styled.div`
       visibility: hidden;
       font-weight: 500;
       font-size: 1rem;
+      @media ${tabletPortraitLarge} {
+        visibility: visible;
+      }
+      @media ${tabletPortrait} {
+        visibility: hidden;
+      }
       @media ${mobilePortrait} {
         visibility: visible;
       }

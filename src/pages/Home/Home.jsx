@@ -147,7 +147,7 @@ const HomeContentContainer = styled.div`
       }
     }
   }
-  @media (max-width: 705px) {
+  @media (max-width: 480px) {
     .tag-paragraph {
       display: block;
       margin-bottom: 80px;
@@ -185,6 +185,7 @@ const OnboardingContainer = styled.div`
     line-height: 64px;
     font-family: 'Roboto', san-serif;
     margin-bottom: 10px;
+
 
     @media ${tabletPortraitLarge} {
       padding-top: 60px;

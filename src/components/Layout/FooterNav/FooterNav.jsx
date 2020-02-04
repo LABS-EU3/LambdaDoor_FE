@@ -92,14 +92,14 @@ const StyledDiv = styled.div`
       width: 100vw;
       background-color: #bb1333;
       color: white;
-      bottom: 42px;
+      bottom: 39px;
       height: 40px;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      @media ${mobileLandscape} {
+      /* @media ${mobileLandscape} {
         bottom: 39px;
-      }
+      } */
     }
     a {
       margin: 0 1rem;
