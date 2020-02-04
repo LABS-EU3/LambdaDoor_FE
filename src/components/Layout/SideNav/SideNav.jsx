@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { Typography, Spin, Button, Icon, Tooltip } from 'antd';
+import { Typography, Spin, Button, Icon, Tooltip, notification } from 'antd';
 
 import Logo from './Logo';
 import Avatar from './Avatar';
@@ -47,6 +47,15 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
           <div className="branding">
             <Logo smaller />
             <h2>Lambda Door</h2>
+            {!user.location ? (
+              notification.info({
+                description:
+                  'You are currently blocking your location. To enable full functionality, disable location blocking in your browser.',
+                placement: 'topLeft',
+              })
+            ) : (
+              <div />
+            )}
           </div>
           <div className="user-profile-wrap">
             <Avatar userImage={user.profile_picture} />
@@ -57,11 +66,11 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
               {user.full_name}
             </Paragraph>
             <Paragraph>@{user.username}</Paragraph>
-            {user.location && (
+            {user.location ? (
               <div className="location">
                 <i aria-label="location" className="fas fa-map-marker-alt" />
                 <Paragraph>{user.location}</Paragraph>
-                <Tooltip title="Edit">
+                <Tooltip title="Click to update">
                   <Button
                     icon="edit"
                     size="small"
@@ -70,6 +79,13 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
                     type="primary"
                     onClick={updateLocation}
                   />
+                </Tooltip>
+              </div>
+            ) : (
+              <div className="location">
+                <i aria-label="location" className="fas fa-map-marker-alt" />
+                <Tooltip title="To share your location clear your browser settings">
+                  <Paragraph>Unknown location</Paragraph>
                 </Tooltip>
               </div>
             )}

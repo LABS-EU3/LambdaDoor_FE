@@ -7,7 +7,7 @@ import {
   faFacebook,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
-import { mobilePortrait } from '../../../styles/theme.styles';
+import { mobilePortrait, mobileLandscape } from '../../../styles/theme.styles';
 
 const StyledDiv = styled.div`
   background: #bb1333;
@@ -97,6 +97,9 @@ const StyledDiv = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-around;
+      @media ${mobileLandscape} {
+        bottom: 39px;
+      }
     }
     a {
       margin: 0 1rem;
