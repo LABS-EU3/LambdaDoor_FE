@@ -20,9 +20,9 @@ const CompanyPage = ({
   getInterviewReviewsByCompanyId,
   companies: { companies },
   // avgSalaries: { avgSalaries },
-  authState: {
-    credentials: { id },
-  },
+  // authState: {
+  //   credentials: { id },
+  // },
   getSalaryReviewsByCompanyId,
   history,
 }) => {

@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Route } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import { Button, Icon } from 'antd';
 import { connect } from 'react-redux';
 import SideNav from './SideNav/SideNav';
@@ -64,7 +64,18 @@ const DashboardLayout = ({ component: Component, LogoutUser, ...rest }) => {
                     <Icon type="right" />
                   </Button>
                 </div>
-                <img className="right-hand-logo" src={logo} alt="Lambda logo" />
+                <NavLink
+                  exact
+                  to="/dashboard"
+                  className="link"
+                  activeClassName="active"
+                >
+                  <img
+                    className="right-hand-logo"
+                    src={logo}
+                    alt="Lambda logo"
+                  />
+                </NavLink>
               </div>
               <div className="main-content">
                 <Component {...props} />
