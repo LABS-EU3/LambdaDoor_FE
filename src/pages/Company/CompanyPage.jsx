@@ -54,7 +54,6 @@ const CompanyPage = ({
       <Tabs>
         <TabPane tab="Company Info" key="1">
           <CompanyCard companies={companies} />
-          {/* <CompanySalaryChart avgSalaries={avgSalaries} /> */}
         </TabPane>
         <TabPane tab="Company Reviews" key="2">
           <CompanyReviewCard />

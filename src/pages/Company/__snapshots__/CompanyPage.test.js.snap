@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompanyPage renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      id="mockCompanyPage"
+    >
+      mockCompanyPage
+    </div>
+  </div>
+</body>
+`;
