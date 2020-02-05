@@ -98,7 +98,7 @@ export const DetailedSalaryReviewCard = ({
         </div>
         <div className="banner">
           <div className="salary-div">
-            <h3>Salary (Annual)</h3>
+            <h3>Salary /yr</h3>
             <Paragraph
               editable={{
                 onChange: e => {

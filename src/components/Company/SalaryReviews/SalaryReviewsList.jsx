@@ -56,7 +56,7 @@ const SalaryReviewsList = ({
             </div>
             <h2>{elem.interest}</h2>
 
-            <h3>{salaryFormatted}</h3>
+            <h3>{salaryFormatted} /yr</h3>
             <ReviewerName>
               {elem.is_anonymous ? 'Anonymous User' : elem.full_name}
             </ReviewerName>
