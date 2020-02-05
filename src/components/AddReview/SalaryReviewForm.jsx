@@ -147,7 +147,7 @@ const SalaryReview = ({
               <Input
                 type="number"
                 step="0.01"
-                placeholder="Amount"
+                placeholder="Annual Salary"
                 name="currency"
                 onChange={handleChange}
               />

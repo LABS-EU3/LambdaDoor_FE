@@ -64,7 +64,7 @@ const SalaryReviewDetails = ({
 
         <div className="salary-div">
           <h2>Salary</h2>
-          <h3>{salaryFormatted}</h3>
+          <h3>{salaryFormatted} /yr</h3>
         </div>
 
         <div className="interest">

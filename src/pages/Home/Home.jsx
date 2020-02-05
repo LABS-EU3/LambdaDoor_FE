@@ -147,7 +147,7 @@ const HomeContentContainer = styled.div`
       }
     }
   }
-  @media (max-width: 705px) {
+  @media (max-width: 480px) {
     .tag-paragraph {
       display: block;
       margin-bottom: 80px;

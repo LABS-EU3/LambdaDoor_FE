@@ -22,7 +22,7 @@ const SalarySearchCard = ({
   return (
     <StyledCard onClick={() => history.push(`/search-results/salary/${id}`)}>
       <h2>{name}</h2>
-      <p className="salary">{salaryFormatted}</p>
+      <p className="salary">{salaryFormatted} /yr</p>
       <p>{job_title}</p>
     </StyledCard>
   );
