@@ -2,7 +2,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-wrap-multilines */
 import React, { useEffect } from 'react';
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams, withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Rate, Card, Empty, Button } from 'antd';
 import styled from 'styled-components';
@@ -98,9 +98,9 @@ const CompanyReviewCard = ({
           </span>
         }
       >
-        <Button onClick={() => history.push('/add-review')}>
-          Post a Review
-        </Button>
+        <Link to={{ pathname: '/add-review', state: 0 }}>
+          <Button>Post a Review</Button>
+        </Link>
       </Empty>
     </StyledEmpty>
   ) : (

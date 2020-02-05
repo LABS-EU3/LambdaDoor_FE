@@ -25,6 +25,7 @@ const CompanyPage = ({
   // },
   getSalaryReviewsByCompanyId,
   history,
+  location,
 }) => {
   const companyId = useParams().id;
 
@@ -51,14 +52,14 @@ const CompanyPage = ({
         <Icon type="left" />
         Back
       </Button>
-      <Tabs>
-        <TabPane tab="Company Info" key="1">
+      <Tabs defaultActiveKey={String(location.state)}>
+        <TabPane tab="Company Info" key="0">
           <CompanyCard companies={companies} />
         </TabPane>
-        <TabPane tab="Company Reviews" key="2">
+        <TabPane tab="Company Reviews" key="1">
           <CompanyReviewCard />
         </TabPane>
-        <TabPane tab="Salary Reviews" key="3">
+        <TabPane tab="Salary Reviews" key="2">
           <SalaryReviewsList />
         </TabPane>
         <TabPane tab="Interview Process Reviews" key="4">

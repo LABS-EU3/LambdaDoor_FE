@@ -41,8 +41,9 @@ export const DetailedSalaryReviewCard = ({
     updatedReview = {
       ...review,
     };
-    delete updatedReview.name;
     delete updatedReview.interest;
+    delete updatedReview.full_name;
+    delete updatedReview.name;
     delete updatedReview['i.id'];
   }, [review]);
 

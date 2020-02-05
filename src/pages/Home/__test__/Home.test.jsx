@@ -70,7 +70,7 @@ describe('ConnectedHome', () => {
         isLoading: false,
       },
       jobroles: {
-        isFetching: false,
+        isFetching: true,
         jobroles: [],
       },
       reviews: {

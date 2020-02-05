@@ -41,6 +41,7 @@ export const DetailedReviewCard = ({
     delete updatedReview.name;
     delete updatedReview.full_name;
     delete updatedReview.company_id;
+    delete updatedReview.email_address;
   }, [review]);
 
   const handleDelete = async id => {
