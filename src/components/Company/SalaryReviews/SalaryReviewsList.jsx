@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Card, Empty, Button } from 'antd';
-import { withRouter, useParams } from 'react-router-dom';
+import { withRouter, useParams, Link } from 'react-router-dom';
 import currencies from '../../../utils/currencies';
 
 const SalaryReviewsList = ({
@@ -28,13 +28,9 @@ const SalaryReviewsList = ({
           </span>
         }
       >
-        <Button
-          onClick={() => {
-            history.push('/add-review');
-          }}
-        >
-          Post a Review
-        </Button>
+        <Link to={{ pathname: '/add-review', state: 1 }}>
+          <Button>Post a Review</Button>
+        </Link>
       </Empty>
     </StyledEmpty>
   ) : (
