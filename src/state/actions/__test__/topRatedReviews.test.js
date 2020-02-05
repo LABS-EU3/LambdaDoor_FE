@@ -59,14 +59,14 @@ describe('Action/types top rated reviews', () => {
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getTopRatedReviews(1));
+    await store.dispatch(getTopRatedReviews());
     expect(actions[1]).toEqual(expectedActions);
   });
 
   it('should execute fetch Error data', async () => {
     const code = 404;
     await mock
-      .onGet(`${process.env.REACT_APP_BACKEND_URL}/companies/top/1`)
+      .onGet(`${process.env.REACT_APP_BACKEND_URL}/companies/top`)
       .reply(code);
     const expectedAction = {
       type: types.GET_TOP_RATED_FAILURE,
@@ -74,8 +74,10 @@ describe('Action/types top rated reviews', () => {
     };
     const store = mockStore({});
     const actions = store.getActions();
-    await store.dispatch(getTopRatedReviews(1));
+    await store.dispatch(getTopRatedReviews());
+    console.log(actions);
     expect(actions[1]).toEqual(expectedAction);
+    
   });
 });
 
