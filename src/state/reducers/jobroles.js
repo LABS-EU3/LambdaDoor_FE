@@ -1,7 +1,7 @@
 import * as types from '../types';
 
 const initialState = {
-  isfetching: false,
+  isFetching: true,
   jobroles: [],
 };
 

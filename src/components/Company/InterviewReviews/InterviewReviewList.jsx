@@ -3,7 +3,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, Empty, Button } from 'antd';
 import styled from 'styled-components';
@@ -71,13 +71,9 @@ const InterviewReviewList = ({
           </span>
         }
       >
-        <Button
-          onClick={() => {
-            history.push('/add-review');
-          }}
-        >
-          Post a Review
-        </Button>
+        <Link to={{ pathname: '/add-review', state: 2 }}>
+          <Button>Post a Review</Button>
+        </Link>
       </Empty>
     </StyledEmpty>
   ) : (
