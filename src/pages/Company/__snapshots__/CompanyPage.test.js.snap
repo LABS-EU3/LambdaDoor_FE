@@ -2,12 +2,6 @@
 
 exports[`CompanyPage renders correctly 1`] = `
 <body>
-  <div>
-    <div
-      id="mockCompanyPage"
-    >
-      mockCompanyPage
-    </div>
-  </div>
+  <div />
 </body>
 `;
