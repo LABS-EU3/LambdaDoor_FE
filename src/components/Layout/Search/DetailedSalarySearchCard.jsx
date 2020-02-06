@@ -40,7 +40,10 @@ const DetailedSalarySearchCard = ({ search: { searchResults }, history }) => {
       </div>
 
       <div className="salary-div">
-        <p>{salaryFormatted} /yr</p>
+        <p>
+          {salaryFormatted}
+          /yr
+        </p>
       </div>
 
       <div className="interest">

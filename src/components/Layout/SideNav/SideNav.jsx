@@ -50,7 +50,14 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
       ) : (
         <>
           <div className="branding">
-            <Logo smaller />
+            <NavLink
+              exact
+              to="/dashboard"
+              className="link"
+              activeClassName="active"
+            >
+              <Logo smaller />
+            </NavLink>
             <h2>Lambda Door</h2>
             {!user.location ? (
               notification.info({

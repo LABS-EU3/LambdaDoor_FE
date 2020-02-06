@@ -103,12 +103,12 @@ describe('ConnectedHome', () => {
           interviewReview: [],
         },
       },
-      topRatedReviews: { isfetching: false, topRatedReviews: [] },
+      topRatedReviews: { isFetching: false, topRatedReviews: [] },
       avgSalaries: {
         avgSalaries: [],
-        isfetching: false,
+        isFetching: false,
       },
-      closestCompanies: { isfetching: false, closestCompanies: [] },
+      closestCompanies: { isFetching: false, closestCompanies: [] },
     });
   });
   // it('decodes the token of a previously authenticated user and passes them to the dashboard', async () => {

@@ -1,7 +1,7 @@
 import * as types from '../types';
 
 const initialState = {
-  isfetching: false,
+  isFetching: false,
   avgSalaries: [],
 };
 
@@ -13,7 +13,7 @@ export const avgSalariesReducer = (state = initialState, action) => {
 
     case types.GET_AVG_SALARIES_SUCCESS:
       return {
-        isfetching: false,
+        isFetching: false,
         avgSalaries: action.payload,
       };
 

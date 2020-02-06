@@ -20,9 +20,9 @@ const CompanyPage = ({
   getInterviewReviewsByCompanyId,
   companies: { companies },
   // avgSalaries: { avgSalaries },
-  authState: {
-    credentials: { id },
-  },
+  // authState: {
+  //   credentials: { id },
+  // },
   getSalaryReviewsByCompanyId,
   history,
   location,
@@ -55,7 +55,6 @@ const CompanyPage = ({
       <Tabs defaultActiveKey={String(location.state)}>
         <TabPane tab="Company Info" key="0">
           <CompanyCard companies={companies} />
-          {/* <CompanySalaryChart avgSalaries={avgSalaries} /> */}
         </TabPane>
         <TabPane tab="Company Reviews" key="1">
           <CompanyReviewCard />

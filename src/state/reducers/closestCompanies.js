@@ -1,7 +1,7 @@
 import * as types from '../types';
 
 const initialState = {
-  isfetching: false,
+  isFetching: false,
   closestCompanies: [],
 };
 // eslint-disable-next-line import/prefer-default-export
@@ -11,7 +11,7 @@ export const closestCompaniesReducer = (state = initialState, action) => {
       return { ...state, isFetching: true };
     case types.GET_CLOSEST_COMPANIES_SUCCESS:
       return {
-        isfetching: false,
+        isFetching: false,
         closestCompanies: action.payload,
       };
     case types.GET_CLOSEST_COMPANIES_FAILURE:

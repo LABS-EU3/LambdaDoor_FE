@@ -13,7 +13,7 @@ export const jobrolesReducer = (state = initialState, action) => {
 
     case types.GET_JOB_ROLES_SUCCESS:
       return {
-        isfetching: false,
+        isFetching: false,
         jobroles: action.payload,
       };
 
