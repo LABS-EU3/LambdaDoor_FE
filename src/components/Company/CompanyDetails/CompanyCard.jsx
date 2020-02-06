@@ -68,34 +68,37 @@ export const CompanyCard = props => {
   const company = companies.find(elem => elem.id === Number(companyId));
   return (
     <StyledDiv>
-      {
-        company && (
-          <>
-            <div className="textInfo">
-              <h2>{company.name}</h2>
-              <div className="location-rating">
-                <p>{company.location}</p>
-                <span>
-                  Average Rating:
-                  <Rate disabled defaultValue={Number(company.average_rating)} />
-                </span>
-              </div>
-              <a target="_blank" rel="noopener noreferrer" href={company.website}>
-                {company.website}
-              </a>
-              <p className="company-type">
-                Company Type: &nbsp;
-                {company.type}
-              </p>
-              <p className="description">{company.description}</p>
+      {company && (
+        <>
+          <div className="textInfo">
+            <h2>{company.name}</h2>
+            <div className="location-rating">
+              <p>{company.location}</p>
+              <span>
+                Average Rating:
+                <Rate
+                  disabled
+                  allowHalf
+                  defaultValue={Math.round(company.average_rating * 2) / 2}
+                />
+                <span> ({Math.round(company.average_rating * 10) / 10})</span>
+              </span>
             </div>
+            <a target="_blank" rel="noopener noreferrer" href={company.website}>
+              {company.website}
+            </a>
+            <p className="company-type">
+              Company Type: &nbsp;
+              {company.type}
+            </p>
+            <p className="description">{company.description}</p>
+          </div>
 
-            <div className="visual-info">
-              <CompanySalaryChart />
-            </div>
-          </>
-        )
-      }
+          <div className="visual-info">
+            <CompanySalaryChart />
+          </div>
+        </>
+      )}
     </StyledDiv>
   );
 };

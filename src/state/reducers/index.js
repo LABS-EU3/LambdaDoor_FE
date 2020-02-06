@@ -9,6 +9,7 @@ import { jobrolesReducer } from './jobroles';
 import { avgSalariesReducer } from './avgSalaries';
 import companyReviewsReducer from './singleCompany';
 import singleReviewReducer from './singleReview';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
   reviews: reviewsReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   avgSalaries: avgSalariesReducer,
   singleCompanyReviews: companyReviewsReducer,
   singleReview: singleReviewReducer,
+  search: searchReducer,
 });
 
 export default rootReducer;

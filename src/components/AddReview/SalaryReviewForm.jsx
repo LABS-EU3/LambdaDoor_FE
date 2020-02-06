@@ -31,6 +31,7 @@ const SalaryReview = ({
     currency: '',
     unit: '',
     is_current_employee: false,
+    is_anonymous: false,
     is_accepting_questions: false,
   });
   const [loading, setLoading] = useState(false);
@@ -57,6 +58,11 @@ const SalaryReview = ({
         ...formValues,
         company_id: company.id,
       });
+    } else {
+      setFormValues({
+        ...formValues,
+        company_id: name,
+      });
     }
   };
 
@@ -71,16 +77,41 @@ const SalaryReview = ({
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
+  const handleAnonymous = value => {
+    setFormValues({
+      ...formValues,
+      is_anonymous: value,
+      is_accepting_questions: !value,
+    });
+  };
+
   return (
     <StyledContainer>
       <Form layout="vertical">
         <div>
-          <AutoCompleteComponent
-            label="Company Name"
-            placeholder="Company name"
-            dataSource={companies}
-            onChange={e => handleCompanyName(e)}
-          />
+          <Form.Item
+            validateStatus={
+              Number(formValues.company_id) === formValues.company_id ||
+              formValues.company_id === ''
+                ? 'validating'
+                : 'error'
+            }
+            hasFeedback={
+              Number(formValues.company_id) !== formValues.company_id
+            }
+            help={
+              Number(formValues.company_id) !== formValues.company_id &&
+              formValues.company_id !== '' &&
+              'You have not selected a company'
+            }
+          >
+            <AutoCompleteComponent
+              label="Company Name"
+              placeholder="Company name"
+              dataSource={companies}
+              onChange={e => handleCompanyName(e)}
+            />
+          </Form.Item>
         </div>
         <Form.Item label="Job Title">
           <Input
@@ -116,7 +147,7 @@ const SalaryReview = ({
               <Input
                 type="number"
                 step="0.01"
-                placeholder="Amount"
+                placeholder="Annual Salary"
                 name="currency"
                 onChange={handleChange}
               />
@@ -165,9 +196,7 @@ const SalaryReview = ({
                 checkedChildren={<Icon type="check" />}
                 unCheckedChildren={<Icon type="close" />}
                 defaultChecked={false}
-                onChange={value =>
-                  handleComponentChange('is_accepting_questions', value)
-                }
+                onChange={value => handleAnonymous(value)}
               />
             </div>
           </SwitchContainer>
@@ -178,10 +207,12 @@ const SalaryReview = ({
           htmlType="submit"
           onClick={handleSubmit}
           loading={loading}
-          disabled={Boolean(
-            Object.keys(formValues).filter(elem => formValues[elem] === '')
-              .length
-          )}
+          disabled={
+            Boolean(
+              Object.keys(formValues).filter(elem => formValues[elem] === '')
+                .length
+            ) || Number(formValues.company_id) !== formValues.company_id
+          }
         >
           Submit
         </Button>

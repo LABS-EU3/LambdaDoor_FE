@@ -10,13 +10,13 @@ import { Spin } from 'antd';
 import { getJobRoles } from '../../state/actions/jobroles';
 
 const data = [
-  { interest: 'Front End', id: uuid(), count: 10 },
-  { interest: 'Back End', id: uuid(), count: 20 },
-  { interest: 'Full Stack', id: uuid(), count: 20 },
+  { interest: 'Front End', id: uuid(), count: 0 },
+  { interest: 'Back End', id: uuid(), count: 0 },
+  { interest: 'Full Stack', id: uuid(), count: 0 },
   { interest: 'Data Science', id: uuid(), count: 0 },
-  { interest: 'Machine Learning', id: uuid(), count: 15 },
+  { interest: 'Machine Learning', id: uuid(), count: 0 },
   { interest: 'User Experience', id: uuid(), count: 0 },
-  { interest: 'Mobile Development', id: uuid(), count: 5 },
+  { interest: 'Mobile Development', id: uuid(), count: 0 },
   { interest: 'Product Manager', id: uuid(), count: 0 },
 ];
 
@@ -32,38 +32,11 @@ const COLOURS = [
   '#0C3C78',
   '#D2E3D0',
 ];
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-}) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-  if (percent === 0) {
-    return null;
-  }
-
-  return (
-    <text
-      x={x}
-      y={y}
-      fill="white"
-      textAnchor="middle"
-      dominantBaseline="central"
-    >
-      {`${(percent * 100).toFixed(0)}%`}
-    </text>
-  );
-};
 
 const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
   const [state, setState] = useState([]);
   const [total, setTotal] = useState(0);
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
     getJobRoles();
@@ -86,58 +59,91 @@ const JobTitleVisualization = ({ isFetching, jobroles, getJobRoles }) => {
         };
       })
     );
+  }, [jobroles]);
 
+  useEffect(() => {
     setTotal(
       state.reduce((acc, obj) => {
         acc += obj.count;
         return acc;
       }, 0)
     );
-  }, [jobroles]);
+    setKey(key + 1);
+  }, [state]);
 
+  const renderCustomizedLabel = data => {
+    const { cx, cy, midAngle, innerRadius, outerRadius, percent, count } = data;
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    if (percent === 0) {
+      return null;
+    }
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="white"
+        textAnchor="middle"
+        dominantBaseline="central"
+      >
+        {`${((count / total) * 100).toFixed(0)}%`}
+      </text>
+    );
+  };
+
+  console.log(jobroles);
   return (
-    <StyledContainer>
+    <StyledContainer key={key}>
       {!isFetching ? (
         <>
           {jobroles.length !== 0 && total !== 0 ? (
             <>
-              <PieChart width={300} height={300}>
+              <PieChart width={300} height={300} key={key}>
                 <Pie
                   data={state}
                   cx={150}
                   cy={150}
-                  innerRadius={50}
-                  outerRadius={100}
+                  innerRadius={70}
+                  outerRadius={140}
                   labelLine={false}
                   label={renderCustomizedLabel}
                   fill="#8884d8"
                   dataKey="count"
                 >
-                  {state.map((entry, index) => (
-                    <Cell
-                      key={entry.id}
-                      fill={COLOURS[index % COLOURS.length]}
-                    />
-                  ))}
+                  {state.map((entry, index) => {
+                    console.log('rerenders');
+
+                    return (
+                      <Cell
+                        key={entry.id}
+                        fill={COLOURS[index % COLOURS.length]}
+                      />
+                    );
+                  })}
                 </Pie>
               </PieChart>
               <Legend
                 verticalAlign="right"
                 content={() => (
                   <ul className="legends">
-                    {state.map((entry, index) => (
-                      <li key={entry.id}>
-                        <span
-                          style={{
-                            background: `${COLOURS[index % COLOURS.length]}`,
-                          }}
-                        />
-                        {`${entry.interest} - ${(
-                          (entry.count / total) *
-                          100
-                        ).toFixed(0)}%`}
-                      </li>
-                    ))}
+                    {state.map((entry, index) => {
+                      return (
+                        <li key={entry.id}>
+                          <span
+                            style={{
+                              background: `${COLOURS[index % COLOURS.length]}`,
+                            }}
+                          />
+                          {`${entry.interest} - ${(
+                            (entry.count / total) *
+                            100
+                          ).toFixed(0)}%`}
+                        </li>
+                      );
+                    })}
                   </ul>
                 )}
               />
@@ -169,6 +175,12 @@ const StyledContainer = styled.div`
   align-items: center;
   min-height: 300px;
   position: relative;
+
+  text {
+    font-size: 10px;
+    font-weight: bolder;
+    fill: white;
+  }
 
   @media (max-width: 845px) {
     flex-direction: column;

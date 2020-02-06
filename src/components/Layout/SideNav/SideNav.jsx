@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { Typography, Spin, Button, Icon, Tooltip } from 'antd';
+import { Typography, Spin, Button, Icon, Tooltip, notification } from 'antd';
 
 import Logo from './Logo';
 import Avatar from './Avatar';
@@ -16,7 +16,12 @@ import { editProfile } from '../../../state/actions/user';
 
 import { getLocation } from '../../../utils/getLocation';
 
-import { mobilePortrait, primaryGrey } from '../../../styles/theme.styles';
+import {
+  mobilePortrait,
+  primaryGrey,
+  tabletPortraitLarge,
+  tabletPortrait,
+} from '../../../styles/theme.styles';
 
 const { Paragraph } = Typography;
 
@@ -45,8 +50,24 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
       ) : (
         <>
           <div className="branding">
-            <Logo smaller />
+            <NavLink
+              exact
+              to="/dashboard"
+              className="link"
+              activeClassName="active"
+            >
+              <Logo smaller />
+            </NavLink>
             <h2>Lambda Door</h2>
+            {!user.location ? (
+              notification.info({
+                description:
+                  'You are currently blocking your location. To enable full functionality, disable location blocking in your browser.',
+                placement: 'topLeft',
+              })
+            ) : (
+              <div />
+            )}
           </div>
           <div className="user-profile-wrap">
             <Avatar userImage={user.profile_picture} />
@@ -57,11 +78,11 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
               {user.full_name}
             </Paragraph>
             <Paragraph>@{user.username}</Paragraph>
-            {user.location && (
+            {user.location ? (
               <div className="location">
                 <i aria-label="location" className="fas fa-map-marker-alt" />
                 <Paragraph>{user.location}</Paragraph>
-                <Tooltip title="Edit">
+                <Tooltip title="Click to update">
                   <Button
                     icon="edit"
                     size="small"
@@ -70,6 +91,13 @@ const SideNav = ({ visible, user, editProfile, isLoading, LogoutUser }) => {
                     type="primary"
                     onClick={updateLocation}
                   />
+                </Tooltip>
+              </div>
+            ) : (
+              <div className="location">
+                <i aria-label="location" className="fas fa-map-marker-alt" />
+                <Tooltip title="To share your location clear your browser settings">
+                  <Paragraph>Unknown location</Paragraph>
                 </Tooltip>
               </div>
             )}
@@ -204,6 +232,12 @@ const StyledContainer = styled.div`
       visibility: hidden;
       font-weight: 500;
       font-size: 1rem;
+      @media ${tabletPortraitLarge} {
+        visibility: visible;
+      }
+      @media ${tabletPortrait} {
+        visibility: hidden;
+      }
       @media ${mobilePortrait} {
         visibility: visible;
       }

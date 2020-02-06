@@ -98,10 +98,12 @@ export const UserDashboard = ({
           <JobTitleVisualization />
         </div>
       </div>
-      <div className="bottom-layout">
-        <h2>Companies Near You</h2>
-        <ClosestLocationList />
-      </div>
+      {location && (
+        <div className="bottom-layout">
+          <h2>Companies Near You</h2>
+          <ClosestLocationList />
+        </div>
+      )}
     </StyledContainer>
   );
 };

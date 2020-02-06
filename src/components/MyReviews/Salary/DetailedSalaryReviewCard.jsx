@@ -41,8 +41,9 @@ export const DetailedSalaryReviewCard = ({
     updatedReview = {
       ...review,
     };
-    delete updatedReview.name;
     delete updatedReview.interest;
+    delete updatedReview.full_name;
+    delete updatedReview.name;
     delete updatedReview['i.id'];
   }, [review]);
 
@@ -63,6 +64,11 @@ export const DetailedSalaryReviewCard = ({
     await updateSalaryReview(updatedReview);
     setLoading(false);
     setEditing(false);
+  };
+
+  const updateAnonymous = value => {
+    updatedReview.is_anonymous = value;
+    updatedReview.is_accepting_questions = !value;
   };
 
   const { Option } = Select;
@@ -93,7 +99,7 @@ export const DetailedSalaryReviewCard = ({
         </div>
         <div className="banner">
           <div className="salary-div">
-            <h3>Salary </h3>
+            <h3>Salary /yr</h3>
             <Paragraph
               editable={{
                 onChange: e => {
@@ -166,10 +172,10 @@ export const DetailedSalaryReviewCard = ({
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="close" />}
-              defaultChecked={review.is_accepting_questions}
+              defaultChecked={review.is_anonymous}
               disabled={!isEditing}
               onChange={e => {
-                updateReview('is_accepting_questions', e === true ? 1 : 0);
+                updateAnonymous(e);
               }}
             />
           </div>

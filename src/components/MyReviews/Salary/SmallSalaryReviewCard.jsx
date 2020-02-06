@@ -61,7 +61,7 @@ export const SmallSalaryReviewCard = ({
       <div className="card-top">
         <h2 onClick={handleCompanyClick}>{name}</h2>
       </div>
-      <div>{salaryFormatted}</div>
+      <div>{salaryFormatted} /yr</div>
       <div className="description">
         {description.length > 30 ? (
           <span>{description.slice(0, 30)}...</span>

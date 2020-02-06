@@ -70,7 +70,7 @@ describe('ConnectedHome', () => {
         isLoading: false,
       },
       jobroles: {
-        isfetching: false,
+        isFetching: true,
         jobroles: [],
       },
       reviews: {
@@ -83,6 +83,10 @@ describe('ConnectedHome', () => {
         isLoggedIn: false,
         credentials: {},
         error: null,
+      },
+      search: {
+        isSearching: false,
+        searchResults: [],
       },
       singleCompanyReviews: {
         isFetching: false,
@@ -99,12 +103,12 @@ describe('ConnectedHome', () => {
           interviewReview: [],
         },
       },
-      topRatedReviews: { isfetching: false, topRatedReviews: [] },
+      topRatedReviews: { isFetching: false, topRatedReviews: [] },
       avgSalaries: {
         avgSalaries: [],
-        isfetching: false,
+        isFetching: false,
       },
-      closestCompanies: { isfetching: false, closestCompanies: [] },
+      closestCompanies: { isFetching: false, closestCompanies: [] },
     });
   });
   // it('decodes the token of a previously authenticated user and passes them to the dashboard', async () => {

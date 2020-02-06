@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/LABS-EU3/lambdaDoor_frontend.svg?branch=develop)](https://travis-ci.com/LABS-EU3/lambdaDoor_frontend) ![](badges.svg) [![Netlify Status](https://api.netlify.com/api/v1/badges/d7c57980-e371-4865-b666-2ebf173bcff9/deploy-status)](https://app.netlify.com/sites/lambdadoor/deploys)
 
-# LamdaDoor
+# LambdaDoor
 
 Many atimes Job seekers find it difficult getting information specific to their search with respect to companies' interview processes, cultures and salary information that are less generalized, hence they spend alot of time searching and filtering what's needed from the sea of available information.
 
@@ -10,7 +10,7 @@ LambdaDoor is here to make that search simpler by providing stream lined informa
 
 ## Tech stack
 
-HTML, CSS, Ant design, Formik, Styled-Component, Javascript, React, Redux, coveralls, Axios, Travis CI etc.
+HTML, CSS, Ant design, Formik, Styled-Component, Javascript, React, Redux, coveralls, Sentry, Travis CI etc.
 
 ===============================================================================
 
@@ -79,6 +79,7 @@ An environment virriable was used for the developement and deployment file, thus
 ## Repo structure
 
 Sometimes it's helpful to know what all these different files are for…
+
 ```
 /
 ├─ src/
@@ -91,6 +92,8 @@ Sometimes it's helpful to know what all these different files are for…
 │  │  ├─ Layouts/    # …that governs all site layouts including layout-specific components
 │  │  ├─ Router/     # …that handles all files that pertain to app routing
 │  │  ├─ UserDashboard/ # …that handles all the components that display on the user's dashboard
+│  │  ├─ AppinfoContainer # …contains brief information about what the App offers
+│  │  ├─ LocationSearch # …retrives users location using google map
 |  |
 |  ├─ pages/         # Pages
 │  │  ├─ AddReview/  # …that renders Add-Review page content
@@ -98,11 +101,13 @@ Sometimes it's helpful to know what all these different files are for…
 │  │  ├─ Home/       # …that renders Home page content
 │  │  ├─ MyReviews/  # …that renders user's reviews for management
 │  │  ├─ UserDashboard/ # …that renders User-Dashboard page content
+│  │  ├─ NotFound    # …serves as a fallback path when a request link is not available
 │  |
 |  |─ state/         # State
 │  │  ├─ actions/    # …that handles redux actions
 │  │  ├─ reducers/   # …that handles app reducer functions
-│  │  ├─ types/      # …that handles all action types 
+│  │  ├─ types/      # …that handles all action types
+│  │  ├─ store       # …contains redux store and devtools extension information
 |  |
 |  |─ styles/        # Styles
 |  |
@@ -116,8 +121,8 @@ Sometimes it's helpful to know what all these different files are for…
 ├─ .gitignore        # List of files and folders not tracked by Git
 ├─ .prettierrc       # Code Formatting preferences for JavasScript
 ├─ .eslintrc         # Linting preferences for JavasScript
-├─ fractal.js        # Configuration for Fractal
-├─ gulpfile.js       # Configuration for Gulp tasks
+├─ travis.yml        # Configuration for Travis CI
+├─ commit_template   # Contains instruction for commit
 ├─ LICENSE           # License information for this project
 ├─ package.json      # Project manifest
 └─ README.md         # This file
@@ -178,3 +183,41 @@ See [Lambda_Door](https://github.com/LABS-EU3/lambdaDoor_backend/blob/develop/RE
 ### Backend is hosted on Heroku https://lambdadoor.herokuapp.com/
 
 ===============================================================================
+
+## Giphy Demonstrations for the App
+
+### Sign-In
+
+![Sign In clip](https://media.giphy.com/media/dVo7if5pt3iwDrIaqu/giphy.gif)
+
+Demonstrates the Log-in process showing user information in slack that the App will be having access to.
+
+### Dashboard display
+
+![Dashboard display](https://media.giphy.com/media/gdqwvVzH4pOoAI6QMG/giphy.gif)
+
+Shows the Dashboard display with TOP Rated Companies and a list of reviewed Job roles by Percentages
+
+### Companies near user
+
+![Companies near user](https://media.giphy.com/media/eJMPVNFc6AaYmu71Sw/giphy.gif)
+
+Displays companies within a set distance of the user location if they exist in the DB, with a graph that shows an average pay for different roles
+
+### Company reviews
+
+![Companies reviews](https://media.giphy.com/media/YOpOAQXeyPNFFAtyOi/giphy.gif)
+
+Shows information about selected company, its location and more, along with tabs for salary and interview review, each tab having cickable cards for more information on the presented search.
+
+### Leave a review
+
+![Leave a review](https://media.giphy.com/media/SWWTv4Qoj7epVOHGfI/giphy.gif)
+
+shows the Manage review page that contains reviews the user made as well as the leave review page with tabs for salary, company and interview reviews.
+
+### Search Bar
+
+![Search Bar](https://media.giphy.com/media/jQ8uoOo6m4lhN2OC5u/giphy.gif)
+
+Shows a clip of the search bar being used for search company, Salary and interview information either by location,company name or job title.

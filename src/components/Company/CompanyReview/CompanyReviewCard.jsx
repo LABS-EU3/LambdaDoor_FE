@@ -2,7 +2,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-wrap-multilines */
 import React, { useEffect } from 'react';
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams, withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Rate, Card, Empty, Button } from 'antd';
 import styled from 'styled-components';
@@ -29,7 +29,7 @@ const StyledCard = styled(Card)`
   margin: 2rem 1.5rem 1rem 0rem !important;
   width: 280px;
   height: 200px;
-  padding-top: 1rem !important;
+  padding-top: 0.5rem !important;
   font-size: 16px;
   cursor: pointer;
 
@@ -56,21 +56,22 @@ const StyledCard = styled(Card)`
   @media ${tabletPortrait} {
     padding: 0 !important;
   }
-  @media only screen and (max-width: 530px) {
+  @media only screen and (max-width: 540px) {
     span {
-      font-size: 14px;
+      font-size: 15px;
     }
     .stars {
       margin-top: 25px;
       font-size: 12px;
     }
     font-size: 11px;
-    height: 220px;
     padding-top: 0.1rem !important;
   }
-  @media only screen and (max-width: 480px) {
-    height: 230px;
-  }
+`;
+
+const ReviewerName = styled.div`
+  text-align: right;
+  padding: 1rem 0;
 `;
 
 const CompanyReviewCard = ({
@@ -97,9 +98,9 @@ const CompanyReviewCard = ({
           </span>
         }
       >
-        <Button onClick={() => history.push('/add-review')}>
-          Post a Review
-        </Button>
+        <Link to={{ pathname: '/add-review', state: 0 }}>
+          <Button>Post a Review</Button>
+        </Link>
       </Empty>
     </StyledEmpty>
   ) : (
@@ -124,6 +125,7 @@ const CompanyReviewCard = ({
             <br />
             <Rate disabled defaultValue={companyReview.ratings} size="small" />
           </div>
+          <ReviewerName>{companyReview.full_name}</ReviewerName>
         </StyledCard>
       ))}
     </ReviewCard>

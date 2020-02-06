@@ -48,3 +48,5 @@ describe('TopRatedList', () => {
     expect(wrapper.baseElement).toMatchSnapshot();
   });
 });
+
+

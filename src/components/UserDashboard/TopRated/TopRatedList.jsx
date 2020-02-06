@@ -1,15 +1,17 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
-import TopRatedCard from './TopRatedCard';
+import CompanySummaryCard from '../../CompanySummaryCard';
 import { getTopRatedReviews } from '../../../state/actions/topRatedReviews';
 
 export const TopRatedList = ({
   isFetching,
   getTopRatedReviews,
   topRatedReviews: { topRatedReviews },
+  location,
 }) => {
   useEffect(() => {
     getTopRatedReviews();
@@ -18,21 +20,34 @@ export const TopRatedList = ({
     <StyledDiv>
       {!isFetching ? (
         <>
-          {topRatedReviews.length !== 0 ? (
-            topRatedReviews.slice(0, 4).map(topRated => (
+          {topRatedReviews.length === 0 ? (
+            <div className="empty-state">
+              <p>No data to display</p>
+            </div>
+          ) : !location ? (
+            topRatedReviews.slice(0, 8).map(topRated => (
               // eslint-disable-next-line react/no-array-index-key
-              <TopRatedCard
+              <CompanySummaryCard
                 key={`${topRated.id}`}
                 text={topRated.description}
                 name={topRated.name}
                 id={topRated.id}
                 rating={topRated.average_rating}
+                website={topRated.website}
               />
             ))
           ) : (
-            <div className="empty-state">
-              <p>No data to display</p>
-            </div>
+            topRatedReviews.slice(0, 4).map(topRated => (
+              // eslint-disable-next-line react/no-array-index-key
+              <CompanySummaryCard
+                key={`${topRated.id}`}
+                text={topRated.description}
+                name={topRated.name}
+                id={topRated.id}
+                rating={topRated.average_rating}
+                website={topRated.website}
+              />
+            ))
           )}
         </>
       ) : (
@@ -95,10 +110,10 @@ const StyledDiv = styled.div`
     .ant-rate-star-first,
     .ant-rate-star-second {
       height: 20px;
-      width: fit-content;
+      /* width: fit-content;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      justify-content: center; */
     }
 
     .ant-rate-star-first i,

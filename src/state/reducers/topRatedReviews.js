@@ -1,7 +1,7 @@
 import * as types from '../types';
 
 const initialState = {
-  isfetching: false,
+  isFetching: false,
   topRatedReviews: [],
 };
 // eslint-disable-next-line import/prefer-default-export
@@ -11,7 +11,7 @@ export const topRatedReviewsReducer = (state = initialState, action) => {
       return { ...state, isFetching: true };
     case types.GET_TOP_RATED_SUCCESS:
       return {
-        isfetching: false,
+        isFetching: false,
         topRatedReviews: action.payload,
       };
     case types.GET_TOP_RATED_FAILURE:

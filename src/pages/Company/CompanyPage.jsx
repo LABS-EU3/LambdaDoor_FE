@@ -20,11 +20,12 @@ const CompanyPage = ({
   getInterviewReviewsByCompanyId,
   companies: { companies },
   // avgSalaries: { avgSalaries },
-  authState: {
-    credentials: { id },
-  },
+  // authState: {
+  //   credentials: { id },
+  // },
   getSalaryReviewsByCompanyId,
   history,
+  location,
 }) => {
   const companyId = useParams().id;
 
@@ -46,20 +47,19 @@ const CompanyPage = ({
           border: '1px solid #BB1333',
           color: '#BB1333',
         }}
-        onClick={() => history.push('/dashboard')}
+        onClick={() => history.goBack()}
       >
         <Icon type="left" />
         Back
       </Button>
-      <Tabs>
-        <TabPane tab="Company Info" key="1">
+      <Tabs defaultActiveKey={String(location.state)}>
+        <TabPane tab="Company Info" key="0">
           <CompanyCard companies={companies} />
-          {/* <CompanySalaryChart avgSalaries={avgSalaries} /> */}
         </TabPane>
-        <TabPane tab="Company Reviews" key="2">
+        <TabPane tab="Company Reviews" key="1">
           <CompanyReviewCard />
         </TabPane>
-        <TabPane tab="Salary Reviews" key="3">
+        <TabPane tab="Salary Reviews" key="2">
           <SalaryReviewsList />
         </TabPane>
         <TabPane tab="Interview Process Reviews" key="4">

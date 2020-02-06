@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Card, Empty, Button } from 'antd';
-import { withRouter, useParams } from 'react-router-dom';
+import { withRouter, useParams, Link } from 'react-router-dom';
 import currencies from '../../../utils/currencies';
 
 const SalaryReviewsList = ({
@@ -28,13 +28,9 @@ const SalaryReviewsList = ({
           </span>
         }
       >
-        <Button
-          onClick={() => {
-            history.push('/add-review');
-          }}
-        >
-          Post a Review
-        </Button>
+        <Link to={{ pathname: '/add-review', state: 1 }}>
+          <Button>Post a Review</Button>
+        </Link>
       </Empty>
     </StyledEmpty>
   ) : (
@@ -56,7 +52,10 @@ const SalaryReviewsList = ({
             </div>
             <h2>{elem.interest}</h2>
 
-            <h3>{salaryFormatted}</h3>
+            <h3>{salaryFormatted} /yr</h3>
+            <ReviewerName>
+              {elem.is_anonymous ? 'Anonymous User' : elem.full_name}
+            </ReviewerName>
           </StyledCard>
         );
       })}
@@ -84,18 +83,13 @@ const StyledCard = styled(Card)`
   .card-top {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.8rem;
     height: 60px;
     h2 {
       margin-bottom: 0;
-      padding-top: 35px !important;
+      padding-top: 20px !important;
       font-size: 20px;
       font-weight: 900;
     }
-  }
-  .stars {
-    margin-top: 20px;
-    font-size: 10px;
   }
 `;
 
@@ -108,6 +102,11 @@ const StyledEmpty = styled.div`
   .text {
     font-size: 20px;
   }
+`;
+
+const ReviewerName = styled.div`
+  text-align: right;
+  margin-bottom: 1rem;
 `;
 
 export default withRouter(connect(state => state)(SalaryReviewsList));
