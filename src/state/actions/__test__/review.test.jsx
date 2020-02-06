@@ -38,8 +38,8 @@ describe('Action/types company review testing', () => {
   it('should execute get review data data', async () => {
     const store = mockStore({});
     const actions = store.getActions();
-
     await store.dispatch(getCompanyReviews());
+    console.log(actions);
     expect(actions[0]).toEqual({ type: types.GET_COMPANY_REVIEWS });
   });
 
