@@ -1,14 +1,9 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import * as rtl from '@testing-library/react';
 import { cleanup } from '@testing-library/react';
-
+import { withRouter } from 'react-router-dom';
 import CompanyPage from './CompanyPage';
-
-// const historyMock = { push: jest.fn() };
-
-jest.mock('./CompanyPage', () => () => (
-  <div id="mockCompanyPage">mockCompanyPage</div>
-));
+import renderWithProviders from './renderWithProvider';
 
 const testCompanies = [
   {
@@ -81,9 +76,26 @@ afterEach(cleanup);
 describe('CompanyPage', () => {
   it('renders correctly', () => {
     expect(
-      rtl.render(
-        <CompanyPage companies={testCompanies} avgSalaries={testSalaries} />
+      renderWithProviders(
+        withRouter(
+          <CompanyPage companies={testCompanies} avgSalaries={testSalaries} />
+        )
       ).baseElement
     ).toMatchSnapshot();
   });
+  // it('renders the tab names correctly', () => {
+  //   const { getByText } = renderWithProviders(
+  //     withRouter(
+  //       <CompanyPage companies={testCompanies} avgSalaries={testSalaries} />
+  //     )
+  //   );
+  //   const tab1 = getByText(/company info/i);
+  //   const tab2 = getByText(/company reviews/i);
+  //   const tab3 = getByText(/salary reviews/i);
+  //   const tab4 = getByText(/interview process reviews/i);
+  //   expect(tab1).toBeVisible();
+  //   expect(tab2).toBeVisible();
+  //   expect(tab3).toBeVisible();
+  //   expect(tab4).toBeVisible();
+  // });
 });
