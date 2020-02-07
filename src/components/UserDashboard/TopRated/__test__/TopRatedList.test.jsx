@@ -20,12 +20,18 @@ const topRatedReviews = {
     },
   ],
 };
+
+const authState = {
+  credentials: { location: 'Nigeria' },
+};
+
 let wrapper;
 beforeEach(() => {
   rtl.cleanup();
   wrapper = rtl.render(
     <Router>
       <TopRatedList
+        authState={authState}
         getTopRatedReviews={getTopRatedReviews}
         isFetching={isFetching}
         topRatedReviews={topRatedReviews}
@@ -38,6 +44,7 @@ describe('TopRatedList', () => {
   wrapper = rtl.render(
     <Router>
       <TopRatedList
+        authState={authState}
         getTopRatedReviews={getTopRatedReviews}
         isFetching={isFetching}
         topRatedReviews={topRatedReviews}
@@ -48,5 +55,3 @@ describe('TopRatedList', () => {
     expect(wrapper.baseElement).toMatchSnapshot();
   });
 });
-
-
