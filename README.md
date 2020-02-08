@@ -73,6 +73,16 @@ Other scripts available on the app are:
 ### Environment Variables
 
 An environment virriable was used for the developement and deployment file, thus user must set up their own environment variables in an .env file.
+```
+REACT_APP_UPLOAD_PRESET=
+REACT_APP_API_KEY=
+REACT_APP_CLIENT_ID=
+REACT_APP_CLIENT_SECRET=
+REACT_APP_JWT_SECRET=
+REACT_APP_REDIRECT_URI=
+REACT_APP_BACKEND_URL=
+REACT_APP_GOOGLE_API_KEY=
+```
 
 ===============================================================================
 
